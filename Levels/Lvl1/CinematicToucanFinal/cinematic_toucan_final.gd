@@ -1,7 +1,11 @@
 extends Node2D
 
-@onready var anim = $AnimationPlayer
 @onready var toucan = $Toucan
+@onready var toucan_anim = $Toucan/AnimationPlayer
+
+@onready var moko = $Moko
+@onready var moko_anim = $Moko/AnimationPlayer
+
 @onready var box = $Box
 @onready var text = $Box/MarginContainer/Text
 
@@ -12,16 +16,19 @@ extends Node2D
 @export var lines = []
 
 @export var chars_per_sec = 30
-@export var pause_between_lines = 1.0
+@export var pause_between_lines = 2.0
 @export var hide_when_done = true
 @export var dialogue_delay = 4.0
 
+@export_category("TEST SCÈNE ISOLÉE")
+@export_enum("game", "explorer", "survivor", "king")
+var test_difficulty: String = "game"
+var cinematic_difficulty: String = ""
 
 # ============================================================================
 #                              VARIABLES
 # ============================================================================
 
-var player = null
 
 var line_index = -1
 var full_line = ""
@@ -30,7 +37,6 @@ var writing = false
 var accum = 0.0
 var pause_left = 0.0
 
-
 # ============================================================================
 #                              INITIALISATION
 # ============================================================================
@@ -38,59 +44,61 @@ var pause_left = 0.0
 func _ready():
 	await get_tree().process_frame
 
-	player = get_tree().get_first_node_in_group("Player")
+	# Sécurité : avertit si la scène est restée en mode test
+	if test_difficulty != "game":
+		print("⚠️ CINEMATIC TOUCAN EN MODE TEST : ", test_difficulty)
 
-	if player == null:
-		print("❌ CINEMATIC TOUCAN FINAL : Player introuvable")
-	else:
-		player.disable_controls()
+	# Fake Moko
+	moko_anim.play("idle")
 
 	var game_state = get_node_or_null("/root/GameState")
 
-	if game_state:
-		print("🎯 DIFFICULTY TOUCAN = [", game_state.difficulty, "]")
-		match game_state.difficulty:
+	# Difficulté réellement utilisée par cette cinématique
+	cinematic_difficulty = test_difficulty
 
-			# ================================================================
-			# EXPLORATEUR -> SURVIVANT + DOUBLE JUMP
-			# ================================================================
-			"explorer":
-				lines = [
-					"Bravo, Moko !",
-					"Tu as triomphé de la Jungle.",
-					"Mais l’île va évoluer…",
-					"Toi aussi : tu peux tester le Double Saut !",
-					"Mode Survivant débloqué !"
-				]
+	if cinematic_difficulty == "game":
+		if game_state:
+			cinematic_difficulty = game_state.difficulty
+		else:
+			print("❌ GameState introuvable")
+			return
 
-			# ================================================================
-			# SURVIVANT -> ROI + FIRE
-			# ================================================================
-			"survivor":
-				lines = [
-					"Impressionnant, Moko !",
-					"Tu as survécu à une île bien plus dangereuse.",
-					"Mais elle peut encore évoluer…",
-					"Tu peux tester le pouvoir du Feu !",
-					"Mode Roi de l’île débloqué !"
-				]
+	print("🎬 DIFFICULTÉ CINÉMATIQUE = ", cinematic_difficulty)
 
-			# ================================================================
-			# ROI DE L'ÎLE -> FIN DEMO
-			# ================================================================
-			"king":
-				lines = [
-					"Tu l’as fait, Moko !",
-					"L’île t’a tout donné.",
-					"Tu as affronté sa forme ultime…",
-					"Et tu es toujours debout.",
-					"Tu es le Roi de l’île !"
-				]
+	match cinematic_difficulty:
+
+		"explorer":
+			lines = [
+				"Bravo, Moko !",
+				"Tu as triomphé de la Jungle.",
+				"Mais l’île va évoluer…",
+				"Tu peux tester le Double Saut !",
+				"Mode Survivant débloqué !"
+			]
+
+		"survivor":
+			lines = [
+				"Impressionnant, Moko !",
+				"Tu as survécu à une île bien plus dangereuse.",
+				"Mais elle va encore évoluer…",
+				"Tu peux tester le pouvoir du Feu !",
+				"Mode Roi de l’île débloqué !"
+			]
+
+		"king":
+			lines = [
+				"Tu l’as fait, Moko !",
+				"L’île t’a tout donné.",
+				"Tu as affronté sa forme ultime…",
+				"Et tu es toujours debout.",
+				"Tu es le Roi de l’île !"
+			]
+
+	print("📝 LINES CHARGÉES = ", lines)
 
 	start_cinematic()
 
 	await get_tree().create_timer(dialogue_delay).timeout
-
 	start()
 
 
@@ -102,7 +110,7 @@ func start_cinematic():
 	box.visible = false
 	toucan.visible = true
 
-	anim.play("intro")
+	toucan_anim.play("intro")
 
 
 # ============================================================================
@@ -111,21 +119,19 @@ func start_cinematic():
 
 func start(new_lines = null):
 	print("🟢 START DIALOGUE")
-	print("LINES = ", lines)
-	print("BOX AVANT = ", box.visible)
 
 	if new_lines != null:
 		lines = new_lines.duplicate()
 
-	line_index = 0
+	print("LINES = ", lines)
 
-	visible = true
+	line_index = 0
 	box.visible = true
 
-	print("BOX APRES = ", box.visible)
+	print("BOX VISIBLE = ", box.visible)
+	print("TEXT NODE = ", text)
 
 	set_process(true)
-
 	_start_line()
 
 
@@ -145,9 +151,6 @@ func _start_line():
 
 
 func _process(delta):
-	if not box.visible:
-		return
-
 	if writing:
 		accum += delta
 
@@ -187,34 +190,58 @@ func _end_dialogue():
 	set_process(false)
 
 	print("🦜 Cinématique finale Toucan terminée")
+	print("🎬 DIFFICULTÉ = ", cinematic_difficulty)
+	print("🎞️ ANIMATIONS MOKO = ", moko_anim.get_animation_list())
 
 	var game_state = get_node_or_null("/root/GameState")
 
-	if game_state:
+	match cinematic_difficulty:
 
-		print("DIFFICULTY AVANT VALIDATION : ", game_state.difficulty)
-		print("EXPLORER : ", game_state.explorer_unlocked)
-		print("SURVIVOR : ", game_state.survivor_unlocked)
-		print("KING : ", game_state.king_unlocked)
+		# ============================================================
+		# EXPLORATEUR -> DOUBLE SAUT
+		# ============================================================
+		"explorer":
+			if moko_anim.has_animation("loot_skill"):
+				print("✨ LOOT DOUBLE SAUT -> PLAY")
+				moko_anim.play("loot_skill")
+				await moko_anim.animation_finished
+				print("✅ LOOT DOUBLE SAUT TERMINÉ")
+			else:
+				print("❌ Animation loot_skill introuvable")
 
-		# ================================================================
-		# EXPLORATEUR -> SURVIVANT + DOUBLE JUMP
-		# SURVIVANT   -> ROI + FIRE
-		# ================================================================
-		if game_state.difficulty == "explorer" or game_state.difficulty == "survivor":
-			game_state.unlock_next_difficulty()
+			if game_state and test_difficulty == "game":
+				game_state.unlock_next_difficulty()
 
-		# ================================================================
-		# ROI DE L'ÎLE -> FIN DE LA DEMO
-		# ================================================================
-		elif game_state.difficulty == "king":
+		# ============================================================
+		# SURVIVANT -> FIRE BUFF
+		# ============================================================
+		"survivor":
+			if moko_anim.has_animation("fire_buff"):
+				print("🔥 FIRE BUFF -> PLAY")
+				moko_anim.play("fire_buff")
+				await moko_anim.animation_finished
+				print("✅ FIRE BUFF TERMINÉ")
+			else:
+				print("❌ Animation fire_buff introuvable")
+
+			if game_state and test_difficulty == "game":
+				game_state.unlock_next_difficulty()
+
+		# ============================================================
+		# ROI
+		# ============================================================
+		"king":
 			print("🏆 VICTOIRE MODE ROI DE L'ILE")
 
-			if game_state.has_method("validate_current_difficulty"):
-				game_state.validate_current_difficulty()
+			if game_state and test_difficulty == "game":
+				if game_state.has_method("validate_current_difficulty"):
+					game_state.validate_current_difficulty()
 
 	# ================================================================
-	# RETOUR MENU
+	# RETOUR MENU UNIQUEMENT EN VRAIE PARTIE
 	# ================================================================
-	if game_state and game_state.has_method("load_level"):
-		await game_state.load_level("res://Levels/Lvl0/lvl_0.tscn")
+	if test_difficulty == "game":
+		if game_state and game_state.has_method("load_level"):
+			await game_state.load_level("res://Levels/Lvl0/lvl_0.tscn")
+	else:
+		print("🧪 TEST TERMINÉ — scène conservée à l'écran")

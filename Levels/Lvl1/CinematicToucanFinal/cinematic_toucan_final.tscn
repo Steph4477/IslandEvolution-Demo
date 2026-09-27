@@ -36,29 +36,68 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8506"]
 bg_color = Color(0.223529, 0.0941176, 0.0117647, 0)
 
-[sub_resource type="Animation" id="Animation_rxo2j"]
-resource_name = "intro"
-length = 11.0
+[sub_resource type="Animation" id="Animation_6vmxf"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Toucan:texture")
+tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.8, 3, 3.2000005, 3.4000003, 3.6000004, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.7999997, 6.9999995, 7.2000003, 7.4, 7.6, 7.7999997, 7.9999995, 8.200001, 8.4, 8.6, 8.8, 9, 9.200001, 9.400001, 9.6, 9.8, 10, 10.200001, 10.400001, 10.6, 10.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_gtonv"), ExtResource("3_mywqa"), ExtResource("4_n7p6g"), ExtResource("5_qhr18"), ExtResource("6_om1i0"), ExtResource("7_jltxa"), ExtResource("8_4hsre"), ExtResource("9_l74r4"), ExtResource("10_qhhnf"), ExtResource("11_n3oam"), ExtResource("12_l2mlu"), ExtResource("13_ojocv"), ExtResource("13_ojocv"), ExtResource("14_34wv5"), ExtResource("15_vu21d"), ExtResource("16_refn1"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o")]
+"values": [ExtResource("2_gtonv")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Toucan:scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.3666667),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.642, 0.64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1861, 33)]
+}
+
+[sub_resource type="Animation" id="Animation_s2vco"]
+resource_name = "intro"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000005, 0.39999998, 0.6, 0.79999995, 1, 1.2, 1.3999999, 1.6000001, 1.8, 2, 2.8, 2.9999998, 3.2000005, 3.4000003, 3.6000001, 3.8, 3.9999998, 4.2, 4.4000006, 4.6000004, 4.8, 5, 5.2, 5.4000006, 5.6000004, 5.8, 6, 6.2, 6.4000006, 6.6000004, 6.8, 7, 7.200001, 7.4000006, 7.6000004, 7.8, 8, 8.200001, 8.4, 8.6, 8.8, 9, 9.200001, 9.400001, 9.6, 9.8, 10, 10.200001, 10.400001, 10.6, 10.8, 10.9, 11.099999, 11.299999, 11.5, 11.7, 11.9, 12.099999, 12.299999, 12.5, 12.7, 12.9, 13.099999, 13.299999, 13.5, 13.7, 13.9, 14.099999, 14.3, 14.5, 14.7, 14.9, 15.099999, 15.3, 15.499999, 15.7, 15.9, 16.099998, 16.3, 16.5, 16.7, 16.9, 17.099998, 17.3, 17.5, 17.7, 17.9, 17.966667, 18.166668, 18.366667, 18.566668, 18.766668, 18.966667, 19.166668, 19.366667, 19.566668, 19.766668, 19.966667, 20.166668, 20.366667, 20.566668, 20.766668, 20.966667, 21.166668, 21.366669, 21.566668, 21.766668, 21.966667, 22.166668, 22.366669, 22.566666, 22.766666, 22.966667, 23.166668, 23.366669, 23.566668, 23.766666, 23.966667, 24.166668, 24.366669, 24.566668, 24.766666, 24.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_gtonv"), ExtResource("3_mywqa"), ExtResource("4_n7p6g"), ExtResource("5_qhr18"), ExtResource("6_om1i0"), ExtResource("7_jltxa"), ExtResource("8_4hsre"), ExtResource("9_l74r4"), ExtResource("10_qhhnf"), ExtResource("11_n3oam"), ExtResource("12_l2mlu"), ExtResource("13_ojocv"), ExtResource("13_ojocv"), ExtResource("14_34wv5"), ExtResource("15_vu21d"), ExtResource("16_refn1"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o"), ExtResource("17_15mb2"), ExtResource("18_jk3wp"), ExtResource("19_62rvk"), ExtResource("20_2pyw5"), ExtResource("21_dbesp"), ExtResource("22_7ffaw"), ExtResource("23_ml2pt"), ExtResource("24_55ev8"), ExtResource("25_mjlfb"), ExtResource("26_ep0f0"), ExtResource("27_t4vb3"), ExtResource("28_ebl2o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3666666),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-0.642, 0.64), Vector2(-1, 1)]
@@ -66,19 +105,20 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Toucan:position")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.013637),
+"times": PackedFloat32Array(0, 3.0136373),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1861, 33), Vector2(1174, 650)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_trmc0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_erojq"]
 _data = {
-&"intro": SubResource("Animation_rxo2j")
+&"RESET": SubResource("Animation_6vmxf"),
+&"intro": SubResource("Animation_s2vco")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
@@ -548,6 +588,34 @@ region = Rect2(1536, 768, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7x5p2"]
 atlas = ExtResource("30_6vmxf")
 region = Rect2(1792, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fot42"]
+atlas = ExtResource("29_fot42")
+region = Rect2(0, 15360, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vmxf"]
+atlas = ExtResource("29_fot42")
+region = Rect2(512, 15360, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2vco"]
+atlas = ExtResource("29_fot42")
+region = Rect2(1024, 15360, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erojq"]
+atlas = ExtResource("29_fot42")
+region = Rect2(1536, 15360, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0im8n"]
+atlas = ExtResource("29_fot42")
+region = Rect2(2048, 15360, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nud23"]
+atlas = ExtResource("29_fot42")
+region = Rect2(2560, 15360, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p00p4"]
+atlas = ExtResource("29_fot42")
+region = Rect2(3072, 15360, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojhyn"]
 atlas = ExtResource("29_fot42")
@@ -1319,6 +1387,32 @@ animations = [{
 "name": &"kick_fire",
 "speed": 12.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fot42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vmxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2vco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erojq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0im8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nud23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p00p4")
+}],
+"loop": 0,
+"name": &"loot_skill",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": 1,
 "name": &"new_animation_1",
@@ -1619,6 +1713,234 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_yy00l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0im8n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"loot_skill"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Toucan:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_gtonv")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Moko:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(676, 319)]
+}
+
+[sub_resource type="Animation" id="Animation_ap4a6"]
+resource_name = "fire_buff"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0im8n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fire_buff"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.9, 1.4333333, 1.7666667, 2.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moko:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(569, 471.00003), Vector2(569, 471.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_fot42"]
+resource_name = "idle"
+length = 3.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0im8n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.46666667, 0.9, 1.5, 1.9333333, 2.5666666, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 2, 1, 2, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moko:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(631, 462), Vector2(631, 462)]
+}
+
+[sub_resource type="Animation" id="Animation_ujhwx"]
+resource_name = "loot_skill"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_0im8n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"loot_skill"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moko:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(578, 531), Vector2(578, 531)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trmc0"]
+_data = {
+&"RESET": SubResource("Animation_yy00l"),
+&"fire_buff": SubResource("Animation_ap4a6"),
+&"idle": SubResource("Animation_fot42"),
+&"loot_skill": SubResource("Animation_ujhwx")
+}
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nud23"]
 texture = ExtResource("32_erojq")
 texture_region_size = Vector2i(256, 256)
@@ -1641,6 +1963,11 @@ sources/0 = SubResource("TileSetAtlasSource_nud23")
 [node name="CinematicToucanFinal" type="Node2D" unique_id=1292113916]
 z_index = 50
 script = ExtResource("1_j5uqk")
+test_difficulty = "explorer"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1959037705]
+position = Vector2(569, 471.00003)
+scale = Vector2(1.5, 1.5)
 
 [node name="Box" type="Panel" parent="." unique_id=912011851]
 anchors_preset = 12
@@ -1678,26 +2005,25 @@ bbcode_enabled = true
 scroll_active = false
 
 [node name="Toucan" type="Sprite2D" parent="." unique_id=1495431345]
-position = Vector2(1174, 650)
-scale = Vector2(-1, 1)
-texture = ExtResource("28_ebl2o")
+position = Vector2(1861, 33)
+scale = Vector2(-0.642, 0.64)
+texture = ExtResource("2_gtonv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1685050383]
-libraries/ = SubResource("AnimationLibrary_trmc0")
-autoplay = &"intro"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Toucan" unique_id=908533159]
+libraries/ = SubResource("AnimationLibrary_erojq")
 
-[node name="LootSpawn" type="Marker2D" parent="." unique_id=1247638036]
-position = Vector2(423, 654)
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1013255883]
+[node name="Moko" type="AnimatedSprite2D" parent="." unique_id=1013255883]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(676, 417)
+position = Vector2(676, 319)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_0im8n")
-animation = &"fire_buff"
-frame = 3
-frame_progress = 0.36579973
+animation = &"loot_skill"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moko" unique_id=1685050383]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_trmc0")
+autoplay = &"idle"
 
 [node name="TileMapGround" type="TileMapLayer" parent="." unique_id=271023256]
 z_index = -30
