@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dd5moygu4ona0"]
+
+[ext_resource type="Script" uid="uid://rkr1tqhcoaa7" path="res://ItemsDecors/Symbol/symbol.gd" id="1_rnyai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5eos"]
+size = Vector2(15.669969, 13.109882)
+
+[node name="SymbolReveal" type="Node2D" unique_id=1555785437]
+z_index = 5
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_rnyai")
+
+[node name="TurnOn" type="Sprite2D" parent="." unique_id=1488480451]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.3, 0.3)
+
+[node name="TurnOff" type="Sprite2D" parent="." unique_id=659333483]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.3, 0.3)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=49200295]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1939534291]
+position = Vector2(6.666612, 10.000015)
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("RectangleShape2D_y5eos")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

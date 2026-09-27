@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b7b8qlv6mcxoi"]
+
+[ext_resource type="Script" uid="uid://df8a61dcrms74" path="res://Enemies/Toucan/toucan_health_bar.gd" id="1_w82yo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msolp"]
+
+[node name="ToucanHealthBar" type="Node2D" unique_id=617044782]
+script = ExtResource("1_w82yo")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1723601803]
+offset_right = 21.0
+offset_bottom = 9.0
+scale = Vector2(2.71782, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_msolp")
+max_value = 1000.0
+step = 10.0
+value = 100.0
+show_percentage = false

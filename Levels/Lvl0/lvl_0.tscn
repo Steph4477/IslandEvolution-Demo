@@ -1,0 +1,574 @@
+[gd_scene format=3 uid="uid://csdp6wwblqxu1"]
+
+[ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
+[ext_resource type="Texture2D" uid="uid://dfekwaj0ku65x" path="res://Levels/Lvl0/Assets/jungle.png" id="2_d3sq6"]
+[ext_resource type="Texture2D" uid="uid://cly20h3c73tvg" path="res://Player/Sprite/spriteSheet.png" id="4_0ncut"]
+[ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
+[ext_resource type="Texture2D" uid="uid://b8asnptvv1ljh" path="res://Levels/Lvl0/Assets/box.png" id="4_15gx2"]
+[ext_resource type="Texture2D" uid="uid://b6afrl1mru2f3" path="res://Menu/Buttons/Pressed/restart.png" id="7_qfdsm"]
+[ext_resource type="Texture2D" uid="uid://cia8yk03fjvxb" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
+[ext_resource type="Texture2D" uid="uid://dgdg8vqghb0mu" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
+[ext_resource type="Texture2D" uid="uid://d0ofi6bpni2c6" path="res://Menu/Buttons/load.png" id="9_qmtbe"]
+[ext_resource type="Texture2D" uid="uid://dksqtymolgkg8" path="res://Menu/Buttons/play.png" id="9_ss15l"]
+[ext_resource type="Texture2D" uid="uid://cmuuarglwnaxw" path="res://Menu/Buttons/save.png" id="10_qfdsm"]
+[ext_resource type="Texture2D" uid="uid://cv8bn6lc2rnnv" path="res://Menu/Buttons/options.png" id="11_bfns0"]
+[ext_resource type="Texture2D" uid="uid://b1qeojagvcjyo" path="res://Menu/Buttons/Pressed/save.png" id="11_oci4l"]
+[ext_resource type="Texture2D" uid="uid://cwc1sn1eoxu6b" path="res://Menu/Buttons/Pressed/options.png" id="12_n1ip6"]
+[ext_resource type="Texture2D" uid="uid://c8j8bcuiju403" path="res://Menu/Buttons/Pressed/play.png" id="13_aj0cd"]
+[ext_resource type="Texture2D" uid="uid://bhl2fgu3cdcep" path="res://Menu/Buttons/eschap.png" id="14_aj0cd"]
+[ext_resource type="Texture2D" uid="uid://cfdkmt5xvb8h5" path="res://Menu/Buttons/Pressed/quit.png" id="14_usbvp"]
+[ext_resource type="Texture2D" uid="uid://bmwwi3bmwdljt" path="res://Levels/Lvl0/Assets/title.png" id="16_usbvp"]
+[ext_resource type="Script" uid="uid://ccds171dvsq8c" path="res://Levels/Lvl0/toucan_dialogue.gd" id="23_ambkl"]
+[ext_resource type="Texture2D" uid="uid://ced3xcjvukij4" path="res://Enemies/Toucan/FrontFlight/1.png" id="23_q7kkj"]
+[ext_resource type="Texture2D" uid="uid://dbvvixmjb0es2" path="res://Enemies/Toucan/FrontFlight/2.png" id="24_417gj"]
+[ext_resource type="Texture2D" uid="uid://87d1bcavxogf" path="res://Enemies/Toucan/idle1.png" id="24_jhr54"]
+[ext_resource type="Texture2D" uid="uid://cwi2hktl6rrhq" path="res://Enemies/Toucan/idle3.png" id="25_kea6p"]
+[ext_resource type="Texture2D" uid="uid://b2u8acoslgiij" path="res://Enemies/Toucan/FrontFlight/3.png" id="25_o1sw5"]
+[ext_resource type="Texture2D" uid="uid://bdb7sv8hkbf3k" path="res://Enemies/Toucan/FrontFlight/4.png" id="26_qqyoo"]
+[ext_resource type="Texture2D" uid="uid://dlkhxunl1x42m" path="res://Enemies/Toucan/FrontFlight/5.png" id="27_vrp4g"]
+[ext_resource type="Texture2D" uid="uid://dsebt8pjevfhd" path="res://Enemies/Toucan/ProfilFlight/1.png" id="30_aiwf1"]
+[ext_resource type="Texture2D" uid="uid://m2b4248fqgok" path="res://Enemies/Toucan/Speack/2.png" id="31_ambkl"]
+[ext_resource type="Texture2D" uid="uid://dkjiuw6hh880a" path="res://Enemies/Toucan/ProfilFlight/2.png" id="31_epgrs"]
+[ext_resource type="Texture2D" uid="uid://bu8i3ydlv5dx3" path="res://Enemies/Toucan/ProfilFlight/4.png" id="33_7sn1u"]
+[ext_resource type="Texture2D" uid="uid://b6f0bv020p0jm" path="res://Enemies/Toucan/ProfilFlight/5.png" id="34_kox7j"]
+[ext_resource type="Texture2D" uid="uid://db8xpo0wdwg6u" path="res://Enemies/Toucan/ProfilFlight/6.png" id="35_75efx"]
+[ext_resource type="Texture2D" uid="uid://c0gc3dpneqwxl" path="res://Enemies/Toucan/ProfilFlight/7.png" id="36_0vvn0"]
+[ext_resource type="Texture2D" uid="uid://cv5n5ghn72hh0" path="res://Enemies/Toucan/ProfilFlight/8.png" id="37_etto3"]
+[ext_resource type="Texture2D" uid="uid://t3mcssl21u4" path="res://Enemies/Toucan/Speack/1.png" id="38_we7tj"]
+[ext_resource type="Texture2D" uid="uid://dut8h3r4gr6kk" path="res://Enemies/Toucan/Speack/3.png" id="39_kmjff"]
+[ext_resource type="Texture2D" uid="uid://b1d1pufk0qs0g" path="res://Enemies/Toucan/Speack/4.png" id="40_sjb61"]
+[ext_resource type="Texture2D" uid="uid://d220uhhl5xrlt" path="res://Enemies/Toucan/Speack/6.png" id="42_7yun5"]
+[ext_resource type="Texture2D" uid="uid://cjbgodwtb58uc" path="res://Enemies/Toucan/Speack/7.png" id="43_thwuj"]
+[ext_resource type="Texture2D" uid="uid://cjbq0wl8lualf" path="res://Enemies/Toucan/Speack/8.png" id="44_0dgkx"]
+[ext_resource type="Texture2D" uid="uid://lwn2wbh6c1d7" path="res://Enemies/Toucan/Speack/10.png" id="46_sc7r6"]
+[ext_resource type="Texture2D" uid="uid://3p05s65rwl2t" path="res://Hud/Difficulty/explorer.png" id="47_417gj"]
+[ext_resource type="Texture2D" uid="uid://ng8tkp41s0b" path="res://Enemies/Toucan/Speack/11.png" id="47_r0onk"]
+[ext_resource type="Texture2D" uid="uid://c504ul5iebj6j" path="res://Hud/Difficulty/survivor.png" id="48_o1sw5"]
+[ext_resource type="Texture2D" uid="uid://b0vjjlpxcxe54" path="res://Enemies/Toucan/Speack/12.png" id="48_y7xel"]
+[ext_resource type="Texture2D" uid="uid://ljr5e0b6cjgy" path="res://Hud/Difficulty/Locked/explorer.png" id="49_pwvnj"]
+[ext_resource type="Texture2D" uid="uid://byvi3o0pfsn2n" path="res://Hud/Difficulty/king.png" id="49_qqyoo"]
+[ext_resource type="Texture2D" uid="uid://bi8p58lo3tmd2" path="res://Hud/Difficulty/Locked/survivor.png" id="50_vrp4g"]
+[ext_resource type="Texture2D" uid="uid://dao52p0bk57qw" path="res://Hud/Difficulty/Locked/king.png" id="51_4qyy0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwvnj"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7kkj"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_417gj"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1sw5"]
+atlas = ExtResource("4_0ncut")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8usbj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwvnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7kkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_417gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1sw5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_b47am"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27.999998, 452)]
+}
+
+[sub_resource type="Animation" id="Animation_347at"]
+resource_name = "idle_moko"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moko:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moko:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4000001, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moko:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9794022),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-27.999998, 452)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcm01"]
+_data = {
+&"RESET": SubResource("Animation_b47am"),
+&"idle_moko": SubResource("Animation_347at")
+}
+
+[sub_resource type="Animation" id="Animation_82w0o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ToucanDialogue/Toucan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_q7kkj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ToucanDialogue/Toucan:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ToucanDialogue/Toucan:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f18hj"]
+resource_name = "appear"
+length = 0.4
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2rdvj"]
+_data = {
+&"RESET": SubResource("Animation_82w0o"),
+&"appear": SubResource("Animation_f18hj")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvan0"]
+bg_color = Color(0.972549, 0.972549, 0.9411765, 1)
+
+[sub_resource type="Animation" id="Animation_wvan0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Toucan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_q7kkj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Toucan:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Toucan:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Toucan:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v7lpd"]
+resource_name = "fly"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Toucan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("24_417gj"), ExtResource("25_o1sw5"), ExtResource("26_qqyoo"), ExtResource("27_vrp4g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Toucan:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1720, 719), Vector2(1709, 362)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Toucan:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.53333336, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Toucan:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.55, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rg048"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Toucan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("24_jhr54"), ExtResource("25_kea6p")]
+}
+
+[sub_resource type="Animation" id="Animation_65qg8"]
+resource_name = "intro"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Toucan:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.46666667, 0.6333333, 0.8666667, 1.0333333, 1.2666667, 1.4333333, 1.6666666, 1.8333333, 2.17, 3.0333328, 3.233333, 3.433333, 3.633333, 3.9666662, 4.1666665, 4.3666663, 4.5666666, 4.7666664, 4.966666, 5.1666665, 5.3666663, 5.5666666, 5.766666, 5.966666, 6.1666665, 6.3666663, 6.5666666, 6.7666664, 6.966666, 7.1666665, 7.3666663, 7.5666666, 7.766666, 7.966666, 8.166666, 8.366667, 8.566667, 8.766666, 8.966666, 9.166667, 9.366667, 9.566667, 9.766666, 9.966666, 10.166667, 10.366666, 10.566667, 10.766666, 10.966666, 11.166667, 11.366666, 11.566667, 11.766665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("30_aiwf1"), ExtResource("31_epgrs"), ExtResource("30_aiwf1"), ExtResource("31_epgrs"), ExtResource("30_aiwf1"), ExtResource("31_epgrs"), ExtResource("30_aiwf1"), ExtResource("31_epgrs"), ExtResource("30_aiwf1"), ExtResource("31_epgrs"), ExtResource("33_7sn1u"), ExtResource("34_kox7j"), ExtResource("35_75efx"), ExtResource("36_0vvn0"), ExtResource("37_etto3"), ExtResource("38_we7tj"), ExtResource("31_ambkl"), ExtResource("39_kmjff"), ExtResource("40_sjb61"), ExtResource("42_7yun5"), ExtResource("43_thwuj"), ExtResource("44_0dgkx"), ExtResource("46_sc7r6"), ExtResource("47_r0onk"), ExtResource("48_y7xel"), ExtResource("38_we7tj"), ExtResource("31_ambkl"), ExtResource("39_kmjff"), ExtResource("40_sjb61"), ExtResource("42_7yun5"), ExtResource("43_thwuj"), ExtResource("44_0dgkx"), ExtResource("46_sc7r6"), ExtResource("47_r0onk"), ExtResource("48_y7xel"), ExtResource("38_we7tj"), ExtResource("31_ambkl"), ExtResource("39_kmjff"), ExtResource("40_sjb61"), ExtResource("42_7yun5"), ExtResource("43_thwuj"), ExtResource("44_0dgkx"), ExtResource("46_sc7r6"), ExtResource("47_r0onk"), ExtResource("48_y7xel"), ExtResource("38_we7tj"), ExtResource("31_ambkl"), ExtResource("39_kmjff"), ExtResource("40_sjb61"), ExtResource("42_7yun5"), ExtResource("43_thwuj"), ExtResource("44_0dgkx"), ExtResource("46_sc7r6"), ExtResource("47_r0onk"), ExtResource("48_y7xel")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Toucan:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.9333334, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(-0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Toucan:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-135, 140), Vector2(1722, 770)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhr54"]
+_data = {
+&"RESET": SubResource("Animation_wvan0"),
+&"fly": SubResource("Animation_v7lpd"),
+&"idle": SubResource("Animation_rg048"),
+&"intro": SubResource("Animation_65qg8")
+}
+
+[node name="MenuLvl0" type="Node2D" unique_id=1518816508]
+script = ExtResource("1_rv0fi")
+
+[node name="Background" type="Node2D" parent="." unique_id=1801920291]
+position = Vector2(403, 251)
+
+[node name="Background" type="Sprite2D" parent="Background" unique_id=2114204543]
+position = Vector2(557, 289)
+texture = ExtResource("2_d3sq6")
+
+[node name="Box" type="Sprite2D" parent="Background" unique_id=1098181049]
+position = Vector2(555, 289)
+texture = ExtResource("4_15gx2")
+
+[node name="Moko" type="AnimatedSprite2D" parent="Background" unique_id=2100801960]
+position = Vector2(-27.999998, 452)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_8usbj")
+animation = &"idle"
+
+[node name="Title" type="Sprite2D" parent="Background" unique_id=1297356091]
+position = Vector2(536, -54)
+texture = ExtResource("16_usbvp")
+
+[node name="Anim" type="AnimationPlayer" parent="Background" unique_id=34932310]
+libraries/ = SubResource("AnimationLibrary_kcm01")
+autoplay = &"idle_moko"
+
+[node name="Load" type="Node2D" parent="." unique_id=1048620640]
+z_index = 5
+position = Vector2(787, 471)
+
+[node name="Load" type="TextureButton" parent="Load" unique_id=1236002251]
+offset_left = -14.0
+offset_top = -94.0
+offset_right = 266.0
+offset_bottom = 6.0
+texture_normal = ExtResource("9_qmtbe")
+texture_pressed = ExtResource("9_plvp6")
+
+[node name="Save" type="Node2D" parent="." unique_id=1720657435]
+z_index = 5
+position = Vector2(735, 638)
+
+[node name="Save" type="TextureButton" parent="Save" unique_id=1793276006]
+offset_left = -14.0
+offset_top = -130.0
+offset_right = 382.0
+offset_bottom = -34.0
+texture_normal = ExtResource("10_qfdsm")
+texture_pressed = ExtResource("11_oci4l")
+
+[node name="Continue" type="Node2D" parent="." unique_id=1097869991]
+z_index = 5
+position = Vector2(767, 637)
+
+[node name="Continue" type="TextureButton" parent="Continue" unique_id=980017973]
+offset_right = 303.0
+offset_bottom = 99.0
+texture_normal = ExtResource("9_7s5l6")
+texture_pressed = ExtResource("7_qfdsm")
+
+[node name="Restart" type="Node2D" parent="." unique_id=1989511834]
+position = Vector2(705, 773)
+
+[node name="Options" type="TextureButton" parent="Restart" unique_id=1277407320]
+offset_left = 918.0
+offset_top = 156.0
+offset_right = 1182.0
+offset_bottom = 258.0
+texture_normal = ExtResource("11_bfns0")
+texture_pressed = ExtResource("12_n1ip6")
+
+[node name="Restart" type="TextureButton" parent="Restart" unique_id=1853942618]
+offset_right = 442.0
+offset_bottom = 98.0
+texture_normal = ExtResource("9_ss15l")
+texture_pressed = ExtResource("13_aj0cd")
+
+[node name="Quitter" type="TextureButton" parent="Restart" unique_id=1723617029]
+offset_left = -648.0
+offset_top = 156.0
+offset_right = -388.0
+offset_bottom = 256.0
+texture_normal = ExtResource("14_aj0cd")
+texture_pressed = ExtResource("14_usbvp")
+
+[node name="sound" type="Node2D" parent="." unique_id=1680498724]
+
+[node name="dijee" type="AudioStreamPlayer" parent="sound" unique_id=1683550365]
+stream = ExtResource("4_1tkva")
+volume_db = -13.9
+autoplay = true
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=175262954]
+libraries/ = SubResource("AnimationLibrary_2rdvj")
+autoplay = &"appear"
+
+[node name="ToucanDialogue" type="Node2D" parent="." unique_id=1083925661]
+script = ExtResource("23_ambkl")
+
+[node name="Box" type="Panel" parent="ToucanDialogue" unique_id=344974864]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 718.0
+offset_top = 917.0
+offset_right = 718.0
+offset_bottom = 917.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvan0")
+
+[node name="MarginContainer" type="MarginContainer" parent="ToucanDialogue/Box" unique_id=1466366007]
+layout_mode = 0
+offset_left = -118.0
+offset_top = -16.0
+offset_right = 1054.0
+offset_bottom = 107.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Text" type="RichTextLabel" parent="ToucanDialogue/Box/MarginContainer" unique_id=472630833]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/italics_font_size = 35
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Toucan" type="Sprite2D" parent="ToucanDialogue" unique_id=1058254041]
+z_index = 20
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("23_q7kkj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ToucanDialogue" unique_id=1916459181]
+libraries/ = SubResource("AnimationLibrary_jhr54")
+
+[node name="DifficultyButtons" type="Node2D" parent="." unique_id=692908063]
+z_index = 5
+position = Vector2(1367, 1093)
+scale = Vector2(0.35, 0.35)
+
+[node name="Unlocked" type="Node2D" parent="DifficultyButtons" unique_id=82071747]
+
+[node name="Explorer" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=1235083260]
+position = Vector2(-2202.8572, -45.714287)
+texture = ExtResource("47_417gj")
+
+[node name="Survivor" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=44727486]
+position = Vector2(-1065.7144, -37.142857)
+texture = ExtResource("48_o1sw5")
+
+[node name="King" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=1746228927]
+position = Vector2(77.14285, -34.285713)
+texture = ExtResource("49_qqyoo")
+
+[node name="Locked" type="Node2D" parent="DifficultyButtons" unique_id=1603997598]
+
+[node name="Survivor" type="Sprite2D" parent="DifficultyButtons/Locked" unique_id=1714292691]
+position = Vector2(-1060, -40.0001)
+texture = ExtResource("50_vrp4g")
+
+[node name="King" type="Sprite2D" parent="DifficultyButtons/Locked" unique_id=1262661424]
+position = Vector2(68.57142, -37.142857)
+texture = ExtResource("51_4qyy0")
+
+[node name="Explorer" type="Sprite2D" parent="DifficultyButtons/Locked" unique_id=670299521]
+position = Vector2(-2205.7144, -51.42857)
+texture = ExtResource("49_pwvnj")
+
+[connection signal="pressed" from="Load/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Save/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Continue/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Restart/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Restart/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Restart/Quitter" to="." method="_on_quitter_pressed"]

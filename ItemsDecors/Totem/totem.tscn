@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://76o72o6gqnl6"]
+
+[ext_resource type="Script" uid="uid://d3pumlcq6ui8l" path="res://ItemsDecors/Totem/totem.gd" id="1_4w81w"]
+[ext_resource type="Texture2D" uid="uid://b5onuo5he2fx4" path="res://ItemsDecors/Totem/1.png" id="2_7x43p"]
+[ext_resource type="PackedScene" path="res://Loot/Keys/keys.tscn" id="2_31wvm"]
+[ext_resource type="Texture2D" uid="uid://6e835au7b5bg" path="res://ItemsDecors/Totem/2.png" id="3_5qhso"]
+[ext_resource type="Texture2D" uid="uid://cxofe1vec3oin" path="res://ItemsDecors/Totem/5.png" id="4_5qhso"]
+[ext_resource type="Texture2D" uid="uid://b66nn65q36jbi" path="res://ItemsDecors/Totem/3.png" id="4_31wvm"]
+[ext_resource type="Texture2D" uid="uid://rtp86edyvmbn" path="res://ItemsDecors/Totem/4.png" id="5_66g6m"]
+
+[node name="Totem" type="Node2D" unique_id=363604996]
+script = ExtResource("1_4w81w")
+key_scene = ExtResource("2_31wvm")
+
+[node name="Stage" type="Sprite2D" parent="." unique_id=7563031]
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_7x43p")
+
+[node name="Stage1" type="Sprite2D" parent="." unique_id=1341229732]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_5qhso")
+
+[node name="Stage2" type="Sprite2D" parent="." unique_id=2096555790]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_5qhso")
+
+[node name="Stage3" type="Sprite2D" parent="." unique_id=1435065496]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_31wvm")
+
+[node name="Stage4" type="Sprite2D" parent="." unique_id=1974057827]
+visible = false
+position = Vector2(-32, -34)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_66g6m")
+
+[node name="KeySpawn" type="Marker2D" parent="." unique_id=1814083526]
+position = Vector2(-38, -35)

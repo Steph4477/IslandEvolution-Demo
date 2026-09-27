@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bc78tv2fil1hh"]
+
+[ext_resource type="Texture2D" uid="uid://dhl5e778t7p7k" path="res://Effects/Fire/smoke.png" id="1_lf52p"]
+[ext_resource type="Material" uid="uid://bvx24u3248sqe" path="res://Effects/smoke_survivor_particle_process_material.tres" id="2_61k68"]
+
+[node name="SmokeFXSurvivor" type="Node2D" unique_id=345948567]
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=1984324698]
+amount = 35
+texture = ExtResource("1_lf52p")
+lifetime = 6.0
+preprocess = 8.0
+randomness = 0.5
+visibility_rect = Rect2(-400, -1200, 800, 1400)
+process_material = ExtResource("2_61k68")

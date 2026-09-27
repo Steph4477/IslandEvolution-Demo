@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://de8lfmd2ykw17"]
+
+[ext_resource type="Script" uid="uid://eodde4thawq1" path="res://Effects/Aquatic_breathing/Air_bubbler/air_bubbler.gd" id="1_hdtsp"]
+
+[node name="AirBubbler" type="Node2D" unique_id=1226335966]
+script = ExtResource("1_hdtsp")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=150803769]
+process_mode = 3
+wait_time = 0.35
+autostart = true
+
+[node name="Emitters" type="Node2D" parent="." unique_id=712430706]
+
+[node name="Emitter_1" type="Marker2D" parent="Emitters" unique_id=1482813103]
+position = Vector2(-35, 180)
+
+[node name="Emitter_2" type="Marker2D" parent="Emitters" unique_id=477672183]
+position = Vector2(25, 108)
+
+[node name="Emitter_3" type="Marker2D" parent="Emitters" unique_id=1111745787]
+position = Vector2(-47, 35)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

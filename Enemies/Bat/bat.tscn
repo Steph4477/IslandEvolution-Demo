@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dyhitutavs3b7"]
+
+[ext_resource type="Script" uid="uid://5go6y5prtvbd" path="res://Enemies/Bat/bat.gd" id="1_evnmi"]
+[ext_resource type="Texture2D" uid="uid://cib5x4iram7uq" path="res://Enemies/Bat/1.png" id="2_eoopm"]
+[ext_resource type="Texture2D" uid="uid://b0si6t8irikt8" path="res://Enemies/Bat/2.png" id="3_qi3cr"]
+[ext_resource type="Texture2D" uid="uid://ls41frrfi3cl" path="res://Enemies/Bat/3.png" id="4_f6jfk"]
+[ext_resource type="Texture2D" uid="uid://caejtqxc83rnb" path="res://Enemies/Bat/4.png" id="5_vkqg0"]
+[ext_resource type="Texture2D" uid="uid://8mpi00f64eta" path="res://Enemies/Bat/5.png" id="6_xkqv6"]
+[ext_resource type="Texture2D" uid="uid://bltosxi0cix5y" path="res://Enemies/Bat/6.png" id="7_jl6lm"]
+[ext_resource type="Texture2D" uid="uid://bklfqyhf6q43b" path="res://Enemies/Bat/7.png" id="8_jqvev"]
+[ext_resource type="Texture2D" uid="uid://diyuc0ihu71ta" path="res://Enemies/Bat/9.png" id="9_a3i2a"]
+[ext_resource type="Texture2D" uid="uid://fnaxo12ri7c1" path="res://Enemies/Bat/8.png" id="9_s0l8n"]
+[ext_resource type="Texture2D" uid="uid://gdnepasss2cf" path="res://Enemies/Bat/10.png" id="10_rljnx"]
+
+[sub_resource type="Animation" id="Animation_b1nwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_eoopm")]
+}
+
+[sub_resource type="Animation" id="Animation_evnmi"]
+resource_name = "fly"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_eoopm"), ExtResource("2_eoopm"), ExtResource("3_qi3cr"), ExtResource("4_f6jfk"), ExtResource("5_vkqg0"), ExtResource("6_xkqv6"), ExtResource("7_jl6lm"), ExtResource("8_jqvev"), ExtResource("9_s0l8n"), ExtResource("9_a3i2a"), ExtResource("10_rljnx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjt6i"]
+_data = {
+&"RESET": SubResource("Animation_b1nwg"),
+&"fly": SubResource("Animation_evnmi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2fpe"]
+size = Vector2(40.5, 71.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1nwg"]
+radius = 86.0
+
+[node name="Bat" type="CharacterBody2D" unique_id=741073582 groups=["Enemies"]]
+position = Vector2(703, 398)
+scale = Vector2(-1, 1)
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_evnmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1793437891]
+position = Vector2(249, -177)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_eoopm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=676154295]
+libraries/ = SubResource("AnimationLibrary_sjt6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=738823997]
+position = Vector2(-9, -21)
+shape = SubResource("RectangleShape2D_x2fpe")
+
+[node name="Timer" type="Timer" parent="." unique_id=1448428403]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=888090743]
+position = Vector2(16, 9)
+rotation = 3.14159
+scale = Vector2(1, -1)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2031464827]
+position = Vector2(25, -31)
+shape = SubResource("CircleShape2D_b1nwg")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

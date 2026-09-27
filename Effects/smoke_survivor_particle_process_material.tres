@@ -1,0 +1,30 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bvx24u3248sqe"]
+
+[sub_resource type="Curve" id="Curve_6n0w2"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
+curve = SubResource("Curve_6n0w2")
+
+[sub_resource type="Curve" id="Curve_oe3nc"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
+curve = SubResource("Curve_oe3nc")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 20.0
+initial_velocity_min = 70.0
+initial_velocity_max = 110.0
+gravity = Vector3(0, -8, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+alpha_curve = SubResource("CurveTexture_to4tw")

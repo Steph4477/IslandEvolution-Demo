@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dapglwcq0g0b4"]
+
+[ext_resource type="Texture2D" uid="uid://cy0yiafmuphgm" path="res://Enemies/under_health_bar.png" id="1_1s6w2"]
+[ext_resource type="Texture2D" uid="uid://dwk76pvbx4v17" path="res://Enemies/health_bar.png" id="2_yfd53"]
+
+[sub_resource type="GDScript" id="GDScript_msolp"]
+script/source = "extends Node2D
+
+
+# --- Config ---
+@export var max_value = 100
+
+# --- Nodes ---
+@onready var bar = $ProgressBar
+@onready var hp_label = $HpLabel
+
+
+func _ready():
+	bar.max_value = max_value
+	bar.value = max_value
+	set_red_fill()
+	update_label()
+
+
+# ============================================================================
+#                               UPDATE VALUE
+# ============================================================================
+func set_value(v):
+	bar.value = clamp(v, 0, max_value)
+	update_label()
+
+
+# ============================================================================
+#                               SYNC MAX HP
+# ============================================================================
+func set_max(v):
+	max_value = v
+	bar.max_value = max_value
+	bar.value = max_value
+	update_label()
+
+
+# ============================================================================
+#                               UPDATE LABEL
+# ============================================================================
+func update_label():
+	hp_label.text = str(int(bar.value)) + \" / \" + str(int(max_value))
+
+
+# ============================================================================
+#                               STYLE
+# ============================================================================
+func set_red_fill():
+	var red_fill = StyleBoxFlat.new()
+	red_fill.bg_color = Color(1.0, 0.0, 0.0)
+	bar.add_theme_stylebox_override(\"fill\", red_fill)
+"
+
+[node name="HealthBar" type="Node2D" unique_id=1252633794]
+script = SubResource("GDScript_msolp")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1014837249]
+offset_right = 117.0
+offset_bottom = 23.0
+scale = Vector2(0.8, 0.8)
+max_value = 1000.0
+step = 10.0
+value = 100.0
+texture_under = ExtResource("1_1s6w2")
+texture_progress = ExtResource("2_yfd53")
+
+[node name="HpLabel" type="Label" parent="." unique_id=1071267428]
+offset_left = 23.0
+offset_top = 2.0
+offset_right = 93.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 10
+text = "0000/0000"

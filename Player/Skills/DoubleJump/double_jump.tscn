@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://jcwjkxyh5vl0"]
+
+[ext_resource type="Texture2D" uid="uid://1yc78occ7m6u" path="res://Player/Skills/DoubleJump/ball.png" id="1_fsxl6"]
+[ext_resource type="Script" uid="uid://ugryriri6fl8" path="res://Player/Skills/DoubleJump/double_jump.gd" id="1_teu2d"]
+[ext_resource type="Texture2D" uid="uid://dgm02luxhghc4" path="res://Player/Skills/DoubleJump/1.png" id="4_lt5js"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibyih"]
+radius = 14.317822
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_teu2d"]
+radius = 11.0
+
+[node name="DoubleJump" type="Node2D" unique_id=1841689713]
+script = ExtResource("1_teu2d")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1880179718]
+position = Vector2(-0.89290524, -2.678009)
+rotation = 0.10801172
+
+[node name="Col" type="CollisionShape2D" parent="Area2D" unique_id=139212853]
+position = Vector2(0.61278796, 1.509851)
+shape = SubResource("CircleShape2D_ibyih")
+
+[node name="Ball" type="Sprite2D" parent="." unique_id=592895278]
+z_index = 5
+position = Vector2(-0.8929072, -2.6780071)
+rotation = 0.4636476
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_fsxl6")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=260497205]
+z_index = 5
+position = Vector2(-0.44645405, -4.110897)
+rotation = -0.15768959
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_lt5js")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723446509]
+position = Vector2(0, 2.9802322e-08)
+shape = SubResource("CircleShape2D_teu2d")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

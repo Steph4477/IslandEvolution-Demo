@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bg35ldgp1vmti"]
+
+[ext_resource type="Script" uid="uid://dg6x2lq8bo5ao" path="res://Player/Skills/Air/air.gd" id="1_suvur"]
+[ext_resource type="Texture2D" uid="uid://ckvfh5iedenjt" path="res://Player/Skills/Air/ball.png" id="2_suvur"]
+[ext_resource type="Texture2D" uid="uid://btp36bhvrcaka" path="res://Player/Skills/Air/1.png" id="2_tny2b"]
+[ext_resource type="Texture2D" uid="uid://c0b616rmrx6yl" path="res://Player/Skills/Air/2.png" id="3_xu6jr"]
+[ext_resource type="Texture2D" uid="uid://bjqdccxleyi6e" path="res://Player/Skills/Air/3.png" id="4_7y25p"]
+[ext_resource type="Texture2D" uid="uid://bapg8xjfc2lab" path="res://Player/Skills/Air/4.png" id="5_ij8bf"]
+
+[sub_resource type="Animation" id="Animation_rk3tx"]
+resource_name = "appear_skill_fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skill:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_suvur"]
+resource_name = "tornado_spin"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skill/Tornado:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_tny2b"), ExtResource("3_xu6jr"), ExtResource("4_7y25p"), ExtResource("5_ij8bf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8puik"]
+_data = {
+&"appear_skill_fire": SubResource("Animation_rk3tx"),
+&"tornado_spin": SubResource("Animation_suvur")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t0lu6"]
+radius = 1.5712744
+
+[node name="Air" type="Node2D" unique_id=24103310]
+z_index = 10
+script = ExtResource("1_suvur")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=268853966]
+libraries/ = SubResource("AnimationLibrary_8puik")
+autoplay = &"appear_skill_fire"
+
+[node name="Skill" type="Node2D" parent="." unique_id=1326740350]
+rotation = 2.9137337
+
+[node name="Ball" type="Sprite2D" parent="Skill" unique_id=1091408877]
+scale = Vector2(0.14999999, 0.14999999)
+texture = ExtResource("2_suvur")
+
+[node name="Tornado" type="Sprite2D" parent="Skill" unique_id=1303766447]
+rotation = -2.934564
+scale = Vector2(0.06999999, 0.06999999)
+texture = ExtResource("2_tny2b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1812100872]
+rotation = 2.9137337
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1810888574]
+rotation = -3.14159
+scale = Vector2(16.1668, -18.3068)
+shape = SubResource("CircleShape2D_t0lu6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bl45y4pvvwlwi"]
+
+[sub_resource type="GDScript" id="GDScript_msolp"]
+script/source = "extends Node2D
+
+@export var max_value := 100
+@onready var bar := $ProgressBar
+
+func _ready() -> void:
+	bar.max_value = max_value
+	bar.value = max_value
+	set_green_fill()
+
+func set_value(v: int) -> void:
+	var clamped = clamp(v, 0, max_value)
+	bar.value = clamped
+	print(\"🔢 HealthBar actuelle : \", clamped, \"/\", max_value)
+
+func set_green_fill() -> void:
+	var green_fill := StyleBoxFlat.new()
+	green_fill.bg_color = Color(0.0, 1.0, 0.0)  # Vert vif
+	bar.add_theme_stylebox_override(\"fill\", green_fill)
+func set_max_value(v: int):
+	max_value = v
+	bar.max_value = max_value
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol2up"]
+
+[node name="HealthBar" type="Node2D" unique_id=500173056]
+script = SubResource("GDScript_msolp")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1662565796]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 217.0
+offset_bottom = 81.0
+scale = Vector2(2.71782, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_ol2up")
+max_value = 1000.0
+step = 10.0
+value = 100.0
+show_percentage = false

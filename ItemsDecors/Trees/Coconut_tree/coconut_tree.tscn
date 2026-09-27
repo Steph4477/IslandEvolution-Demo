@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c5a3jpxxsvrpy"]
+
+[ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.gd" id="1_it4j1"]
+[ext_resource type="Texture2D" uid="uid://hh078ixonxjb" path="res://ItemsDecors/Trees/Coconut_tree/1.png" id="2_koarn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
+size = Vector2(48.807976, 512.56036)
+
+[sub_resource type="Animation" id="Animation_i7hbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_it4j1"]
+resource_name = "wind"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0349066, 0.0349066, -0.0349066]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.0349066, 0.0349066, -0.0349066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0slvd"]
+_data = {
+&"RESET": SubResource("Animation_i7hbb"),
+&"wind": SubResource("Animation_it4j1")
+}
+
+[node name="Cocotier" type="Node2D" unique_id=411375436]
+script = ExtResource("1_it4j1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=545630696]
+position = Vector2(144.16066, 99.953514)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_koarn")
+offset = Vector2(-288, -844)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1146328630]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=238588019]
+position = Vector2(8.596003, -219.05688)
+scale = Vector2(1.0000005, 1.0000005)
+shape = SubResource("RectangleShape2D_it4j1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1848912276]
+libraries/ = SubResource("AnimationLibrary_0slvd")
+autoplay = &"wind"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

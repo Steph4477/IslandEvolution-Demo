@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dpxbm1yjba8sw"]
+
+[ext_resource type="Script" uid="uid://df0mtv8xngr2j" path="res://Shoot/Player/Spear/spear.gd" id="1_lpg4f"]
+[ext_resource type="Texture2D" uid="uid://rgysxhr1dxge" path="res://Shoot/Enemies/Spear/spear.png" id="2_vv7jm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
+size = Vector2(194.5, 4.750007)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpg4f"]
+size = Vector2(57, 18)
+
+[node name="Spear" type="CharacterBody2D" unique_id=230356792]
+z_index = 20
+collision_mask = 134217994
+script = ExtResource("1_lpg4f")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=977760587]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_vv7jm")
+
+[node name="Timer" type="Timer" parent="." unique_id=1430706764]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=633479935]
+position = Vector2(104, -4)
+rotation = -3.1415925
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_yyw12")
+
+[node name="LootArea" type="Area2D" parent="." unique_id=976141745]
+position = Vector2(-188, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LootArea" unique_id=165805086]
+position = Vector2(295.5, -12)
+rotation = -3.1415925
+shape = SubResource("RectangleShape2D_lpg4f")
+
+[connection signal="body_entered" from="LootArea" to="." method="_on_loot_area_body_entered"]

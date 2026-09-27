@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cgsahktkynoho"]
+
+[ext_resource type="Texture2D" uid="uid://dhl5e778t7p7k" path="res://Effects/Fire/smoke.png" id="1_ncrno"]
+
+[sub_resource type="Curve" id="Curve_6n0w2"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
+curve = SubResource("Curve_6n0w2")
+
+[sub_resource type="Curve" id="Curve_oe3nc"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
+curve = SubResource("Curve_oe3nc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i5fjv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30, 5, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 20.0
+initial_velocity_min = 70.0
+initial_velocity_max = 110.0
+gravity = Vector3(0, -8, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.27450982, 0.27450982, 0.27450982, 0.34901962)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hpfpo"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 5, 1)
+spread = 5.0
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, -2, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+color = Color(0.31135654, 0.31135657, 0.31135654, 0.09019608)
+
+[node name="SmokeFX" type="Node2D" unique_id=345948567]
+
+[node name="Smoke" type="GPUParticles2D" parent="." unique_id=1984324698]
+amount = 35
+texture = ExtResource("1_ncrno")
+lifetime = 6.0
+preprocess = 8.0
+randomness = 0.5
+visibility_rect = Rect2(-400, -1200, 800, 1400)
+process_material = SubResource("ParticleProcessMaterial_i5fjv")
+
+[node name="SmokeCeilling" type="GPUParticles2D" parent="." unique_id=1581654365]
+position = Vector2(-362, -727)
+amount = 80
+texture = ExtResource("1_ncrno")
+lifetime = 8.0
+preprocess = 20.0
+randomness = 0.4
+visibility_rect = Rect2(-400, -200, 800, 1400)
+process_material = SubResource("ParticleProcessMaterial_hpfpo")
