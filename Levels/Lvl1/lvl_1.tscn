@@ -949,14 +949,17 @@ position = Vector2(-1197, -187)
 [node name="SnakeDistance" parent="World/Creatures" unique_id=88320707 instance=ExtResource("24_hpfpo")]
 z_index = 50
 position = Vector2(-1069, 234)
+scale = Vector2(1.2, 1.2)
 
 [node name="SnakeDistance2" parent="World/Creatures" unique_id=2351558 instance=ExtResource("24_hpfpo")]
 z_index = 50
 position = Vector2(5357, 216)
+scale = Vector2(1.2, 1.2)
 
 [node name="SnakePack" parent="World/Creatures" unique_id=1488428405 instance=ExtResource("25_hpfpo")]
 z_index = 50
-position = Vector2(3815, -204)
+position = Vector2(2971, -53)
+scale = Vector2(1.2, 1.2)
 
 [node name="Items" type="Node2D" parent="World" unique_id=1086633539]
 z_index = 10
