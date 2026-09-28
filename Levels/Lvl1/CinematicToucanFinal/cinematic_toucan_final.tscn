@@ -30,7 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://dvv6fbr536r4o" path="res://Enemies/Toucan/Speack/13.png" id="28_ebl2o"]
 [ext_resource type="Texture2D" uid="uid://c73fpnunyf6hn" path="res://Player/Sprite/spriteSheet.png" id="29_fot42"]
 [ext_resource type="Texture2D" uid="uid://bc2wdu4ovgyf" path="res://Player/Sprite/Fx.png" id="30_6vmxf"]
+[ext_resource type="AudioStream" uid="uid://bjeukxslf32cs" path="res://sounds/POWER-UP.wav" id="31_s2vco"]
 [ext_resource type="Texture2D" uid="uid://dmu3glfa3rj2p" path="res://Levels/Lvl1/Environement/TileMap/tileset_jungle_ground.png" id="32_erojq"]
+[ext_resource type="Texture2D" uid="uid://dbsdppi3p8yxu" path="res://Levels/Lvl0/Assets/title.png" id="33_6vmxf"]
 [ext_resource type="Texture2D" uid="uid://6jfd670hqah8" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_forest.png" id="33_s2vco"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8506"]
@@ -1827,6 +1829,21 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(569, 471.00003), Vector2(569, 471.00003)]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_s2vco")
+}],
+"times": PackedFloat32Array(0.8666667)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_fot42"]
 resource_name = "idle"
@@ -1932,6 +1949,21 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(578, 531), Vector2(578, 531)]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_s2vco")
+}],
+"times": PackedFloat32Array(0.53333336)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_trmc0"]
 _data = {
@@ -1963,7 +1995,7 @@ sources/0 = SubResource("TileSetAtlasSource_nud23")
 [node name="CinematicToucanFinal" type="Node2D" unique_id=1292113916]
 z_index = 50
 script = ExtResource("1_j5uqk")
-test_difficulty = "explorer"
+test_difficulty = "survivor"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1959037705]
 position = Vector2(569, 471.00003)
@@ -1974,10 +2006,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 531.0
-offset_top = 306.0
-offset_right = 1331.0
-offset_bottom = 406.0
+offset_left = 348.0
+offset_top = 339.0
+offset_right = 1348.0
+offset_bottom = 439.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_x8506")
@@ -2003,6 +2035,7 @@ theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/mono_font_size = 14
 bbcode_enabled = true
 scroll_active = false
+horizontal_alignment = 1
 
 [node name="Toucan" type="Sprite2D" parent="." unique_id=1495431345]
 position = Vector2(1861, 33)
@@ -2038,3 +2071,9 @@ z_index = -20
 position = Vector2(2005, -366)
 scale = Vector2(2, 2)
 texture = ExtResource("33_s2vco")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=843582889]
+position = Vector2(971, 174)
+texture = ExtResource("33_6vmxf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=94666716]
