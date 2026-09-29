@@ -160,7 +160,7 @@ var score_evolution_applied = false
 ##################################################################################
 var difficulty = "explorer"
 
-var explorer_unlocked = true
+var explorer_unlocked = false
 var survivor_unlocked = false
 var king_unlocked = false
 
@@ -191,14 +191,26 @@ func _ready():
 	reset_session_dialogues()
 
 	await get_tree().process_frame
-	
-	load_global_progress()
-	difficulty = get_continue_difficulty()
 
-	print("TEST DIFFICULTY : ", difficulty)
-	print("SURVIVOR UNLOCKED : ", survivor_unlocked)
-	print("KING UNLOCKED : ", king_unlocked)
-	
+	var has_progress = load_global_progress()
+
+	if has_progress:
+		difficulty = get_continue_difficulty()
+	else:
+		difficulty = "explorer"
+		explorer_unlocked = false
+		survivor_unlocked = false
+		king_unlocked = false
+
+	print("======================================")
+	print("INITIALISATION DIFFICULTES")
+	print("PROGRESSION TROUVEE : ", has_progress)
+	print("DIFFICULTY : ", difficulty)
+	print("EXPLORER : ", explorer_unlocked)
+	print("SURVIVOR : ", survivor_unlocked)
+	print("KING : ", king_unlocked)
+	print("======================================")
+
 	#await load_level("res://Levels/Test/test_scene.tscn")
 	#await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
@@ -435,6 +447,10 @@ func unlock_next_difficulty():
 		print("PROCHAIN RUN : ROI DE L'ILE")
 
 	elif difficulty == "king":
+		king_unlocked = true
+		unlocked_level_path = "res://Levels/Lvl1/lvl_1.tscn"
+		
+		print("ROI DE L'ILE VALIDE")
 		print("TOUTES LES DIFFICULTES SONT TERMINEES")
 
 	save_progress()

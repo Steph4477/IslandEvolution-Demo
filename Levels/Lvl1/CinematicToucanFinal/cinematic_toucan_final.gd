@@ -13,12 +13,12 @@ extends Node2D
 #                              RÉGLAGES
 # ============================================================================
 
-@export var lines = []
+@export var lines: Array[String] = []
 
-@export var chars_per_sec = 30
-@export var pause_between_lines = 2.0
-@export var hide_when_done = true
-@export var dialogue_delay = 4.0
+@export var chars_per_sec: float = 30.0
+@export var pause_between_lines: float = 2.0
+@export var hide_when_done: bool = true
+@export var dialogue_delay: float = 4.0
 
 @export_category("TEST SCÈNE ISOLÉE")
 @export_enum("game", "explorer", "survivor", "king")
@@ -42,6 +42,15 @@ var pause_left = 0.0
 # ============================================================================
 
 func _ready():
+	var game_state = get_node_or_null("/root/GameState")
+
+	print("======================================")
+	print("TOUCAN - DIFFICULTY REÇUE : ", game_state.difficulty)
+	print("EXPLORER TERMINE : ", game_state.explorer_unlocked)
+	print("SURVIVOR TERMINE : ", game_state.survivor_unlocked)
+	print("KING TERMINE : ", game_state.king_unlocked)
+	print("======================================")
+	
 	await get_tree().process_frame
 
 	# Sécurité : avertit si la scène est restée en mode test
@@ -50,8 +59,6 @@ func _ready():
 
 	# Fake Moko
 	moko_anim.play("idle")
-
-	var game_state = get_node_or_null("/root/GameState")
 
 	# Difficulté réellement utilisée par cette cinématique
 	cinematic_difficulty = test_difficulty

@@ -13,11 +13,15 @@ var gs
 @onready var sky_survivor = $World/Parallax/SkyLayerSurvivor
 @onready var sky_king = $World/Parallax/SkyLayerKing
 
+@onready var enemy_explorer: Node2D = $World/Difficulty/Enemies/EnemyExplorer
+@onready var enemy_survivor: Node2D = $World/Difficulty/Enemies/EnemySurvivor
+@onready var enemy_king: Node2D = $World/Difficulty/Enemies/EnemyKing
+
 @onready var survivor_fx = $World/Difficulty/Smokes/SmokeSurvivorFX
 @onready var king_fx = $World/Difficulty/FiresKing
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "king" # test difficulté
+	#gs.difficulty = "explorer" # test difficulté
 
 	await get_tree().process_frame
 
@@ -41,7 +45,7 @@ func _ready():
 	$Sound/Lvl1.play()
 
 func setup_environment_difficulty():
-	# Reset propre
+	# Reset environnement
 	sky_explorer.visible = false
 	sky_survivor.visible = false
 	sky_king.visible = false
@@ -49,8 +53,19 @@ func setup_environment_difficulty():
 	survivor_fx.visible = false
 	king_fx.visible = false
 
+	# Reset ennemis
+	for enemy_group in [enemy_explorer, enemy_survivor, enemy_king]:
+		enemy_group.visible = false
+		enemy_group.process_mode = Node.PROCESS_MODE_DISABLED
+
 	match gs.difficulty:
+		
 		"survivor":
+			# === ENNEMIS ===
+			enemy_survivor.visible = true
+			enemy_survivor.process_mode = Node.PROCESS_MODE_INHERIT
+
+			# === ENVIRONNEMENT ===
 			world.modulate = Color("fec583ff")
 			player.modulate = Color("9e8c63ff")
 			player.get_node("Node2D/Sprite").modulate = Color(0.738, 0.738, 0.738, 1.0)
@@ -63,8 +78,15 @@ func setup_environment_difficulty():
 
 			survivor_fx.visible = true
 
+			print("LVL1 ENEMIES : SURVIVOR")
+
 
 		"king":
+			# === ENNEMIS ===
+			enemy_king.visible = true
+			enemy_king.process_mode = Node.PROCESS_MODE_INHERIT
+
+			# === ENVIRONNEMENT ===
 			world.modulate = Color("313131")
 			player.get_node("Node2D/Sprite").modulate = Color(0.4, 0.4, 0.4)
 			gs.hud.set_difficulty_color(Color("8c7960ff"))
@@ -77,8 +99,27 @@ func setup_environment_difficulty():
 			survivor_fx.visible = true
 			king_fx.visible = true
 
+			print("LVL1 ENEMIES : KING")
+
 
 		"explorer":
+			# === ENNEMIS ===
+			enemy_explorer.visible = true
+			enemy_explorer.process_mode = Node.PROCESS_MODE_INHERIT
+
+			print("=== DEBUG ENEMY EXPLORER ===")
+			print("EnemyExplorer visible : ", enemy_explorer.visible)
+			print("Enemies visible : ", enemy_explorer.get_parent().visible)
+			print("Nombre ennemis Explorer : ", enemy_explorer.get_child_count())
+
+			for enemy in enemy_explorer.get_children():
+				print(
+					enemy.name,
+					" | visible : ", enemy.visible if enemy is CanvasItem else "N/A",
+					" | position : ", enemy.position if enemy is Node2D else "N/A"
+				)
+
+			# === ENVIRONNEMENT ===
 			world.modulate = Color("ffff")
 			player.modulate = Color("f4efe3ff")
 			player.get_node("Node2D/Sprite").modulate = Color(0.881, 0.881, 0.881, 1.0)
@@ -89,7 +130,7 @@ func setup_environment_difficulty():
 			tilemap.modulate = Color("#ffffff")
 			trees.modulate = Color("#8ba499")
 
-			print("LVL1 ENVIRONMENT : EXPLORER")
+			print("LVL1 ENEMIES : EXPLORER")
 
 func _on_all_seeds_collected():
 	player.disable_controls()
@@ -127,22 +168,26 @@ func start_intro_sequence():
 
 
 # === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
-func set_enemies_blocked(blocked):
-	var creatures = get_node_or_null("Creatures")
-	if not creatures:
-		return
+func set_enemies_blocked(blocked: bool):
+	var active_enemies: Node2D
 
-	var mode
-	if blocked:
-		mode = Node.PROCESS_MODE_DISABLED
-	else:
-		mode = Node.PROCESS_MODE_INHERIT
+	match gs.difficulty:
+		"explorer":
+			active_enemies = enemy_explorer
+		"survivor":
+			active_enemies = enemy_survivor
+		"king":
+			active_enemies = enemy_king
+		_:
+			return
 
-	for e in creatures.get_children():
-		e.process_mode = mode
+	var mode = Node.PROCESS_MODE_DISABLED if blocked else Node.PROCESS_MODE_INHERIT
 
-		if blocked and e is CharacterBody2D:
-			e.velocity = Vector2.ZERO
+	for enemy in active_enemies.get_children():
+		enemy.process_mode = mode
+
+		if blocked and enemy is CharacterBody2D:
+			enemy.velocity = Vector2.ZERO
 
 
 # === FOCUS CAMÉRA GÉNÉRIQUE ===

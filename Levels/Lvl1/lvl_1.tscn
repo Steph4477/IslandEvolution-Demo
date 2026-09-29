@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cxpvifylv12vh" path="res://Levels/Lvl1/lvl_1.gd" id="1_mebys"]
 [ext_resource type="PackedScene" uid="uid://r1g73vkfwclw" path="res://Levels/Lvl1/Environement/Exit/lvl2/Exit.tscn" id="4_na1bk"]
 [ext_resource type="Script" uid="uid://y7kycrenbif1" path="res://Levels/Lvl1/Environement/Paralaxe/parallax.gd" id="4_yc75k"]
-[ext_resource type="PackedScene" uid="uid://c4vsyan0vbr2j" path="res://ItemsDecors/Spike/spike.tscn" id="5_jneuh"]
 [ext_resource type="Texture2D" uid="uid://dhl5e778t7p7k" path="res://Effects/Fire/smoke.png" id="6_fmwff"]
 [ext_resource type="PackedScene" uid="uid://c5a3jpxxsvrpy" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
 [ext_resource type="Texture2D" uid="uid://fwsuclw4wp7b" path="res://Levels/Lvl1/Environement/TileMap/tileset_plant.png" id="9_qhqjp"]
@@ -25,11 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://bhbpo4m5ohdsh" path="res://Items/Wood/wood_item.tscn" id="19_jsni3"]
 [ext_resource type="PackedScene" uid="uid://dnhirjyy08lab" path="res://ItemsDecors/Liana/AnimatedLiana/animated_liana.tscn" id="19_ysuxi"]
 [ext_resource type="AudioStream" uid="uid://db12ei3cw5sxd" path="res://sounds/lvl1.mp3" id="20_qky26"]
+[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="21_itas7"]
 [ext_resource type="PackedScene" uid="uid://76o72o6gqnl6" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
+[ext_resource type="PackedScene" uid="uid://cv5xxqe4sgycb" path="res://Enemies/Snake/SnakeMelee/snake_melee.tscn" id="22_xt3fa"]
 [ext_resource type="Texture2D" uid="uid://dapnibv2qtlv2" path="res://Levels/Lvl1/Environement/ElevatorLiana/liana_tree.png" id="23_2hs2i"]
+[ext_resource type="PackedScene" uid="uid://dlaw2o7b3g4nv" path="res://Enemies/Snake/SnakeHeal/snake_heal.tscn" id="23_lb06u"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://lye37abt7fae" path="res://Enemies/Snake/SnakeDistance/snake_distance.tscn" id="24_hpfpo"]
-[ext_resource type="PackedScene" uid="uid://if780e1e68vg" path="res://Enemies/Packs/SnakePack/snake_pack.tscn" id="25_hpfpo"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl1/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 [ext_resource type="Texture2D" uid="uid://bxfxudtujf5lj" path="res://ItemsDecors/Trees/liana_tree.png" id="26_qhqjp"]
 [ext_resource type="Texture2D" uid="uid://831cdhbqbrmi" path="res://Levels/Lvl1/Environement/Paralaxe/sky_explorer.png" id="29_6e3s7"]
@@ -194,14 +195,14 @@ alpha_curve = SubResource("CurveTexture_a3fu6")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itas7"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(600, 10, 1)
+emission_box_extents = Vector3(100, 10, 1)
 spread = 5.0
-initial_velocity_min = 80.0
-initial_velocity_max = 120.0
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
 gravity = Vector3(0, -2, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-color = Color(1, 1, 1, 0.09019608)
+scale_min = 0.79999995
+scale_max = 1.1999999
+color = Color(1, 1, 1, 0.023529412)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5uxy"]
 texture = ExtResource("14_f1okb")
@@ -523,7 +524,6 @@ lifetime = 27.76
 process_material = SubResource("ParticleProcessMaterial_xt3fa")
 
 [node name="FiresKing" type="Node2D" parent="World/Difficulty" unique_id=389079933]
-visible = false
 
 [node name="FireLeft" parent="World/Difficulty/FiresKing" unique_id=1456727308 instance=ExtResource("35_jr3jl")]
 position = Vector2(6378, 1140)
@@ -651,10 +651,10 @@ lifetime = 3.44
 process_material = SubResource("ParticleProcessMaterial_fmwff")
 
 [node name="SmokeCeilling" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" index="1" unique_id=1581654365]
-visible = false
-position = Vector2(-1209, -1128)
+position = Vector2(-7885.0005, -888)
 scale = Vector2(10, 10)
-lifetime = 15.0
+amount = 300
+lifetime = 21.270000000000003
 process_material = SubResource("ParticleProcessMaterial_itas7")
 
 [node name="Smoke2" type="GPUParticles2D" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" unique_id=600736653]
@@ -666,6 +666,143 @@ preprocess = 8.0
 randomness = 0.5
 visibility_rect = Rect2(-400, -1200, 800, 1400)
 process_material = SubResource("ParticleProcessMaterial_fmwff")
+
+[node name="Enemies" type="Node2D" parent="World/Difficulty" unique_id=359324376]
+
+[node name="EnemyExplorer" type="Node2D" parent="World/Difficulty/Enemies" unique_id=364855539]
+visible = false
+
+[node name="Mousquito" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=1197171326 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(1063, 664)
+
+[node name="Mousquito2" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=156221535 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3977, 243)
+
+[node name="Mosquito" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=915889274 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(5605, 842)
+
+[node name="Snake" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=88320707 instance=ExtResource("21_itas7")]
+position = Vector2(2203.9998, 853.99994)
+scale = Vector2(0.72, 0.72)
+
+[node name="Snake2" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=169558206 instance=ExtResource("21_itas7")]
+position = Vector2(3994, 1034)
+scale = Vector2(0.72, 0.72)
+
+[node name="Snake4" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=5945529 instance=ExtResource("21_itas7")]
+position = Vector2(8576, 976)
+scale = Vector2(0.72, 0.72)
+
+[node name="Snake3" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=2023683292 instance=ExtResource("21_itas7")]
+position = Vector2(6755, 949)
+scale = Vector2(0.72, 0.72)
+
+[node name="EnemySurvivor" type="Node2D" parent="World/Difficulty/Enemies" unique_id=1082956894]
+scale = Vector2(1.2, 1.2)
+
+[node name="Mousquito" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=55077267 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(1047.8333, 408.3333)
+
+[node name="Mousquito3" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=140725384 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(950.83325, 273.3333)
+
+[node name="Mousquito2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=510628630 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3311.6665, 475)
+
+[node name="Mousquito4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1222713536 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3505.6665, 529)
+
+[node name="Mosquito" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=2034538829 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(4599.1665, 499.99997)
+
+[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1562837340 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(4787.1665, 434.99997)
+
+[node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=17557432 instance=ExtResource("22_xt3fa")]
+position = Vector2(1817.4999, 783.6665)
+
+[node name="Snake5" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1488083492 instance=ExtResource("21_itas7")]
+z_index = 25
+position = Vector2(2018.3333, 719.99994)
+scale = Vector2(1, 1)
+
+[node name="SnakeMelee2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1794675567 instance=ExtResource("22_xt3fa")]
+position = Vector2(5894.1665, 833.3333)
+
+[node name="Snake4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=346834228 instance=ExtResource("21_itas7")]
+position = Vector2(5711.666, 775)
+scale = Vector2(1, 1)
+
+[node name="EnemyKing" type="Node2D" parent="World/Difficulty/Enemies" unique_id=1003634315]
+visible = false
+scale = Vector2(1.4, 1.4)
+
+[node name="Mousquito" parent="World/Difficulty/Enemies/EnemyKing" unique_id=355998884 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(818.4286, 433.2857)
+
+[node name="Mousquito5" parent="World/Difficulty/Enemies/EnemyKing" unique_id=183105642 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(928.4286, 234.2857)
+
+[node name="Mousquito3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1195104129 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(721.4286, 298.2857)
+
+[node name="Mousquito2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1197703305 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(2782.5713, 301.42856)
+
+[node name="Mousquito6" parent="World/Difficulty/Enemies/EnemyKing" unique_id=403953307 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(2628.5713, 397.42856)
+
+[node name="Mousquito4" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1899716805 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(2976.5713, 355.42856)
+
+[node name="Mosquito" parent="World/Difficulty/Enemies/EnemyKing" unique_id=493889028 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3744.2856, 441.85715)
+
+[node name="Mosquito3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=889652811 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3748.2856, 257.85715)
+
+[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=376121461 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3932.2856, 376.85715)
+
+[node name="SnakeHeal" parent="World/Difficulty/Enemies/EnemyKing" unique_id=302247270 instance=ExtResource("23_lb06u")]
+position = Vector2(1951.4286, 692.8572)
+
+[node name="SnakeDistance" parent="World/Difficulty/Enemies/EnemyKing" unique_id=779726118 instance=ExtResource("24_hpfpo")]
+position = Vector2(1784.2859, 710.7143)
+
+[node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1351381869 instance=ExtResource("22_xt3fa")]
+position = Vector2(1552.8572, 677.1428)
+
+[node name="SnakeHeal2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1664355129 instance=ExtResource("23_lb06u")]
+position = Vector2(5040, 683.5715)
+
+[node name="SnakeMelee2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1931005927 instance=ExtResource("22_xt3fa")]
+position = Vector2(4652.8574, 639.2857)
+
+[node name="SnakeDistance2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=642605767 instance=ExtResource("24_hpfpo")]
+position = Vector2(4850, 762.1429)
+
+[node name="Snake3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=763249970 instance=ExtResource("21_itas7")]
+position = Vector2(6080, 615)
+scale = Vector2(1, 1)
 
 [node name="Parallax" type="Node2D" parent="World" unique_id=1981445725]
 z_index = -40
@@ -689,7 +826,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("17_fyrvj")
 
 [node name="SkyLayerKing" type="Node2D" parent="World/Parallax" unique_id=431645073]
-visible = false
 z_index = -40
 position = Vector2(96, -630)
 scale = Vector2(2, 2)
@@ -830,7 +966,7 @@ scale = Vector2(222.01102, 12.5199)
 shape = SubResource("RectangleShape2D_myamh")
 
 [node name="BorderCollision" type="StaticBody2D" parent="World/CollisionPlatforms" unique_id=902890457]
-collision_layer = 256
+collision_layer = 258
 collision_mask = 9
 
 [node name="BorderRShape2D9" type="CollisionShape2D" parent="World/CollisionPlatforms/BorderCollision" unique_id=232197234]
@@ -920,46 +1056,6 @@ position = Vector2(145, -305)
 
 [node name="Carnivore" parent="World/Carnivores" unique_id=967292307 instance=ExtResource("15_los52")]
 position = Vector2(2845, 1385)
-
-[node name="Creatures" type="Node2D" parent="World" unique_id=1013611793]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(3309, 916)
-
-[node name="Mousquito" parent="World/Creatures" unique_id=1197171326 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(2259, -112)
-
-[node name="Mousquito2" parent="World/Creatures" unique_id=156221535 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(980, -356)
-
-[node name="Mousquito3" parent="World/Creatures" unique_id=55077267 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(96, -116)
-
-[node name="Mousquito4" parent="World/Creatures" unique_id=1050341370 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(4841, -281)
-
-[node name="Mosquito" parent="World/Creatures" unique_id=915889274 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(-1197, -187)
-
-[node name="SnakeDistance" parent="World/Creatures" unique_id=88320707 instance=ExtResource("24_hpfpo")]
-z_index = 50
-position = Vector2(-1069, 234)
-scale = Vector2(1.2, 1.2)
-
-[node name="SnakeDistance2" parent="World/Creatures" unique_id=2351558 instance=ExtResource("24_hpfpo")]
-z_index = 50
-position = Vector2(5357, 216)
-scale = Vector2(1.2, 1.2)
-
-[node name="SnakePack" parent="World/Creatures" unique_id=1488428405 instance=ExtResource("25_hpfpo")]
-z_index = 50
-position = Vector2(2971, -53)
-scale = Vector2(1.2, 1.2)
 
 [node name="Items" type="Node2D" parent="World" unique_id=1086633539]
 z_index = 10
@@ -1180,17 +1276,6 @@ position = Vector2(507, 0)
 modulate = Color(0.60933006, 0.6093301, 0.60933006, 1)
 z_index = 60
 position = Vector2(254, 0)
-
-[node name="Arrows" type="Node2D" parent="World/Traps" unique_id=83345912]
-z_index = 20
-position = Vector2(3028.9998, 1338)
-scale = Vector2(0.635458, 0.141613)
-
-[node name="Arrow2" parent="World/Traps/Arrows" unique_id=758725078 instance=ExtResource("5_jneuh")]
-position = Vector2(-1661.7932, 70.614975)
-rotation = -3.14158
-scale = Vector2(0.397965, -1.02986)
-skew = -1.0848e-05
 
 [node name="Totem" parent="World" unique_id=209721126 instance=ExtResource("21_t7ttw")]
 z_index = 12

@@ -1995,7 +1995,12 @@ sources/0 = SubResource("TileSetAtlasSource_nud23")
 [node name="CinematicToucanFinal" type="Node2D" unique_id=1292113916]
 z_index = 50
 script = ExtResource("1_j5uqk")
-test_difficulty = "survivor"
+lines = null
+chars_per_sec = null
+pause_between_lines = null
+hide_when_done = null
+dialogue_delay = null
+test_difficulty = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1959037705]
 position = Vector2(569, 471.00003)
