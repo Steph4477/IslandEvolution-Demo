@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="11_wxmfk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
-radius = 93.33333
-height = 216.66666
+radius = 59.99997
+height = 133.33333
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y1xf3"]
 atlas = ExtResource("3_eu3iq")
@@ -106,60 +106,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_6x27n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:sprite_frames")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_gpbpw")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"die"]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_pioq7"]
 resource_name = "attack"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -292,7 +241,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_otsjt"]
 resource_name = "onhit"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -426,7 +375,6 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
 _data = {
-&"RESET": SubResource("Animation_6x27n"),
 &"attack": SubResource("Animation_pioq7"),
 &"die": SubResource("Animation_feqrn"),
 &"idle": SubResource("Animation_m2mdo"),
@@ -443,13 +391,12 @@ script = ExtResource("1_iaegj")
 stop_distance = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
-position = Vector2(11.666666, 93.33333)
+position = Vector2(0, 88.33333)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pioq7")
 
 [node name="HealthBar" parent="." unique_id=531143628 instance=ExtResource("11_wxmfk")]
-position = Vector2(-68.33333, -51.666668)
-scale = Vector2(1.8, 1.8)
+position = Vector2(-50, -13.333332)
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=1036608915]
 autostart = true
@@ -462,6 +409,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="Rotator" type="Node2D" parent="." unique_id=896195456]
+position = Vector2(-10, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=881682204]
 root_node = NodePath("../Sprite2D")
@@ -473,10 +421,11 @@ position = Vector2(-136.66667, -111.66666)
 rotation = 0.78539795
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Rotator" unique_id=1334276843]
+z_index = 25
 position = Vector2(11.666668, 73.33334)
-scale = Vector2(-0.3, 0.3)
+scale = Vector2(-0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_gpbpw")
-animation = &"die"
+animation = &"attack"
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
 position = Vector2(91.66667, 16.666666)

@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://bcc0ubbuqgkn5"]
 
 [ext_resource type="Script" uid="uid://jtgtjw7odld8" path="res://Player/player.gd" id="1_5psm4"]
-[ext_resource type="Texture2D" uid="uid://cbbwffkhpnemh" path="res://Player/Sprite/Fx.png" id="3_btcbx"]
-[ext_resource type="Texture2D" uid="uid://cly20h3c73tvg" path="res://Player/Sprite/spriteSheet.png" id="4_beqdq"]
+[ext_resource type="Texture2D" uid="uid://bc2wdu4ovgyf" path="res://Player/Sprite/Fx.png" id="3_btcbx"]
+[ext_resource type="Texture2D" uid="uid://c73fpnunyf6hn" path="res://Player/Sprite/spriteSheet.png" id="4_beqdq"]
 [ext_resource type="AudioStream" uid="uid://caluhojjf7tv5" path="res://sounds/clac_whoosh.wav" id="4_fhl08"]
 [ext_resource type="AudioStream" uid="uid://cru8x26rnj6d2" path="res://sounds/kick_whoosh.wav" id="4_gwnis"]
 [ext_resource type="AudioStream" uid="uid://h25sixx4k45e" path="res://sounds/kick_impact.wav" id="5_k53q1"]
 [ext_resource type="Texture2D" uid="uid://bjkf6nhbmdhxp" path="res://Effects/Fire/FireParticle.png" id="6_od3ui"]
-[ext_resource type="Texture2D" uid="uid://b8wb2j80ea76j" path="res://Effects/Fire/glow.png" id="7_00tjw"]
+[ext_resource type="Texture2D" uid="uid://bni385ecti40p" path="res://Effects/Fire/glow.png" id="7_00tjw"]
 [ext_resource type="AudioStream" uid="uid://b8i1r7nc6yu2c" path="res://sounds/clac_impact.wav" id="7_vtle1"]
-[ext_resource type="AudioStream" uid="uid://ba0ksgyn3l0ad" path="res://sounds/191579__timbahrij__wood-fire-1.wav" id="8_x3vf3"]
+[ext_resource type="AudioStream" uid="uid://dw7ok13vufpnr" path="res://sounds/191579__timbahrij__wood-fire-1.wav" id="8_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://bo4830lfg02id" path="res://sounds/loot_skills.wav" id="9_apopc"]
-
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
 atlas = ExtResource("4_beqdq")
@@ -3502,13 +3501,13 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c7st8"]
-radius = 25.019993
+radius = 40.012497
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i8h25"]
-radius = 31.144823
+radius = 41.04875
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o5r0w"]
-radius = 20.0
+radius = 39.115215
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7odc"]
 size = Vector2(66.666664, 308.51065)
@@ -3527,7 +3526,6 @@ kick_impact_sound = NodePath("KickImpactSound")
 [node name="Node2D" type="Node2D" parent="." unique_id=1565517736]
 position = Vector2(-185, -110)
 scale = Vector2(1.2, 1.2)
-
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Node2D" unique_id=1683431941]
 light_mask = 2
