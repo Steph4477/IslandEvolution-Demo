@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bnl8ky8jrgw76" path="res://Enemies/Snake/SnakeDistance/snake_distance.gd" id="1_2ox2c"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_udaon"]
 [ext_resource type="Texture2D" uid="uid://chcrhpl30aor8" path="res://Enemies/Snake/SnakeDistance/spriteSheet.png" id="3_o6saf"]
+[ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="4_5i0fk"]
+[ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="5_6qsw0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
 radius = 48.999992
@@ -269,6 +271,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -23)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pioq7"]
 resource_name = "attack"
@@ -307,6 +333,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-14, -23), Vector2(30.999996, -20), Vector2(1.9073486e-06, -16), Vector2(27.999998, -14), Vector2(31, -20)]
 }
 
 [sub_resource type="Animation" id="Animation_feqrn"]
@@ -359,6 +397,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(60, 17.999996), Vector2(86, 45), Vector2(86, 45)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m2mdo"]
 resource_name = "idle"
@@ -400,6 +462,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(30, -9), Vector2(50, -9), Vector2(51, -9), Vector2(46, -6), Vector2(46, -6), Vector2(50, -8), Vector2(51, -8), Vector2(50, -8)]
+}
 
 [sub_resource type="Animation" id="Animation_otsjt"]
 resource_name = "onhit"
@@ -439,6 +513,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-11.999996, 12.999998), Vector2(-24, 9), Vector2(-10, 5), Vector2(1.999999, 2.0000002)]
 }
 
 [sub_resource type="Animation" id="Animation_to62f"]
@@ -481,6 +567,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(39.999996, 4), Vector2(37.000004, 4), Vector2(54, -12.999998), Vector2(50, 2.999999), Vector2(53, -1.9999995), Vector2(53.000004, -1.9999995)]
+}
 
 [sub_resource type="Animation" id="Animation_ix0nr"]
 resource_name = "walk"
@@ -521,6 +619,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(53, 8.999998), Vector2(54, 7), Vector2(60, 15.999999), Vector2(57, 4.000001), Vector2(57, 4), Vector2(56, 4.0000005)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
 _data = {
@@ -559,6 +669,24 @@ wait_time = 0.5
 autostart = true
 
 [node name="Rotator" type="Node2D" parent="." unique_id=896195456]
+
+[node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1643158141]
+visible = false
+z_index = 30
+position = Vector2(-14, -23)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_5i0fk")
+
+[node name="Light" type="PointLight2D" parent="Rotator/Eye" unique_id=1142748963]
+light_mask = 0
+visibility_layer = 0
+z_index = 50
+position = Vector2(-1.9073486e-06, -16.666672)
+scale = Vector2(2, 2)
+color = Color(1, 1, 0.14117648, 1)
+energy = 0.72
+texture = ExtResource("5_6qsw0")
+texture_scale = 0.08
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=881682204]
 libraries/ = SubResource("AnimationLibrary_feqrn")

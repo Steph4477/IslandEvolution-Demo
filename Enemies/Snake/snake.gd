@@ -1,5 +1,8 @@
 extends EnemyGroundBase
 
+@onready var eye = $Rotator/Eye
+@onready var eye_light = $Rotator/Eye/Light
+
 @export var projectile_scene = preload("res://Shoot/Enemies/Gaz/gaz.tscn")
 @export var projectile_spawn_delay = 0.40
 @export var projectile_attack_animation = "attack"
@@ -36,8 +39,23 @@ func _ready():
 
 	super._ready()
 
+	# === YEUX SELON DIFFICULTÉ ===
+	match gs.difficulty:
+		"explorer":
+			eye.visible = false
+			eye_light.energy = 0.0
+
+		"survivor":
+			eye.visible = true
+			eye.self_modulate = Color(1.0, 1.0, 1.0, 0.5)
+			eye_light.energy = 0.5
+
+		"king":
+			eye.visible = true
+			eye.self_modulate = Color.WHITE
+			eye_light.energy = 1.0
+
 	projectile_spawn = $Rotator/ProjectileSpawn
-	patrol_timer = $PatrolTimer
 
 	melee_mod.setup(self)
 	throw_mod.setup(self)

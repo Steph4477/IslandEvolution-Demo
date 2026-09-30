@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://8xsolwbukrtt" path="res://Enemies/Snake/SnakeMelee/snake_melee.gd" id="1_f5mxk"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_sggbl"]
 [ext_resource type="Texture2D" uid="uid://bsiwivif8n03i" path="res://Enemies/Snake/SnakeMelee/spriteSheet.png" id="3_5ug7c"]
+[ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="4_xtxso"]
+[ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="5_fy5vq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmwff"]
 radius = 54.0
@@ -294,6 +296,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23.000004, 12.000004)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Eye:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_xtxso")]
+}
 
 [sub_resource type="Animation" id="Animation_pioq7"]
 resource_name = "attack"
@@ -333,6 +371,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 2, 1, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6, 0.79999995, 0.99999994),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(23.000004, 12.000004), Vector2(11.000001, 13), Vector2(29, 9), Vector2(47, 20), Vector2(19.000002, 24), Vector2(25, 20)]
 }
 
 [sub_resource type="Animation" id="Animation_feqrn"]
@@ -386,6 +436,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 32)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Eye:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.19999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m2mdo"]
 resource_name = "idle"
@@ -427,6 +501,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [1, 2, 3, 5, 6, 7]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(36, 30), Vector2(32, 31), Vector2(37.000004, 30), Vector2(33, 30)]
+}
 
 [sub_resource type="Animation" id="Animation_otsjt"]
 resource_name = "onhit"
@@ -466,6 +552,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 2, 1, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19999999, 0.3, 0.79999995, 0.99999994),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(6.000002, 24), Vector2(-7.999999, 20), Vector2(-7.999999, 20), Vector2(-15, 18), Vector2(-5.000001, 20), Vector2(-3, 13)]
 }
 
 [sub_resource type="Animation" id="Animation_to62f"]
@@ -508,6 +606,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_xtxso")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(58.000004, 49), Vector2(54.999996, 27.000002), Vector2(55.000004, 26), Vector2(55.000004, 49)]
+}
 
 [sub_resource type="Animation" id="Animation_ix0nr"]
 resource_name = "walk"
@@ -548,6 +670,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eye:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.26),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_xtxso")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.27, 0.47, 0.6203351, 0.67, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(58.025, 48.025), Vector2(56, 46), Vector2(58, 48), Vector2(59, 49), Vector2(59, 49), Vector2(58.025, 48.025)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
@@ -603,6 +749,24 @@ rotation = 0.78539795
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
 position = Vector2(91.66667, 16.666666)
 rotation = 0.78539795
+
+[node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1076479896]
+visible = false
+z_index = 30
+position = Vector2(23.000004, 12.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_xtxso")
+
+[node name="Light" type="PointLight2D" parent="Rotator/Eye" unique_id=871589764]
+light_mask = 0
+visibility_layer = 0
+z_index = 50
+position = Vector2(-1.9073486e-06, -16.666672)
+scale = Vector2(2, 2)
+color = Color(1, 1, 0.14117648, 1)
+energy = 0.72
+texture = ExtResource("5_fy5vq")
+texture_scale = 0.08
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
