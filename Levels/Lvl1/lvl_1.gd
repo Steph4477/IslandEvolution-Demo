@@ -1,8 +1,10 @@
-extends Node2D                          
+extends Node2D
+
 
 var cam
 var player
 var gs
+
 
 @onready var world = $World
 @onready var parallax = $World/Parallax
@@ -37,7 +39,7 @@ func _ready():
 	cam.limit_right = 9500
 	cam.limit_top = -300
 	cam.limit_bottom = 1500
-	
+
 	if not gs.all_seeds_collected.is_connected(_on_all_seeds_collected):
 		gs.all_seeds_collected.connect(_on_all_seeds_collected)
 
@@ -48,6 +50,11 @@ func _ready():
 
 	# === CINÉMATIQUE D'INTRO ===
 	await start_intro_sequence()
+
+
+# ============================================================
+# DIFFICULTÉ
+# ============================================================
 
 func setup_environment_difficulty():
 	# Reset environnement
@@ -64,290 +71,137 @@ func setup_environment_difficulty():
 		enemy_group.process_mode = Node.PROCESS_MODE_DISABLED
 
 	match gs.difficulty:
-		
+
+		"explorer":
+			setup_enemy_group(
+				enemy_explorer,
+				false,
+				Color("ffffffff")
+			)
+
+			set_world_color(Color("ffffffff"))
+			gs.hud.set_difficulty_color(Color("ffffffff"))
+
+			sky_explorer.visible = true
+
+			print("LVL1 ENEMIES : EXPLORER")
+
+
 		"survivor":
-			# === ENNEMIS ===
-			enemy_survivor.visible = true
-			enemy_survivor.process_mode = Node.PROCESS_MODE_INHERIT
+			var survivor_color = Color("f2a11fff")
 
-			# === YEUX ===
-			$World/Difficulty/Enemies/EnemySurvivor/Snake/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Snake/Rotator/Eye/Light.enabled = true
-			$World/Difficulty/Enemies/EnemySurvivor/Snake4/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Snake4/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee/Rotator/Eye/Light.enabled = true
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee2/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee2/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito/Rotator/Eye/Light.enabled = true
+			setup_enemy_group(
+				enemy_survivor,
+				true,
+				survivor_color
+			)
 
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito2/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito2/Rotator/Eye/Light.enabled = true
+			set_world_color(survivor_color)
+			gs.hud.set_difficulty_color(survivor_color)
 
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito3/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito3/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito4/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito4/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito5/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito5/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito2/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito2/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito3/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito3/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito4/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito4/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito5/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito5/Rotator/Eye2/Light.enabled = true
-
-			# === MODULATION ENNEMIS ===
-			# --- Serpents ---
-			$World/Difficulty/Enemies/EnemySurvivor/Snake/Rotator/Sprite2D.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Snake/HealthBar.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Snake4/Rotator/Sprite2D.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Snake4/HealthBar.modulate = Color("f2a11fff")
-			
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee/Rotator/AnimatedSprite2D.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee/HealthBar.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee2/Rotator/AnimatedSprite2D.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/SnakeMelee2/HealthBar.modulate = Color("f2a11fff")
-
-			# --- Moustiques ---
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito/Rotator/Sprite.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito2/Rotator/Sprite.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito3/Rotator/Sprite.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito4/Rotator/Sprite.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito5/Rotator/Sprite.modulate = Color("f2a11fff")
-			
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito/HealthBar.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito2/HealthBar.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito3/HealthBar.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito4/HealthBar.modulate = Color("f2a11fff")
-			$World/Difficulty/Enemies/EnemySurvivor/Mosquito5/HealthBar.modulate = Color("f2a11fff")
-
-			# === ENVIRONNEMENT ===
-			player.get_node("Node2D/Sprite").modulate = Color("f2a11fff")
-			gs.hud.set_difficulty_color(Color("f2a11fff"))
 			sky_survivor.visible = true
-
-			parallax.modulate = Color("f2a11fff")
-			tilemap.modulate = Color("f2a11fff")
-			trees.modulate = Color("f2a11fff")
-
-			$World/Totem.modulate = Color("f2a11fff")
-			$World/Exit.modulate = Color("f2a11fff")
-			$World/Traps.modulate = Color("f2a11fff")
-			$World/Carnivores.modulate = Color("f2a11fff")
-			$World/Items.modulate = Color("f2a11fff")
 			survivor_fx.visible = true
-			
+
 			print("LVL1 ENEMIES : SURVIVOR")
 
 
 		"king":
-			# === ENNEMIS ===
-			enemy_king.visible = true
-			enemy_king.process_mode = Node.PROCESS_MODE_INHERIT
-			
-			# === YEUX ===
-			$World/Difficulty/Enemies/EnemyKing/Snake/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Snake/Rotator/Eye/Light.enabled = true
-			$World/Difficulty/Enemies/EnemyKing/Snake3/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Snake3/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee/Rotator/Eye/Light.enabled = true
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee2/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee2/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal/Rotator/Eye/Light.enabled = true
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal2/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal2/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemyKing/Mosquito/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito/Rotator/Eye/Light.enabled = true
+			setup_enemy_group(
+				enemy_king,
+				true,
+				Color("262c9bff")
+			)
 
-			$World/Difficulty/Enemies/EnemyKing/Mosquito2/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito2/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito3/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito3/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito4/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito4/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito5/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito5/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito6/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito6/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito7/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito7/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito8/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito8/Rotator/Eye/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito9/Rotator/Eye.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito9/Rotator/Eye/Light.enabled = true
-			
-			$World/Difficulty/Enemies/EnemyKing/Mosquito/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito2/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito2/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito3/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito3/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito4/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito4/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito5/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito5/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito6/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito6/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito7/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito7/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito8/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito8/Rotator/Eye2/Light.enabled = true
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito9/Rotator/Eye2.visible = true
-			$World/Difficulty/Enemies/EnemyKing/Mosquito9/Rotator/Eye2/Light.enabled = true
-
-			# === MODULATION ENNEMIS ===
-			$World/Difficulty/Enemies/EnemyKing/Snake/Rotator/Sprite2D.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Snake3/Rotator/Sprite2D.modulate = Color("262c9bff")
-			
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee/Rotator/AnimatedSprite2D.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee2/Rotator/AnimatedSprite2D.modulate = Color("262c9bff")
-
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal/Rotator/Sprite2D.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal2/Rotator/Sprite2D.modulate = Color("262c9bff")
-
-			$World/Difficulty/Enemies/EnemyKing/Snake/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Snake3/HealthBar.modulate = Color("262c9bff")
-			
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/SnakeMelee2/HealthBar.modulate = Color("262c9bff")
-
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/SnakeHeal2/HealthBar.modulate = Color("262c9bff")
-
-			# --- Moustiques ---
-			$World/Difficulty/Enemies/EnemyKing/Mosquito/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito2/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito3/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito4/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito5/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito6/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito7/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito8/Rotator/Sprite.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito9/Rotator/Sprite.modulate = Color("262c9bff")
-
-			$World/Difficulty/Enemies/EnemyKing/Mosquito/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito2/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito3/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito4/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito5/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito6/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito7/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito8/HealthBar.modulate = Color("262c9bff")
-			$World/Difficulty/Enemies/EnemyKing/Mosquito9/HealthBar.modulate = Color("262c9bff")
-
-			# === ENVIRONNEMENT ===
-			player.get_node("Node2D/Sprite").modulate = Color("0e114dff")
+			set_world_color(Color("0e114dff"))
 			gs.hud.set_difficulty_color(Color("7a84abff"))
+
 			sky_king.visible = true
-
-			parallax.modulate = Color("0e114dff")
-			tilemap.modulate = Color("0e114dff")
-			trees.modulate = Color("0e114dff")
-
-			$World/Totem.modulate = Color("0e114dff")
-			$World/Exit.modulate = Color("0e114dff")
-			$World/Traps.modulate = Color("0e114dff")
-			$World/Carnivores.modulate = Color("0e114dff")
-			$World/Items.modulate = Color("0e114dff")
-
 			survivor_fx.visible = true
 			king_fx.visible = true
 
 			print("LVL1 ENEMIES : KING")
 
 
-		"explorer":
-			# === ENNEMIS ===
-			enemy_explorer.visible = true
-			enemy_explorer.process_mode = Node.PROCESS_MODE_INHERIT
+# ============================================================
+# CONFIGURATION GÉNÉRIQUE DES ENNEMIS
+# ============================================================
 
-			# === YEUX SNAKE ===
-			$World/Difficulty/Enemies/EnemyExplorer/Snake/Rotator/Eye.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Snake/Rotator/Eye/Light.enabled = false
+func setup_enemy_group(group: Node, eyes_enabled: bool, color: Color):
+	group.visible = true
+	group.process_mode = Node.PROCESS_MODE_INHERIT
 
-			$World/Difficulty/Enemies/EnemyExplorer/Snake/Rotator/Eye.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Snake/Rotator/Eye/Light.enabled = false
-			
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito/Rotator/Eye.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito/Rotator/Eye/Light.enabled = false
+	for enemy in group.get_children():
+		var rotator = enemy.get_node_or_null("Rotator")
 
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito2/Rotator/Eye.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito2/Rotator/Eye/Light.enabled = false
+		if rotator:
+			# === YEUX ===
+			for eye_name in ["Eye", "Eye2"]:
+				var eye = rotator.get_node_or_null(eye_name)
 
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito3/Rotator/Eye.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito3/Rotator/Eye/Light.enabled = false
-			
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito/Rotator/Eye2.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito/Rotator/Eye2/Light.enabled = false
+				if eye:
+					eye.visible = eyes_enabled
 
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito2/Rotator/Eye2.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito2/Rotator/Eye2/Light.enabled = false
+					var light = eye.get_node_or_null("Light")
 
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito3/Rotator/Eye2.visible = false
-			$World/Difficulty/Enemies/EnemyExplorer/Mosquito3/Rotator/Eye2/Light.enabled = false
+					if light:
+						light.enabled = eyes_enabled
 
-			# === ENVIRONNEMENT ===
-			$World/Difficulty/Enemies/EnemyKing.modulate = Color("ffffffff")
-			player.get_node("Node2D/Sprite").modulate = Color("ffffffff")
-			gs.hud.set_difficulty_color(Color("ffffffff"))
-			sky_explorer.visible = true
+			# === SPRITES ===
+			for sprite_name in ["Sprite", "Sprite2D", "AnimatedSprite2D"]:
+				var sprite = rotator.get_node_or_null(sprite_name)
 
-			parallax.modulate = Color("ffffffff")
-			tilemap.modulate = Color("ffffffff")
-			trees.modulate = Color("ffffffff")
+				if sprite:
+					sprite.modulate = color
 
-			print("LVL1 ENEMIES : EXPLORER")
+		# === BARRE DE VIE ===
+		var health_bar = enemy.get_node_or_null("HealthBar")
+
+		if health_bar:
+			health_bar.modulate = color
+
+
+# ============================================================
+# COULEUR GÉNÉRALE DU NIVEAU
+# ============================================================
+
+func set_world_color(color: Color):
+	player.get_node("Node2D/Sprite").modulate = color
+
+	parallax.modulate = color
+	tilemap.modulate = color
+	trees.modulate = color
+
+	for node in [
+		$World/Totem,
+		$World/Exit,
+		$World/Traps,
+		$World/Carnivores,
+		$World/Items
+	]:
+		node.modulate = color
+
+
+# ============================================================
+# TOUTES LES GRAINES RÉCUPÉRÉES
+# ============================================================
 
 func _on_all_seeds_collected():
 	player.disable_controls()
 	set_enemies_blocked(true)
 
-	await focus_camera_on_node("Totem")
+	await focus_camera_on_node("World/Totem")
 	await return_camera_to_player()
 
 	await get_tree().create_timer(1.0).timeout
 
 	player.enable_controls()
 	set_enemies_blocked(false)
-	
 
 
-# === CINÉMATIQUE D’INTRO ===
+# ============================================================
+# CINÉMATIQUE D’INTRO
+# ============================================================
+
 func start_intro_sequence():
 	player.disable_controls()
 
@@ -359,7 +213,7 @@ func start_intro_sequence():
 	if gs.hud and gs.lvl1_quest_revealed == false:
 		gs.lvl1_quest_revealed = true
 		await gs.hud.appear_lvl1_quest()
-	
+
 	await focus_camera_on_node("World/Totem")
 	await focus_camera_on_node("World/Exit")
 	await return_camera_to_player()
@@ -368,17 +222,23 @@ func start_intro_sequence():
 	set_enemies_blocked(false)
 
 
-# === BLOQUAGE / DÉBLOQUAGE ENNEMIS ===
+# ============================================================
+# BLOQUAGE / DÉBLOQUAGE ENNEMIS
+# ============================================================
+
 func set_enemies_blocked(blocked: bool):
 	var active_enemies: Node2D
 
 	match gs.difficulty:
 		"explorer":
 			active_enemies = enemy_explorer
+
 		"survivor":
 			active_enemies = enemy_survivor
+
 		"king":
 			active_enemies = enemy_king
+
 		_:
 			return
 
@@ -391,30 +251,53 @@ func set_enemies_blocked(blocked: bool):
 			enemy.velocity = Vector2.ZERO
 
 
-# === FOCUS CAMÉRA GÉNÉRIQUE ===
+# ============================================================
+# FOCUS CAMÉRA GÉNÉRIQUE
+# ============================================================
+
 func focus_camera_on_node(node_name):
 	var target = get_node_or_null(node_name)
+
 	if not target:
 		return
 
 	var tween = create_tween()
-	tween.tween_property(cam, "global_position", target.global_position, 1.2)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		cam,
+		"global_position",
+		target.global_position,
+		1.2
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 	await tween.finished
 
 	await get_tree().create_timer(0.6).timeout
 
 
-# === RETOUR CAMÉRA VERS MOKO ===
+# ============================================================
+# RETOUR CAMÉRA VERS MOKO
+# ============================================================
+
 func return_camera_to_player():
 	var tween = create_tween()
-	tween.tween_property(cam, "global_position", player.global_position, 1.2)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		cam,
+		"global_position",
+		player.global_position,
+		1.2
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 	await tween.finished
 
 	cam.top_level = false
 	cam.position = Vector2.ZERO
 
+
+# ============================================================
+# CLÉ RÉCUPÉRÉE
+# ============================================================
 
 func _on_key_collected():
 	await focus_camera_on_exit_and_fade()
@@ -424,7 +307,10 @@ func _on_key_collected():
 		await gs.hud.disappear_lvl1_quest()
 
 
-# === FOCUS SORTIE + FADE + RETOUR MOKO ===
+# ============================================================
+# FOCUS SORTIE + FADE + RETOUR MOKO
+# ============================================================
+
 func focus_camera_on_exit_and_fade():
 	player.disable_controls()
 	set_enemies_blocked(true)
@@ -437,18 +323,27 @@ func focus_camera_on_exit_and_fade():
 
 	# === FOCUS EXIT ===
 	var exit = get_node_or_null("World/Exit")
+
 	if not exit:
 		cam.top_level = false
 		cam.position = Vector2.ZERO
+
 		set_enemies_blocked(false)
 		player.enable_controls()
+
 		return
 
 	var original_position = player.global_position
 
 	var tween = create_tween()
-	tween.tween_property(cam, "global_position", exit.global_position, 1.2)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_property(
+		cam,
+		"global_position",
+		exit.global_position,
+		1.2
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 	await tween.finished
 
 	await get_tree().create_timer(1.0).timeout
@@ -459,8 +354,14 @@ func focus_camera_on_exit_and_fade():
 	await get_tree().create_timer(1.5).timeout
 
 	var back = create_tween()
-	back.tween_property(cam, "global_position", original_position, 1.2)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	back.tween_property(
+		cam,
+		"global_position",
+		original_position,
+		1.2
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 	await back.finished
 
 	cam.top_level = false
@@ -468,4 +369,3 @@ func focus_camera_on_exit_and_fade():
 
 	player.enable_controls()
 	set_enemies_blocked(false)
-	
