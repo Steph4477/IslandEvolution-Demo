@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c8csteemkd67v"]
 
-[ext_resource type="Script" uid="uid://c41c7kd8m1g7l" path="res://Shoot/Player/Coconut/Fire/coconut_fire.gd" id="1_va8yu"]
+[ext_resource type="Script" uid="uid://c27rmsw3ki6aa" path="res://Shoot/Player/Coconut/Fire/coconut_fire.gd" id="1_va8yu"]
 [ext_resource type="Texture2D" uid="uid://o3s6a5ensgq2" path="res://Shoot/Player/Coconut/coconut.png" id="2_llx3a"]
 [ext_resource type="PackedScene" uid="uid://dmocvfeiwacuh" path="res://Effects/Fire/Coco_on_fire/coco_on_fire.tscn" id="3_yrbkw"]
 

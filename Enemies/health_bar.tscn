@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dapglwcq0g0b4"]
 
-[ext_resource type="Texture2D" uid="uid://cy0yiafmuphgm" path="res://Enemies/under_health_bar.png" id="1_1s6w2"]
-[ext_resource type="Texture2D" uid="uid://dwk76pvbx4v17" path="res://Enemies/health_bar.png" id="2_yfd53"]
+[ext_resource type="Texture2D" uid="uid://vj7s6fhmky8w" path="res://Enemies/under_health_bar.png" id="1_1s6w2"]
+[ext_resource type="Texture2D" uid="uid://blsw5c7g38n8b" path="res://Enemies/health_bar.png" id="2_yfd53"]
 
 [sub_resource type="GDScript" id="GDScript_msolp"]
 script/source = "extends Node2D

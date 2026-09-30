@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dem6aecic7fr5"]
 
-[ext_resource type="Script" uid="uid://pwkfthjdkfwq" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.gd" id="1_crfi1"]
-[ext_resource type="Texture2D" uid="uid://x168hktec62w" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/1.png" id="2_x7hf4"]
-[ext_resource type="Texture2D" uid="uid://l1cm6d3ywxpv" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/2.png" id="3_rb4jf"]
-[ext_resource type="Texture2D" uid="uid://81qy4dne7pcp" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/3.png" id="4_yulbx"]
-[ext_resource type="Texture2D" uid="uid://3boamodp1sgi" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/4.png" id="5_wqtxo"]
-[ext_resource type="Texture2D" uid="uid://c2i71a433acts" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/5.png" id="6_dgods"]
-[ext_resource type="Texture2D" uid="uid://do547dror5dau" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/6.png" id="7_7fqp6"]
-[ext_resource type="Texture2D" uid="uid://da0ptr2e4rak5" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/7.png" id="8_rem8b"]
-[ext_resource type="Texture2D" uid="uid://civvct03ralt8" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/8.png" id="9_oq22u"]
+[ext_resource type="Script" uid="uid://4j0jhfsa4nu4" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.gd" id="1_crfi1"]
+[ext_resource type="Texture2D" uid="uid://r0vm1085lvl7" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/1.png" id="2_x7hf4"]
+[ext_resource type="Texture2D" uid="uid://5cy75k77k2ag" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/2.png" id="3_rb4jf"]
+[ext_resource type="Texture2D" uid="uid://btpv80x285rk4" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/3.png" id="4_yulbx"]
+[ext_resource type="Texture2D" uid="uid://dh87m73cjwk5c" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/4.png" id="5_wqtxo"]
+[ext_resource type="Texture2D" uid="uid://d30d480cnjiur" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/5.png" id="6_dgods"]
+[ext_resource type="Texture2D" uid="uid://c81kb6r48gj8r" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/6.png" id="7_7fqp6"]
+[ext_resource type="Texture2D" uid="uid://c8bus7vb0ws65" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/7.png" id="8_rem8b"]
+[ext_resource type="Texture2D" uid="uid://i1tjcktsou5y" path="res://Levels/Lvl1/Environement/ElevatorLiana/Liana/8.png" id="9_oq22u"]
 
 [sub_resource type="Animation" id="Animation_x7hf4"]
 length = 0.001

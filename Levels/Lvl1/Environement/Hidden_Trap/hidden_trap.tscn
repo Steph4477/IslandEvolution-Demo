@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dcfkkrwvp0ixd"]
 
 [ext_resource type="Script" uid="uid://ca47cgmuf6vjm" path="res://Levels/Lvl1/Environement/Hidden_Trap/hidden_trap.gd" id="1_vqit1"]
-[ext_resource type="Texture2D" uid="uid://l6j18qjaxetd" path="res://Levels/Lvl1/Environement/Hidden_Trap/leaf.png" id="2_o6m1u"]
+[ext_resource type="Texture2D" uid="uid://ftxom3qb7w7y" path="res://Levels/Lvl1/Environement/Hidden_Trap/leaf.png" id="2_o6m1u"]
 [ext_resource type="PackedScene" uid="uid://c4vsyan0vbr2j" path="res://ItemsDecors/Spike/spike.tscn" id="4_o6m1u"]
-[ext_resource type="Texture2D" uid="uid://ctgnjk50pes4w" path="res://Levels/Lvl1/Environement/Hidden_Trap/hole.png" id="4_rrqtn"]
+[ext_resource type="Texture2D" uid="uid://cgk64i35vjiey" path="res://Levels/Lvl1/Environement/Hidden_Trap/hole.png" id="4_rrqtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywaqi"]
 size = Vector2(254, 37)

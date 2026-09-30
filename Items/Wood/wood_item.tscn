@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhbpo4m5ohdsh"]
 
-[ext_resource type="Texture2D" uid="uid://caywu46dv00ck" path="res://Items/Wood/wood_item.png" id="1_0irbs"]
-[ext_resource type="Script" uid="uid://bp14fs2covl8d" path="res://Items/Wood/wood_item.gd" id="1_6k5p6"]
+[ext_resource type="Texture2D" uid="uid://dcj3tjd2dbr2h" path="res://Items/Wood/wood_item.png" id="1_0irbs"]
+[ext_resource type="Script" uid="uid://cqmq652ur77mp" path="res://Items/Wood/wood_item.gd" id="1_6k5p6"]
 [ext_resource type="PackedScene" uid="uid://bpriod280brtp" path="res://Effects/Particles_Loot/paticles_loot.tscn" id="3_cis52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cis52"]

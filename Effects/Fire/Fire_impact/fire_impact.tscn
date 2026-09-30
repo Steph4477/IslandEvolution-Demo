@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dham6lrjq1oyk"]
 
-[ext_resource type="Script" uid="uid://bai5fmblc8o4f" path="res://Effects/Fire/Fire_impact/fire_impact.gd" id="1_hg5uh"]
-[ext_resource type="Texture2D" uid="uid://prru1blps5e3" path="res://Effects/Fire/Coco_on_fire/fire.png" id="2_jdby3"]
+[ext_resource type="Script" uid="uid://p3ep36bs48up" path="res://Effects/Fire/Fire_impact/fire_impact.gd" id="1_hg5uh"]
+[ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="2_jdby3"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ekuou"]
 particle_flag_disable_z = true

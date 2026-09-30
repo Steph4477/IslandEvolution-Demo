@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2d77368f0fid"]
 
-[ext_resource type="Script" uid="uid://cbavpp0y04il3" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.gd" id="1_nm5gv"]
-[ext_resource type="Texture2D" uid="uid://cjhkjrlyxfrf7" path="res://ItemsDecors/Trees/Banana_tree/1.png" id="2_l2fy6"]
+[ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.gd" id="1_nm5gv"]
+[ext_resource type="Texture2D" uid="uid://7wq0eh0cjhrs" path="res://ItemsDecors/Trees/Banana_tree/1.png" id="2_l2fy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
 size = Vector2(40.976303, 479)

@@ -1047,15 +1047,15 @@ process_material = SubResource("ParticleProcessMaterial_up2px")
 
 [node name="FireLight" parent="World/Difficulty/FiresKing/FireLeft" index="2" unique_id=497583012]
 position = Vector2(3, -2)
-energy = 7.33
+energy = 9.58
 texture_scale = 2.0
 
 [node name="FireRight" parent="World/Difficulty/FiresKing" unique_id=1824775444 instance=ExtResource("35_jr3jl")]
 position = Vector2(1161, 1219)
 
 [node name="FireLight" parent="World/Difficulty/FiresKing/FireRight" index="2" unique_id=497583012]
-position = Vector2(38, -416)
-energy = 3.0
+position = Vector2(16, 84)
+energy = 8.41
 shadow_enabled = true
 
 [node name="SmokeKingFX" type="Node2D" parent="World/Difficulty/FiresKing" unique_id=1409322718]
@@ -1291,10 +1291,10 @@ z_index = 50
 position = Vector2(3932.2856, 376.85715)
 
 [node name="SnakeHeal" parent="World/Difficulty/Enemies/EnemyKing" unique_id=302247270 instance=ExtResource("23_lb06u")]
-position = Vector2(1566.4286, 709.2857)
+position = Vector2(1239.2856, 767.1429)
 
 [node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1351381869 instance=ExtResource("22_xt3fa")]
-position = Vector2(1133.5715, 739.2857)
+position = Vector2(878.5715, 745)
 
 [node name="SnakeHeal2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1664355129 instance=ExtResource("23_lb06u")]
 position = Vector2(5040, 683.5715)

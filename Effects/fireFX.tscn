@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b1w0lqnmdj6xk"]
 
-[ext_resource type="Texture2D" uid="uid://b47te13v2yqo4" path="res://Effects/Fire/fire_king.png" id="1_s2hhu"]
-[ext_resource type="Texture2D" uid="uid://b8wb2j80ea76j" path="res://Effects/Fire/glow.png" id="2_5xn12"]
-[ext_resource type="Texture2D" uid="uid://c7oxr24edmwg2" path="res://Effects/Fire/fire_light.png" id="3_5xn12"]
+[ext_resource type="Texture2D" uid="uid://cd5w5xew0y3oj" path="res://Effects/Fire/fire_king.png" id="1_s2hhu"]
+[ext_resource type="Texture2D" uid="uid://bni385ecti40p" path="res://Effects/Fire/glow.png" id="2_5xn12"]
+[ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="3_5xn12"]
 
 [sub_resource type="Gradient" id="Gradient_so7tl"]
 offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)

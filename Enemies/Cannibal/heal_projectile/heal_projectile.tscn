@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmfy43reh7ilb"]
 
-[ext_resource type="Script" uid="uid://b5xhe4g16gc0m" path="res://Enemies/Cannibal/heal_projectile/heal_projectile.gd" id="1_qxdlt"]
+[ext_resource type="Script" uid="uid://dyjyxetphtmqe" path="res://Enemies/Cannibal/heal_projectile/heal_projectile.gd" id="1_qxdlt"]
 [ext_resource type="Texture2D" uid="uid://cg7hlijr1wj4j" path="res://Shoot/Enemies/Gaz/gaz.png" id="2_njt4y"]
 
 [sub_resource type="Animation" id="Animation_yt74o"]

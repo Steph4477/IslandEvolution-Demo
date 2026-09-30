@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpriod280brtp"]
 
-[ext_resource type="Texture2D" uid="uid://cpbq3ev14x584" path="res://Effects/Fire/glow_soft.png" id="1_hl3x2"]
+[ext_resource type="Texture2D" uid="uid://2svidnmv6sre" path="res://Effects/Fire/glow_soft.png" id="1_hl3x2"]
 
 [sub_resource type="GDScript" id="GDScript_4ygaf"]
 script/source = "extends Node2D

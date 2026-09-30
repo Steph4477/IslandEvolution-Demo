@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdnl4r3q0ukwv"]
 
-[ext_resource type="Script" uid="uid://b2o1to8u5g2lu" path="res://Hud/Modules/dirt_spot.gd" id="1_ccfck"]
-[ext_resource type="Texture2D" uid="uid://co4ty4kifftog" path="res://Hud/Modules/Textures/web_dirt_big.png" id="2_1ibdy"]
+[ext_resource type="Script" uid="uid://dxik1p1o6bpy6" path="res://Hud/Modules/dirt_spot.gd" id="1_ccfck"]
+[ext_resource type="Texture2D" uid="uid://dgbnywr68da3m" path="res://Hud/Modules/Textures/web_dirt_big.png" id="2_1ibdy"]
 
 [sub_resource type="Animation" id="Animation_mav3l"]
 length = 0.001

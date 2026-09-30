@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drwmfby3pxiv1"]
 
-[ext_resource type="Script" uid="uid://cs3yxsvkj3uuo" path="res://Hud/ScoreScreen/score_screen.gd" id="1_17xng"]
-[ext_resource type="Texture2D" uid="uid://cgq5db013dj0x" path="res://Hud/ScoreScreen/Medals/medal_banana.png" id="2_a77ux"]
+[ext_resource type="Script" uid="uid://delx8rttp0bpw" path="res://Hud/ScoreScreen/score_screen.gd" id="1_17xng"]
+[ext_resource type="Texture2D" uid="uid://bmnwaebwlak5e" path="res://Hud/ScoreScreen/Medals/medal_banana.png" id="2_a77ux"]
 [ext_resource type="Texture2D" uid="uid://dlunom3s63us5" path="res://Hud/ScoreScreen/Assets/background.png" id="2_ovbo7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11dft"]

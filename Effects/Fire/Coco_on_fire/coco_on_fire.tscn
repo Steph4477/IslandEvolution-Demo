@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmocvfeiwacuh"]
 
-[ext_resource type="Script" uid="uid://c2a3h3sr7dqxy" path="res://Effects/Fire/Coco_on_fire/coco_on_fire.gd" id="1_8tfhr"]
-[ext_resource type="Texture2D" uid="uid://prru1blps5e3" path="res://Effects/Fire/Coco_on_fire/fire.png" id="2_wm0dg"]
+[ext_resource type="Script" uid="uid://d1th6ncfl85rh" path="res://Effects/Fire/Coco_on_fire/coco_on_fire.gd" id="1_8tfhr"]
+[ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="2_wm0dg"]
 [ext_resource type="AudioStream" uid="uid://byykbpn8m4d4m" path="res://sounds/coco_fire_whoosh.wav.wav" id="3_wm0dg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tffrp"]
