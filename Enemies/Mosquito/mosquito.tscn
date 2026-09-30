@@ -2,17 +2,70 @@
 
 [ext_resource type="Script" uid="uid://dlwtrnoi7mm54" path="res://Enemies/Mosquito/mosquito.gd" id="1_r0nwy"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_2vk4j"]
-[ext_resource type="Texture2D" uid="uid://c186guhdi48h0" path="res://Enemies/Mosquito/die.png" id="3_2vk4j"]
-[ext_resource type="Texture2D" uid="uid://imcb6qr4mma8" path="res://Enemies/Mosquito/attack1.png" id="4_27a47"]
-[ext_resource type="Texture2D" uid="uid://cg0up7jwrk4kw" path="res://Enemies/Mosquito/attack.png" id="5_nl3xb"]
-[ext_resource type="Texture2D" uid="uid://j8kavvmeggsi" path="res://Enemies/Mosquito/2.png" id="6_c0yhc"]
-[ext_resource type="Texture2D" uid="uid://pvt4875c4xsq" path="res://Enemies/Mosquito/1.png" id="7_qm3hn"]
-[ext_resource type="Texture2D" uid="uid://no8sbho5f38d" path="res://Enemies/Mosquito/patrol.png" id="8_27a47"]
-[ext_resource type="Texture2D" uid="uid://c37r1yqay3tls" path="res://Enemies/Mosquito/patrol1.png" id="9_nl3xb"]
+[ext_resource type="Texture2D" uid="uid://bwg6n713nk7u6" path="res://Enemies/Mosquito/die.png" id="3_2vk4j"]
+[ext_resource type="Texture2D" uid="uid://b6733fd68tbao" path="res://Enemies/Mosquito/attack1.png" id="4_27a47"]
+[ext_resource type="Texture2D" uid="uid://kx654c1j7d82" path="res://Enemies/Mosquito/attack.png" id="5_nl3xb"]
+[ext_resource type="Texture2D" uid="uid://dek3ekm61e1bd" path="res://Enemies/Mosquito/2.png" id="6_c0yhc"]
+[ext_resource type="Texture2D" uid="uid://fgaem51vskot" path="res://Enemies/Mosquito/1.png" id="7_qm3hn"]
+[ext_resource type="Texture2D" uid="uid://dvtj3ywtuca37" path="res://Enemies/Mosquito/patrol.png" id="8_27a47"]
+[ext_resource type="Texture2D" uid="uid://rtvsl4oil03m" path="res://Enemies/Mosquito/patrol1.png" id="9_nl3xb"]
+[ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="10_sbx0n"]
+[ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="11_mwu6f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bvse5"]
 radius = 8.333333
 height = 50.0
+
+[sub_resource type="Animation" id="Animation_bhjg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotator/Eye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.999998, -87.999985)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Eye2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -91)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/Eye:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rotator/Eye2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_b0e3j"]
 resource_name = "attack"
@@ -29,6 +82,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("4_27a47"), ExtResource("5_nl3xb"), ExtResource("4_27a47")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Eye:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.24999999, 0.49999997),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-4.999998, -87.999985), Vector2(-4, -88), Vector2(-5, -88)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/Eye2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.24999999, 0.49999997),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(-14, -91), Vector2(-14, -88), Vector2(-13, -89)]
 }
 
 [sub_resource type="Animation" id="Animation_jin1k"]
@@ -58,6 +135,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/Eye:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Rotator/Eye2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_l6bps"]
 resource_name = "flight"
@@ -73,6 +174,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("6_c0yhc"), ExtResource("7_qm3hn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Eye:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-7, -91), Vector2(-5, -89)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/Eye2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-15, -91), Vector2(-13, -90)]
 }
 
 [sub_resource type="Animation" id="Animation_r0nwy"]
@@ -91,9 +216,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("8_27a47"), ExtResource("9_nl3xb")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotator/Eye2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-13, -90), Vector2(-14, -91)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rotator/Eye:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-5, -89), Vector2(-6, -91)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcxtp"]
 _data = {
+&"RESET": SubResource("Animation_bhjg2"),
 &"attack": SubResource("Animation_b0e3j"),
 &"die": SubResource("Animation_jin1k"),
 &"flight": SubResource("Animation_l6bps"),
@@ -130,5 +280,41 @@ texture = ExtResource("4_27a47")
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_kcxtp")
 autoplay = &"patrol"
+
+[node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1705152986]
+visible = false
+z_index = 30
+position = Vector2(-4.999998, -87.999985)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("10_sbx0n")
+
+[node name="Light" type="PointLight2D" parent="Rotator/Eye" unique_id=589444640]
+light_mask = 0
+visibility_layer = 0
+z_index = 50
+position = Vector2(-1.9073486e-06, -16.666672)
+scale = Vector2(2, 2)
+color = Color(1, 1, 0.14117648, 1)
+energy = 0.72
+texture = ExtResource("11_mwu6f")
+texture_scale = 0.08
+
+[node name="Eye2" type="Sprite2D" parent="Rotator" unique_id=67529183]
+visible = false
+z_index = 30
+position = Vector2(-14, -91)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("10_sbx0n")
+
+[node name="Light" type="PointLight2D" parent="Rotator/Eye2" unique_id=1871157163]
+light_mask = 0
+visibility_layer = 0
+z_index = 50
+position = Vector2(-1.9073486e-06, -16.666672)
+scale = Vector2(2, 2)
+color = Color(1, 1, 0.14117648, 1)
+energy = 0.72
+texture = ExtResource("11_mwu6f")
+texture_scale = 0.08
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
