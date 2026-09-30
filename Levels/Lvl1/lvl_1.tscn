@@ -30,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://dapnibv2qtlv2" path="res://Levels/Lvl1/Environement/ElevatorLiana/liana_tree.png" id="23_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://dlaw2o7b3g4nv" path="res://Enemies/Snake/SnakeHeal/snake_heal.tscn" id="23_lb06u"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
-[ext_resource type="PackedScene" uid="uid://lye37abt7fae" path="res://Enemies/Snake/SnakeDistance/snake_distance.tscn" id="24_hpfpo"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl1/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 [ext_resource type="Texture2D" uid="uid://bxfxudtujf5lj" path="res://ItemsDecors/Trees/liana_tree.png" id="26_qhqjp"]
 [ext_resource type="Texture2D" uid="uid://831cdhbqbrmi" path="res://Levels/Lvl1/Environement/Paralaxe/sky_explorer.png" id="29_6e3s7"]
@@ -40,169 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="32_up2px"]
 [ext_resource type="PackedScene" uid="uid://cgsahktkynoho" path="res://Effects/smokeFX.tscn" id="34_hpfpo"]
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="35_jr3jl"]
-
-[sub_resource type="Curve" id="Curve_6n0w2"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
-curve = SubResource("Curve_6n0w2")
-
-[sub_resource type="Curve" id="Curve_oe3nc"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
-curve = SubResource("Curve_oe3nc")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lb06u"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 30.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xt3fa"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 5.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="Gradient" id="Gradient_so7tl"]
-offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
-colors = PackedColorArray(1, 0.9529412, 0.627451, 1, 1, 0.6039216, 0.1254902, 1, 0.9019608, 0.2509804, 0.07058824, 1, 0.47843137, 0.078431375, 0.03137255, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7dbvo"]
-gradient = SubResource("Gradient_so7tl")
-
-[sub_resource type="Curve" id="Curve_7dbvo"]
-_data = [Vector2(0.0059999973, 0), 0.0, 0.0, 0, 0, Vector2(0.102, 0.16115701), 0.0, 0.0, 0, 0, Vector2(0.246, 0.6487603), 0.0, 0.0, 0, 0, Vector2(0.402, 1), 0.0, 0.0, 0, 0, Vector2(0.702, 0.8471074), 0.0, 0.0, 0, 0, Vector2(0.902, 0.35123968), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 7
-
-[sub_resource type="CurveTexture" id="CurveTexture_7dbvo"]
-curve = SubResource("Curve_7dbvo")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fyrvj"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(220, 18, 1)
-angle_min = -19.99999
-angle_max = 20.000011
-direction = Vector3(0, -1, 0)
-spread = 28.0
-flatness = 1.0
-initial_velocity_min = 45.0
-initial_velocity_max = 155.0
-gravity = Vector3(0, -25, 0)
-scale_min = 0.03
-scale_max = 0.08
-scale_curve = SubResource("CurveTexture_7dbvo")
-color_ramp = SubResource("GradientTexture1D_7dbvo")
-
-[sub_resource type="Gradient" id="Gradient_baiy7"]
-offsets = PackedFloat32Array(0, 0.24423963, 0.7096774, 1)
-colors = PackedColorArray(1, 0.95686275, 0.6392157, 1, 1, 0.6901961, 0, 1, 1, 0.2901961, 0.039215688, 1, 0.5411765, 0.07058824, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_so7tl"]
-gradient = SubResource("Gradient_baiy7")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up2px"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(220, 15, 1)
-direction = Vector3(0, -1, 0)
-spread = 35.0
-flatness = 1.0
-initial_velocity_min = 160.0
-initial_velocity_max = 190.0
-gravity = Vector3(0, -10, 0)
-scale_min = 0.01
-scale_max = 0.02
-color_ramp = SubResource("GradientTexture1D_so7tl")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3fu6"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(100, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 50.0
-gravity = Vector3(0, -8, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.71796376, 0.71796435, 0.7179637, 0.5372549)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5svl"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(100, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 50.0
-initial_velocity_min = 283.19
-initial_velocity_max = 327.44
-gravity = Vector3(0, -8, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.71796376, 0.71796435, 0.7179637, 0.5372549)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="Curve" id="Curve_lb06u"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_a3fu6"]
-curve = SubResource("Curve_lb06u")
-
-[sub_resource type="Curve" id="Curve_u5svl"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_8rr0g"]
-curve = SubResource("Curve_u5svl")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fmwff"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(200, 10, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 20.0
-initial_velocity_min = 100.0
-initial_velocity_max = 400.0
-gravity = Vector3(0, -8, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_8rr0g")
-color = Color(0.44755095, 0.44755095, 0.44755095, 0.34901962)
-alpha_curve = SubResource("CurveTexture_a3fu6")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itas7"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(100, 10, 1)
-spread = 5.0
-initial_velocity_min = 40.0
-initial_velocity_max = 50.0
-gravity = Vector3(0, -2, 0)
-scale_min = 0.79999995
-scale_max = 1.1999999
-color = Color(1, 1, 1, 0.023529412)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5uxy"]
 texture = ExtResource("14_f1okb")
@@ -407,6 +243,169 @@ size = Vector2(304.69446, 149.15094)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs2i"]
 size = Vector2(53.2, 117.333725)
 
+[sub_resource type="Curve" id="Curve_6n0w2"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
+curve = SubResource("Curve_6n0w2")
+
+[sub_resource type="Curve" id="Curve_oe3nc"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
+curve = SubResource("Curve_oe3nc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lb06u"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 30.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xt3fa"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 5.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itas7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 10, 1)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -2, 0)
+scale_min = 0.79999995
+scale_max = 1.1999999
+color = Color(1, 1, 1, 0.023529412)
+
+[sub_resource type="Gradient" id="Gradient_so7tl"]
+offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
+colors = PackedColorArray(1, 0.9529412, 0.627451, 1, 1, 0.6039216, 0.1254902, 1, 0.9019608, 0.2509804, 0.07058824, 1, 0.47843137, 0.078431375, 0.03137255, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7dbvo"]
+gradient = SubResource("Gradient_so7tl")
+
+[sub_resource type="Curve" id="Curve_7dbvo"]
+_data = [Vector2(0.0059999973, 0), 0.0, 0.0, 0, 0, Vector2(0.102, 0.16115701), 0.0, 0.0, 0, 0, Vector2(0.246, 0.6487603), 0.0, 0.0, 0, 0, Vector2(0.402, 1), 0.0, 0.0, 0, 0, Vector2(0.702, 0.8471074), 0.0, 0.0, 0, 0, Vector2(0.902, 0.35123968), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_7dbvo"]
+curve = SubResource("Curve_7dbvo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fyrvj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(220, 18, 1)
+angle_min = -19.99999
+angle_max = 20.000011
+direction = Vector3(0, -1, 0)
+spread = 28.0
+flatness = 1.0
+initial_velocity_min = 45.0
+initial_velocity_max = 155.0
+gravity = Vector3(0, -25, 0)
+scale_min = 0.03
+scale_max = 0.08
+scale_curve = SubResource("CurveTexture_7dbvo")
+color_ramp = SubResource("GradientTexture1D_7dbvo")
+
+[sub_resource type="Gradient" id="Gradient_baiy7"]
+offsets = PackedFloat32Array(0, 0.24423963, 0.7096774, 1)
+colors = PackedColorArray(1, 0.95686275, 0.6392157, 1, 1, 0.6901961, 0, 1, 1, 0.2901961, 0.039215688, 1, 0.5411765, 0.07058824, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_so7tl"]
+gradient = SubResource("Gradient_baiy7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up2px"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(220, 15, 1)
+direction = Vector3(0, -1, 0)
+spread = 35.0
+flatness = 1.0
+initial_velocity_min = 160.0
+initial_velocity_max = 190.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.01
+scale_max = 0.02
+color_ramp = SubResource("GradientTexture1D_so7tl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3fu6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 50.0
+gravity = Vector3(0, -8, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.71796376, 0.71796435, 0.7179637, 0.5372549)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5svl"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 50.0
+initial_velocity_min = 283.19
+initial_velocity_max = 327.44
+gravity = Vector3(0, -8, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.71796376, 0.71796435, 0.7179637, 0.5372549)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="Curve" id="Curve_lb06u"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_a3fu6"]
+curve = SubResource("Curve_lb06u")
+
+[sub_resource type="Curve" id="Curve_u5svl"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_8rr0g"]
+curve = SubResource("Curve_u5svl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fmwff"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 10, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 20.0
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, -8, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_8rr0g")
+color = Color(0.44755095, 0.44755095, 0.44755095, 0.34901962)
+alpha_curve = SubResource("CurveTexture_a3fu6")
+
 [sub_resource type="Animation" id="Animation_ppy38"]
 length = 0.001
 tracks/0/type = "value"
@@ -450,7 +449,6 @@ script = ExtResource("1_mebys")
 metadata/_edit_vertical_guides_ = [7836.0]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=474005028]
-modulate = Color(0.74138474, 0.7413847, 0.74138457, 1)
 
 [node name="SpawnPoint" type="Marker2D" parent="Node2D" unique_id=2099363638]
 position = Vector2(635, 1074)
@@ -470,339 +468,6 @@ parameters/looping = true
 z_index = 2
 position = Vector2(3816, 881)
 collision_mask = 256
-
-[node name="Difficulty" type="Node2D" parent="World" unique_id=1391593506]
-z_index = 15
-
-[node name="Smokes" type="Node2D" parent="World/Difficulty" unique_id=2068246158]
-position = Vector2(1727, 956)
-
-[node name="SmokeSurvivorFX" type="Node2D" parent="World/Difficulty/Smokes" unique_id=1210806157]
-
-[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=81671639]
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=345948567 instance=ExtResource("32_up2px")]
-z_index = 30
-position = Vector2(-645, 226)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_lb06u")
-
-[node name="Smoke2" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=744097516 instance=ExtResource("32_up2px")]
-position = Vector2(4662, 151)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke2" index="0" unique_id=1984324698]
-z_index = 30
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_lb06u")
-
-[node name="Smoke3" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=652094797 instance=ExtResource("32_up2px")]
-position = Vector2(433, 187)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
-z_index = -40
-position = Vector2(87, -115)
-scale = Vector2(0.1, 3)
-amount = 10
-lifetime = 5.279999999999999
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="Smoke4" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=441946977 instance=ExtResource("32_up2px")]
-position = Vector2(1761, 171)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(18, -98)
-amount = 8
-lifetime = 27.76
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="FiresKing" type="Node2D" parent="World/Difficulty" unique_id=389079933]
-
-[node name="FireLeft" parent="World/Difficulty/FiresKing" unique_id=1456727308 instance=ExtResource("35_jr3jl")]
-position = Vector2(6378, 1140)
-
-[node name="FireCenter" parent="World/Difficulty/FiresKing/FireLeft" index="0" unique_id=731474519]
-position = Vector2(19, 60)
-amount = 350
-process_material = SubResource("ParticleProcessMaterial_fyrvj")
-
-[node name="EmbersCenter" parent="World/Difficulty/FiresKing/FireLeft" index="1" unique_id=1250676070]
-position = Vector2(15, -193)
-amount = 45
-process_material = SubResource("ParticleProcessMaterial_up2px")
-
-[node name="FireLight" parent="World/Difficulty/FiresKing/FireLeft" index="2" unique_id=497583012]
-position = Vector2(3, -2)
-energy = 7.33
-texture_scale = 2.0
-
-[node name="FireRight" parent="World/Difficulty/FiresKing" unique_id=1824775444 instance=ExtResource("35_jr3jl")]
-position = Vector2(1088, 1174)
-
-[node name="FireLight" parent="World/Difficulty/FiresKing/FireRight" index="2" unique_id=497583012]
-position = Vector2(-7, -61)
-energy = 10.11
-shadow_enabled = true
-
-[node name="SmokeKingFX" type="Node2D" parent="World/Difficulty/FiresKing" unique_id=1409322718]
-position = Vector2(1727, 956)
-
-[node name="SmokeSurvivorFX2" type="Node2D" parent="World/Difficulty/FiresKing/SmokeKingFX" unique_id=1668806686]
-
-[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2" unique_id=855232259]
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=1897603816 instance=ExtResource("32_up2px")]
-position = Vector2(-645, 226)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_lb06u")
-
-[node name="Smoke2" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=823606653 instance=ExtResource("32_up2px")]
-position = Vector2(4662, 151)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke2" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_lb06u")
-
-[node name="Smoke3" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=203939187 instance=ExtResource("32_up2px")]
-position = Vector2(433, 187)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
-z_index = -40
-position = Vector2(87, -115)
-scale = Vector2(0.1, 3)
-amount = 10
-lifetime = 5.279999999999999
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="Smoke4" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=2014984074 instance=ExtResource("32_up2px")]
-position = Vector2(1761, 171)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(18, -98)
-amount = 8
-lifetime = 27.76
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/FiresKing/SmokeKingFX" unique_id=1388353517]
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=1255758001 instance=ExtResource("32_up2px")]
-position = Vector2(-645, 226)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(48, -428)
-amount = 300
-lifetime = 2.13
-process_material = SubResource("ParticleProcessMaterial_a3fu6")
-
-[node name="Smoke5" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=1121432877 instance=ExtResource("32_up2px")]
-position = Vector2(4655, 93)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke5" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 200
-lifetime = 4.92
-process_material = SubResource("ParticleProcessMaterial_u5svl")
-
-[node name="Smoke3" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=1817881623 instance=ExtResource("32_up2px")]
-position = Vector2(433, 187)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
-z_index = -40
-position = Vector2(87, -115)
-amount = 15
-lifetime = 15.0
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="Smoke4" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=973796580 instance=ExtResource("32_up2px")]
-position = Vector2(1761, 171)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 15
-lifetime = 15.0
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="BigSmoke" parent="World/Difficulty/FiresKing/SmokeKingFX" unique_id=379562481 instance=ExtResource("34_hpfpo")]
-z_index = 50
-position = Vector2(4676, 203)
-
-[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" index="0" unique_id=1984324698]
-amount = 100
-lifetime = 3.44
-process_material = SubResource("ParticleProcessMaterial_fmwff")
-
-[node name="SmokeCeilling" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" index="1" unique_id=1581654365]
-position = Vector2(-7885.0005, -888)
-scale = Vector2(10, 10)
-amount = 300
-lifetime = 21.270000000000003
-process_material = SubResource("ParticleProcessMaterial_itas7")
-
-[node name="Smoke2" type="GPUParticles2D" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" unique_id=600736653]
-position = Vector2(-5341, -67)
-amount = 100
-texture = ExtResource("6_fmwff")
-lifetime = 3.44
-preprocess = 8.0
-randomness = 0.5
-visibility_rect = Rect2(-400, -1200, 800, 1400)
-process_material = SubResource("ParticleProcessMaterial_fmwff")
-
-[node name="Enemies" type="Node2D" parent="World/Difficulty" unique_id=359324376]
-
-[node name="EnemyExplorer" type="Node2D" parent="World/Difficulty/Enemies" unique_id=364855539]
-visible = false
-
-[node name="Mousquito" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=1197171326 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(1063, 664)
-
-[node name="Mousquito2" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=156221535 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(3977, 243)
-
-[node name="Mosquito" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=915889274 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(5605, 842)
-
-[node name="Snake" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=88320707 instance=ExtResource("21_itas7")]
-position = Vector2(2203.9998, 853.99994)
-scale = Vector2(0.72, 0.72)
-
-[node name="Snake2" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=169558206 instance=ExtResource("21_itas7")]
-position = Vector2(3994, 1034)
-scale = Vector2(0.72, 0.72)
-
-[node name="Snake4" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=5945529 instance=ExtResource("21_itas7")]
-position = Vector2(8576, 976)
-scale = Vector2(0.72, 0.72)
-
-[node name="Snake3" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=2023683292 instance=ExtResource("21_itas7")]
-position = Vector2(6755, 949)
-scale = Vector2(0.72, 0.72)
-
-[node name="EnemySurvivor" type="Node2D" parent="World/Difficulty/Enemies" unique_id=1082956894]
-scale = Vector2(1.2, 1.2)
-
-[node name="Mousquito" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=55077267 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(1047.8333, 408.3333)
-
-[node name="Mousquito3" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=140725384 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(950.83325, 273.3333)
-
-[node name="Mousquito2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=510628630 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(3311.6665, 475)
-
-[node name="Mousquito4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1222713536 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(3505.6665, 529)
-
-[node name="Mosquito" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=2034538829 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(4599.1665, 499.99997)
-
-[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1562837340 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(4787.1665, 434.99997)
-
-[node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=17557432 instance=ExtResource("22_xt3fa")]
-position = Vector2(1817.4999, 783.6665)
-
-[node name="Snake5" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1488083492 instance=ExtResource("21_itas7")]
-z_index = 25
-position = Vector2(2018.3333, 719.99994)
-scale = Vector2(1, 1)
-
-[node name="SnakeMelee2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1794675567 instance=ExtResource("22_xt3fa")]
-position = Vector2(5894.1665, 833.3333)
-
-[node name="Snake4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=346834228 instance=ExtResource("21_itas7")]
-position = Vector2(5711.666, 775)
-scale = Vector2(1, 1)
-
-[node name="EnemyKing" type="Node2D" parent="World/Difficulty/Enemies" unique_id=1003634315]
-visible = false
-scale = Vector2(1.4, 1.4)
-
-[node name="Mousquito" parent="World/Difficulty/Enemies/EnemyKing" unique_id=355998884 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(818.4286, 433.2857)
-
-[node name="Mousquito5" parent="World/Difficulty/Enemies/EnemyKing" unique_id=183105642 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(928.4286, 234.2857)
-
-[node name="Mousquito3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1195104129 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(721.4286, 298.2857)
-
-[node name="Mousquito2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1197703305 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(2782.5713, 301.42856)
-
-[node name="Mousquito6" parent="World/Difficulty/Enemies/EnemyKing" unique_id=403953307 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(2628.5713, 397.42856)
-
-[node name="Mousquito4" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1899716805 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(2976.5713, 355.42856)
-
-[node name="Mosquito" parent="World/Difficulty/Enemies/EnemyKing" unique_id=493889028 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(3744.2856, 441.85715)
-
-[node name="Mosquito3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=889652811 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(3748.2856, 257.85715)
-
-[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=376121461 instance=ExtResource("13_oiu73")]
-z_index = 50
-position = Vector2(3932.2856, 376.85715)
-
-[node name="SnakeHeal" parent="World/Difficulty/Enemies/EnemyKing" unique_id=302247270 instance=ExtResource("23_lb06u")]
-position = Vector2(1951.4286, 692.8572)
-
-[node name="SnakeDistance" parent="World/Difficulty/Enemies/EnemyKing" unique_id=779726118 instance=ExtResource("24_hpfpo")]
-position = Vector2(1784.2859, 710.7143)
-
-[node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1351381869 instance=ExtResource("22_xt3fa")]
-position = Vector2(1552.8572, 677.1428)
-
-[node name="SnakeHeal2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1664355129 instance=ExtResource("23_lb06u")]
-position = Vector2(5040, 683.5715)
-
-[node name="SnakeMelee2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1931005927 instance=ExtResource("22_xt3fa")]
-position = Vector2(4652.8574, 639.2857)
-
-[node name="SnakeDistance2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=642605767 instance=ExtResource("24_hpfpo")]
-position = Vector2(4850, 762.1429)
-
-[node name="Snake3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=763249970 instance=ExtResource("21_itas7")]
-position = Vector2(6080, 615)
-scale = Vector2(1, 1)
 
 [node name="Parallax" type="Node2D" parent="World" unique_id=1981445725]
 z_index = -40
@@ -1285,6 +950,365 @@ position = Vector2(3312, 287)
 modulate = Color(0.7146291, 0.71462905, 0.71462905, 1)
 z_index = 20
 position = Vector2(9129, 957)
+
+[node name="Difficulty" type="Node2D" parent="World" unique_id=1391593506]
+z_index = 15
+
+[node name="Smokes" type="Node2D" parent="World/Difficulty" unique_id=2068246158]
+position = Vector2(1727, 956)
+
+[node name="SmokeSurvivorFX" type="Node2D" parent="World/Difficulty/Smokes" unique_id=1210806157]
+
+[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=81671639]
+
+[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=345948567 instance=ExtResource("32_up2px")]
+z_index = 30
+position = Vector2(-645, 226)
+
+[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(87, -115)
+amount = 15
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_lb06u")
+
+[node name="Smoke2" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=744097516 instance=ExtResource("32_up2px")]
+position = Vector2(4662, 151)
+
+[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke2" index="0" unique_id=1984324698]
+z_index = 30
+position = Vector2(87, -115)
+amount = 15
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_lb06u")
+
+[node name="Smoke3" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=652094797 instance=ExtResource("32_up2px")]
+position = Vector2(433, 187)
+
+[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
+z_index = -40
+position = Vector2(87, -115)
+scale = Vector2(0.1, 3)
+amount = 10
+lifetime = 5.279999999999999
+process_material = SubResource("ParticleProcessMaterial_xt3fa")
+
+[node name="Smoke4" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=441946977 instance=ExtResource("32_up2px")]
+position = Vector2(1761, 171)
+
+[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(18, -98)
+amount = 8
+lifetime = 27.76
+process_material = SubResource("ParticleProcessMaterial_xt3fa")
+
+[node name="SmokeCeilling" type="GPUParticles2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=1991169451]
+visible = false
+z_index = 100
+position = Vector2(-1396, -202.00002)
+scale = Vector2(10, 10)
+amount = 80
+texture = ExtResource("6_fmwff")
+lifetime = 21.270000000000003
+preprocess = 20.0
+randomness = 0.4
+visibility_rect = Rect2(-5000, -2000, 10000, 4000)
+process_material = SubResource("ParticleProcessMaterial_itas7")
+
+[node name="SmokeCeilling2" type="GPUParticles2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=188981323]
+visible = false
+z_index = 100
+position = Vector2(4725, -344.99997)
+scale = Vector2(10, 10)
+amount = 300
+texture = ExtResource("6_fmwff")
+lifetime = 21.270000000000003
+preprocess = 20.0
+randomness = 0.4
+visibility_rect = Rect2(-5000, -2000, 10000, 4000)
+process_material = SubResource("ParticleProcessMaterial_itas7")
+
+[node name="FiresKing" type="Node2D" parent="World/Difficulty" unique_id=389079933]
+position = Vector2(7, -32)
+
+[node name="FireLeft" parent="World/Difficulty/FiresKing" unique_id=1456727308 instance=ExtResource("35_jr3jl")]
+position = Vector2(6378, 1140)
+
+[node name="FireCenter" parent="World/Difficulty/FiresKing/FireLeft" index="0" unique_id=731474519]
+position = Vector2(19, 60)
+amount = 350
+process_material = SubResource("ParticleProcessMaterial_fyrvj")
+
+[node name="EmbersCenter" parent="World/Difficulty/FiresKing/FireLeft" index="1" unique_id=1250676070]
+position = Vector2(15, -193)
+amount = 45
+process_material = SubResource("ParticleProcessMaterial_up2px")
+
+[node name="FireLight" parent="World/Difficulty/FiresKing/FireLeft" index="2" unique_id=497583012]
+position = Vector2(3, -2)
+energy = 7.33
+texture_scale = 2.0
+
+[node name="FireRight" parent="World/Difficulty/FiresKing" unique_id=1824775444 instance=ExtResource("35_jr3jl")]
+position = Vector2(1161, 1219)
+
+[node name="FireLight" parent="World/Difficulty/FiresKing/FireRight" index="2" unique_id=497583012]
+position = Vector2(38, -416)
+energy = 3.0
+shadow_enabled = true
+
+[node name="SmokeKingFX" type="Node2D" parent="World/Difficulty/FiresKing" unique_id=1409322718]
+position = Vector2(1727, 956)
+
+[node name="SmokeSurvivorFX2" type="Node2D" parent="World/Difficulty/FiresKing/SmokeKingFX" unique_id=1668806686]
+
+[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2" unique_id=855232259]
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=1897603816 instance=ExtResource("32_up2px")]
+position = Vector2(-645, 226)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(87, -115)
+amount = 15
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_lb06u")
+
+[node name="Smoke2" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=823606653 instance=ExtResource("32_up2px")]
+position = Vector2(4662, 151)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke2" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(87, -115)
+amount = 15
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_lb06u")
+
+[node name="Smoke3" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=203939187 instance=ExtResource("32_up2px")]
+position = Vector2(433, 187)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
+z_index = -40
+position = Vector2(87, -115)
+scale = Vector2(0.1, 3)
+amount = 10
+lifetime = 5.279999999999999
+process_material = SubResource("ParticleProcessMaterial_xt3fa")
+
+[node name="Smoke4" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke" unique_id=2014984074 instance=ExtResource("32_up2px")]
+position = Vector2(1761, 171)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/SmokeSurvivorFX2/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(18, -98)
+amount = 8
+lifetime = 27.76
+process_material = SubResource("ParticleProcessMaterial_xt3fa")
+
+[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/FiresKing/SmokeKingFX" unique_id=1388353517]
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=1255758001 instance=ExtResource("32_up2px")]
+position = Vector2(-645, 226)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(48, -428)
+amount = 300
+lifetime = 2.13
+process_material = SubResource("ParticleProcessMaterial_a3fu6")
+
+[node name="Smoke5" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=1121432877 instance=ExtResource("32_up2px")]
+position = Vector2(4655, 93)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke5" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(87, -115)
+amount = 200
+lifetime = 4.92
+process_material = SubResource("ParticleProcessMaterial_u5svl")
+
+[node name="Smoke3" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=1817881623 instance=ExtResource("32_up2px")]
+position = Vector2(433, 187)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
+z_index = -40
+position = Vector2(87, -115)
+amount = 15
+lifetime = 15.0
+process_material = SubResource("ParticleProcessMaterial_xt3fa")
+
+[node name="Smoke4" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke" unique_id=973796580 instance=ExtResource("32_up2px")]
+position = Vector2(1761, 171)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(87, -115)
+amount = 15
+lifetime = 15.0
+process_material = SubResource("ParticleProcessMaterial_xt3fa")
+
+[node name="BigSmoke" parent="World/Difficulty/FiresKing/SmokeKingFX" unique_id=379562481 instance=ExtResource("34_hpfpo")]
+z_index = 50
+position = Vector2(4676, 203)
+
+[node name="Smoke" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" index="0" unique_id=1984324698]
+amount = 100
+lifetime = 3.44
+process_material = SubResource("ParticleProcessMaterial_fmwff")
+
+[node name="SmokeCeilling" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" index="1" unique_id=1581654365]
+visible = false
+position = Vector2(-7885.0005, -888)
+scale = Vector2(10, 10)
+amount = 300
+lifetime = 21.270000000000003
+process_material = SubResource("ParticleProcessMaterial_itas7")
+
+[node name="Smoke2" type="GPUParticles2D" parent="World/Difficulty/FiresKing/SmokeKingFX/BigSmoke" unique_id=600736653]
+position = Vector2(-5326, -176)
+amount = 100
+texture = ExtResource("6_fmwff")
+lifetime = 3.44
+preprocess = 8.0
+randomness = 0.5
+visibility_rect = Rect2(-400, -1200, 800, 1400)
+process_material = SubResource("ParticleProcessMaterial_fmwff")
+
+[node name="Enemies" type="Node2D" parent="World/Difficulty" unique_id=359324376]
+
+[node name="EnemyExplorer" type="Node2D" parent="World/Difficulty/Enemies" unique_id=364855539]
+visible = false
+
+[node name="Mosquito3" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=1197171326 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(1063, 664)
+
+[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=156221535 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3977, 243)
+
+[node name="Mosquito" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=915889274 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(5605, 842)
+
+[node name="Snake" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=88320707 instance=ExtResource("21_itas7")]
+position = Vector2(2203.9998, 853.99994)
+scale = Vector2(1, 1)
+
+[node name="Snake2" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=169558206 instance=ExtResource("21_itas7")]
+position = Vector2(3994, 1034)
+scale = Vector2(1, 1)
+
+[node name="Snake4" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=5945529 instance=ExtResource("21_itas7")]
+position = Vector2(8576, 976)
+scale = Vector2(1, 1)
+
+[node name="Snake3" parent="World/Difficulty/Enemies/EnemyExplorer" unique_id=2023683292 instance=ExtResource("21_itas7")]
+position = Vector2(6755, 949)
+scale = Vector2(1, 1)
+
+[node name="EnemySurvivor" type="Node2D" parent="World/Difficulty/Enemies" unique_id=1082956894]
+visible = false
+scale = Vector2(1.2, 1.2)
+
+[node name="Mosquito3" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=55077267 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(1047.8333, 408.3333)
+
+[node name="Mosquito4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=140725384 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(950.83325, 273.3333)
+
+[node name="Mosquito5" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=510628630 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3311.6665, 475)
+
+[node name="Mousquito4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1222713536 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3505.6665, 529)
+
+[node name="Mosquito" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=2034538829 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(4599.1665, 499.99997)
+
+[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1562837340 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(4787.1665, 434.99997)
+
+[node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=17557432 instance=ExtResource("22_xt3fa")]
+position = Vector2(1547.4999, 787.5)
+
+[node name="Snake" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1488083492 instance=ExtResource("21_itas7")]
+z_index = 25
+position = Vector2(1812.4999, 735.8333)
+scale = Vector2(1, 1)
+
+[node name="SnakeMelee2" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=1794675567 instance=ExtResource("22_xt3fa")]
+position = Vector2(5894.1665, 833.3333)
+
+[node name="Snake4" parent="World/Difficulty/Enemies/EnemySurvivor" unique_id=346834228 instance=ExtResource("21_itas7")]
+position = Vector2(5711.666, 775)
+scale = Vector2(1, 1)
+
+[node name="EnemyKing" type="Node2D" parent="World/Difficulty/Enemies" unique_id=1003634315]
+scale = Vector2(1.4, 1.4)
+
+[node name="Mosquito4" parent="World/Difficulty/Enemies/EnemyKing" unique_id=355998884 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(818.4286, 433.2857)
+
+[node name="Mosquito5" parent="World/Difficulty/Enemies/EnemyKing" unique_id=183105642 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(928.4286, 234.2857)
+
+[node name="Mosquito6" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1195104129 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(721.4286, 298.2857)
+
+[node name="Mosquito7" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1197703305 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(2782.5713, 301.42856)
+
+[node name="Mosquito8" parent="World/Difficulty/Enemies/EnemyKing" unique_id=403953307 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(2628.5713, 397.42856)
+
+[node name="Mosquito9" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1899716805 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(2976.5713, 355.42856)
+
+[node name="Mosquito" parent="World/Difficulty/Enemies/EnemyKing" unique_id=493889028 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3744.2856, 441.85715)
+
+[node name="Mosquito3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=889652811 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3748.2856, 257.85715)
+
+[node name="Mosquito2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=376121461 instance=ExtResource("13_oiu73")]
+z_index = 50
+position = Vector2(3932.2856, 376.85715)
+
+[node name="SnakeHeal" parent="World/Difficulty/Enemies/EnemyKing" unique_id=302247270 instance=ExtResource("23_lb06u")]
+position = Vector2(1566.4286, 709.2857)
+
+[node name="SnakeMelee" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1351381869 instance=ExtResource("22_xt3fa")]
+position = Vector2(1133.5715, 739.2857)
+
+[node name="SnakeHeal2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1664355129 instance=ExtResource("23_lb06u")]
+position = Vector2(5040, 683.5715)
+
+[node name="SnakeMelee2" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1931005927 instance=ExtResource("22_xt3fa")]
+position = Vector2(4652.8574, 639.2857)
+
+[node name="Snake3" parent="World/Difficulty/Enemies/EnemyKing" unique_id=763249970 instance=ExtResource("21_itas7")]
+position = Vector2(4836.4287, 660.7143)
+scale = Vector2(1, 1)
+
+[node name="Snake" parent="World/Difficulty/Enemies/EnemyKing" unique_id=1925600390 instance=ExtResource("21_itas7")]
+position = Vector2(337.85715, 682.8571)
+scale = Vector2(1, 1)
 
 [node name="GroundFog" type="Node2D" parent="." unique_id=176729669]
 position = Vector2(-15, -75)
