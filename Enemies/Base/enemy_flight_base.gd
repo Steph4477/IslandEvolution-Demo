@@ -46,16 +46,16 @@ func stop_flight():
 	velocity = Vector2.ZERO
 
 func update_flip():
-	if sprite == null:
+	if rotator == null:
 		return
 
 	if flight_velocity.x == 0:
 		return
 
 	if flight_velocity.x < 0:
-		sprite.scale.x = abs(sprite.scale.x)
+		rotator.scale.x = abs(rotator.scale.x)
 	else:
-		sprite.scale.x = -abs(sprite.scale.x)
+		rotator.scale.x = -abs(rotator.scale.x)
 
 func play_flight_anim(anim_name):
 	if anim == null:
