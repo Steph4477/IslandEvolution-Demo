@@ -7,7 +7,6 @@ var gs
 
 func _ready():
 	gs = get_node("/root/GameState")
-	gs.breath_bar = self
 
 	hide_bar()
 

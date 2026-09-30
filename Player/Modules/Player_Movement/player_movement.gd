@@ -16,12 +16,8 @@ func process(delta, was_on_floor):
 		p.velocity.x = 0
 		return
 
-	process_harpooned(delta)
-
 	if not p.can_move:
 		return
-
-	update_push_pull_state()
 
 	process_climb()
 	process_liana(delta)
@@ -29,26 +25,17 @@ func process(delta, was_on_floor):
 
 	move_horizontal()
 
-	process_swim(delta)
-	process_swim_under_water(delta)
-
 	process_hang_swing(delta)
 
 	track_fall_speed(was_on_floor)
 
 func post_physics(was_on_floor):
-	if p.is_harpooned:
-		return
-
 	apply_fall_damage(was_on_floor)
 	process_wall_jump_input()
 
 # ============================================================================
 #                           MOUVEMENTS
 # ============================================================================
-func update_push_pull_state():
-	p.is_pushing_or_pulling = p.can_push_pull and Input.is_action_pressed("interact")
-
 func move_horizontal():
 	if p.is_on_liana:
 		p.velocity.x = 0
@@ -57,12 +44,9 @@ func move_horizontal():
 	var dir = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
 	var current_speed = p.speed
 
-	if p.is_sprinting:
-		current_speed = p.speed * 1.5
-
 	p.velocity.x = dir * current_speed
 
-	if dir != 0 and not p.is_pushing_or_pulling:
+	if dir != 0:
 		p.sprite.scale.x = abs(p.sprite.scale.x)
 
 		if dir > 0:
@@ -124,9 +108,6 @@ func process_liana(_delta):
 	if not p.is_on_liana or p.current_liana == null or p.did_double_jump:
 		return
 
-	p.is_swimming = false
-	p.is_swimming_under_water = false
-
 	p.velocity = Vector2.ZERO
 	hand_to_grip()
 
@@ -172,13 +153,9 @@ func detach_to_liana():
 #                           JUMP / WALL JUMP
 # ============================================================================
 func update_jump(delta):
-	if p.is_harpooned or not p.can_move:
+	if not p.can_move:
 		p.is_jumping = false
 		p.jump_count = 0
-		return
-
-	if p.is_swimming or p.is_swimming_under_water:
-		p.is_jumping = false
 		return
 
 	# Si Moko est sur un arbre, ui_up sert à grimper, pas à sauter
@@ -198,25 +175,19 @@ func update_jump(delta):
 
 	if jump_pressed and p.jump_count < p.max_jump_count:
 		p.velocity.y = p.jump_force
-		p.is_ramping = false
 		p.jump_count += 1
 		p.is_jumping = true
 
 	if not p.is_on_floor():
 		p.is_jumping = true
-		if not p.is_ramping:
-			p.velocity.y += p.gravity * p.gravity_factor * delta
+		
+		p.velocity.y += p.gravity * p.gravity_factor * delta
 
 
 func process_wall_jump_input():
-	if p.is_harpooned:
-		return
-
 	if p.is_on_floor():
 		return
 	if p.is_on_liana:
-		return
-	if p.is_swimming or p.is_swimming_under_water:
 		return
 
 	if p.is_on_wall() and Input.is_action_just_pressed("jump"):
@@ -236,48 +207,6 @@ func wall_jump():
 	p.velocity.x = dir * p.speed
 
 # ============================================================================
-#                                SWIM
-# ============================================================================
-func process_swim(delta):
-	if p.is_swimming:
-		p.swim_timer += delta
-		var h = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
-		p.velocity.x = h * p.speed * 0.5 + p.water_current.x
-		p.velocity.y = 0
-
-		if h != 0:
-			p.sprite.scale.x = abs(p.sprite.scale.x)
-
-			if h > 0:
-				p.sprite.flip_h = false
-			else:
-				p.sprite.flip_h = true
-
-
-func process_swim_under_water(delta):
-	if p.is_swimming_under_water:
-		p.swim_timer += delta
-		var h = Input.get_action_strength(p.INPUT["right"]) - Input.get_action_strength(p.INPUT["left"])
-		var v = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-
-		p.velocity.x = h * p.speed * 0.8 + p.water_current.x
-		p.velocity.y = v * p.speed * 0.35
-
-		if h != 0:
-			p.sprite.scale.x = abs(p.sprite.scale.x)
-
-			if h > 0:
-				p.sprite.flip_h = false
-			else:
-				p.sprite.flip_h = true
-
-		if p.game_state and p.game_state.hud:
-			p.game_state.hud.set_underwater_gamepad(true)
-	else:
-		if p.game_state and p.game_state.hud:
-			p.game_state.hud.set_underwater_gamepad(false)
-
-# ============================================================================
 #                           FALL DAMAGE
 # ============================================================================
 func track_fall_speed(was_on_floor):
@@ -287,7 +216,7 @@ func track_fall_speed(was_on_floor):
 	if p.is_hit_locked:
 		return
 
-	if p.is_swimming or p.is_swimming_under_water or p.is_on_liana or p.climbing_anim != "" or p.is_hanging or p.is_camouflaged:
+	if p.is_on_liana or p.climbing_anim != "" or p.is_hanging:
 		p.fall_speed_track = 0
 		fall_damage_consumed = false
 		fall_landed_confirmed = false
@@ -354,26 +283,3 @@ func apply_fall_damage(was_on_floor):
 		fall_landed_confirmed = true
 
 		p.damage_mod.on_hit(dmg)
-
-# ============================================================================
-#                                HARPOONED
-# ============================================================================
-
-func process_harpooned(delta):
-	if not p.is_harpooned:
-		return
-
-	p.is_hanging = false
-	p.is_on_liana = false
-	p.climbing_anim = ""
-	p.is_jumping = false
-	p.is_ramping = false
-	p.is_sprinting = false
-	p.jump_count = 0
-
-	p.velocity.x = 0
-
-	if p.is_on_floor():
-		p.velocity.y = 0
-	else:
-		p.velocity.y += p.gravity * p.gravity_factor * delta

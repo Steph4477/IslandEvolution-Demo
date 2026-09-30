@@ -143,9 +143,6 @@ func on_hit(amount):
 	hp -= amount
 	hp = max(hp, 0)
 
-	if gs:
-		gs.update_boss_fight_hud()
-
 	if hb:
 		hb.set_value(hp)
 

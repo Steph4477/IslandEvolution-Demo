@@ -23,7 +23,7 @@ var gs
 
 func _ready():
 	gs = get_node("/root/GameState")
-	gs.difficulty = "king" # test difficulté
+	#gs.difficulty = "king" # test difficulté
 
 	await get_tree().process_frame
 

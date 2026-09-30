@@ -14,18 +14,10 @@ var has_last_player_pos = false
 
 # --- Données globales ---
 var banane_count = 0
-var honey_count = 0
 var coco_count = 0
-var bone_count = 0
 var heal_amount = 0
-var honey_amount = 0
-var lance_count = 0
 var can_fire_coco = false
-var can_fire_lance = false
-var can_fire_bone = false
-var can_camouflage = false
 var has_key = false
-var has_flower = false
 var toucan_challenge_retry = false
 var focus_cam_frog = false
 
@@ -39,31 +31,16 @@ var killed_enemy_ids = []
 var collected_loot_ids = []
 var loot_level_path = ""
 
-# --- Camouflage ---
-var camouflage_unlocked = false
-var camouflage_count = 0
-var is_camouflaged = false
 
 # --- Compétences débloquées ---
-var sprint_unlocked = false
-var sprint_stamina_max = 100
-var sprint_stamina = 100
-var sprint_stamina_cost = 40
-var sprint_stamina_regen = 25
 var double_jump_unlocked = false
-var ramp_unlocked = false
 
 # --- Dialogues uniques ---
 var toucan_dialogue_seen = false
-var pygmy_dialogue_seen = false
-var lvl1_intro_seen = false
-var toucan_challenge_intro_seen = false
 
-# -- Défi du Toucan ---
-var toucan_challenge_done = false
-var respawn_point_name = ""
-var toucan_fall_done = false
-var toucan_froggle_spawned = false
+var lvl1_intro_seen = false
+
+
 
 # --- Joueur, HUD & Scènes ---
 var player_scene = preload("res://Player/player.tscn")
@@ -72,14 +49,10 @@ var player = null
 var hud_scene = preload("res://Hud/Hud.tscn")
 var hud = null
 
-var boss_fight_hud_scene = preload("res://Hud/BossHud/HudFightBoss/hud_fight_boss.tscn")
-var boss_fight_hud = null
-
 var health_bar = null
 
-var breath_bar = null
 var fire_buff_unlocked = false
-var air_buff_unlocked = false
+
 
 var fade_scene = preload("res://Effects/Fade/fade.tscn")
 var fade = null
@@ -109,28 +82,15 @@ var is_paused = false
 # --- Signaux ---
 signal all_seeds_collected
 signal key_collected
-signal flower_collected
 signal player_updated(new_player)
-signal digicode_ok
+
 
 ##################################################################################
 #                            QUETES                                              #
 ##################################################################################
 # --- Craft skill_fire ---
 var wood_collected = false
-var stone_collected = false
-var fire_recipe_unlocked = false
-var fire_recipe_dialog_shown = false
-var fire_craft_revealed = false
-var fire_altar_found = false
 
-# --- Craft skill_air ---
-var leaf_collected = false
-var idole_collected = false
-var air_recipe_unlocked = false
-var air_recipe_dialog_shown = false
-var air_craft_revealed = false
-var air_altar_found = false
 
 # --- Lvl_1 Collecte de graines ---
 var lvl1_quest_revealed = false
@@ -138,8 +98,6 @@ var lvl1_seeds_done = false
 var lvl1_totem_done = false
 var lvl1_key_done = false
 
-# --- Lvl_2 Collecte de graines ---
-var crank_unlocked = false
 
 ##################################################################################
 #                            SCORE                                               #
@@ -251,7 +209,6 @@ func restart_game():
 	reset_progression()
 	await load_level("res://Levels/Lvl1/lvl_1.tscn")
 
-
 # Continuer
 func continue_game():
 	load_global_progress()
@@ -275,7 +232,6 @@ func load_save():
 
 func reset_session_dialogues():
 	toucan_dialogue_seen = false
-	pygmy_dialogue_seen = false
 
 func _find_spawn(level):
 	var direct = level.get_node_or_null("SpawnPoint")
@@ -326,11 +282,11 @@ func setup_level_score(level):
 	score_system.reset_level_score()
 	score_evolution_applied = false
 
-	var creatures = level.find_child("Creatures", true, false)
+	var enemies = level.find_child("Enemies", true, false)
 	var total_enemies = 0
 
-	if creatures:
-		total_enemies = score_system.count_enemies_in_node(creatures)
+	if enemies:
+		total_enemies = score_system.count_enemies_in_node(enemies)
 
 	score_system.set_enemies_total(total_enemies)
 
@@ -507,8 +463,6 @@ func reset_progression():
 	pending_level_path = ""
 	pending_player_pos = Vector2.ZERO
 
-	respawn_point_name = ""
-
 	# ============================================================
 	# SUPPRESSION DES ANCIENNES SAUVEGARDES
 	# ============================================================
@@ -552,27 +506,13 @@ func load_global_progress():
 	moko_hp_bonus_percent = int(data.get("moko_hp_bonus_percent", 0))
 	moko_evolution_percent = int(data.get("moko_evolution_percent", 0))
 	enemy_evolution_percent = int(data.get("enemy_evolution_percent", 0))
-
-	sprint_unlocked = data.get("sprint_unlocked", false)
 	double_jump_unlocked = data.get("double_jump_unlocked", false)
-	ramp_unlocked = data.get("ramp_unlocked", false)
 	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
-	air_buff_unlocked = data.get("air_buff_unlocked", false)
-	camouflage_unlocked = data.get("camouflage_unlocked", false)
-	camouflage_count = int(data.get("camouflage_count", 0))
-	can_camouflage = data.get("can_camouflage", false)
 
 	banane_count = int(data.get("banane_count", 0))
-	honey_count = int(data.get("honey_count", 0))
 	
 	coco_count = int(data.get("coco_count", 0))
 	can_fire_coco = data.get("can_fire_coco", false)
-	
-	bone_count = int(data.get("bone_count", 0))
-	can_fire_bone = data.get("can_fire_bone", false)
-
-	lance_count = int(data.get("lance_count", 0))
-	can_fire_lance = data.get("can_fire_lance", false)
 
 	print("LOAD GLOBAL PROGRESS")
 	print("DIFFICULTY LOADED : ", difficulty)
@@ -582,10 +522,6 @@ func load_global_progress():
 func load_level(scene_path):
 	resume_game()
 	await fade.fade_out()
-
-	if boss_fight_hud != null:
-		boss_fight_hud.queue_free()
-		boss_fight_hud = null
 
 	# Sauvegarde position du player 
 	if player:
@@ -612,10 +548,6 @@ func load_level(scene_path):
 	setup_level_score(level)
 
 	var spawn_point = null
-
-	if respawn_point_name != "":
-		spawn_point = level.find_child(respawn_point_name, true, false)
-		respawn_point_name = ""
 
 	if spawn_point == null:
 		spawn_point = _find_spawn(level)
@@ -694,100 +626,33 @@ func load_level(scene_path):
 		set_player(p)
 
 		p.coco_count = coco_count
-		p.bone_count = bone_count
-		p.lance_count = lance_count
 		p.seed_count = seed_count
-
 		p.can_fire_coco = can_fire_coco
-		p.can_fire_bone = can_fire_bone
-		p.can_fire_lance = can_fire_lance
-		
-		lance_count = p.lance_count
-		
-		p.can_camouflage = can_camouflage
-		p.can_sprint = sprint_unlocked
-		p.can_ramp = ramp_unlocked
 		p.double_jump_unlocked = double_jump_unlocked
 
 		p.heal_potions.clear()
 		for i in range(banane_count):
 			p.heal_potions.append("banane")
 
-		p.honey_potions.clear()
-		for i in range(honey_count):
-			p.honey_potions.append("honey")
-
 		if hud:
 			hud.update_lives_display(lives)
 			hud.update_seed_display(collected_seeds, total_seeds_in_level)
 
-			if sprint_unlocked:
-				hud._show_sprint()
-
-			if ramp_unlocked:
-				hud._show_ramp()
-
-			if camouflage_unlocked:
-				hud._show_camouflage()
+			print("======================================")
+			print("HUD FIRE DEBUG")
+			print("DIFFICULTY : ", difficulty)
+			print("FIRE UNLOCKED : ", fire_buff_unlocked)
+			print("======================================")
 
 			if fire_buff_unlocked:
 				hud._show_fire()
 
-			if air_buff_unlocked:
-				hud._show_air()
-
-			if bone_count > 0 or can_fire_bone:
-				hud._show_bone()
-
-			if lance_count > 0 or can_fire_lance:
-				hud._show_spear()
-
-			hud.update_lance_display()
-			hud.update_banane_display()
-			hud.update_honey_display()
-			hud.update_coco_display()
-			hud.update_bone_display()
-			hud.update_lance_display()
-			hud.update_camouflage_display()
-			hud.update_ramp_display()
-			hud.update_sprint_display()
 			hud.update_fire_display()
-			hud.update_air_display()
+			hud.update_banane_display()
+			hud.update_coco_display()
 
 	await fade.fade_in()
 
-# ============================================================================
-#                         BOSS FIGHT HUD
-# ============================================================================
-func show_boss_fight_hud(boss):
-	if hud and hud.has_method("set_gameplay_hud_visible"):
-		hud.set_gameplay_hud_visible(false)
-
-	if boss_fight_hud != null:
-		boss_fight_hud.queue_free()
-		boss_fight_hud = null
-
-	boss_fight_hud = boss_fight_hud_scene.instantiate()
-	add_child(boss_fight_hud)
-	boss_fight_hud.process_mode = Node.PROCESS_MODE_ALWAYS
-
-	boss_fight_hud.setup(player, boss)
-
-
-func hide_boss_fight_hud():
-	if boss_fight_hud != null:
-		boss_fight_hud.queue_free()
-		boss_fight_hud = null
-
-	if hud and hud.has_method("set_gameplay_hud_visible"):
-		hud.set_gameplay_hud_visible(true)
-
-
-func update_boss_fight_hud():
-	if boss_fight_hud == null:
-		return
-
-	boss_fight_hud.update_hud()
 # ===================================================================
 #                          SAVE / LOAD
 # ===================================================================
@@ -814,30 +679,15 @@ func save_game():
 
 	if player:
 		banane_count = player.heal_potions.size()
-		honey_count = player.honey_potions.size()
 		seed_count = player.seed_count
 
 	data["banane_count"] = banane_count
-	data["honey_count"] = honey_count
 	data["coco_count"] = coco_count
 	data["seed_count"] = seed_count
-	data["bone_count"] = bone_count
-	data["lance_count"] = lance_count
 	data["lives"] = lives
-
 	data["can_fire_coco"] = can_fire_coco
-	data["can_fire_lance"] = can_fire_lance
-	data["can_fire_bone"] = can_fire_bone
-
-	data["camouflage_unlocked"] = camouflage_unlocked
-	data["camouflage_count"] = camouflage_count
-	data["can_camouflage"] = can_camouflage
-
-	data["sprint_unlocked"] = sprint_unlocked
 	data["double_jump_unlocked"] = double_jump_unlocked
-	data["ramp_unlocked"] = ramp_unlocked
 	data["fire_buff_unlocked"] = fire_buff_unlocked
-	data["air_buff_unlocked"] = air_buff_unlocked
 
 	data["killed_enemy_ids"] = killed_enemy_ids
 
@@ -845,24 +695,11 @@ func save_game():
 	data["loot_level_path"] = loot_level_path
 
 	data["has_key"] = has_key
-	data["has_flower"] = has_flower
 	
 	data["wood_collected"] = wood_collected
-	data["stone_collected"] = stone_collected
-	data["fire_recipe_unlocked"] = fire_recipe_unlocked
-	data["fire_recipe_dialog_shown"] = fire_recipe_dialog_shown
-	data["fire_craft_revealed"] = fire_craft_revealed
-	data["fire_altar_found"] = fire_altar_found
-	
-	data["leaf_collected"] = leaf_collected
-	data["idole_collected"] = idole_collected
-	data["air_recipe_unlocked"] = air_recipe_unlocked
-	data["air_recipe_dialog_shown"] = air_recipe_dialog_shown
-	data["air_craft_revealed"] = air_craft_revealed
-	data["air_altar_found"] = air_altar_found
+
 	
 	data["lvl1_intro_seen"] = lvl1_intro_seen
-	data["toucan_challenge_intro_seen"] = toucan_challenge_intro_seen
 
 	data["difficulty"] = difficulty
 	data["explorer_unlocked"] = explorer_unlocked
@@ -918,28 +755,14 @@ func apply_save_data(data):
 	unlocked_level_path = data.get("unlocked_level_path", "res://Levels/Lvl1/lvl_1.tscn")
 
 	banane_count = int(data.get("banane_count", 0))
-	honey_count = int(data.get("honey_count", 0))
 	coco_count = int(data.get("coco_count", 0))
 	seed_count = int(data.get("seed_count", 0))
-	bone_count = int(data.get("bone_count", 0))
-	lance_count = int(data.get("lance_count", 0))
 	lives = int(data.get("lives", max_lives))
 
 	can_fire_coco = data.get("can_fire_coco", false)
 
-	can_fire_lance = data.get("can_fire_lance", false)
-
-	can_fire_bone = data.get("can_fire_bone", false)
-
-	camouflage_unlocked = data.get("camouflage_unlocked", false)
-	camouflage_count = int(data.get("camouflage_count", 0))
-	can_camouflage = data.get("can_camouflage", false)
-
-	sprint_unlocked = data.get("sprint_unlocked", false)
 	double_jump_unlocked = data.get("double_jump_unlocked", false)
-	ramp_unlocked = data.get("ramp_unlocked", false)
 	fire_buff_unlocked = data.get("fire_buff_unlocked", false)
-	air_buff_unlocked = data.get("air_buff_unlocked", false)
 
 	killed_enemy_ids = data.get("killed_enemy_ids", [])
 
@@ -947,24 +770,10 @@ func apply_save_data(data):
 	loot_level_path = data.get("loot_level_path", "")
 
 	has_key = data.get("has_key", false)
-	has_flower = data.get("has_flower", false)
-	
-	wood_collected = data.get("wood_collected", false)
-	stone_collected = data.get("stone_collected", false)
-	fire_recipe_unlocked = data.get("fire_recipe_unlocked", false)
-	fire_recipe_dialog_shown = data.get("fire_recipe_dialog_shown", false)
-	fire_craft_revealed = data.get("fire_craft_revealed", false)
-	fire_altar_found = data.get("fire_altar_found", false)
 
-	leaf_collected = data.get("leaf_collected", false)
-	idole_collected = data.get("idole_collected", false)
-	air_recipe_unlocked = data.get("air_recipe_unlocked", false)
-	air_recipe_dialog_shown = data.get("air_recipe_dialog_shown", false)
-	air_craft_revealed = data.get("air_craft_revealed", false)
-	air_altar_found = data.get("air_altar_found", false)
+	wood_collected = data.get("wood_collected", false)
 	
 	lvl1_intro_seen = data.get("lvl1_intro_seen", false)
-	toucan_challenge_intro_seen = data.get("toucan_challenge_intro_seen", false)
 
 	difficulty = data.get("difficulty", "explorer")
 	explorer_unlocked = data.get("explorer_unlocked", false)
@@ -990,35 +799,11 @@ func save_progress():
 	data["king_unlocked"] = king_unlocked
 
 	data["banane_count"] = banane_count
-	data["honey_count"] = honey_count
 	data["coco_count"] = coco_count
-	data["bone_count"] = bone_count
-	data["lance_count"] = lance_count
-
-	data["can_fire_coco"] = can_fire_coco
-	data["can_fire_lance"] = can_fire_lance
-	data["can_fire_bone"] = can_fire_bone
-
-	data["sprint_unlocked"] = sprint_unlocked
-	data["double_jump_unlocked"] = double_jump_unlocked
-	data["ramp_unlocked"] = ramp_unlocked
 	data["fire_buff_unlocked"] = fire_buff_unlocked
-	data["air_buff_unlocked"] = air_buff_unlocked
-	data["camouflage_unlocked"] = camouflage_unlocked
-	data["camouflage_count"] = camouflage_count
-	data["can_camouflage"] = can_camouflage
-
+	data["can_fire_coco"] = can_fire_coco
+	data["double_jump_unlocked"] = double_jump_unlocked
 	data["wood_collected"] = wood_collected
-	data["stone_collected"] = stone_collected
-	data["fire_recipe_unlocked"] = fire_recipe_unlocked
-	data["fire_craft_revealed"] = fire_craft_revealed
-	data["fire_altar_found"] = fire_altar_found
-
-	data["leaf_collected"] = leaf_collected
-	data["idole_collected"] = idole_collected
-	data["air_recipe_unlocked"] = air_recipe_unlocked
-	data["air_craft_revealed"] = air_craft_revealed
-	data["air_altar_found"] = air_altar_found
 
 	data["killed_enemy_ids"] = killed_enemy_ids
 	data["collected_loot_ids"] = collected_loot_ids
@@ -1070,8 +855,6 @@ func lose_life():
 		request_reload_after_delay(0.5)
 
 func reset_after_death():
-	is_camouflaged = false
-
 	get_tree().paused = false
 	is_paused = false
 
@@ -1080,16 +863,10 @@ func reset_after_death():
 
 	if hud:
 		hud.update_seed_display(collected_seeds, total_seeds_in_level)
-		hud.update_lance_display()
 		hud.update_banane_display()
-		hud.update_honey_display()
 		hud.update_coco_display()
-		hud.update_bone_display()
-		hud.update_camouflage_display()
-		hud.update_ramp_display()
-		hud.update_sprint_display()
 		hud.update_fire_display()
-		hud.update_air_display()
+
 
 func request_reload_after_delay(delay = 0.5):
 	await get_tree().create_timer(delay).timeout
@@ -1162,13 +939,6 @@ func reset_loot_tracking_from_scene():
 func signal_key_collected():
 	emit_signal("key_collected")
 
-func signal_digicode_ok():
-	emit_signal("digicode_ok")
-
-func signal_flower_collected():
-	emit_signal("flower_collected")
-
-
 func _input(_event):
 	if Input.is_action_just_pressed("gc_menu") or Input.is_action_just_pressed("menu"):
 		if not is_menu_scene(current_level_path):
@@ -1178,54 +948,26 @@ func _input(_event):
 # --- Reset inventaire ---
 func reinitialise():
 	banane_count = 0
-	honey_count = 0
 	coco_count = 0
-	bone_count = 0
 	seed_count = 0
 	collected_seed_ids.clear()
 	seed_level_path = ""
 	collected_seeds = 0
-	lance_count = 0
 
-	camouflage_unlocked = false
-	camouflage_count = 0
-	can_camouflage = false
-	is_camouflaged = false
-	
 	killed_enemy_ids.clear()
 	collected_loot_ids.clear()
 	loot_level_path = ""
 
 	can_fire_coco = false
-	can_fire_lance = false
-	can_fire_bone = false
-	can_camouflage = false
 	fire_buff_unlocked = false
-	air_buff_unlocked = false
 
 	has_key = false
-	has_flower = false
 
-	sprint_unlocked = false
 	double_jump_unlocked = false
-	ramp_unlocked = false
 
 	wood_collected = false
-	stone_collected = false
-	fire_recipe_unlocked = false
-	fire_recipe_dialog_shown = false
-	fire_craft_revealed = false
-	fire_altar_found = false
-	
-	leaf_collected = false
-	idole_collected = false
-	air_recipe_dialog_shown = false
-	air_recipe_unlocked = false
-	air_craft_revealed = false
-	air_altar_found = false
 	
 	lvl1_intro_seen = false
-	toucan_challenge_intro_seen = false
 
 	lvl1_quest_revealed = false
 	lvl1_seeds_done = false
@@ -1236,19 +978,11 @@ func reinitialise():
 	if hud:
 		var gamepad = hud.get_node("Gamepad")
 		hud.set_button_enabled(gamepad.get_node("Coco"), false)
-		hud.set_button_enabled(gamepad.get_node("Bone"), false)
-		hud.set_button_enabled(gamepad.get_node("Spear"), false)
 		hud.set_button_enabled(gamepad.get_node("Health"), false)
-		hud.set_button_enabled(gamepad.get_node("Honey"), false)
-		hud.set_button_enabled(gamepad.get_node("Camouflage"), false)
 
 		hud.update_seed_display(0, total_seeds_in_level)
-		hud.update_lance_display()
 		hud.update_banane_display()
-		hud.update_honey_display()
 		hud.update_coco_display()
-		hud.update_bone_display()
-		hud.update_camouflage_display()
 
 	if hud and hud.has_method("reset_hud"):
 		hud.reset_hud()

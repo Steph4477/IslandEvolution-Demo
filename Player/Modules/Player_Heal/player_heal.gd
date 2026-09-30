@@ -13,10 +13,6 @@ func process_heal():
 		use_heal_item()
 
 func use_heal_item():
-	if p.game_state.skill_selected == "honey":
-		await use_honey()
-		return
-
 	await use_banane()
 
 func use_banane():
@@ -75,8 +71,6 @@ func use_honey():
 		return
 
 	await p.play_anim("heal")
-
-	p.heal(GameBalance.PLAYER_HEAL["honey"])
 
 	p.honey_potions.pop_front()
 	p.honey_count = p.honey_potions.size()

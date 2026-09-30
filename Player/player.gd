@@ -89,64 +89,18 @@ var hang_timer = 0.0
 var can_ramp = false
 var is_ramping = false
 
-# --- Nage sur et sous l'eau ---
-var water_current = Vector2(-120, 0)
-var can_swim = false
-var is_swimming = false
-var can_swim_under_water = false
-var is_swimming_under_water = false
-var swim_speed_x = GameBalance.PLAYER_SWIM_SPEED_X
-var swim_speed_y = GameBalance.PLAYER_SWIM_SPEED_Y
-var swim_timer = 0.0
-
-# --- Respiration sous l'eau ---
-var max_breath = GameBalance.PLAYER_MAX_BREATH
-var panic_start = GameBalance.PLAYER_PANIC_START
-var drown_damage_per_second = GameBalance.PLAYER_DROWN_DAMAGE_PER_SECOND
-
-var bubble_interval_normal = GameBalance.PLAYER_BUBBLE_INTERVAL_NORMAL
-var bubble_interval_min = GameBalance.PLAYER_BUBBLE_INTERVAL_MIN
-var mouth_show_time = GameBalance.PLAYER_MOUTH_SHOW_TIME
-
-var breath_left = 0
-var is_underwater = false
-var air_bubble_scene = preload("res://Effects/Aquatic_breathing/Air_bubble/air_bubble.tscn")
-
-# --- Coup de boule sous l'eau ---
-var headbutt_damage = GameBalance.PLAYER_DAMAGE["headbutt"]
-var headbutt_speed = GameBalance.PLAYER_HEADBUTT_SPEED
-var headbutt_duration = GameBalance.PLAYER_HEADBUTT_DURATION
-var headbutt_cooldown = GameBalance.PLAYER_HEADBUTT_COOLDOWN
-var is_headbutting = false
-var can_headbutt = true
-
 # --- Skills ---
-var can_sprint = false
-var is_sprinting = false
-var sprint_duration = GameBalance.PLAYER_SPRINT_DURATION
 var ramp_locked = false
 var is_gazed = false
-var is_web = false
 
 # --- fire ---
 var can_fire_coco = false
-var can_fire_bone = false
-var can_fire_lance = false
 var rate_of_fire = GameBalance.PLAYER_RATE_OF_FIRE
 var is_attacking = false
 
 # --- fire buff ---
 var fire_buff_active = false
 var fire_buff_duration = GameBalance.PLAYER_FIRE_BUFF_DURATION
-
-# --- air buff ---
-var air_buff_active = false
-var air_buff_duration = GameBalance.PLAYER_AIR_BUFF_DURATION
-
-# --- Camouflage ---
-var can_camouflage = false
-var camouflage_duration = GameBalance.PLAYER_CAMOUFLAGE_DURATION
-var is_camouflaged = false
 
 # --- Jump / double jump ---
 var jump_buffer = 0.0
@@ -158,9 +112,7 @@ var double_jump_unlocked = false
 
 # --- collecte ---
 var coco_count = 0
-var bone_count = 0
 var banane_count = 0
-var honey_count = 0
 var seed_count = 0
 var lance_count = 0
 
@@ -172,14 +124,6 @@ var can_heal = true
 var is_in_cooldown = false
 var is_on_liana = false
 var current_liana = null
-
-# --- Caisse ---
-var can_push_pull = false
-var is_pushing_or_pulling = false
-
-# --- Harpon ---
-var is_harpooned = false
-var harpoon_owner = null
 
 # --- Clac en sautant ---
 var is_jump_clacing = false
@@ -206,16 +150,12 @@ var combat_stance_token = 0
 @onready var sprite = $Node2D/Sprite
 @onready var anim = $Node2D/Anim
 @onready var camera = $Camera2D
-@onready var air_bubble_spawn = $AirBubbleSpawn
-@onready var breath_tick_timer = $BreathTickTimer
-@onready var bubble_timer = $BubbleTimer
 @onready var turn_axis = $TurnAxis
 @onready var drown_timer = $DrownTimer
-@onready var close_mouth = $Node2D/Sprite
+
 
 var label_banane
 var label_coco
-var label_bone
 var label_seed
 
 # =======================================================================
@@ -242,14 +182,12 @@ func _ready():
 		await hud_mod.wait_until_ready()
 	
 	setup_popups_module()
-	setup_breath_module()
 	setup_collect_items()
 	setup_collect_skills()
 	setup_combat_module()
 	setup_damage_module()
 	setup_effects_module()
 	setup_fire_buff_module()
-	setup_air_buff_module()
 	setup_heal_module()
 	setup_animation_module()
 	setup_movement_module()
@@ -291,11 +229,6 @@ func setup_popups_module():
 	popups_mod = preload("res://Player/Modules/Player_Popups/player_popups.gd").new()
 	add_child(popups_mod)
 	popups_mod.setup(self)
-
-func setup_breath_module():
-	breath_mod = preload("res://Player/Modules/Player_Breath/player_breath.gd").new()
-	add_child(breath_mod)
-	breath_mod.setup(self)
 
 func setup_collect_items():
 	collect_items = preload("res://Player/Modules/Player_Collect_Items/player_collect_items.gd").new()
@@ -375,16 +308,10 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	if is_hit_locked and (is_swimming or is_swimming_under_water):
-		velocity.x = 0
-		velocity.y = 0
-		move_and_slide()
-		return
-
 	if animation_locked:
 		velocity.x = 0
 
-		if not is_swimming and not is_swimming_under_water and climbing_anim == "":
+		if climbing_anim == "":
 			velocity.y += gravity * gravity_factor * delta
 
 		move_and_slide()
@@ -469,9 +396,6 @@ func heal(amount):
 		hud_mod.update_banane_display()
 		hud_mod.refresh_hud_buttons()
 
-	if game_state:
-		game_state.update_boss_fight_hud()
-
 func update_can_heal():
 	can_heal = heal_potions.size() > 0 and pv < max_pv and not in_cooldown
 
@@ -486,31 +410,6 @@ func enable_controls():
 	controls_locked = false
 	can_move = true
 	can_be_damaged = true
-
-# --- Harpon ---
-func start_harpooned(shooter):
-	if is_harpooned:
-		return
-
-	is_harpooned = true
-	harpoon_owner = shooter
-	can_move = false
-
-	animation_locked = false
-	is_attacking = false
-	is_jumping = false
-	jump_count = 0
-
-	anim.play("harpooned")
-
-func stop_harpooned():
-	is_harpooned = false
-	harpoon_owner = null
-	can_move = true
-
-	is_jumping = false
-	jump_count = 0
-	velocity = Vector2.ZERO
 
 # ==============================================================================
 #                            SIGNAUX                                           =
@@ -569,7 +468,3 @@ func _on_kick_area_body_entered(body):
 
 		await kick_impact_fx.animation_finished
 		kick_impact_fx.visible = false
-
-func _on_headbutt_area_body_entered(body):
-	if body and body.has_method("on_hit"):
-		body.on_hit(headbutt_damage)
