@@ -97,7 +97,7 @@ const ENEMY_RANGE = {
 	"snake": 1000,
 	"snake_melee": 1000,
 	"snake_distance": 1000,
-	"snake_heal": 1000,
+	"snake_heal": 1500,
 }
 
 const ENEMY_MELEE_DISTANCE = {

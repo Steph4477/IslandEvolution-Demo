@@ -21,6 +21,8 @@ func _ready():
 	if has_node("Area2D/CollisionShape2D"):
 		$Area2D/CollisionShape2D.disabled = true
 
+	$AnimationPlayer.play("notes")
+
 
 func setup_target(target):
 	heal_target = target

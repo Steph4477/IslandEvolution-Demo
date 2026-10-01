@@ -713,7 +713,7 @@ libraries/ = SubResource("AnimationLibrary_feqrn")
 autoplay = &"walk"
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=1636847424]
-position = Vector2(65, 30)
+position = Vector2(63.000008, 16.000006)
 rotation = 0.78539795
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
@@ -731,7 +731,7 @@ position = Vector2(5, 57)
 scale = Vector2(1.03, 1)
 sprite_frames = SubResource("SpriteFrames_7j4kk")
 animation = &"heal_aura"
-frame_progress = 0.9522422
+frame_progress = 0.16115119
 
 [node name="HealLight" type="PointLight2D" parent="Rotator" unique_id=1932016293]
 position = Vector2(3, 28)
