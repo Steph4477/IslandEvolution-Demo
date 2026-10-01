@@ -8,10 +8,11 @@ var fire_interval = 3.0
 var projectile_spawn_delay = 0.40
 var projectile_scene = null
 var projectile_spawn = null
+var heal_used = false
 
 var projectile_attack_animation = "attack"
 var jump_animation_name = "jump"
-var heal_animation_name = "attack"
+var heal_animation_name = "heal"
 var animation_walk = "walk"
 
 var jump_velocity = -600.0
@@ -38,7 +39,6 @@ func _ready():
 	fire_interval = GameBalance.ENEMY_FIRE_INTERVAL[balance_id]
 	projectile_scene = load(GameBalance.ENEMY_PROJECTILE_SCENE[balance_id])
 	projectile_attack_animation = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
-	heal_animation_name = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
 	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
 	can_jump = GameBalance.ENEMY_CAN_JUMP[balance_id]
 
@@ -66,6 +66,7 @@ func _ready():
 
 	if projectile_timer:
 		projectile_timer.wait_time = fire_interval
+		projectile_timer.one_shot = true
 		projectile_timer.start()
 
 	if attack_timer:
@@ -192,16 +193,35 @@ func update_patrol_zone():
 
 
 func try_priority_heal():
+	if heal_used:
+		return false
+
 	if is_shooting:
 		return true
 
 	if heal_mod.can_heal():
+		heal_used = true
+
 		velocity.x = 0
 		stop_and_slide()
+
 		heal_mod.throw_heal_projectile()
+		start_heal_cooldown()
 		return true
 
 	return false
+
+
+func start_heal_cooldown():
+	await get_tree().create_timer(fire_interval).timeout
+
+	if not is_instance_valid(self):
+		return
+
+	if is_dead:
+		return
+
+	heal_used = false
 
 
 func move_to_wounded_ally():
@@ -239,7 +259,7 @@ func _on_attack_timer_timeout():
 
 
 func _on_projectile_timer_timeout():
-	heal_mod.on_timer_timeout()
+	pass
 
 
 func _on_patrol_timer_timeout():

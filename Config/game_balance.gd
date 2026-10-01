@@ -122,7 +122,7 @@ const ENEMY_COOLDOWN = {
 	"snake": 3.0,
 	"snake_melee": 0.5,
 	"snake_distance": 0.8,
-	"snake_heal": 1.0
+	"snake_heal": 3.0
 }
 
 const ENEMY_ANIMATION_ATTACK = {
