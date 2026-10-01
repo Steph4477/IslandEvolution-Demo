@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var speed = 900.0
+@export var speed = 400.0
 @export var lifetime = 4.0
 @export var hit_distance = 90.0
 

@@ -75,7 +75,15 @@ func throw_heal_projectile():
 	if enemy.anim.current_animation != enemy.heal_animation_name:
 		enemy.anim.play(enemy.heal_animation_name)
 
+	if enemy.aura_fx:
+		enemy.aura_fx.visible = true
+		enemy.aura_fx.play("heal_aura")
+
 	await enemy.get_tree().create_timer(enemy.projectile_spawn_delay).timeout
+
+	if is_instance_valid(enemy) and enemy.aura_fx:
+		enemy.aura_fx.stop()
+		enemy.aura_fx.visible = false
 
 	if not is_instance_valid(enemy):
 		return

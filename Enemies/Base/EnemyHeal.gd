@@ -2,10 +2,11 @@ extends EnemyGroundBase
 class_name EnemyHeal
 
 @export var balance_id = "cannibal_heal"
+@onready var aura_fx: AnimatedSprite2D = $Rotator/HealFX
 
 var melee_distance = 0
 var fire_interval = 3.0
-var projectile_spawn_delay = 0.40
+var projectile_spawn_delay = 1.5
 var projectile_scene = null
 var projectile_spawn = null
 var heal_used = false
@@ -45,6 +46,10 @@ func _ready():
 	attack_anim_name = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
 
 	super._ready()
+
+	if aura_fx:
+		aura_fx.visible = false
+		aura_fx.stop()
 
 	hp = max_hp
 

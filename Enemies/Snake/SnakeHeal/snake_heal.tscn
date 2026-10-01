@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dpdg43ctn30vu" path="res://Enemies/Snake/SnakeHeal/snake_heal.gd" id="1_65ebp"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_2s604"]
 [ext_resource type="Texture2D" uid="uid://dvq0g4bq5217t" path="res://Enemies/Snake/SnakeHeal/spriteSheet.png" id="3_pqn07"]
-[ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="4_f37xd"]
-[ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="5_kk8jt"]
+[ext_resource type="Texture2D" uid="uid://x0m5mfaqcf8f" path="res://Enemies/Snake/SnakeHeal/spriteSheetFX.png" id="6_jrxur"]
+[ext_resource type="Texture2D" uid="uid://dfxovwh25jbon" path="res://Effects/Heal/aura.png" id="7_exe8q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pioq7"]
 radius = 61.333324
@@ -331,42 +331,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Eye:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5.000004, 6.0000076)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_f37xd")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Eye:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_pioq7"]
 resource_name = "attack"
@@ -406,30 +370,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Eye:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_f37xd")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 0.39999998),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2(3.9999998, -4), Vector2(-6.999999, -11), Vector2(-4.7683716e-07, -13)]
 }
 
 [sub_resource type="Animation" id="Animation_feqrn"]
@@ -483,42 +423,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_f37xd")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Eye:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(-46.999996, 43.999996), Vector2(-46.999996, 55.000008)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Eye:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, false]
-}
 
 [sub_resource type="Animation" id="Animation_f37xd"]
 resource_name = "heal"
@@ -550,38 +454,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Eye:position")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(3, -3), Vector2(7.9999995, -1.1920929e-07)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.39999998),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_m2mdo"]
@@ -615,38 +495,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Eye:position")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6, 0.79999995, 0.99999994),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-11, 15.000001), Vector2(-13, 10.000001), Vector2(-10, -0.99999905), Vector2(-11, 26), Vector2(-10, 31), Vector2(-5.0000005, 27)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_otsjt"]
@@ -687,42 +543,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Eye:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_f37xd")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-26, 5.9999995), Vector2(-22.999996, -13.999999), Vector2(13.000002, -12.999992), Vector2(-22.999996, 43), Vector2(-22.999996, 43)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Eye:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_to62f"]
@@ -765,18 +585,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Eye:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6, 0.79999995, 0.99999994, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-40.999992, 24), Vector2(-42.999992, 24), Vector2(-41.99999, 23), Vector2(-40, 24), Vector2(-42, 23), Vector2(-40.999992, 27), Vector2(-40.999992, 27)]
-}
 
 [sub_resource type="Animation" id="Animation_ix0nr"]
 resource_name = "walk"
@@ -818,18 +626,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Eye:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 0.39999998, 0.6, 0.79999995, 0.99999994, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-19, 2), Vector2(-31.999992, -1.9999986), Vector2(-29.999992, -2.9999995), Vector2(-35.999992, -3.9999986), Vector2(-29.999992, -2.9999995), Vector2(-39.999992, -0.99999905), Vector2(-40.999992, 4.7683716e-07)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_feqrn"]
 _data = {
@@ -842,6 +638,49 @@ _data = {
 &"patrol": SubResource("Animation_to62f"),
 &"walk": SubResource("Animation_ix0nr")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar4ca"]
+atlas = ExtResource("6_jrxur")
+region = Rect2(0, 204, 102, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36su7"]
+atlas = ExtResource("6_jrxur")
+region = Rect2(102, 204, 102, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubeql"]
+atlas = ExtResource("6_jrxur")
+region = Rect2(204, 204, 102, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxxxs"]
+atlas = ExtResource("6_jrxur")
+region = Rect2(306, 204, 102, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwe74"]
+atlas = ExtResource("6_jrxur")
+region = Rect2(408, 204, 102, 102)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7j4kk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar4ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36su7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubeql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxxxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwe74")
+}],
+"loop": 1,
+"name": &"heal_aura",
+"speed": 8.0
+}]
 
 [node name="SnakeHeal" type="CharacterBody2D" unique_id=88320707 groups=["Enemies"]]
 z_index = 25
@@ -874,7 +713,7 @@ libraries/ = SubResource("AnimationLibrary_feqrn")
 autoplay = &"walk"
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=1636847424]
-position = Vector2(-136.66667, -111.66666)
+position = Vector2(65, 30)
 rotation = 0.78539795
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
@@ -883,27 +722,22 @@ rotation = 0.78539795
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Rotator" unique_id=1778748770]
 position = Vector2(5, 15)
-scale = Vector2(1.4, 1.4)
+scale = Vector2(-1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_1mhvw")
 animation = &"attack"
 
-[node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1595123149]
-visible = false
-z_index = 30
-position = Vector2(5.000004, 6.0000076)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_f37xd")
+[node name="HealFX" type="AnimatedSprite2D" parent="Rotator" unique_id=2038088455]
+position = Vector2(5, 57)
+scale = Vector2(1.03, 1)
+sprite_frames = SubResource("SpriteFrames_7j4kk")
+animation = &"heal_aura"
+frame_progress = 0.9522422
 
-[node name="Light" type="PointLight2D" parent="Rotator/Eye" unique_id=1988026898]
-light_mask = 0
-visibility_layer = 0
-z_index = 50
-position = Vector2(-1.9073486e-06, -16.666672)
-scale = Vector2(2, 2)
-color = Color(1, 1, 0.14117648, 1)
-energy = 0.72
-texture = ExtResource("5_kk8jt")
-texture_scale = 0.08
+[node name="HealLight" type="PointLight2D" parent="Rotator" unique_id=1932016293]
+position = Vector2(3, 28)
+energy = 0.45
+texture = ExtResource("7_exe8q")
+texture_scale = 0.55
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
