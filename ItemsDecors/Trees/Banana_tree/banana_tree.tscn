@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://2d77368f0fid"]
 
 [ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/Banana_tree/banana_tree.gd" id="1_nm5gv"]
-[ext_resource type="Texture2D" uid="uid://7wq0eh0cjhrs" path="res://ItemsDecors/Trees/Banana_tree/1.png" id="2_l2fy6"]
+[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="2_fnr4t"]
+[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_2uixa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
-size = Vector2(40.976303, 479)
+size = Vector2(29.160084, 583.4226)
 
 [sub_resource type="Animation" id="Animation_fnr4t"]
 length = 0.001
@@ -68,24 +69,65 @@ _data = {
 &"wind": SubResource("Animation_2uixa")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uixa"]
+atlas = ExtResource("2_fnr4t")
+region = Rect2(0, 3000, 750, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6w7c"]
+atlas = ExtResource("2_fnr4t")
+region = Rect2(1500, 3000, 750, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0wmf"]
+atlas = ExtResource("2_fnr4t")
+region = Rect2(750, 3000, 750, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7l72j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uixa")
+}],
+"loop": 1,
+"name": &"texture_explorer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6w7c")
+}],
+"loop": 1,
+"name": &"texture_king",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0wmf")
+}],
+"loop": 1,
+"name": &"texture_survivor",
+"speed": 5.0
+}]
+
 [node name="Bananier" type="Node2D" unique_id=1356468999]
 script = ExtResource("1_nm5gv")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=345886102]
-position = Vector2(-1, -324)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_l2fy6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=803545329]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781706807]
-position = Vector2(-7.5246325, -222.08875)
+position = Vector2(-2.528636, -274.39526)
 rotation = 0.017453292
 shape = SubResource("RectangleShape2D_fsyrc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1658066609]
 libraries/ = SubResource("AnimationLibrary_h6w7c")
 autoplay = &"wind"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525185733]
+position = Vector2(-7, -461)
+sprite_frames = SubResource("SpriteFrames_7l72j")
+animation = &"texture_survivor"
+
+[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("3_2uixa")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
