@@ -9,7 +9,6 @@ var gs
 @onready var world = $World
 @onready var parallax = $World/Parallax
 @onready var tilemap = $World/TileMap
-@onready var trees = $World/Trees
 
 @onready var sky_explorer = $World/Parallax/SkyLayer
 @onready var sky_survivor = $World/Parallax/SkyLayerSurvivor
@@ -116,7 +115,6 @@ func setup_environment_difficulty():
 			gs.hud.set_difficulty_color(Color("7a84abff"))
 
 			sky_king.visible = true
-			survivor_fx.visible = true
 			king_fx.visible = true
 
 			print("LVL1 ENEMIES : KING")
@@ -169,7 +167,6 @@ func set_world_color(color: Color):
 
 	parallax.modulate = color
 	tilemap.modulate = color
-	trees.modulate = color
 
 	for node in [
 		$World/Totem,
