@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c5a3jpxxsvrpy"]
 
 [ext_resource type="Script" uid="uid://j7ave7ddv36k" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.gd" id="1_it4j1"]
-[ext_resource type="Texture2D" uid="uid://gm4m65i3ocrp" path="res://ItemsDecors/Trees/Coconut_tree/1.png" id="2_koarn"]
+[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_ks8rw"]
+[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_5wrmp"]
+[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="4_ub8fk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
 size = Vector2(48.807976, 512.56036)
@@ -68,14 +70,75 @@ _data = {
 &"wind": SubResource("Animation_it4j1")
 }
 
+[sub_resource type="Curve" id="Curve_6n0w2"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
+curve = SubResource("Curve_6n0w2")
+
+[sub_resource type="Curve" id="Curve_oe3nc"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
+curve = SubResource("Curve_oe3nc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lb06u"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 30.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wrmp"]
+atlas = ExtResource("4_ub8fk")
+region = Rect2(0, 2000, 750, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub8fk"]
+atlas = ExtResource("4_ub8fk")
+region = Rect2(1500, 2000, 750, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrcur"]
+atlas = ExtResource("4_ub8fk")
+region = Rect2(750, 2000, 750, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qrcur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wrmp")
+}],
+"loop": 1,
+"name": &"texture_explorer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub8fk")
+}],
+"loop": 1,
+"name": &"texture_king",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrcur")
+}],
+"loop": 1,
+"name": &"texture_survivor",
+"speed": 5.0
+}]
+
 [node name="Cocotier" type="Node2D" unique_id=411375436]
 script = ExtResource("1_it4j1")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=545630696]
-position = Vector2(144.16066, 99.953514)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_koarn")
-offset = Vector2(-288, -844)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1146328630]
 
@@ -88,5 +151,29 @@ shape = SubResource("RectangleShape2D_it4j1")
 libraries/ = SubResource("AnimationLibrary_0slvd")
 autoplay = &"wind"
 
+[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("3_ks8rw")]
+
+[node name="FireFX2" parent="FireFX" unique_id=1569993635 instance=ExtResource("3_ks8rw")]
+z_index = 5
+position = Vector2(120, -3)
+
+[node name="Smoke" parent="FireFX" unique_id=858832992 instance=ExtResource("4_5wrmp")]
+z_index = 30
+position = Vector2(-10, -62)
+
+[node name="Smoke" parent="FireFX/Smoke" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(87, -115)
+amount = 15
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_lb06u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1028668557]
+position = Vector2(-7, -461)
+sprite_frames = SubResource("SpriteFrames_qrcur")
+animation = &"texture_survivor"
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+
+[editable path="FireFX/Smoke"]
