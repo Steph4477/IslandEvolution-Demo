@@ -23,7 +23,7 @@ var active_enemy_group = null
 
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "king" #difficulté
+	#gs.difficulty = "survivor" #difficulté
 
 	await get_tree().process_frame
 

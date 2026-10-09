@@ -1,6 +1,9 @@
 extends Node2D
 
 @onready var toucan_dialogue = $ToucanDialogue
+@onready var environment_sprite = $Background/AnimatedSprite2D
+@onready var smoke_ceiling = $Background/SmokeCeilling
+@onready var fire_fx = $Background/FireFx
 
 var gs
 var player = null
@@ -11,11 +14,40 @@ func _ready():
 
 	gs = get_node("/root/GameState")
 
-	# Recharge la progression sauvegardée
 	gs.load_global_progress()
 
-	# Met à jour l'affichage des difficultés
 	refresh_difficulty_buttons()
+	_apply_environment_difficulty()
+
+
+# ============================================================================
+#                         ENVIRONNEMENT DU MENU
+# ============================================================================
+# ============================================================================
+#                         ENVIRONNEMENT DU MENU
+# ============================================================================
+func _apply_environment_difficulty():
+	environment_sprite.visible = true
+
+	# Reset FX
+	smoke_ceiling.visible = false
+	fire_fx.visible = false
+
+	# KING
+	if gs.survivor_unlocked or gs.king_unlocked:
+		environment_sprite.play("environment_king")
+		smoke_ceiling.visible = true
+		fire_fx.visible = true
+
+	# SURVIVOR
+	elif gs.explorer_unlocked:
+		environment_sprite.play("environment_survivor")
+		smoke_ceiling.visible = true
+		fire_fx.visible = false
+
+	# EXPLORER
+	else:
+		environment_sprite.play("environment_explorer")
 
 
 # ============================================================================
@@ -40,14 +72,6 @@ func refresh_difficulty_buttons():
 	# ------------------------------------------------------------------------
 	$DifficultyButtons/Unlocked/King.visible = gs.king_unlocked
 	$DifficultyButtons/Locked/King.visible = not gs.king_unlocked
-
-	# DEBUG
-	print("======================================")
-	print("MENU - ETAT DES DIFFICULTES")
-	print("EXPLORER : ", gs.explorer_unlocked)
-	print("SURVIVOR : ", gs.survivor_unlocked)
-	print("KING : ", gs.king_unlocked)
-	print("======================================")
 
 
 # ============================================================================

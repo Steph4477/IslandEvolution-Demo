@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://csdp6wwblqxu1"]
 
 [ext_resource type="Script" uid="uid://cw1vtr0y6cvcg" path="res://Levels/Lvl0/lvl0.gd" id="1_rv0fi"]
-[ext_resource type="Texture2D" uid="uid://v1yadcmyi2sh" path="res://Levels/Lvl0/Assets/jungle.png" id="2_d3sq6"]
+[ext_resource type="Texture2D" uid="uid://c00ngq5pr3p6e" path="res://Levels/Lvl0/Assets/spritesheet_jungle.png" id="2_pwvnj"]
+[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_o1sw5"]
 [ext_resource type="Texture2D" uid="uid://c73fpnunyf6hn" path="res://Player/Sprite/spriteSheet.png" id="4_0ncut"]
 [ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
 [ext_resource type="Texture2D" uid="uid://b1f3h6oe1jpca" path="res://Levels/Lvl0/Assets/box.png" id="4_15gx2"]
+[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_qqyoo"]
+[ext_resource type="Texture2D" uid="uid://dhl5e778t7p7k" path="res://Effects/Fire/smoke.png" id="6_q7kkj"]
 [ext_resource type="Texture2D" uid="uid://dcw73w4e055nw" path="res://Menu/Buttons/Pressed/restart.png" id="7_qfdsm"]
 [ext_resource type="Texture2D" uid="uid://b65pmjlofpacv" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
 [ext_resource type="Texture2D" uid="uid://cy8ea72hpm75y" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
@@ -49,6 +52,144 @@
 [ext_resource type="Texture2D" uid="uid://byvi3o0pfsn2n" path="res://Hud/Difficulty/king.png" id="49_qqyoo"]
 [ext_resource type="Texture2D" uid="uid://bi8p58lo3tmd2" path="res://Hud/Difficulty/Locked/survivor.png" id="50_vrp4g"]
 [ext_resource type="Texture2D" uid="uid://dao52p0bk57qw" path="res://Hud/Difficulty/Locked/king.png" id="51_4qyy0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrp4g"]
+atlas = ExtResource("2_pwvnj")
+region = Rect2(0, 626, 1672, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqyoo"]
+atlas = ExtResource("2_pwvnj")
+region = Rect2(0, 0, 1672, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qyy0"]
+atlas = ExtResource("2_pwvnj")
+region = Rect2(0, 313, 1672, 313)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fyrvj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrp4g")
+}],
+"loop": 1,
+"name": &"environement_king",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqyoo")
+}],
+"loop": 1,
+"name": &"environment_explorer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qyy0")
+}],
+"loop": 1,
+"name": &"environment_survivor",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_aiwf1"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
+curve = SubResource("Curve_aiwf1")
+
+[sub_resource type="Curve" id="Curve_epgrs"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
+curve = SubResource("Curve_epgrs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ouodo"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 30.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_jr3jl")
+color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+alpha_curve = SubResource("CurveTexture_to4tw")
+
+[sub_resource type="Curve" id="Curve_7sn1u"]
+_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ub8fk"]
+curve = SubResource("Curve_7sn1u")
+
+[sub_resource type="Curve" id="Curve_kox7j"]
+_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5wrmp"]
+curve = SubResource("Curve_kox7j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_75efx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+direction = Vector3(0.1, -1, 0)
+spread = 30.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_5wrmp")
+color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+alpha_curve = SubResource("CurveTexture_ub8fk")
+
+[sub_resource type="Gradient" id="Gradient_vrp4g"]
+offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
+colors = PackedColorArray(1, 0.9529412, 0.627451, 1, 1, 0.6039216, 0.1254902, 1, 0.9019608, 0.2509804, 0.07058824, 1, 0.47843137, 0.078431375, 0.03137255, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h6w7c"]
+gradient = SubResource("Gradient_vrp4g")
+
+[sub_resource type="Curve" id="Curve_4qyy0"]
+_data = [Vector2(0.0059999973, 0), 0.0, 0.0, 0, 0, Vector2(0.102, 0.16115701), 0.0, 0.0, 0, 0, Vector2(0.246, 0.6487603), 0.0, 0.0, 0, 0, Vector2(0.402, 1), 0.0, 0.0, 0, 0, Vector2(0.702, 0.8471074), 0.0, 0.0, 0, 0, Vector2(0.902, 0.35123968), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_i0wmf"]
+curve = SubResource("Curve_4qyy0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_utbx0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 3, 1)
+angle_min = -19.99999
+angle_max = 20.000011
+direction = Vector3(0, -1, 0)
+spread = 18.0
+flatness = 1.0
+initial_velocity_min = 25.0
+initial_velocity_max = 55.0
+gravity = Vector3(0, -25, 0)
+scale_min = 0.03
+scale_max = 0.08
+scale_curve = SubResource("CurveTexture_i0wmf")
+color_ramp = SubResource("GradientTexture1D_h6w7c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_417gj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 10, 1)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -2, 0)
+scale_min = 0.79999995
+scale_max = 1.1999999
+color = Color(1, 1, 1, 0.023529412)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwvnj"]
 atlas = ExtResource("4_0ncut")
@@ -299,7 +440,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1720, 719), Vector2(1709, 362)]
+"values": [Vector2(1724, 909), Vector2(1709, 362)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -377,10 +518,10 @@ tracks/2/path = NodePath("Toucan:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.0666666),
+"times": PackedFloat32Array(0, 3.07),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-135, 140), Vector2(1722, 770)]
+"values": [Vector2(-135, 140), Vector2(1720, 890)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jhr54"]
@@ -397,9 +538,54 @@ script = ExtResource("1_rv0fi")
 [node name="Background" type="Node2D" parent="." unique_id=1801920291]
 position = Vector2(403, 251)
 
-[node name="Background" type="Sprite2D" parent="Background" unique_id=2114204543]
-position = Vector2(557, 289)
-texture = ExtResource("2_d3sq6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background" unique_id=407777382]
+position = Vector2(960.9999, 235)
+scale = Vector2(3.7, 3.7)
+sprite_frames = SubResource("SpriteFrames_fyrvj")
+animation = &"environement_king"
+
+[node name="FireFx" parent="Background" unique_id=1859572375 instance=ExtResource("4_qqyoo")]
+position = Vector2(-61, 30)
+scale = Vector2(2, 2)
+
+[node name="Smoke" parent="Background/FireFx" index="0" unique_id=1984324698]
+z_index = -15
+position = Vector2(576, 114)
+amount = 30
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_ouodo")
+
+[node name="SmokeBlack" parent="Background/FireFx" unique_id=6336996 instance=ExtResource("4_qqyoo")]
+position = Vector2(481, 373)
+
+[node name="Smoke" parent="Background/FireFx/SmokeBlack" index="0" unique_id=1984324698]
+modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
+z_index = 30
+position = Vector2(82.5, -273)
+amount = 15
+lifetime = 7.48
+process_material = SubResource("ParticleProcessMaterial_75efx")
+
+[node name="FireFX" parent="Background/FireFx" unique_id=345948567 instance=ExtResource("3_o1sw5")]
+position = Vector2(550.5, 290)
+
+[node name="FireCenter" parent="Background/FireFx/FireFX" index="0" unique_id=731474519]
+position = Vector2(3.5, 0)
+process_material = SubResource("ParticleProcessMaterial_utbx0")
+
+[node name="EmbersCenter" parent="Background/FireFx/FireFX" index="1" unique_id=1250676070]
+position = Vector2(-34.5, -96.5)
+
+[node name="SmokeCeilling" type="GPUParticles2D" parent="Background" unique_id=1301716882]
+position = Vector2(-847, 228.00003)
+scale = Vector2(10, 10)
+amount = 100
+texture = ExtResource("6_q7kkj")
+lifetime = 21.270000000000003
+preprocess = 20.0
+randomness = 0.4
+visibility_rect = Rect2(-5000, -2000, 10000, 4000)
+process_material = SubResource("ParticleProcessMaterial_417gj")
 
 [node name="Box" type="Sprite2D" parent="Background" unique_id=1098181049]
 position = Vector2(555, 289)
@@ -572,3 +758,7 @@ texture = ExtResource("49_pwvnj")
 [connection signal="pressed" from="Restart/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Restart/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Restart/Quitter" to="." method="_on_quitter_pressed"]
+
+[editable path="Background/FireFx"]
+[editable path="Background/FireFx/SmokeBlack"]
+[editable path="Background/FireFx/FireFX"]
