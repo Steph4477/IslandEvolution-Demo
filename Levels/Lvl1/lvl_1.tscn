@@ -809,16 +809,16 @@ position = Vector2(7633, 1398)
 
 [node name="HiddenTrap2" parent="World/Traps/HiddenTrap" unique_id=2003431478 instance=ExtResource("25_p5uxy")]
 modulate = Color(0.60933006, 0.6093301, 0.60933006, 1)
-z_index = 60
+z_index = 10
 
 [node name="HiddenTrap3" parent="World/Traps/HiddenTrap" unique_id=1275044498 instance=ExtResource("25_p5uxy")]
 modulate = Color(0.60933006, 0.6093301, 0.60933006, 1)
-z_index = 60
+z_index = 10
 position = Vector2(507, 0)
 
 [node name="HiddenTrap" parent="World/Traps/HiddenTrap" unique_id=1245213246 instance=ExtResource("25_p5uxy")]
 modulate = Color(0.60933006, 0.6093301, 0.60933006, 1)
-z_index = 60
+z_index = 10
 position = Vector2(254, 0)
 
 [node name="Totem" parent="World" unique_id=209721126 instance=ExtResource("21_t7ttw")]
