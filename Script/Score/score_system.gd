@@ -21,8 +21,6 @@ func set_enemies_total(value):
 
 func add_enemy_kill():
 	enemies_killed += 1
-	print("SCORE - Ennemis tués : ", enemies_killed, "/", enemies_total)
-
 
 func get_score_data():
 	return {
@@ -35,8 +33,11 @@ func load_score_data(data):
 	enemies_killed = data.get("enemies_killed", 0)
 	enemies_total = data.get("enemies_total", 0)
 
-# --- Compte récursivement tous les ennemis présents sous un node ---
+# Compte récursivement les ennemis d'un groupe actif
 func count_enemies_in_node(node):
+	if node == null:
+		return 0
+
 	var total = 0
 
 	for child in node.get_children():
@@ -47,12 +48,6 @@ func count_enemies_in_node(node):
 
 	return total
 
-func print_level_stats():
-	print("=== SCORE NIVEAU ===")
-	print("Ennemis tués : ", enemies_killed, " / ", enemies_total)
-	print("Étoiles : ", stars)
-	print("SCORE - Médaille : ", get_medal())
-	
 ##################################################################################
 #                                CALCUL ETOILES                                  #
 ##################################################################################
@@ -67,10 +62,6 @@ func calculate_stars():
 		stars = 1
 	else:
 		stars = 0
-	
-	print("SCORE - Pourcentage :", percent)
-	print("SCORE - Etoiles :", stars)
-	print("SCORE - Médaille : ", get_medal())
 
 ##################################################################################
 #                                CALCUL DE LA MEDAILLE                           #
