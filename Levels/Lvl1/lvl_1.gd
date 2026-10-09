@@ -4,7 +4,7 @@ extends Node2D
 var cam
 var player
 var gs
-
+var active_enemy_group = null
 
 @onready var world = $World
 @onready var parallax = $World/Parallax
@@ -23,7 +23,7 @@ var gs
 
 func _ready():
 	gs = get_node("/root/GameState")
-	gs.difficulty = "king" #difficulté
+	#gs.difficulty = "king" #difficulté
 
 	await get_tree().process_frame
 
@@ -53,7 +53,6 @@ func _ready():
 # ============================================================
 # DIFFICULTÉ
 # ============================================================
-
 func setup_environment_difficulty():
 	# Reset environnement
 	sky_explorer.visible = false
@@ -70,6 +69,8 @@ func setup_environment_difficulty():
 	match gs.difficulty:
 
 		"explorer":
+			active_enemy_group = enemy_explorer
+
 			setup_enemy_group(
 				enemy_explorer,
 				false,
@@ -81,10 +82,9 @@ func setup_environment_difficulty():
 
 			sky_explorer.visible = true
 
-			print("LVL1 ENEMIES : EXPLORER")
-
-
 		"survivor":
+			active_enemy_group = enemy_survivor
+
 			var survivor_color = Color("f2a11fff")
 
 			setup_enemy_group(
@@ -99,10 +99,9 @@ func setup_environment_difficulty():
 			sky_survivor.visible = true
 			survivor_fx.visible = true
 
-			print("LVL1 ENEMIES : SURVIVOR")
-
-
 		"king":
+			active_enemy_group = enemy_king
+
 			setup_enemy_group(
 				enemy_king,
 				true,
@@ -113,15 +112,18 @@ func setup_environment_difficulty():
 			gs.hud.set_difficulty_color(Color("7a84abff"))
 
 			sky_king.visible = true
+			survivor_fx.visible = true
 
-			print("LVL1 ENEMIES : KING")
+	# === SCORE ===
+	var total_enemies = gs.score_system.count_enemies_in_node(active_enemy_group)
+	gs.score_system.set_enemies_total(total_enemies)
 
 
 # ============================================================
 # CONFIGURATION GÉNÉRIQUE DES ENNEMIS
 # ============================================================
 
-func setup_enemy_group(group: Node, eyes_enabled: bool, color: Color):
+func setup_enemy_group(group, eyes_enabled, color):
 	group.visible = true
 	group.process_mode = Node.PROCESS_MODE_INHERIT
 
@@ -159,7 +161,7 @@ func setup_enemy_group(group: Node, eyes_enabled: bool, color: Color):
 # COULEUR GÉNÉRALE DU NIVEAU
 # ============================================================
 
-func set_world_color(color: Color):
+func set_world_color(color):
 	player.get_node("Node2D/Sprite").modulate = color
 
 	parallax.modulate = color
@@ -221,26 +223,13 @@ func start_intro_sequence():
 # ============================================================
 # BLOQUAGE / DÉBLOQUAGE ENNEMIS
 # ============================================================
-
-func set_enemies_blocked(blocked: bool):
-	var active_enemies: Node2D
-
-	match gs.difficulty:
-		"explorer":
-			active_enemies = enemy_explorer
-
-		"survivor":
-			active_enemies = enemy_survivor
-
-		"king":
-			active_enemies = enemy_king
-
-		_:
-			return
+func set_enemies_blocked(blocked):
+	if active_enemy_group == null:
+		return
 
 	var mode = Node.PROCESS_MODE_DISABLED if blocked else Node.PROCESS_MODE_INHERIT
 
-	for enemy in active_enemies.get_children():
+	for enemy in active_enemy_group.get_children():
 		enemy.process_mode = mode
 
 		if blocked and enemy is CharacterBody2D:
