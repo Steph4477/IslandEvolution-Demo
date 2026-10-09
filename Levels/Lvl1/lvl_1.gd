@@ -171,7 +171,7 @@ func set_world_color(color: Color):
 		$World/Traps,
 		$World/Carnivores,
 		$World/Items,
-		$World/Trees,
+		$World/Lianas,
 		$World/Toucan
 	]:
 		node.modulate = color

@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://d2repygpkwal"]
 
 [ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_f2csc"]
-[ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="2_chaqo"]
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="2_w7j5j"]
-[ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="3_1gjku"]
 [ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="3_chaqo"]
 [ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_1gjku"]
 
@@ -138,13 +136,6 @@ animations = [{
 
 [node name="Elevator" type="Node2D" unique_id=1356468999]
 script = ExtResource("1_f2csc")
-
-[node name="Liana" parent="." unique_id=411276915 instance=ExtResource("2_chaqo")]
-position = Vector2(105, -544)
-scale = Vector2(0.2, 0.4)
-
-[node name="ElevatorLiana" parent="." unique_id=2000748319 instance=ExtResource("3_1gjku")]
-position = Vector2(-154, -414)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=803545329]
 
