@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://2d77368f0fid"]
+[gd_scene format=3 uid="uid://d2repygpkwal"]
 
-[ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_nm5gv"]
-[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="2_fnr4t"]
-[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_2uixa"]
-[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_h6w7c"]
+[ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_f2csc"]
+[ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="2_chaqo"]
+[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="2_w7j5j"]
+[ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="3_1gjku"]
+[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="3_chaqo"]
+[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_1gjku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
 size = Vector2(29.160084, 583.4226)
@@ -95,23 +97,23 @@ scale_curve = SubResource("CurveTexture_5wrmp")
 color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
 alpha_curve = SubResource("CurveTexture_ub8fk")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2uixa"]
-atlas = ExtResource("2_fnr4t")
-region = Rect2(0, 3000, 750, 1000)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoyc4"]
+atlas = ExtResource("3_chaqo")
+region = Rect2(0, 0, 750, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6w7c"]
-atlas = ExtResource("2_fnr4t")
-region = Rect2(1500, 3000, 750, 1000)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u17g"]
+atlas = ExtResource("3_chaqo")
+region = Rect2(1500, 0, 750, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0wmf"]
-atlas = ExtResource("2_fnr4t")
-region = Rect2(750, 3000, 750, 1000)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j575"]
+atlas = ExtResource("3_chaqo")
+region = Rect2(750, 0, 750, 1000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7l72j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2uixa")
+"texture": SubResource("AtlasTexture_yoyc4")
 }],
 "loop": 1,
 "name": &"texture_explorer",
@@ -119,7 +121,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h6w7c")
+"texture": SubResource("AtlasTexture_8u17g")
 }],
 "loop": 1,
 "name": &"texture_king",
@@ -127,15 +129,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0wmf")
+"texture": SubResource("AtlasTexture_4j575")
 }],
 "loop": 1,
 "name": &"texture_survivor",
 "speed": 5.0
 }]
 
-[node name="Banana_tree" type="Node2D" unique_id=1356468999]
-script = ExtResource("1_nm5gv")
+[node name="Elevator" type="Node2D" unique_id=1356468999]
+script = ExtResource("1_f2csc")
+
+[node name="Liana" parent="." unique_id=411276915 instance=ExtResource("2_chaqo")]
+position = Vector2(105, -544)
+scale = Vector2(0.2, 0.4)
+
+[node name="ElevatorLiana" parent="." unique_id=2000748319 instance=ExtResource("3_1gjku")]
+position = Vector2(-154, -414)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=803545329]
 
@@ -144,19 +153,20 @@ position = Vector2(-2.528636, -274.39526)
 rotation = 0.017453292
 shape = SubResource("RectangleShape2D_fsyrc")
 
-[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("3_2uixa")]
-position = Vector2(-83, -26)
+[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("2_w7j5j")]
+position = Vector2(-62, -35)
 
 [node name="FireCenter" parent="FireFX" index="0" unique_id=731474519]
 process_material = SubResource("ParticleProcessMaterial_h6w7c")
 
-[node name="FireFX2" parent="FireFX" unique_id=1981353970 instance=ExtResource("3_2uixa")]
-position = Vector2(198, 23)
+[node name="FireFX2" parent="FireFX" unique_id=1981353970 instance=ExtResource("2_w7j5j")]
+z_index = -2
+position = Vector2(181, -12)
 
 [node name="FireCenter" parent="FireFX/FireFX2" index="0" unique_id=731474519]
 process_material = SubResource("ParticleProcessMaterial_h6w7c")
 
-[node name="Smoke" parent="." unique_id=1181287976 instance=ExtResource("4_h6w7c")]
+[node name="Smoke" parent="." unique_id=1181287976 instance=ExtResource("4_1gjku")]
 position = Vector2(-110, -76)
 
 [node name="Smoke" parent="Smoke" index="0" unique_id=1984324698]
@@ -166,7 +176,7 @@ amount = 15
 lifetime = 7.48
 process_material = SubResource("ParticleProcessMaterial_fr6md")
 
-[node name="SmokeBlack" parent="Smoke" unique_id=264560438 instance=ExtResource("4_h6w7c")]
+[node name="SmokeBlack" parent="Smoke" unique_id=264560438 instance=ExtResource("4_1gjku")]
 
 [node name="Smoke" parent="Smoke/SmokeBlack" index="0" unique_id=1984324698]
 modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -177,10 +187,9 @@ lifetime = 7.48
 process_material = SubResource("ParticleProcessMaterial_ewn7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525185733]
-position = Vector2(-5, -367)
-scale = Vector2(0.8, 0.8)
+position = Vector2(25, -495)
 sprite_frames = SubResource("SpriteFrames_7l72j")
-animation = &"texture_king"
+animation = &"texture_survivor"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

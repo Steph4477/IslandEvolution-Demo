@@ -1,12 +1,9 @@
-[gd_scene format=3 uid="uid://2d77368f0fid"]
+[gd_scene format=3 uid="uid://c6rf7ltxp8nqg"]
 
-[ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_nm5gv"]
-[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="2_fnr4t"]
-[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_2uixa"]
-[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_h6w7c"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
-size = Vector2(29.160084, 583.4226)
+[ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_dm362"]
+[ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="4_qrpwt"]
+[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="5_eo1yj"]
+[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="6_4epym"]
 
 [sub_resource type="Gradient" id="Gradient_so7tl"]
 offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
@@ -95,23 +92,23 @@ scale_curve = SubResource("CurveTexture_5wrmp")
 color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
 alpha_curve = SubResource("CurveTexture_ub8fk")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2uixa"]
-atlas = ExtResource("2_fnr4t")
-region = Rect2(0, 3000, 750, 1000)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptkxx"]
+atlas = ExtResource("6_4epym")
+region = Rect2(0, 1000, 750, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6w7c"]
-atlas = ExtResource("2_fnr4t")
-region = Rect2(1500, 3000, 750, 1000)
+[sub_resource type="AtlasTexture" id="AtlasTexture_npo1p"]
+atlas = ExtResource("6_4epym")
+region = Rect2(1500, 1000, 750, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0wmf"]
-atlas = ExtResource("2_fnr4t")
-region = Rect2(750, 3000, 750, 1000)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm362"]
+atlas = ExtResource("6_4epym")
+region = Rect2(750, 1000, 750, 1000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7l72j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2uixa")
+"texture": SubResource("AtlasTexture_ptkxx")
 }],
 "loop": 1,
 "name": &"texture_explorer",
@@ -119,7 +116,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h6w7c")
+"texture": SubResource("AtlasTexture_npo1p")
 }],
 "loop": 1,
 "name": &"texture_king",
@@ -127,36 +124,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0wmf")
+"texture": SubResource("AtlasTexture_dm362")
 }],
 "loop": 1,
 "name": &"texture_survivor",
 "speed": 5.0
 }]
 
-[node name="Banana_tree" type="Node2D" unique_id=1356468999]
-script = ExtResource("1_nm5gv")
+[node name="tree" type="Node2D" unique_id=1356468999]
+script = ExtResource("1_dm362")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=803545329]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781706807]
-position = Vector2(-2.528636, -274.39526)
-rotation = 0.017453292
-shape = SubResource("RectangleShape2D_fsyrc")
-
-[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("3_2uixa")]
-position = Vector2(-83, -26)
+[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("4_qrpwt")]
+position = Vector2(-32, -27)
 
 [node name="FireCenter" parent="FireFX" index="0" unique_id=731474519]
 process_material = SubResource("ParticleProcessMaterial_h6w7c")
 
-[node name="FireFX2" parent="FireFX" unique_id=1981353970 instance=ExtResource("3_2uixa")]
-position = Vector2(198, 23)
+[node name="FireFX2" parent="FireFX" unique_id=1981353970 instance=ExtResource("4_qrpwt")]
+z_index = 2
+position = Vector2(131, 1)
 
 [node name="FireCenter" parent="FireFX/FireFX2" index="0" unique_id=731474519]
 process_material = SubResource("ParticleProcessMaterial_h6w7c")
 
-[node name="Smoke" parent="." unique_id=1181287976 instance=ExtResource("4_h6w7c")]
+[node name="Smoke" parent="." unique_id=1181287976 instance=ExtResource("5_eo1yj")]
 position = Vector2(-110, -76)
 
 [node name="Smoke" parent="Smoke" index="0" unique_id=1984324698]
@@ -166,7 +157,7 @@ amount = 15
 lifetime = 7.48
 process_material = SubResource("ParticleProcessMaterial_fr6md")
 
-[node name="SmokeBlack" parent="Smoke" unique_id=264560438 instance=ExtResource("4_h6w7c")]
+[node name="SmokeBlack" parent="Smoke" unique_id=264560438 instance=ExtResource("5_eo1yj")]
 
 [node name="Smoke" parent="Smoke/SmokeBlack" index="0" unique_id=1984324698]
 modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -177,13 +168,9 @@ lifetime = 7.48
 process_material = SubResource("ParticleProcessMaterial_ewn7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525185733]
-position = Vector2(-5, -367)
-scale = Vector2(0.8, 0.8)
+position = Vector2(25, -495)
 sprite_frames = SubResource("SpriteFrames_7l72j")
-animation = &"texture_king"
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+animation = &"texture_survivor"
 
 [editable path="FireFX"]
 [editable path="FireFX/FireFX2"]

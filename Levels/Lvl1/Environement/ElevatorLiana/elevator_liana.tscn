@@ -39,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/path = NodePath("Liana:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,7 +55,7 @@ length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Liana:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,7 +83,7 @@ length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Liana:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -130,7 +130,7 @@ size = Vector2(32, 125.04224)
 [node name="ElevatorLiana" type="Node2D" unique_id=2000748319]
 script = ExtResource("1_crfi1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=412028669]
+[node name="Liana" type="Sprite2D" parent="." unique_id=412028669]
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_x7hf4")
 

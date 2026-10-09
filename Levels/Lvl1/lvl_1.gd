@@ -19,12 +19,11 @@ var gs
 @onready var enemy_king = $World/Difficulty/Enemies/EnemyKing
 
 @onready var survivor_fx = $World/Difficulty/Smokes/SmokeSurvivorFX
-@onready var king_fx = $World/Difficulty/FiresKing
 
 
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "king" # test difficulté
+	gs.difficulty = "survivor" #difficulté
 
 	await get_tree().process_frame
 
@@ -62,7 +61,6 @@ func setup_environment_difficulty():
 	sky_king.visible = false
 
 	survivor_fx.visible = false
-	king_fx.visible = false
 
 	# Reset ennemis
 	for enemy_group in [enemy_explorer, enemy_survivor, enemy_king]:
@@ -111,11 +109,10 @@ func setup_environment_difficulty():
 				Color("262c9bff")
 			)
 
-			set_world_color(Color("0e114dff"))
+			set_world_color(Color("2b32aaff"))
 			gs.hud.set_difficulty_color(Color("7a84abff"))
 
 			sky_king.visible = true
-			king_fx.visible = true
 
 			print("LVL1 ENEMIES : KING")
 
@@ -173,7 +170,9 @@ func set_world_color(color: Color):
 		$World/Exit,
 		$World/Traps,
 		$World/Carnivores,
-		$World/Items
+		$World/Items,
+		$World/Trees,
+		$World/Toucan
 	]:
 		node.modulate = color
 
