@@ -122,6 +122,10 @@ var explorer_unlocked = false
 var survivor_unlocked = false
 var king_unlocked = false
 
+# Dialogue de fin à afficher au retour sur le menu.
+# Valeurs possibles : "", "explorer", "survivor", "king"
+var pending_end_dialogue: String = ""
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
