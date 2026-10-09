@@ -39,10 +39,11 @@ func _on_area_2d_body_entered(body):
 	attacking = true
 	anim.play("attaque")
 
-	# 👻 cache Moko 
-	player.visible = false
-
+	# 👻 Crée la copie visuelle de Moko
 	_spawn_ghost_from_player()
+
+	# Cache le vrai Moko
+	player.visible = false
 
 	await get_tree().create_timer(1.0).timeout
 
@@ -67,33 +68,50 @@ func _spawn_ghost_from_player():
 	if sprite_ref == null:
 		return
 
-	var tex = sprite_ref.texture
+	if not sprite_ref is AnimatedSprite2D:
+		return
+
+	# Récupère exactement la texture de la frame actuelle
+	var tex = sprite_ref.sprite_frames.get_frame_texture(
+		sprite_ref.animation,
+		sprite_ref.frame
+	)
+
 	if tex == null:
 		return
 
 	var ghost_sprite = Sprite2D.new()
 	ghost_sprite.texture = tex
 
-	# Copie visuel
-	ghost_sprite.scale = sprite_ref.scale
-	ghost_sprite.rotation = sprite_ref.rotation
+	# Copie le visuel actuel de Moko
+	ghost_sprite.scale = sprite_ref.global_scale
+	ghost_sprite.rotation = sprite_ref.global_rotation
 	ghost_sprite.flip_h = sprite_ref.flip_h
 	ghost_sprite.flip_v = sprite_ref.flip_v
 	ghost_sprite.z_index = 999
 
-	# Position spawn (Muzzle > bouche)
+	# Spawn à la bouche
 	var spawn_pos = mouth.global_position
+
 	if has_node("Muzzle"):
 		spawn_pos = $Muzzle.global_position
+
 	ghost_sprite.global_position = spawn_pos
 
-	# IMPORTANT : même parent que le player (pas current_scene)
+	# Même environnement que Moko
 	player.get_parent().add_child(ghost_sprite)
 
+	# Moko se fait "aspirer"
 	var tween = create_tween()
-	tween.tween_property(ghost_sprite, "scale", Vector2.ZERO, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
-	tween.tween_callback(Callable(ghost_sprite, "queue_free"))
 
+	tween.tween_property(
+		ghost_sprite,
+		"scale",
+		Vector2.ZERO,
+		0.4
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+
+	tween.tween_callback(ghost_sprite.queue_free)
 
 func _process(delta):
 	if not player:
