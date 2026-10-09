@@ -1,13 +1,13 @@
 extends Node2D
 
-@onready var tree_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var fire_fx: Node2D = $FireFX
-@onready var smoke: Node2D = $Smoke
+@onready var tree_sprite = $AnimatedSprite2D
+@onready var fire_fx = $FireFX
+@onready var smoke = $Smoke
 
 var gs
 
 
-func _ready() -> void:
+func _ready():
 	gs = get_node("/root/GameState")
 
 	# Attend que le Lvl1 ait initialisé la difficulté
@@ -16,9 +16,7 @@ func _ready() -> void:
 	_apply_difficulty()
 
 
-func _apply_difficulty() -> void:
-	print("TREE DIFFICULTY : ", gs.difficulty)
-
+func _apply_difficulty():
 	# Reset
 	fire_fx.visible = false
 	smoke.visible = false
@@ -29,14 +27,10 @@ func _apply_difficulty() -> void:
 			tree_sprite.animation = "texture_explorer"
 			tree_sprite.modulate = Color("ffffffff")
 
-			print("TREE : EXPLORER")
-
 		"survivor":
 			tree_sprite.animation = "texture_survivor"
 			tree_sprite.modulate = Color("f2a11fff")
 			smoke.visible = true
-
-			print("TREE : SURVIVOR")
 
 		"king":
 			tree_sprite.animation = "texture_king"
@@ -44,19 +38,12 @@ func _apply_difficulty() -> void:
 			fire_fx.visible = true
 			smoke.visible = true
 
-			print("TREE : KING")
 
-		_:
-			push_warning(
-				"TREE : difficulté inconnue : " + str(gs.difficulty)
-			)
-
-
-func _on_area_2d_body_entered(body) -> void:
+func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
 		body.can_climb = true
 
 
-func _on_area_2d_body_exited(body) -> void:
+func _on_area_2d_body_exited(body):
 	if body.is_in_group("Player"):
 		body.can_climb = false

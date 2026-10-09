@@ -3,7 +3,7 @@ extends Node2D
 var gs
 
 
-func _ready() -> void:
+func _ready():
 	gs = get_node("/root/GameState")
 
 	# Attend que le Lvl1 ait appliqué la difficulté
@@ -15,8 +15,7 @@ func _ready() -> void:
 # ============================================================
 # DIFFICULTÉ
 # ============================================================
-
-func _apply_difficulty() -> void:
+func _apply_difficulty():
 	# Reset
 	$LeafSprite.visible = true
 	$HoleSprite.visible = false
@@ -37,14 +36,11 @@ func _apply_difficulty() -> void:
 			$LeafSprite.visible = false
 			$HoleSprite.visible = true
 
-	print("TRAP DIFFICULTY : ", gs.difficulty)
-
 
 # ============================================================
 # JOUEUR ENTRE DANS LE PIÈGE
 # ============================================================
-
-func _on_area_2d_body_entered(body) -> void:
+func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		$LeafSprite.visible = false
 		$HoleSprite.visible = true

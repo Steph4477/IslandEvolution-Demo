@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_1gjku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
-size = Vector2(29.160084, 583.4226)
+size = Vector2(29.160084, 655.3921)
 
 [sub_resource type="Gradient" id="Gradient_so7tl"]
 offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
@@ -138,9 +138,11 @@ animations = [{
 script = ExtResource("1_f2csc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=803545329]
+z_index = 10
+position = Vector2(23, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=781706807]
-position = Vector2(-2.528636, -274.39526)
+position = Vector2(-1.9006176, -310.3745)
 rotation = 0.017453292
 shape = SubResource("RectangleShape2D_fsyrc")
 
@@ -180,7 +182,7 @@ process_material = SubResource("ParticleProcessMaterial_ewn7p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525185733]
 position = Vector2(25, -495)
 sprite_frames = SubResource("SpriteFrames_7l72j")
-animation = &"texture_survivor"
+animation = &"texture_explorer"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

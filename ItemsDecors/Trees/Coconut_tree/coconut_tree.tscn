@@ -147,6 +147,8 @@ lifetime = 7.48
 process_material = SubResource("ParticleProcessMaterial_lb06u")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1146328630]
+z_index = 20
+position = Vector2(-8, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=238588019]
 position = Vector2(8.596003, -219.05688)
@@ -176,7 +178,7 @@ process_material = SubResource("ParticleProcessMaterial_euenq")
 position = Vector2(-7, -363)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_qrcur")
-animation = &"texture_king"
+animation = &"texture_explorer"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
