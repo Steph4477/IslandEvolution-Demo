@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cy8ea72hpm75y" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
 [ext_resource type="Texture2D" uid="uid://dw16p28s2nh54" path="res://Menu/Buttons/load.png" id="9_qmtbe"]
 [ext_resource type="Texture2D" uid="uid://5arxcnw5x631" path="res://Menu/Buttons/play.png" id="9_ss15l"]
-[ext_resource type="Texture2D" uid="uid://bc2wdu4ovgyf" path="res://Player/Sprite/Fx.png" id="9_vrp4g"]
 [ext_resource type="Texture2D" uid="uid://jtos8ml43w8k" path="res://Menu/Buttons/save.png" id="10_qfdsm"]
 [ext_resource type="AudioStream" uid="uid://bjeukxslf32cs" path="res://sounds/POWER-UP.wav" id="11_4qyy0"]
 [ext_resource type="Texture2D" uid="uid://dbtksmhyqmcb5" path="res://Menu/Buttons/options.png" id="11_bfns0"]
@@ -53,18 +52,17 @@
 [ext_resource type="Texture2D" uid="uid://byvi3o0pfsn2n" path="res://Hud/Difficulty/king.png" id="49_qqyoo"]
 [ext_resource type="Texture2D" uid="uid://bi8p58lo3tmd2" path="res://Hud/Difficulty/Locked/survivor.png" id="50_vrp4g"]
 [ext_resource type="Texture2D" uid="uid://dao52p0bk57qw" path="res://Hud/Difficulty/Locked/king.png" id="51_4qyy0"]
-
-[ext_resource type="Texture2D" path="res://Player/Sprite/Animations/idle.png" id="moko_menu_idle"]
-[ext_resource type="Texture2D" path="res://Player/Sprite/Animations/loot_skill.png" id="moko_menu_loot_skill"]
-[ext_resource type="Texture2D" path="res://Player/Sprite/Animations/fire_buff.png" id="moko_menu_fire_buff"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vrp4g"]
-atlas = ExtResource("2_pwvnj")
-region = Rect2(0, 626, 1672, 313)
+[ext_resource type="Texture2D" uid="uid://dg0xwqslvf2js" path="res://Player/Sprite/Animations/fire_buff.png" id="moko_menu_fire_buff"]
+[ext_resource type="Texture2D" uid="uid://ctjqg6vibh1oi" path="res://Player/Sprite/Animations/idle.png" id="moko_menu_idle"]
+[ext_resource type="Texture2D" uid="uid://ctxq8uf5ygl11" path="res://Player/Sprite/Animations/loot_skill.png" id="moko_menu_loot_skill"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqyoo"]
 atlas = ExtResource("2_pwvnj")
 region = Rect2(0, 0, 1672, 313)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrp4g"]
+atlas = ExtResource("2_pwvnj")
+region = Rect2(0, 626, 1672, 313)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qyy0"]
 atlas = ExtResource("2_pwvnj")
@@ -74,18 +72,18 @@ region = Rect2(0, 313, 1672, 313)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vrp4g")
-}],
-"loop": 1,
-"name": &"environement_king",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qqyoo")
 }],
 "loop": 1,
 "name": &"environment_explorer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrp4g")
+}],
+"loop": 1,
+"name": &"environment_king",
 "speed": 5.0
 }, {
 "frames": [{
@@ -196,69 +194,29 @@ scale_min = 0.79999995
 scale_max = 1.1999999
 color = Color(1, 1, 1, 0.023529412)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4o1l"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(0, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_0"]
+atlas = ExtResource("moko_menu_fire_buff")
+region = Rect2(0, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j2n6q"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(256, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_1"]
+atlas = ExtResource("moko_menu_fire_buff")
+region = Rect2(512, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6x0f"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(512, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_2"]
+atlas = ExtResource("moko_menu_fire_buff")
+region = Rect2(1024, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jp1hh"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(768, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_3"]
+atlas = ExtResource("moko_menu_fire_buff")
+region = Rect2(1536, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qs4pp"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1024, 512, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_4"]
+atlas = ExtResource("moko_menu_fire_buff")
+region = Rect2(2048, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyprq"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1280, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4lon"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1536, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ynux"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1792, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d30e8"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(0, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pogt"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(256, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie76m"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(512, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dy65m"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(768, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_maysp"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1024, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l10g"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1280, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rl0i"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1536, 768, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7x5p2"]
-atlas = ExtResource("9_vrp4g")
-region = Rect2(1792, 768, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_5"]
+atlas = ExtResource("moko_menu_fire_buff")
+region = Rect2(2560, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_idle_0"]
 atlas = ExtResource("moko_menu_idle")
@@ -304,32 +262,31 @@ region = Rect2(2560, 0, 512, 512)
 atlas = ExtResource("moko_menu_loot_skill")
 region = Rect2(3072, 0, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_0"]
-atlas = ExtResource("moko_menu_fire_buff")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_1"]
-atlas = ExtResource("moko_menu_fire_buff")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_2"]
-atlas = ExtResource("moko_menu_fire_buff")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_3"]
-atlas = ExtResource("moko_menu_fire_buff")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_4"]
-atlas = ExtResource("moko_menu_fire_buff")
-region = Rect2(2048, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_5"]
-atlas = ExtResource("moko_menu_fire_buff")
-region = Rect2(2560, 0, 512, 512)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_0im8n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moko_menu_fire_buff_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moko_menu_fire_buff_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moko_menu_fire_buff_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moko_menu_fire_buff_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moko_menu_fire_buff_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moko_menu_fire_buff_5")
+}],
+"loop": 1,
+"name": &"fire_buff",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_moko_menu_idle_0")
@@ -371,29 +328,6 @@ animations = [{
 }],
 "loop": 0,
 "name": &"loot_skill",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_menu_fire_buff_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_menu_fire_buff_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_menu_fire_buff_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_menu_fire_buff_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_menu_fire_buff_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_menu_fire_buff_5")
-}],
-"loop": 1,
-"name": &"fire_buff",
 "speed": 5.0
 }]
 
@@ -784,7 +718,7 @@ position = Vector2(403, 251)
 position = Vector2(960.9999, 235)
 scale = Vector2(3.7, 3.7)
 sprite_frames = SubResource("SpriteFrames_fyrvj")
-animation = &"environement_king"
+animation = &"environment_king"
 
 [node name="FireFx" parent="Background" unique_id=1859572375 instance=ExtResource("4_qqyoo")]
 position = Vector2(-61, 30)
