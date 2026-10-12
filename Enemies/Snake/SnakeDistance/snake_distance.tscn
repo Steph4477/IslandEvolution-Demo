@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bnl8ky8jrgw76" path="res://Enemies/Snake/SnakeDistance/snake_distance.gd" id="1_2ox2c"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_udaon"]
-[ext_resource type="Texture2D" uid="uid://chcrhpl30aor8" path="res://Enemies/Snake/SnakeDistance/spriteSheet.png" id="3_o6saf"]
+[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/attack.png" id="3_attack"]
+[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/die.png" id="3_die"]
+[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/idle.png" id="3_idle"]
+[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/onhit.png" id="3_onhit"]
+[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/patrol.png" id="3_patrol"]
+[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/walk.png" id="3_walk"]
 [ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="4_5i0fk"]
 [ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="5_6qsw0"]
 
@@ -11,104 +16,104 @@ radius = 48.999992
 height = 126.66667
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cq5ct"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(0, 3000, 1000, 1000)
+atlas = ExtResource("3_attack")
+region = Rect2(0, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5i0fk"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(1000, 3000, 1000, 1000)
+atlas = ExtResource("3_attack")
+region = Rect2(1000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qsw0"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(2000, 3000, 1000, 1000)
+atlas = ExtResource("3_attack")
+region = Rect2(2000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt5xw"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(3000, 3000, 1000, 1000)
+atlas = ExtResource("3_attack")
+region = Rect2(3000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_420gb"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(0, 5000, 2000, 1000)
+atlas = ExtResource("3_die")
+region = Rect2(0, 0, 2000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jxax"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(2000, 5000, 2000, 1000)
+atlas = ExtResource("3_die")
+region = Rect2(2000, 0, 2000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wphfd"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(4000, 5000, 2000, 1000)
+atlas = ExtResource("3_die")
+region = Rect2(4000, 0, 2000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ox2c"]
-atlas = ExtResource("3_o6saf")
+atlas = ExtResource("3_idle")
 region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udaon"]
-atlas = ExtResource("3_o6saf")
+atlas = ExtResource("3_idle")
 region = Rect2(1024, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrdtv"]
-atlas = ExtResource("3_o6saf")
+atlas = ExtResource("3_idle")
 region = Rect2(2048, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtmn2"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(4096, 0, 1024, 1024)
+atlas = ExtResource("3_idle")
+region = Rect2(3072, 0, 1024, 1024)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10stw"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(0, 4000, 1000, 1000)
+atlas = ExtResource("3_onhit")
+region = Rect2(0, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgvg1"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(1000, 4000, 1000, 1000)
+atlas = ExtResource("3_onhit")
+region = Rect2(1000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l38mt"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(2000, 4000, 1000, 1000)
+atlas = ExtResource("3_onhit")
+region = Rect2(2000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tu42"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(3000, 4000, 1000, 1000)
+atlas = ExtResource("3_onhit")
+region = Rect2(3000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kfjw"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(0, 2000, 1000, 1000)
+atlas = ExtResource("3_patrol")
+region = Rect2(0, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frqn6"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(1000, 2000, 1000, 1000)
+atlas = ExtResource("3_patrol")
+region = Rect2(1000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_taaqg"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(2000, 2000, 1000, 1000)
+atlas = ExtResource("3_patrol")
+region = Rect2(2000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgvha"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(3000, 2000, 1000, 1000)
+atlas = ExtResource("3_patrol")
+region = Rect2(3000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gbbj"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(4000, 2000, 1000, 1000)
+atlas = ExtResource("3_patrol")
+region = Rect2(4000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kr8cv"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(0, 1000, 1000, 1000)
+atlas = ExtResource("3_walk")
+region = Rect2(0, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpq2w"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(1000, 1000, 1000, 1000)
+atlas = ExtResource("3_walk")
+region = Rect2(1000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjl5l"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(2000, 1000, 1000, 1000)
+atlas = ExtResource("3_walk")
+region = Rect2(2000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rt1u"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(4000, 1000, 1000, 1000)
+atlas = ExtResource("3_walk")
+region = Rect2(3000, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57ccm"]
-atlas = ExtResource("3_o6saf")
-region = Rect2(5000, 1000, 1000, 1000)
+atlas = ExtResource("3_walk")
+region = Rect2(4000, 0, 1000, 1000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uqr7d"]
 animations = [{
