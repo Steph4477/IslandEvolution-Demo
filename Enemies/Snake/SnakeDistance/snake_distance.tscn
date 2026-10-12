@@ -17,103 +17,103 @@ height = 126.66667
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cq5ct"]
 atlas = ExtResource("3_attack")
-region = Rect2(0, 0, 1000, 1000)
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5i0fk"]
 atlas = ExtResource("3_attack")
-region = Rect2(1000, 0, 1000, 1000)
+region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qsw0"]
 atlas = ExtResource("3_attack")
-region = Rect2(2000, 0, 1000, 1000)
+region = Rect2(1000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt5xw"]
 atlas = ExtResource("3_attack")
-region = Rect2(3000, 0, 1000, 1000)
+region = Rect2(1500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_420gb"]
 atlas = ExtResource("3_die")
-region = Rect2(0, 0, 2000, 1000)
+region = Rect2(0, 0, 1000, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jxax"]
 atlas = ExtResource("3_die")
-region = Rect2(2000, 0, 2000, 1000)
+region = Rect2(1000, 0, 1000, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wphfd"]
 atlas = ExtResource("3_die")
-region = Rect2(4000, 0, 2000, 1000)
+region = Rect2(2000, 0, 1000, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ox2c"]
 atlas = ExtResource("3_idle")
-region = Rect2(0, 0, 1024, 1024)
+region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udaon"]
 atlas = ExtResource("3_idle")
-region = Rect2(1024, 0, 1024, 1024)
+region = Rect2(512, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nrdtv"]
 atlas = ExtResource("3_idle")
-region = Rect2(2048, 0, 1024, 1024)
+region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtmn2"]
 atlas = ExtResource("3_idle")
-region = Rect2(3072, 0, 1024, 1024)
+region = Rect2(1536, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10stw"]
 atlas = ExtResource("3_onhit")
-region = Rect2(0, 0, 1000, 1000)
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgvg1"]
 atlas = ExtResource("3_onhit")
-region = Rect2(1000, 0, 1000, 1000)
+region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l38mt"]
 atlas = ExtResource("3_onhit")
-region = Rect2(2000, 0, 1000, 1000)
+region = Rect2(1000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tu42"]
 atlas = ExtResource("3_onhit")
-region = Rect2(3000, 0, 1000, 1000)
+region = Rect2(1500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kfjw"]
 atlas = ExtResource("3_patrol")
-region = Rect2(0, 0, 1000, 1000)
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_frqn6"]
 atlas = ExtResource("3_patrol")
-region = Rect2(1000, 0, 1000, 1000)
+region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_taaqg"]
 atlas = ExtResource("3_patrol")
-region = Rect2(2000, 0, 1000, 1000)
+region = Rect2(1000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgvha"]
 atlas = ExtResource("3_patrol")
-region = Rect2(3000, 0, 1000, 1000)
+region = Rect2(1500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gbbj"]
 atlas = ExtResource("3_patrol")
-region = Rect2(4000, 0, 1000, 1000)
+region = Rect2(2000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kr8cv"]
 atlas = ExtResource("3_walk")
-region = Rect2(0, 0, 1000, 1000)
+region = Rect2(0, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rpq2w"]
 atlas = ExtResource("3_walk")
-region = Rect2(1000, 0, 1000, 1000)
+region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjl5l"]
 atlas = ExtResource("3_walk")
-region = Rect2(2000, 0, 1000, 1000)
+region = Rect2(1000, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rt1u"]
 atlas = ExtResource("3_walk")
-region = Rect2(3000, 0, 1000, 1000)
+region = Rect2(1500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57ccm"]
 atlas = ExtResource("3_walk")
-region = Rect2(4000, 0, 1000, 1000)
+region = Rect2(2000, 0, 500, 500)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uqr7d"]
 animations = [{
@@ -707,7 +707,7 @@ rotation = 0.78539795
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Rotator" unique_id=1718015488]
 position = Vector2(3, -2)
-scale = Vector2(-0.15, 0.15)
+scale = Vector2(-0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_uqr7d")
 animation = &"attack"
 autoplay = "walk"
