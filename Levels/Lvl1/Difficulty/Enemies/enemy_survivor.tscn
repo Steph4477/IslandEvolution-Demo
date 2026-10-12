@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://tb5ivesfeshy"]
+
+[ext_resource type="PackedScene" uid="uid://d1xptwkykbjlu" path="res://Enemies/Mosquito/mosquito.tscn" id="1_obfy6"]
+[ext_resource type="PackedScene" uid="uid://cv5xxqe4sgycb" path="res://Enemies/Snake/SnakeMelee/snake_melee.tscn" id="2_ft53j"]
+[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="3_v32al"]
+
+[node name="EnemySurvivor" type="Node2D" unique_id=1496381990]
+visible = false
+scale = Vector2(1.2, 1.2)
+
+[node name="Mosquito3" parent="." unique_id=55077267 instance=ExtResource("1_obfy6")]
+z_index = 50
+position = Vector2(1047.8333, 408.3333)
+
+[node name="Mosquito4" parent="." unique_id=707116323 instance=ExtResource("1_obfy6")]
+z_index = 50
+position = Vector2(950.83325, 273.3333)
+
+[node name="Mosquito5" parent="." unique_id=307855105 instance=ExtResource("1_obfy6")]
+z_index = 50
+position = Vector2(3311.6665, 475)
+
+[node name="Mousquito4" parent="." unique_id=1106657052 instance=ExtResource("1_obfy6")]
+z_index = 50
+position = Vector2(3505.6665, 529)
+
+[node name="Mosquito" parent="." unique_id=675968450 instance=ExtResource("1_obfy6")]
+z_index = 50
+position = Vector2(4599.1665, 499.99997)
+
+[node name="Mosquito2" parent="." unique_id=446701118 instance=ExtResource("1_obfy6")]
+z_index = 50
+position = Vector2(4787.1665, 434.99997)
+
+[node name="SnakeMelee" parent="." unique_id=88320707 instance=ExtResource("2_ft53j")]
+position = Vector2(1547.4999, 787.5)
+
+[node name="Snake" parent="." unique_id=781390911 instance=ExtResource("3_v32al")]
+z_index = 25
+position = Vector2(1812.4999, 735.8333)
+scale = Vector2(1, 1)
+
+[node name="SnakeMelee2" parent="." unique_id=2059311778 instance=ExtResource("2_ft53j")]
+position = Vector2(5894.1665, 833.3333)
+
+[node name="Snake4" parent="." unique_id=2049491780 instance=ExtResource("3_v32al")]
+position = Vector2(5711.666, 775)
+scale = Vector2(1, 1)

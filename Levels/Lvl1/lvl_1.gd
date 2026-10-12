@@ -14,9 +14,13 @@ var active_enemy_group = null
 @onready var sky_survivor = $World/Parallax/SkyLayerSurvivor
 @onready var sky_king = $World/Parallax/SkyLayerKing
 
-@onready var enemy_explorer = $World/Difficulty/Enemies/EnemyExplorer
-@onready var enemy_survivor = $World/Difficulty/Enemies/EnemySurvivor
-@onready var enemy_king = $World/Difficulty/Enemies/EnemyKing
+@onready var enemies_container = $World/Difficulty/Enemies
+
+const ENEMY_SCENE_PATHS = {
+	"explorer": "res://Levels/Lvl1/Difficulty/Enemies/enemy_explorer.tscn",
+	"survivor": "res://Levels/Lvl1/Difficulty/Enemies/enemy_survivor.tscn",
+	"king": "res://Levels/Lvl1/Difficulty/Enemies/enemy_king.tscn"
+}
 
 @onready var survivor_fx = $World/Difficulty/Smokes/SmokeSurvivorFX
 
@@ -58,21 +62,29 @@ func setup_environment_difficulty():
 	sky_explorer.visible = false
 	sky_survivor.visible = false
 	sky_king.visible = false
-
 	survivor_fx.visible = false
 
-	# Reset ennemis
-	for enemy_group in [enemy_explorer, enemy_survivor, enemy_king]:
-		enemy_group.visible = false
-		enemy_group.process_mode = Node.PROCESS_MODE_DISABLED
+	# Charge uniquement les ennemis de la difficulté actuelle
+	var enemy_scene_path: String = ENEMY_SCENE_PATHS.get(gs.difficulty, "")
+
+	if enemy_scene_path.is_empty():
+		push_error("Difficulté inconnue : " + str(gs.difficulty))
+		return
+
+	var enemy_scene: PackedScene = load(enemy_scene_path)
+
+	if enemy_scene == null:
+		push_error("Impossible de charger : " + enemy_scene_path)
+		return
+
+	active_enemy_group = enemy_scene.instantiate()
+	enemies_container.add_child(active_enemy_group)
 
 	match gs.difficulty:
 
 		"explorer":
-			active_enemy_group = enemy_explorer
-
 			setup_enemy_group(
-				enemy_explorer,
+				active_enemy_group,
 				false,
 				Color("ffffffff")
 			)
@@ -83,12 +95,10 @@ func setup_environment_difficulty():
 			sky_explorer.visible = true
 
 		"survivor":
-			active_enemy_group = enemy_survivor
-
 			var survivor_color = Color("f2a11fff")
 
 			setup_enemy_group(
-				enemy_survivor,
+				active_enemy_group,
 				true,
 				survivor_color
 			)
@@ -100,10 +110,8 @@ func setup_environment_difficulty():
 			survivor_fx.visible = true
 
 		"king":
-			active_enemy_group = enemy_king
-
 			setup_enemy_group(
-				enemy_king,
+				active_enemy_group,
 				true,
 				Color("262c9bff")
 			)

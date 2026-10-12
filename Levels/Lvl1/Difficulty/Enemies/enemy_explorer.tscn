@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cw55a202hy2"]
+
+[ext_resource type="PackedScene" uid="uid://d1xptwkykbjlu" path="res://Enemies/Mosquito/mosquito.tscn" id="1_w5t7k"]
+[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="2_2uis7"]
+
+[node name="EnemyExplorer" type="Node2D" unique_id=1813396233]
+visible = false
+
+[node name="Mosquito3" parent="." unique_id=55077267 instance=ExtResource("1_w5t7k")]
+z_index = 50
+position = Vector2(1063, 664)
+
+[node name="Mosquito2" parent="." unique_id=226374289 instance=ExtResource("1_w5t7k")]
+z_index = 50
+position = Vector2(3977, 243)
+
+[node name="Mosquito" parent="." unique_id=1204573193 instance=ExtResource("1_w5t7k")]
+z_index = 50
+position = Vector2(5605, 842)
+
+[node name="Snake" parent="." unique_id=88320707 instance=ExtResource("2_2uis7")]
+position = Vector2(2203.9998, 853.99994)
+scale = Vector2(1, 1)
+
+[node name="Snake2" parent="." unique_id=1371623787 instance=ExtResource("2_2uis7")]
+position = Vector2(3994, 1034)
+scale = Vector2(1, 1)
+
+[node name="Snake4" parent="." unique_id=2018313792 instance=ExtResource("2_2uis7")]
+position = Vector2(8576, 976)
+scale = Vector2(1, 1)
+
+[node name="Snake3" parent="." unique_id=1986312260 instance=ExtResource("2_2uis7")]
+position = Vector2(6755, 949)
+scale = Vector2(1, 1)
