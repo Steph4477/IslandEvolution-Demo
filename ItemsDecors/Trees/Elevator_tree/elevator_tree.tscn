@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_f2csc"]
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="2_w7j5j"]
-[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="3_chaqo"]
 [ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_1gjku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsyrc"]
@@ -95,44 +94,7 @@ scale_curve = SubResource("CurveTexture_5wrmp")
 color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
 alpha_curve = SubResource("CurveTexture_ub8fk")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yoyc4"]
-atlas = ExtResource("3_chaqo")
-region = Rect2(0, 0, 750, 1000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8u17g"]
-atlas = ExtResource("3_chaqo")
-region = Rect2(1500, 0, 750, 1000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4j575"]
-atlas = ExtResource("3_chaqo")
-region = Rect2(750, 0, 750, 1000)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_7l72j"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yoyc4")
-}],
-"loop": 1,
-"name": &"texture_explorer",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8u17g")
-}],
-"loop": 1,
-"name": &"texture_king",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4j575")
-}],
-"loop": 1,
-"name": &"texture_survivor",
-"speed": 5.0
-}]
 
 [node name="Elevator" type="Node2D" unique_id=1356468999]
 script = ExtResource("1_f2csc")
@@ -182,7 +144,6 @@ process_material = SubResource("ParticleProcessMaterial_ewn7p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525185733]
 position = Vector2(25, -495)
 sprite_frames = SubResource("SpriteFrames_7l72j")
-animation = &"texture_explorer"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

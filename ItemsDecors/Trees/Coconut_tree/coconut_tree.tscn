@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_ub8fk"]
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_ks8rw"]
 [ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_5wrmp"]
-[ext_resource type="Texture2D" uid="uid://ob0pb76wdvsy" path="res://ItemsDecors/Trees/spritesheet.png" id="4_ub8fk"]
 
 [sub_resource type="Curve" id="Curve_6n0w2"]
 _data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
@@ -84,47 +83,11 @@ scale_max = 0.08
 scale_curve = SubResource("CurveTexture_7dbvo")
 color_ramp = SubResource("GradientTexture1D_7dbvo")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5wrmp"]
-atlas = ExtResource("4_ub8fk")
-region = Rect2(0, 2000, 750, 1000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ub8fk"]
-atlas = ExtResource("4_ub8fk")
-region = Rect2(1500, 2000, 750, 1000)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qrcur"]
-atlas = ExtResource("4_ub8fk")
-region = Rect2(750, 2000, 750, 1000)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_qrcur"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5wrmp")
-}],
-"loop": 0,
-"name": &"texture_explorer",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ub8fk")
-}],
-"loop": 0,
-"name": &"texture_king",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qrcur")
-}],
-"loop": 0,
-"name": &"texture_survivor",
-"speed": 5.0
-}]
 
 [node name="Cocotier" type="Node2D" unique_id=411375436]
 script = ExtResource("1_ub8fk")
+texture_y = 2000
 
 [node name="Smoke" parent="." unique_id=858832992 instance=ExtResource("4_5wrmp")]
 position = Vector2(-10, -62)
@@ -149,6 +112,7 @@ process_material = SubResource("ParticleProcessMaterial_lb06u")
 [node name="Area2D" type="Area2D" parent="." unique_id=1146328630]
 z_index = 20
 position = Vector2(-8, 2)
+priority = 2000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=238588019]
 position = Vector2(8.596003, -219.05688)
@@ -178,7 +142,6 @@ process_material = SubResource("ParticleProcessMaterial_euenq")
 position = Vector2(-7, -363)
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_qrcur")
-animation = &"texture_explorer"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
