@@ -60,6 +60,10 @@ func _on_area_2d_body_entered(body):
 		return
 
 	if body is StaticBody2D:
+		has_collided = true
+		$Area2D/CollisionShape2D.set_deferred("disabled", true)
+		linear_velocity = Vector2.ZERO
+		queue_free()
 		return
 
 	if not body.is_in_group("Player"):
