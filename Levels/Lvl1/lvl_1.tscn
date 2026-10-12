@@ -855,8 +855,7 @@ position = Vector2(-645, 226)
 [node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke" index="0" unique_id=1984324698]
 z_index = -15
 position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_lb06u")
 
 [node name="Smoke2" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=744097516 instance=ExtResource("32_up2px")]
