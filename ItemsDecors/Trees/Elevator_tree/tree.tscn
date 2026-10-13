@@ -2,94 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_dm362"]
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="4_qrpwt"]
-[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="5_eo1yj"]
-
-[sub_resource type="Gradient" id="Gradient_so7tl"]
-offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
-colors = PackedColorArray(1, 0.9529412, 0.627451, 1, 1, 0.6039216, 0.1254902, 1, 0.9019608, 0.2509804, 0.07058824, 1, 0.47843137, 0.078431375, 0.03137255, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h6w7c"]
-gradient = SubResource("Gradient_so7tl")
-
-[sub_resource type="Curve" id="Curve_7dbvo"]
-_data = [Vector2(0.0059999973, 0), 0.0, 0.0, 0, 0, Vector2(0.102, 0.16115701), 0.0, 0.0, 0, 0, Vector2(0.246, 0.6487603), 0.0, 0.0, 0, 0, Vector2(0.402, 1), 0.0, 0.0, 0, 0, Vector2(0.702, 0.8471074), 0.0, 0.0, 0, 0, Vector2(0.902, 0.35123968), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 7
-
-[sub_resource type="CurveTexture" id="CurveTexture_i0wmf"]
-curve = SubResource("Curve_7dbvo")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6w7c"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(10, 3, 1)
-angle_min = -19.99999
-angle_max = 20.000011
-direction = Vector3(0, -1, 0)
-spread = 18.0
-flatness = 1.0
-initial_velocity_min = 25.0
-initial_velocity_max = 55.0
-gravity = Vector3(0, -25, 0)
-scale_min = 0.03
-scale_max = 0.08
-scale_curve = SubResource("CurveTexture_i0wmf")
-color_ramp = SubResource("GradientTexture1D_h6w7c")
-
-[sub_resource type="Curve" id="Curve_i0wmf"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
-curve = SubResource("Curve_i0wmf")
-
-[sub_resource type="Curve" id="Curve_1ehb3"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
-curve = SubResource("Curve_1ehb3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fr6md"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 30.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="Curve" id="Curve_h6w7c"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_ub8fk"]
-curve = SubResource("Curve_h6w7c")
-
-[sub_resource type="Curve" id="Curve_fr6md"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_5wrmp"]
-curve = SubResource("Curve_fr6md")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ewn7p"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 30.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_5wrmp")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_ub8fk")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7l72j"]
 
@@ -97,44 +9,8 @@ alpha_curve = SubResource("CurveTexture_ub8fk")
 script = ExtResource("1_dm362")
 texture_y = 1000
 
-[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("4_qrpwt")]
-position = Vector2(-32, -27)
-
-[node name="FireCenter" parent="FireFX" index="0" unique_id=731474519]
-process_material = SubResource("ParticleProcessMaterial_h6w7c")
-
-[node name="FireFX2" parent="FireFX" unique_id=1981353970 instance=ExtResource("4_qrpwt")]
-z_index = 2
-position = Vector2(131, 1)
-
-[node name="FireCenter" parent="FireFX/FireFX2" index="0" unique_id=731474519]
-process_material = SubResource("ParticleProcessMaterial_h6w7c")
-
-[node name="Smoke" parent="." unique_id=1181287976 instance=ExtResource("5_eo1yj")]
-position = Vector2(-110, -76)
-
-[node name="Smoke" parent="Smoke" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_fr6md")
-
-[node name="SmokeBlack" parent="Smoke" unique_id=264560438 instance=ExtResource("5_eo1yj")]
-
-[node name="Smoke" parent="Smoke/SmokeBlack" index="0" unique_id=1984324698]
-modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
-z_index = 30
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_ewn7p")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525185733]
 position = Vector2(25, -495)
 sprite_frames = SubResource("SpriteFrames_7l72j")
 
-[editable path="FireFX"]
-[editable path="FireFX/FireFX2"]
-[editable path="Smoke"]
-[editable path="Smoke/SmokeBlack"]
+[node name="FireFX" parent="." unique_id=345948567 instance=ExtResource("4_qrpwt")]

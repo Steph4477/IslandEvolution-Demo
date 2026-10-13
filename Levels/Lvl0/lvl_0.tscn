@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_o1sw5"]
 [ext_resource type="AudioStream" uid="uid://24fwln65j5wm" path="res://sounds/dijee.ogg" id="4_1tkva"]
 [ext_resource type="Texture2D" uid="uid://b1f3h6oe1jpca" path="res://Levels/Lvl0/Assets/box.png" id="4_15gx2"]
-[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="4_qqyoo"]
-[ext_resource type="Texture2D" uid="uid://dhl5e778t7p7k" path="res://Effects/Fire/smoke.png" id="6_q7kkj"]
 [ext_resource type="Texture2D" uid="uid://dcw73w4e055nw" path="res://Menu/Buttons/Pressed/restart.png" id="7_qfdsm"]
 [ext_resource type="Texture2D" uid="uid://b65pmjlofpacv" path="res://Menu/Buttons/restart.png" id="9_7s5l6"]
 [ext_resource type="Texture2D" uid="uid://cy8ea72hpm75y" path="res://Menu/Buttons/Pressed/load.png" id="9_plvp6"]
@@ -95,62 +93,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve" id="Curve_aiwf1"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
-curve = SubResource("Curve_aiwf1")
-
-[sub_resource type="Curve" id="Curve_epgrs"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
-curve = SubResource("Curve_epgrs")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ouodo"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 30.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="Curve" id="Curve_7sn1u"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_ub8fk"]
-curve = SubResource("Curve_7sn1u")
-
-[sub_resource type="Curve" id="Curve_kox7j"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_5wrmp"]
-curve = SubResource("Curve_kox7j")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_75efx"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 30.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_5wrmp")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_ub8fk")
-
 [sub_resource type="Gradient" id="Gradient_vrp4g"]
 offsets = PackedFloat32Array(0, 0.23041475, 0.71428573, 1)
 colors = PackedColorArray(1, 0.9529412, 0.627451, 1, 1, 0.6039216, 0.1254902, 1, 0.9019608, 0.2509804, 0.07058824, 1, 0.47843137, 0.078431375, 0.03137255, 1)
@@ -181,18 +123,6 @@ scale_min = 0.03
 scale_max = 0.08
 scale_curve = SubResource("CurveTexture_i0wmf")
 color_ramp = SubResource("GradientTexture1D_h6w7c")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_417gj"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(100, 10, 1)
-spread = 5.0
-initial_velocity_min = 15.0
-initial_velocity_max = 15.0
-gravity = Vector3(0, -2, 0)
-scale_min = 0.79999995
-scale_max = 1.1999999
-color = Color(1, 1, 1, 0.023529412)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_moko_menu_fire_buff_0"]
 atlas = ExtResource("moko_menu_fire_buff")
@@ -720,48 +650,16 @@ scale = Vector2(3.7, 3.7)
 sprite_frames = SubResource("SpriteFrames_fyrvj")
 animation = &"environment_king"
 
-[node name="FireFx" parent="Background" unique_id=1859572375 instance=ExtResource("4_qqyoo")]
-position = Vector2(-61, 30)
+[node name="FireFx" parent="Background" unique_id=345948567 instance=ExtResource("3_o1sw5")]
+position = Vector2(1040, 610)
 scale = Vector2(2, 2)
 
-[node name="Smoke" parent="Background/FireFx" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(576, 114)
-amount = 30
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_ouodo")
-
-[node name="SmokeBlack" parent="Background/FireFx" unique_id=6336996 instance=ExtResource("4_qqyoo")]
-position = Vector2(481, 373)
-
-[node name="Smoke" parent="Background/FireFx/SmokeBlack" index="0" unique_id=1984324698]
-modulate = Color(0.11119685, 0.11119684, 0.11119684, 1)
-z_index = 30
-position = Vector2(82.5, -273)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_75efx")
-
-[node name="FireFX" parent="Background/FireFx" unique_id=345948567 instance=ExtResource("3_o1sw5")]
-position = Vector2(550.5, 290)
-
-[node name="FireCenter" parent="Background/FireFx/FireFX" index="0" unique_id=731474519]
+[node name="FireCenter" parent="Background/FireFx" index="0" unique_id=731474519]
 position = Vector2(3.5, 0)
 process_material = SubResource("ParticleProcessMaterial_utbx0")
 
-[node name="EmbersCenter" parent="Background/FireFx/FireFX" index="1" unique_id=1250676070]
+[node name="EmbersCenter" parent="Background/FireFx" index="1" unique_id=1250676070]
 position = Vector2(-34.5, -96.5)
-
-[node name="SmokeCeilling" type="GPUParticles2D" parent="Background" unique_id=1301716882]
-position = Vector2(-847, 228.00003)
-scale = Vector2(10, 10)
-amount = 100
-texture = ExtResource("6_q7kkj")
-lifetime = 21.270000000000003
-preprocess = 20.0
-randomness = 0.4
-visibility_rect = Rect2(-5000, -2000, 10000, 4000)
-process_material = SubResource("ParticleProcessMaterial_417gj")
 
 [node name="Box" type="Sprite2D" parent="Background" unique_id=1098181049]
 position = Vector2(555, 289)
@@ -941,5 +839,3 @@ texture = ExtResource("49_pwvnj")
 [connection signal="pressed" from="Restart/Quitter" to="." method="_on_quitter_pressed"]
 
 [editable path="Background/FireFx"]
-[editable path="Background/FireFx/SmokeBlack"]
-[editable path="Background/FireFx/FireFX"]

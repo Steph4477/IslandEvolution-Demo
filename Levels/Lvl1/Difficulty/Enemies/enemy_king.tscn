@@ -3,46 +3,26 @@
 [ext_resource type="PackedScene" uid="uid://d1xptwkykbjlu" path="res://Enemies/Mosquito/mosquito.tscn" id="1_307ir"]
 [ext_resource type="PackedScene" uid="uid://dlaw2o7b3g4nv" path="res://Enemies/Snake/SnakeHeal/snake_heal.tscn" id="2_0mmpm"]
 [ext_resource type="PackedScene" uid="uid://cv5xxqe4sgycb" path="res://Enemies/Snake/SnakeMelee/snake_melee.tscn" id="3_w0hnh"]
-[ext_resource type="PackedScene" uid="uid://ckod1nhrovhg1" path="res://Enemies/Snake/snake.tscn" id="4_iv64k"]
+[ext_resource type="PackedScene" uid="uid://lye37abt7fae" path="res://Enemies/Snake/SnakeDistance/snake_distance.tscn" id="4_307ir"]
 
 [node name="EnemyKing" type="Node2D" unique_id=1133535803]
 scale = Vector2(1.4, 1.4)
 
-[node name="Mosquito4" parent="." unique_id=55077267 instance=ExtResource("1_307ir")]
-z_index = 50
-position = Vector2(818.4286, 433.2857)
-
 [node name="Mosquito5" parent="." unique_id=2097973461 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(928.4286, 234.2857)
+position = Vector2(2002.8572, 323.57144)
 
 [node name="Mosquito6" parent="." unique_id=782163133 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(721.4286, 298.2857)
-
-[node name="Mosquito7" parent="." unique_id=1181676675 instance=ExtResource("1_307ir")]
-z_index = 50
-position = Vector2(2782.5713, 301.42856)
+position = Vector2(3881.4282, 257.85715)
 
 [node name="Mosquito8" parent="." unique_id=1674718625 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(2628.5713, 397.42856)
-
-[node name="Mosquito9" parent="." unique_id=1197663617 instance=ExtResource("1_307ir")]
-z_index = 50
-position = Vector2(2976.5713, 355.42856)
-
-[node name="Mosquito" parent="." unique_id=1133645215 instance=ExtResource("1_307ir")]
-z_index = 50
-position = Vector2(3744.2856, 441.85715)
+position = Vector2(1871.4286, 293.57144)
 
 [node name="Mosquito3" parent="." unique_id=1302457006 instance=ExtResource("1_307ir")]
 z_index = 50
 position = Vector2(3748.2856, 257.85715)
-
-[node name="Mosquito2" parent="." unique_id=2086171109 instance=ExtResource("1_307ir")]
-z_index = 50
-position = Vector2(3575.0002, 225.00003)
 
 [node name="SnakeHeal" parent="." unique_id=88320707 instance=ExtResource("2_0mmpm")]
 position = Vector2(1239.2856, 767.1429)
@@ -56,12 +36,12 @@ position = Vector2(4979.2856, 694.2857)
 [node name="SnakeMelee2" parent="." unique_id=1584489676 instance=ExtResource("3_w0hnh")]
 position = Vector2(4652.8574, 639.2857)
 
-[node name="Snake3" parent="." unique_id=1863420873 instance=ExtResource("4_iv64k")]
-position = Vector2(4836.4287, 660.7143)
-scale = Vector2(1, 1)
+[node name="SnakeDistance" parent="." unique_id=531606015 instance=ExtResource("4_307ir")]
+position = Vector2(4836.428, 660.71423)
+scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Snake" parent="." unique_id=1569200128 instance=ExtResource("4_iv64k")]
-position = Vector2(337.85715, 682.8571)
-scale = Vector2(1, 1)
+[node name="SnakeDistance2" parent="." unique_id=770366889 instance=ExtResource("4_307ir")]
+position = Vector2(1062.8572, 772.1429)
+scale = Vector2(0.99999994, 0.99999994)
 
 [editable path="SnakeHeal"]

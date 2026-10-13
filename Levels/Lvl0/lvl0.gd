@@ -3,7 +3,6 @@ extends Node2D
 @onready var toucan_dialogue = $ToucanDialogue
 
 @onready var environment_sprite = $Background/AnimatedSprite2D
-@onready var smoke_ceiling = $Background/SmokeCeilling
 @onready var fire_fx = $Background/FireFx
 
 @onready var moko = $Background/Moko
@@ -333,7 +332,6 @@ func _apply_environment_difficulty():
 	environment_sprite.visible = true
 
 	# Reset FX
-	smoke_ceiling.visible = false
 	fire_fx.visible = false
 
 
@@ -345,7 +343,6 @@ func _apply_environment_difficulty():
 	if gs.survivor_unlocked or gs.king_unlocked:
 		environment_sprite.play("environment_king")
 
-		smoke_ceiling.visible = true
 		fire_fx.visible = true
 
 
@@ -357,7 +354,6 @@ func _apply_environment_difficulty():
 	elif gs.explorer_unlocked:
 		environment_sprite.play("environment_survivor")
 
-		smoke_ceiling.visible = true
 		fire_fx.visible = false
 
 

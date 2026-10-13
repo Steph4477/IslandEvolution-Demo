@@ -26,5 +26,5 @@ gravity = Vector3(0, -8, 0)
 scale_min = 0.19999999
 scale_max = 0.39999998
 scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
+color = Color(0.9137255, 0.9137255, 0.9137255, 0.2509804)
 alpha_curve = SubResource("CurveTexture_to4tw")

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://r1g73vkfwclw" path="res://Levels/Lvl1/Environement/Exit/lvl2/Exit.tscn" id="4_na1bk"]
 [ext_resource type="Script" uid="uid://y7kycrenbif1" path="res://Levels/Lvl1/Environement/Paralaxe/parallax.gd" id="4_yc75k"]
 [ext_resource type="PackedScene" uid="uid://c6rf7ltxp8nqg" path="res://ItemsDecors/Trees/Elevator_tree/tree.tscn" id="5_hpfpo"]
-[ext_resource type="Texture2D" uid="uid://dhl5e778t7p7k" path="res://Effects/Fire/smoke.png" id="6_fmwff"]
 [ext_resource type="PackedScene" uid="uid://c5a3jpxxsvrpy" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
 [ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="9_jr3jl"]
 [ext_resource type="Texture2D" uid="uid://fwsuclw4wp7b" path="res://Levels/Lvl1/Environement/TileMap/tileset_plant.png" id="9_qhqjp"]
@@ -32,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dct0fg5066ecf" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_back.png" id="29_yc75k"]
 [ext_resource type="Texture2D" uid="uid://6jfd670hqah8" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_forest.png" id="30_yc75k"]
 [ext_resource type="Texture2D" uid="uid://slmblfuudqhu" path="res://Levels/Lvl1/Environement/Fx/fog.png" id="31_ppy38"]
-[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="32_up2px"]
+[ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="32_gs1dx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5uxy"]
 texture = ExtResource("14_f1okb")
@@ -236,74 +235,6 @@ size = Vector2(304.69446, 149.15094)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs2i"]
 size = Vector2(53.2, 117.333725)
-
-[sub_resource type="Curve" id="Curve_6n0w2"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_ub8fk"]
-curve = SubResource("Curve_6n0w2")
-
-[sub_resource type="Curve" id="Curve_oe3nc"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_5wrmp"]
-curve = SubResource("Curve_oe3nc")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lb06u"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 30.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_5wrmp")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_ub8fk")
-
-[sub_resource type="Curve" id="Curve_i0wmf"]
-_data = [Vector2(0, 0.020661235), 0.0, 0.0, 0, 0, Vector2(0.202, 0.97107434), 0.0, 0.0, 0, 0, Vector2(0.866, 0.9793388), 0.0, 0.0, 0, 0, Vector2(1, 0.004132271), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_to4tw"]
-curve = SubResource("Curve_i0wmf")
-
-[sub_resource type="Curve" id="Curve_1ehb3"]
-_data = [Vector2(0, 0.21900833), 0.0, 0.0, 0, 0, Vector2(0.334, 0.49173558), 0.0, 0.0, 0, 0, Vector2(0.698, 0.8553719), 0.0, 0.0, 0, 0, Vector2(0.9980001, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_jr3jl"]
-curve = SubResource("Curve_1ehb3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xt3fa"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(0.1, -1, 0)
-spread = 5.0
-initial_velocity_max = 70.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.19999999
-scale_max = 0.39999998
-scale_curve = SubResource("CurveTexture_jr3jl")
-color = Color(0.91228896, 0.9122889, 0.91228884, 0.34901962)
-alpha_curve = SubResource("CurveTexture_to4tw")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_itas7"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(100, 10, 1)
-spread = 5.0
-initial_velocity_min = 15.0
-initial_velocity_max = 15.0
-gravity = Vector3(0, -2, 0)
-scale_min = 0.79999995
-scale_max = 1.1999999
-color = Color(1, 1, 1, 0.023529412)
 
 [sub_resource type="Animation" id="Animation_ppy38"]
 length = 0.001
@@ -841,79 +772,28 @@ position = Vector2(9129, 957)
 [node name="Difficulty" type="Node2D" parent="World" unique_id=1391593506]
 z_index = 15
 
-[node name="Smokes" type="Node2D" parent="World/Difficulty" unique_id=2068246158]
-position = Vector2(1727, 956)
-
-[node name="SmokeSurvivorFX" type="Node2D" parent="World/Difficulty/Smokes" unique_id=1210806157]
-
-[node name="LittleSmoke" type="Node2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=81671639]
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=345948567 instance=ExtResource("32_up2px")]
-z_index = 30
-position = Vector2(-645, 226)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(87, -115)
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_lb06u")
-
-[node name="Smoke2" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=744097516 instance=ExtResource("32_up2px")]
-position = Vector2(4662, 151)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke2" index="0" unique_id=1984324698]
-z_index = 30
-position = Vector2(87, -115)
-amount = 15
-lifetime = 7.48
-process_material = SubResource("ParticleProcessMaterial_lb06u")
-
-[node name="Smoke3" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=652094797 instance=ExtResource("32_up2px")]
-position = Vector2(433, 187)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke3" index="0" unique_id=1984324698]
-z_index = -40
-position = Vector2(87, -115)
-scale = Vector2(0.1, 3)
-amount = 10
-lifetime = 5.279999999999999
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="Smoke4" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke" unique_id=441946977 instance=ExtResource("32_up2px")]
-position = Vector2(1761, 171)
-
-[node name="Smoke" parent="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke4" index="0" unique_id=1984324698]
-z_index = -15
-position = Vector2(18, -98)
-amount = 8
-lifetime = 27.76
-process_material = SubResource("ParticleProcessMaterial_xt3fa")
-
-[node name="SmokeCeilling" type="GPUParticles2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=1991169451]
-z_index = 100
-position = Vector2(-1396, -202.00002)
-scale = Vector2(10, 10)
-amount = 80
-texture = ExtResource("6_fmwff")
-lifetime = 21.270000000000003
-preprocess = 20.0
-randomness = 0.4
-visibility_rect = Rect2(-5000, -2000, 10000, 4000)
-process_material = SubResource("ParticleProcessMaterial_itas7")
-
-[node name="SmokeCeilling2" type="GPUParticles2D" parent="World/Difficulty/Smokes/SmokeSurvivorFX" unique_id=188981323]
-z_index = 100
-position = Vector2(4725, -344.99997)
-scale = Vector2(10, 10)
-amount = 300
-texture = ExtResource("6_fmwff")
-lifetime = 21.270000000000003
-preprocess = 20.0
-randomness = 0.4
-visibility_rect = Rect2(-5000, -2000, 10000, 4000)
-process_material = SubResource("ParticleProcessMaterial_itas7")
-
 [node name="Enemies" type="Node2D" parent="World/Difficulty" unique_id=359324376]
+
+[node name="Smoke" type="Node2D" parent="World/Difficulty" unique_id=714444509]
+
+[node name="Smoke" parent="World/Difficulty/Smoke" unique_id=345948567 instance=ExtResource("32_gs1dx")]
+z_index = -10
+position = Vector2(714, 1085)
+
+[node name="SmokeFXSurvivor2" parent="World/Difficulty/Smoke/Smoke" unique_id=971951136 instance=ExtResource("32_gs1dx")]
+position = Vector2(921, 4)
+
+[node name="SmokeFXSurvivor3" parent="World/Difficulty/Smoke/Smoke" unique_id=1319241780 instance=ExtResource("32_gs1dx")]
+position = Vector2(3083, -11)
+
+[node name="SmokeFXSurvivor4" parent="World/Difficulty/Smoke/Smoke" unique_id=213369910 instance=ExtResource("32_gs1dx")]
+position = Vector2(4702, -44)
+
+[node name="SmokeFXSurvivor5" parent="World/Difficulty/Smoke/Smoke" unique_id=249385996 instance=ExtResource("32_gs1dx")]
+position = Vector2(6595, -59)
+
+[node name="SmokeFXSurvivor6" parent="World/Difficulty/Smoke/Smoke" unique_id=538394802 instance=ExtResource("32_gs1dx")]
+position = Vector2(7670, -65)
 
 [node name="GroundFog" type="Node2D" parent="." unique_id=176729669]
 position = Vector2(-15, -75)
@@ -927,8 +807,3 @@ texture = ExtResource("31_ppy38")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GroundFog" unique_id=422152376]
 libraries/ = SubResource("AnimationLibrary_gs1dx")
 autoplay = &"idle"
-
-[editable path="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke"]
-[editable path="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke2"]
-[editable path="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke3"]
-[editable path="World/Difficulty/Smokes/SmokeSurvivorFX/LittleSmoke/Smoke4"]

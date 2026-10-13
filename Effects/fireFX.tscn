@@ -21,7 +21,7 @@ curve = SubResource("Curve_7dbvo")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_68hgu"]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(110, 3, 1)
+emission_box_extents = Vector3(30, 2, 1)
 angle_min = -19.99999
 angle_max = 20.000011
 direction = Vector3(0, -1, 0)
@@ -60,9 +60,9 @@ color_ramp = SubResource("GradientTexture1D_so7tl")
 
 [node name="FireCenter" type="GPUParticles2D" parent="." unique_id=731474519]
 position = Vector2(6, 0)
-amount = 120
+amount = 20
 texture = ExtResource("1_s2hhu")
-lifetime = 1.6
+lifetime = 2.0
 randomness = 0.7
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_68hgu")

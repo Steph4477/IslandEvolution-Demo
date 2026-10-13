@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var tree_sprite = $AnimatedSprite2D
 @onready var fire_fx = $FireFX
-@onready var smoke = $Smoke
+#@onready var smoke = $Smoke
 
 @export var texture_y: int = 0
 
@@ -27,7 +27,7 @@ func _ready():
 func _apply_difficulty():
 	# Reset
 	fire_fx.visible = false
-	smoke.visible = false
+	#smoke.visible = false
 	tree_sprite.modulate = Color.WHITE
 
 	# Charge uniquement la texture correspondant à la difficulté actuelle
@@ -62,12 +62,12 @@ func _apply_difficulty():
 
 		"survivor":
 			tree_sprite.modulate = Color("f2a11fff")
-			smoke.visible = true
+			#smoke.visible = true
 
 		"king":
 			tree_sprite.modulate = Color("2b32aaff")
+			#smoke.visible = true
 			fire_fx.visible = true
-			smoke.visible = true
 
 
 func _on_area_2d_body_entered(body):

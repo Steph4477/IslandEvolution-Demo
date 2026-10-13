@@ -15,14 +15,13 @@ var active_enemy_group = null
 @onready var sky_king = $World/Parallax/SkyLayerKing
 
 @onready var enemies_container = $World/Difficulty/Enemies
+@onready var smoke = $World/Difficulty/Smoke
 
 const ENEMY_SCENE_PATHS = {
 	"explorer": "res://Levels/Lvl1/Difficulty/Enemies/enemy_explorer.tscn",
 	"survivor": "res://Levels/Lvl1/Difficulty/Enemies/enemy_survivor.tscn",
 	"king": "res://Levels/Lvl1/Difficulty/Enemies/enemy_king.tscn"
 }
-
-@onready var survivor_fx = $World/Difficulty/Smokes/SmokeSurvivorFX
 
 
 func _ready():
@@ -62,7 +61,6 @@ func setup_environment_difficulty():
 	sky_explorer.visible = false
 	sky_survivor.visible = false
 	sky_king.visible = false
-	survivor_fx.visible = false
 
 	# Charge uniquement les ennemis de la difficulté actuelle
 	var enemy_scene_path: String = ENEMY_SCENE_PATHS.get(gs.difficulty, "")
@@ -93,6 +91,7 @@ func setup_environment_difficulty():
 			gs.hud.set_difficulty_color(Color("ffffffff"))
 
 			sky_explorer.visible = true
+			smoke.visible = false
 
 		"survivor":
 			var survivor_color = Color("f2a11fff")
@@ -107,7 +106,7 @@ func setup_environment_difficulty():
 			gs.hud.set_difficulty_color(survivor_color)
 
 			sky_survivor.visible = true
-			survivor_fx.visible = true
+			smoke.visible = true
 
 		"king":
 			setup_enemy_group(
@@ -120,7 +119,7 @@ func setup_environment_difficulty():
 			gs.hud.set_difficulty_color(Color("7a84abff"))
 
 			sky_king.visible = true
-			survivor_fx.visible = true
+			smoke.visible = false
 
 	# === SCORE ===
 	var total_enemies = gs.score_system.count_enemies_in_node(active_enemy_group)

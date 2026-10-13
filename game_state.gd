@@ -174,9 +174,9 @@ func _ready():
 	print("======================================")
 
 	#await load_level("res://Levels/Test/test_scene.tscn")
-	#await load_level("res://Levels/Loader/loader.tscn")
+	await load_level("res://Levels/Loader/loader.tscn")
 	#await load_level("res://Levels/IntroCinematic/intro_cinematic.tscn")
-	await load_level("res://Levels/Lvl0/lvl_0.tscn")
+	#await load_level("res://Levels/Lvl0/lvl_0.tscn")
 	#await load_level("res://Levels/Lvl1/lvl_1.tscn")
 
 	await get_tree().process_frame
