@@ -645,8 +645,8 @@ script = ExtResource("1_rv0fi")
 position = Vector2(403, 251)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background" unique_id=407777382]
-position = Vector2(960.9999, 235)
-scale = Vector2(3.7, 3.7)
+position = Vector2(910, 220.50002)
+scale = Vector2(3.7, 3.971246)
 sprite_frames = SubResource("SpriteFrames_fyrvj")
 animation = &"environment_king"
 
