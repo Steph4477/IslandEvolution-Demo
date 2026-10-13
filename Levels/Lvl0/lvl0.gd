@@ -128,6 +128,8 @@ func _handle_toucan_dialogue():
 
 		await toucan_dialogue.play_dialogue(WELCOME_DIALOGUE)
 
+		await toucan_dialogue.fly_away()
+
 		_set_menu_buttons_enabled(true)
 
 
@@ -175,41 +177,14 @@ func _play_end_sequence(completed_difficulty: String):
 	print("======================================")
 
 
-	# ========================================================================
 	# 1. TOUCAN : INTRO + SPEECH COMPLET
-	# ========================================================================
-
 	await toucan_dialogue.play_dialogue(dialogue_lines)
 
-
-	# ========================================================================
-	# 2. TOUCAN RESTE PRÉSENT
-	#    MOKO REÇOIT SA RÉCOMPENSE
-	# ========================================================================
-
+	# 2. MOKO REÇOIT SA RÉCOMPENSE
 	await _play_moko_reward(completed_difficulty)
 
-
-	# ========================================================================
-	# 3. MOKO EST REVENU EN IDLE
-	#    LE TOUCAN PEUT MAINTENANT PARTIR
-	# ========================================================================
-
+	# 3. LE TOUCAN PART
 	await toucan_dialogue.fly_away()
-
-
-	# ========================================================================
-	# 1. LE TOUCAN FAIT TOUT SON SPEECH
-	# ========================================================================
-
-	await toucan_dialogue.play_dialogue(dialogue_lines)
-
-
-	# ========================================================================
-	# 2. SPEECH TERMINÉ -> MOKO REÇOIT SA RÉCOMPENSE
-	# ========================================================================
-
-	await _play_moko_reward(completed_difficulty)
 
 
 # ============================================================================
