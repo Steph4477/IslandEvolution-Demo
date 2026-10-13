@@ -7,7 +7,7 @@
 
 [node name="Mosquito2" parent="." unique_id=226374289 instance=ExtResource("1_w5t7k")]
 z_index = 50
-position = Vector2(2644, 392)
+position = Vector2(2656, 564)
 
 [node name="Mosquito" parent="." unique_id=1204573193 instance=ExtResource("1_w5t7k")]
 z_index = 50

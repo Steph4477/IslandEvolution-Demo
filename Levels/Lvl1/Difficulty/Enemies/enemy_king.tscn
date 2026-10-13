@@ -10,19 +10,19 @@ scale = Vector2(1.4, 1.4)
 
 [node name="Mosquito5" parent="." unique_id=2097973461 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(2002.8572, 323.57144)
+position = Vector2(2028.5714, 461.4286)
 
 [node name="Mosquito6" parent="." unique_id=782163133 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(3881.4282, 257.85715)
+position = Vector2(3917.1428, 442.14285)
 
 [node name="Mosquito8" parent="." unique_id=1674718625 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(1871.4286, 293.57144)
+position = Vector2(1876.4286, 457.14288)
 
 [node name="Mosquito3" parent="." unique_id=1302457006 instance=ExtResource("1_307ir")]
 z_index = 50
-position = Vector2(3748.2856, 257.85715)
+position = Vector2(3753.5715, 452.14285)
 
 [node name="SnakeHeal" parent="." unique_id=88320707 instance=ExtResource("2_0mmpm")]
 position = Vector2(1239.2856, 767.1429)
