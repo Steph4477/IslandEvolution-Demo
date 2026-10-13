@@ -27,7 +27,6 @@ var follow_distance = 500
 
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()
-var jump_mod = EnemyModJumpSync.new()
 var heal_mod = EnemyModHealProjectile.new()
 
 
@@ -63,8 +62,6 @@ func _ready():
 	target_mod.setup(self)
 	melee_mod.setup(self)
 
-	if can_jump:
-		jump_mod.setup(self)
 
 	patrol_mod.setup(self)
 	heal_mod.setup(self)
@@ -99,8 +96,6 @@ func _physics_process(delta):
 
 	flip()
 
-	if can_jump:
-		jump_mod.update()
 
 	melee_mod.update_state()
 
