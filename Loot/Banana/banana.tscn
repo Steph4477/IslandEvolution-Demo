@@ -4,24 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://2424sld04ixp" path="res://Loot/Banana/banana.png" id="2_rvtjo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
-radius = 3.7133088
+radius = 5.513724
 
 [node name="BananaLoot" type="Node2D" unique_id=263101351]
 script = ExtResource("1_rvtjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=598903984]
-modulate = Color(1, 1, 0, 1)
-self_modulate = Color(1, 1, 0, 1)
-position = Vector2(12.201012, 28.520721)
-rotation = -0.034906585
-scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_rvtjo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=46387584]
-position = Vector2(12.201012, 28.520721)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=256418661]
-position = Vector2(-11.201011, -26.52072)
+position = Vector2(-13.999998, -7)
 rotation = 0.045647074
 scale = Vector2(16.1668, -18.3068)
 shape = SubResource("CircleShape2D_52bb4")

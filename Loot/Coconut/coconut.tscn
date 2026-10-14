@@ -4,20 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://g1rjxl2xpqnw" path="res://Loot/Coconut/coconut.png" id="2_52bb4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52bb4"]
-radius = 3.47464
+radius = 3.4643197
 
 [node name="CocoLoot" type="Node2D" unique_id=579457842]
 script = ExtResource("1_52bb4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1275373904]
-position = Vector2(-20, 0)
-scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_52bb4")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1411499640]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1196257470]
-position = Vector2(2, 0)
 rotation = -3.14159
 scale = Vector2(16.1668, -18.3068)
 shape = SubResource("CircleShape2D_52bb4")
