@@ -26,7 +26,7 @@ const ENEMY_SCENE_PATHS = {
 
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "survivor" #difficulté
+	#gs.difficulty = "king" #difficulté
 
 	await get_tree().process_frame
 

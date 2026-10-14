@@ -25,8 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://76o72o6gqnl6" path="res://ItemsDecors/Totem/totem.tscn" id="21_t7ttw"]
 [ext_resource type="PackedScene" uid="uid://cii2fg46a1ewu" path="res://ItemsDecors/Liana/Liana.tscn" id="24_2hs2i"]
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl1/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
-[ext_resource type="PackedScene" uid="uid://dynitxv1hhc1y" path="res://Loot/Coconut/coconut.tscn" id="26_fyrvj"]
-[ext_resource type="PackedScene" uid="uid://d2he0802svh3m" path="res://Loot/Banana/banana.tscn" id="27_up2px"]
 [ext_resource type="Texture2D" uid="uid://831cdhbqbrmi" path="res://Levels/Lvl1/Environement/Paralaxe/sky_explorer.png" id="29_6e3s7"]
 [ext_resource type="Texture2D" uid="uid://dct0fg5066ecf" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_back.png" id="29_yc75k"]
 [ext_resource type="Texture2D" uid="uid://6jfd670hqah8" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_forest.png" id="30_yc75k"]
@@ -304,7 +302,7 @@ position = Vector2(3775, 1172)
 
 [node name="Banana_tree" parent="Trees" unique_id=293081655 instance=ExtResource("9_wh82l")]
 z_index = 5
-position = Vector2(1630, 1108)
+position = Vector2(1755, 1138)
 
 [node name="tree" parent="Trees" unique_id=1356468999 instance=ExtResource("5_hpfpo")]
 position = Vector2(7280, 1155.0001)
@@ -726,19 +724,6 @@ position = Vector2(-3297, -35)
 z_index = 40
 position = Vector2(2968, 636)
 scale = Vector2(0.6, 0.6)
-
-[node name="CocoLoot" parent="World/Items" unique_id=579457842 instance=ExtResource("26_fyrvj")]
-z_index = 10
-position = Vector2(764, 766)
-
-[node name="CocoLoot2" parent="World/Items" unique_id=420246312 instance=ExtResource("26_fyrvj")]
-z_index = 10
-position = Vector2(3821, 820)
-
-[node name="BananaLoot" parent="World/Items" unique_id=263101351 instance=ExtResource("27_up2px")]
-position = Vector2(1688, 761)
-rotation = -0.55850536
-scale = Vector2(-1, 1)
 
 [node name="Traps" type="Node2D" parent="World" unique_id=1538016097]
 position = Vector2(-23, -211)

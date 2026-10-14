@@ -14,7 +14,7 @@ z_index = 50
 position = Vector2(5605, 842)
 
 [node name="SnakeDistance" parent="." unique_id=88320707 instance=ExtResource("2_w5t7k")]
-position = Vector2(1729, 861)
+position = Vector2(1137, 1103)
 
 [node name="SnakeDistance2" parent="." unique_id=171003790 instance=ExtResource("2_w5t7k")]
 position = Vector2(3994, 1034)

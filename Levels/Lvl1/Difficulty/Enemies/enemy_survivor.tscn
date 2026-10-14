@@ -24,10 +24,10 @@ z_index = 50
 position = Vector2(4762.5, 538.3333)
 
 [node name="SnakeMelee" parent="." unique_id=88320707 instance=ExtResource("2_ft53j")]
-position = Vector2(1547.4999, 787.5)
+position = Vector2(1157.5, 703.33325)
 
 [node name="SnakeDistance" parent="." unique_id=413641676 instance=ExtResource("3_obfy6")]
-position = Vector2(1812.5, 735.8333)
+position = Vector2(1378.3334, 696.6666)
 
 [node name="SnakeMelee2" parent="." unique_id=2059311778 instance=ExtResource("2_ft53j")]
 position = Vector2(5894.1665, 833.3333)
