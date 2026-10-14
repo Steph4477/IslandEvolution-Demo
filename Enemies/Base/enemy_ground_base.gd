@@ -37,6 +37,11 @@ func _ready():
 
 	is_patrolling = patrol_enabled
 
+	patrol_mod.setup(self)
+
+	if patrol_enabled:
+		patrol_mod.start()
+
 
 func apply_gravity(delta):
 	if is_on_floor() and velocity.y >= 0:
@@ -70,6 +75,11 @@ func flip():
 	elif dx < -1:
 		$Rotator.scale.x = -base_scale_x
 
+func flip_patrol():
+	if patrol_direction > 0:
+		$Rotator.scale.x = base_scale_x
+	elif patrol_direction < 0:
+		$Rotator.scale.x = -base_scale_x
 
 func move_to_target():
 	if distance < attack_range and dx > stop_distance:

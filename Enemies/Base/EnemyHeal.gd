@@ -1,8 +1,10 @@
 extends EnemyGroundBase
 class_name EnemyHeal
 
-@export var balance_id = "cannibal_heal"
+
+@export var balance_id = "snake_heal"
 @onready var aura_fx: AnimatedSprite2D = $Rotator/HealFX
+
 
 var melee_distance = 0
 var fire_interval = 3.0
@@ -31,6 +33,11 @@ var heal_mod = EnemyModHealProjectile.new()
 
 
 func _ready():
+	super._ready()
+
+	# =========================================================================
+	# GAME BALANCE
+	# =========================================================================
 	max_hp = GameBalance.ENEMY_HP[balance_id]
 	damage = GameBalance.ENEMY_DAMAGE[balance_id]
 	speed = GameBalance.ENEMY_SPEED[balance_id]
@@ -41,31 +48,36 @@ func _ready():
 	projectile_attack_animation = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
 	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
 	can_jump = GameBalance.ENEMY_CAN_JUMP[balance_id]
-
 	attack_anim_name = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
 
-	super._ready()
+	# =========================================================================
+	# EVOLUTION + HP + HEALTH BAR
+	# =========================================================================
+	finalize_stats()
 
+	# =========================================================================
+	# FX
+	# =========================================================================
 	if aura_fx:
 		aura_fx.visible = false
 		aura_fx.stop()
 
-	hp = max_hp
-
-	if health_bar:
-		health_bar.max_value = max_hp
-		health_bar.value = hp
-
+	# =========================================================================
+	# REFERENCES
+	# =========================================================================
 	projectile_spawn = $Rotator/ProjectileSpawn
-	patrol_timer = $PatrolTimer
 
+	# =========================================================================
+	# MODULES
+	# =========================================================================
 	target_mod.setup(self)
 	melee_mod.setup(self)
-
-
 	patrol_mod.setup(self)
 	heal_mod.setup(self)
 
+	# =========================================================================
+	# TIMERS
+	# =========================================================================
 	if projectile_timer:
 		projectile_timer.wait_time = fire_interval
 		projectile_timer.one_shot = true
@@ -95,7 +107,6 @@ func _physics_process(delta):
 	target_mod.update()
 
 	flip()
-
 
 	melee_mod.update_state()
 

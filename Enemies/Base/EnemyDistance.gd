@@ -23,24 +23,16 @@ var throw_mod = EnemyModThrowProjectile.new()
 func _ready():
 	super._ready()
 
+	# ================================================================
+	# GAME BALANCE
+	# ================================================================
 	max_hp = GameBalance.ENEMY_HP[balance_id]
-	hp = max_hp
 	damage = GameBalance.ENEMY_DAMAGE[balance_id]
 	projectile_damage = GameBalance.ENEMY_PROJECTILE_DAMAGE[balance_id]
 	speed = GameBalance.ENEMY_SPEED[balance_id]
 	melee_distance = GameBalance.ENEMY_MELEE_DISTANCE[balance_id]
 	attack_cooldown = GameBalance.ENEMY_COOLDOWN[balance_id]
 	attack_anim_name = GameBalance.ENEMY_ANIMATION_ATTACK[balance_id]
-
-	if health_bar:
-		health_bar.max_value = max_hp
-		health_bar.value = hp
-
-	if attack_timer:
-		attack_timer.wait_time = attack_cooldown
-		attack_timer.stop()
-
-	melee_mod.setup(self)
 
 	min_shoot_distance = GameBalance.ENEMY_MIN_SHOOT_DISTANCE[balance_id]
 	max_shoot_distance = GameBalance.ENEMY_MAX_SHOOT_DISTANCE[balance_id]
@@ -49,8 +41,25 @@ func _ready():
 	projectile_attack_animation = GameBalance.ENEMY_ANIMATION_SHOOT[balance_id]
 	animation_walk = GameBalance.ENEMY_ANIMATION_WALK[balance_id]
 
+	# ================================================================
+	# EVOLUTION + HP + HEALTH BAR
+	# ================================================================
+	finalize_stats()
+
+	# ================================================================
+	# COMBAT
+	# ================================================================
 	attack_range = melee_distance
 
+	if attack_timer:
+		attack_timer.wait_time = attack_cooldown
+		attack_timer.stop()
+
+	melee_mod.setup(self)
+
+	# ================================================================
+	# PROJECTILE
+	# ================================================================
 	projectile_spawn = $Rotator/ProjectileSpawn
 
 	if projectile_timer:
@@ -80,11 +89,23 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 
-	if distance > detection_range:
-		velocity.x = 0
-		play_idle()
+	if target == null or distance > detection_range:
+		is_patrolling = true
+		patrol_mod.update_movement()
+
+		if velocity.x != 0:
+			patrol_direction = sign(velocity.x)
+			flip_patrol()
+
+			if anim.current_animation != animation_walk:
+				anim.play(animation_walk)
+		else:
+			play_idle()
+
 		move_and_slide()
 		return
+
+	is_patrolling = false
 
 	melee_mod.update_state()
 

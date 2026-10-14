@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dpdg43ctn30vu" path="res://Enemies/Snake/SnakeHeal/snake_heal.gd" id="1_65ebp"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_2s604"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/attack.png" id="3_attack"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/die.png" id="3_die"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/heal.png" id="3_heal"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/idle.png" id="3_idle"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/onhit.png" id="3_onhit"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/patrol.png" id="3_patrol"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeHeal/Animations/walk.png" id="3_walk"]
+[ext_resource type="Texture2D" uid="uid://dkooodavybegq" path="res://Enemies/Snake/SnakeHeal/Animations/attack.png" id="3_attack"]
+[ext_resource type="Texture2D" uid="uid://cxxwkd4vcij4q" path="res://Enemies/Snake/SnakeHeal/Animations/die.png" id="3_die"]
+[ext_resource type="Texture2D" uid="uid://ctkn725wnrs5a" path="res://Enemies/Snake/SnakeHeal/Animations/heal.png" id="3_heal"]
+[ext_resource type="Texture2D" uid="uid://cdi5ouhg8vsp0" path="res://Enemies/Snake/SnakeHeal/Animations/idle.png" id="3_idle"]
+[ext_resource type="Texture2D" uid="uid://bjginux3j1r4u" path="res://Enemies/Snake/SnakeHeal/Animations/onhit.png" id="3_onhit"]
+[ext_resource type="Texture2D" uid="uid://b4ddyuinle26k" path="res://Enemies/Snake/SnakeHeal/Animations/patrol.png" id="3_patrol"]
+[ext_resource type="Texture2D" uid="uid://0dbo2ta7hryn" path="res://Enemies/Snake/SnakeHeal/Animations/walk.png" id="3_walk"]
 [ext_resource type="Texture2D" uid="uid://x0m5mfaqcf8f" path="res://Enemies/Snake/SnakeHeal/spriteSheetFX.png" id="6_jrxur"]
 [ext_resource type="Texture2D" uid="uid://dfxovwh25jbon" path="res://Effects/Heal/aura.png" id="7_exe8q"]
 
@@ -739,8 +739,9 @@ sprite_frames = SubResource("SpriteFrames_7j4kk")
 animation = &"heal_aura"
 frame_progress = 0.16115119
 
-[node name="HealLight" type="PointLight2D" parent="Rotator" unique_id=1932016293]
-position = Vector2(3, 28)
+[node name="HealLight" type="PointLight2D" parent="Rotator/HealFX" unique_id=1932016293]
+position = Vector2(-1.9417477, -29)
+scale = Vector2(0.97087383, 1)
 energy = 0.45
 texture = ExtResource("7_exe8q")
 texture_scale = 0.55

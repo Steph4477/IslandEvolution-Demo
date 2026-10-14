@@ -48,14 +48,6 @@ func _ready():
 
 	player = gs.player
 
-	apply_evolution_stats()
-
-	hp = max_hp
-
-	if hb:
-		hb.set_max(max_hp)
-		hb.set_value(hp)
-
 
 func apply_evolution_stats():
 	var multiplier = gs.score_system.get_enemy_evolution_multiplier(gs.enemy_evolution_percent)
@@ -72,6 +64,16 @@ func apply_evolution_stats():
 
 	if projectile_damage > 0:
 		print("ENEMY PROJECTILE DAMAGE : ", projectile_damage)
+
+
+func finalize_stats():
+	apply_evolution_stats()
+
+	hp = max_hp
+
+	if hb:
+		hb.set_max(max_hp)
+		hb.set_value(hp)
 
 
 func setup_common_refs():

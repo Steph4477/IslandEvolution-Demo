@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bnl8ky8jrgw76" path="res://Enemies/Snake/SnakeDistance/snake_distance.gd" id="1_2ox2c"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_udaon"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/attack.png" id="3_attack"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/die.png" id="3_die"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/idle.png" id="3_idle"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/onhit.png" id="3_onhit"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/patrol.png" id="3_patrol"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeDistance/Animations/walk.png" id="3_walk"]
+[ext_resource type="Texture2D" uid="uid://8px7arxo5tcn" path="res://Enemies/Snake/SnakeDistance/Animations/attack.png" id="3_attack"]
+[ext_resource type="Texture2D" uid="uid://kx27fw54f0mb" path="res://Enemies/Snake/SnakeDistance/Animations/die.png" id="3_die"]
+[ext_resource type="Texture2D" uid="uid://dxfy70dyi68m2" path="res://Enemies/Snake/SnakeDistance/Animations/idle.png" id="3_idle"]
+[ext_resource type="Texture2D" uid="uid://dk2o4vguxrbo1" path="res://Enemies/Snake/SnakeDistance/Animations/onhit.png" id="3_onhit"]
+[ext_resource type="Texture2D" uid="uid://diyj8rx142tiq" path="res://Enemies/Snake/SnakeDistance/Animations/patrol.png" id="3_patrol"]
+[ext_resource type="Texture2D" uid="uid://bh1gmi8e14vfc" path="res://Enemies/Snake/SnakeDistance/Animations/walk.png" id="3_walk"]
 [ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="4_5i0fk"]
 [ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="5_6qsw0"]
 
@@ -653,7 +653,6 @@ z_index = 25
 collision_layer = 8
 collision_mask = 1282
 script = ExtResource("1_2ox2c")
-attack_range = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
 position = Vector2(-6, 16)
@@ -698,7 +697,7 @@ libraries/ = SubResource("AnimationLibrary_feqrn")
 autoplay = &"walk"
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=1636847424]
-position = Vector2(-136.66667, -111.66666)
+position = Vector2(29, 5)
 rotation = 0.78539795
 
 [node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]

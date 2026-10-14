@@ -31,6 +31,11 @@ var orbit_mod = EnemyModFlightOrbit.new()
 var charge_mod = EnemyModFlightCharge.new()
 
 func _ready():
+	super._ready()
+
+	# =========================================================================
+	# GAME BALANCE
+	# =========================================================================
 	max_hp = GameBalance.ENEMY_HP["mosquito"]
 	damage = GameBalance.ENEMY_DAMAGE["mosquito"]
 
@@ -43,11 +48,18 @@ func _ready():
 	attack_anim_name = "attack"
 	attack_contact_radius = contact_attack_radius
 
-	super._ready()
+	# =========================================================================
+	# EVOLUTION + HP + HEALTH BAR
+	# =========================================================================
+	finalize_stats()
 
+	# =========================================================================
+	# MODULES
+	# =========================================================================
 	patrol_mod.setup(self)
 	orbit_mod.setup(self)
 	charge_mod.setup(self)
+
 	patrol_mod.start()
 
 func _physics_process(delta):
