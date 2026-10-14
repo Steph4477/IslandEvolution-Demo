@@ -1,12 +1,27 @@
 [gd_scene format=3 uid="uid://c5a3jpxxsvrpy"]
 
 [ext_resource type="Script" uid="uid://cukdu78u2c1ej" path="res://ItemsDecors/Trees/tree.gd" id="1_ub8fk"]
+[ext_resource type="Texture2D" uid="uid://b3k1u23bvbw4b" path="res://ItemsDecors/Trees/trees_explorer.png" id="2_ks8rw"]
 [ext_resource type="PackedScene" uid="uid://b1w0lqnmdj6xk" path="res://Effects/fireFX.tscn" id="3_ks8rw"]
+[ext_resource type="PackedScene" uid="uid://dynitxv1hhc1y" path="res://Loot/Coconut/coconut.tscn" id="4_ub8fk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it4j1"]
 size = Vector2(48.807976, 512.56036)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub8fk"]
+atlas = ExtResource("2_ks8rw")
+region = Rect2(0, 2000, 750, 1000)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qrcur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub8fk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Cocotier" type="Node2D" unique_id=411375436]
 script = ExtResource("1_ub8fk")
@@ -28,7 +43,15 @@ scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_qrcur")
 
 [node name="FireFX" parent="." unique_id=81735317 instance=ExtResource("3_ks8rw")]
-position = Vector2(5, 0)
+z_index = -5
+position = Vector2(-72, 6)
+
+[node name="FireFX2" parent="FireFX" unique_id=345948567 instance=ExtResource("3_ks8rw")]
+position = Vector2(65, 13)
+
+[node name="CocoLoot" parent="." unique_id=579457842 instance=ExtResource("4_ub8fk")]
+position = Vector2(6, -437)
+scale = Vector2(0.6, 0.6)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
