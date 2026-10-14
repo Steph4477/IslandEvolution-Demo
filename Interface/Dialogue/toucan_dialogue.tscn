@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0e2quy2kxrgv"]
 
-[ext_resource type="Script" uid="uid://ckdyhoyxo7u5h" path="res://Interface/Dialogue/toucan_dialogue.gd" id="1_fob3j"]
+[ext_resource type="Script" uid="uid://bxayxmmqqv7jr" path="res://Levels/Lvl0/toucan_dialogue.gd" id="1_fob3j"]
 [ext_resource type="Texture2D" uid="uid://cma4jf1goitsb" path="res://Loot/Flower/flower.png" id="2_fv1li"]
 [ext_resource type="Texture2D" uid="uid://87d1bcavxogf" path="res://Enemies/Toucan/idle1.png" id="3_2eail"]
 [ext_resource type="Texture2D" uid="uid://byqib1tqbmcd3" path="res://Enemies/Toucan/speack.png" id="4_wvq16"]
