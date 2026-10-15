@@ -323,7 +323,7 @@ scale = Vector2(1.5, 1.8)
 position = Vector2(6037, 1249)
 
 [node name="LianaTree" type="Node2D" parent="World/Lianas" unique_id=1057297115]
-z_index = -2
+z_index = 20
 position = Vector2(1379, -723)
 
 [node name="Liana" parent="World/Lianas/LianaTree" unique_id=411276915 instance=ExtResource("24_2hs2i")]
@@ -349,7 +349,7 @@ position = Vector2(-1853, -344)
 scale = Vector2(0.4, 0.7)
 
 [node name="AnimatedLiana" type="Node2D" parent="World/Lianas" unique_id=1048059659]
-z_index = -20
+z_index = 20
 position = Vector2(-3367, -1206)
 scale = Vector2(0.8, 1)
 
