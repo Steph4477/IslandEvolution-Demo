@@ -78,6 +78,7 @@ func spawn_key():
 
 	var key = key_scene.instantiate()
 	key.global_position = key_spawn.global_position
+	key.z_index = 20
 
 	# Ajoute la clé dans le niveau courant si possible, sinon dans la scène courante
 	var parent = null

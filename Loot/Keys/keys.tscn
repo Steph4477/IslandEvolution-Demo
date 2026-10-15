@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://doows1v1eud58" path="res://Loot/Keys/keys.png" id="2_vgwwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3a4u"]
-size = Vector2(2.56873, 15.4809)
+size = Vector2(0.29604745, 15.4809)
 
 [sub_resource type="Animation" id="Animation_68vs2"]
 length = 0.001
