@@ -8,6 +8,13 @@ extends Node2D
 @onready var moko = $Background/Moko
 @onready var moko_anim: AnimationPlayer = $Background/Moko/AnimationPlayer
 
+# --- Musics ---
+@onready var lvl0_explorer = $sound/Lvl0_explorer
+@onready var lvl0_survivor = $sound/Lvl0_survivor
+@onready var lvl0_king = $sound/lvl0_king
+@onready var lvl0_birds_survivor = $sound/lvl0_birds_survivor
+@onready var lvl0_drums_king = $sound/lvl0_drums_king
+
 var gs
 var player = null
 
@@ -57,8 +64,6 @@ const KING_END_DIALOGUE: Array[String] = [
 # ============================================================================
 
 func _ready():
-	$sound/dijee.play()
-
 	gs = get_node_or_null("/root/GameState")
 
 	if not gs:
@@ -319,6 +324,13 @@ func _apply_environment_difficulty():
 	# Reset FX
 	fire_fx.visible = false
 
+	# Reset audio
+	lvl0_explorer.stop()
+	lvl0_survivor.stop()
+	lvl0_king.stop()
+	lvl0_birds_survivor.stop()
+	lvl0_drums_king.stop()
+
 
 	# ------------------------------------------------------------------------
 	# KING
@@ -329,6 +341,9 @@ func _apply_environment_difficulty():
 		environment_sprite.play("environment_king")
 
 		fire_fx.visible = true
+
+		lvl0_king.play()
+		lvl0_drums_king.play()
 
 
 	# ------------------------------------------------------------------------
@@ -341,6 +356,9 @@ func _apply_environment_difficulty():
 
 		fire_fx.visible = false
 
+		lvl0_survivor.play()
+		lvl0_birds_survivor.play()
+
 
 	# ------------------------------------------------------------------------
 	# EXPLORER
@@ -348,6 +366,8 @@ func _apply_environment_difficulty():
 
 	else:
 		environment_sprite.play("environment_explorer")
+
+		lvl0_explorer.play()
 
 
 # ============================================================================
