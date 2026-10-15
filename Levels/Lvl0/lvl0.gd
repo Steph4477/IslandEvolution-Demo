@@ -11,6 +11,7 @@ extends Node2D
 var gs
 var player = null
 
+static var welcome_dialogue_seen = false
 
 # ============================================================================
 #                              DIALOGUES
@@ -76,6 +77,11 @@ func _ready():
 	# ------------------------------------------------------------------------
 
 	gs.load_global_progress()
+	
+	# Options désactivées dans la démo
+	$Restart/Options.disabled = true
+	$Restart/Options.modulate = Color(0.45, 0.45, 0.45, 1.0)
+	$Restart/Options.mouse_default_cursor_shape = Control.CURSOR_ARROW
 
 	# ------------------------------------------------------------------------
 	# Mise à jour visuelle du menu
@@ -123,11 +129,12 @@ func _handle_toucan_dialogue():
 	# Première arrivée dans le jeu.
 	# ------------------------------------------------------------------------
 
-	if _is_first_game_state():
+	if _is_first_game_state() and not welcome_dialogue_seen:
+		welcome_dialogue_seen = true
+
 		_set_menu_buttons_enabled(false)
 
 		await toucan_dialogue.play_dialogue(WELCOME_DIALOGUE)
-
 		await toucan_dialogue.fly_away()
 
 		_set_menu_buttons_enabled(true)
@@ -264,13 +271,16 @@ func _set_menu_buttons_enabled(enabled: bool):
 		$Save/Save,
 		$Continue/Continue,
 		$Restart/Options,
-		$Restart/Restart,
-		$Restart/Quitter
+		$Restart/Restart
 	]
 
 	for control in menu_controls:
 		if control is Control:
 			control.mouse_filter = mouse_filter_value
+	
+	# Options reste toujours désactivé dans la démo
+	$Restart/Options.disabled = true
+	$Restart/Options.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	# ------------------------------------------------------------------------
 	# Difficultés
@@ -375,9 +385,10 @@ func refresh_difficulty_buttons():
 # ============================================================================
 
 func _on_options_pressed():
-	await gs.load_level(
-		"res://Interface/Configuration/configuration.tscn"
-	)
+	return
+	#await gs.load_level(
+		#"res://Interface/Configuration/configuration.tscn"
+	#)
 
 
 # ============================================================================
