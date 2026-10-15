@@ -12,7 +12,7 @@ var max_duration = 2.0
 var is_pulling = false
 var pull_time = 0.0
 
-var rope_scene = preload("res://Shoot/HarpoonRope/harpoon_rope.tscn")
+#var rope_scene = preload("res://Shoot/HarpoonRope/harpoon_rope.tscn")
 
 func setup(parent_owner):
 	owner_node = parent_owner
@@ -20,7 +20,7 @@ func setup(parent_owner):
 func create_rope(point_a, point_b):
 	stop_rope()
 
-	rope = rope_scene.instantiate()
+	#rope = rope_scene.instantiate()
 	get_tree().current_scene.add_child(rope)
 	rope.start(point_a, point_b)
 
