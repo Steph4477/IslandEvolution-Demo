@@ -16,6 +16,7 @@ var active_enemy_group = null
 
 @onready var enemies_container = $World/Difficulty/Enemies
 @onready var smoke = $World/Difficulty/Smoke
+@onready var difficulty_items = $World/Difficulty/Items
 
 const ENEMY_SCENE_PATHS = {
 	"explorer": "res://Levels/Lvl1/Difficulty/Enemies/enemy_explorer.tscn",
@@ -26,7 +27,7 @@ const ENEMY_SCENE_PATHS = {
 
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "king" #difficulté
+	gs.difficulty = "king" #difficulté
 
 	await get_tree().process_frame
 
@@ -61,6 +62,8 @@ func setup_environment_difficulty():
 	sky_explorer.visible = false
 	sky_survivor.visible = false
 	sky_king.visible = false
+	difficulty_items.visible = false
+	difficulty_items.process_mode = Node.PROCESS_MODE_DISABLED
 
 	# Charge uniquement les ennemis de la difficulté actuelle
 	var enemy_scene_path: String = ENEMY_SCENE_PATHS.get(gs.difficulty, "")
@@ -120,6 +123,8 @@ func setup_environment_difficulty():
 
 			sky_king.visible = true
 			smoke.visible = false
+			difficulty_items.visible = true
+			difficulty_items.process_mode = Node.PROCESS_MODE_INHERIT
 
 	# === SCORE ===
 	var total_enemies = gs.score_system.count_enemies_in_node(active_enemy_group)

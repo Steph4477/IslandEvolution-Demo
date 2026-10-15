@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dcfkkrwvp0ixd" path="res://Levels/Lvl1/Environement/Hidden_Trap/hidden_trap.tscn" id="25_p5uxy"]
 [ext_resource type="Texture2D" uid="uid://831cdhbqbrmi" path="res://Levels/Lvl1/Environement/Paralaxe/sky_explorer.png" id="29_6e3s7"]
 [ext_resource type="Texture2D" uid="uid://dct0fg5066ecf" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_back.png" id="29_yc75k"]
+[ext_resource type="PackedScene" uid="uid://5ifnsceh6ylv" path="res://Loot/Coconut/Pile/pile.tscn" id="30_ppy38"]
 [ext_resource type="Texture2D" uid="uid://6jfd670hqah8" path="res://Levels/Lvl1/Environement/Paralaxe/parallax_forest.png" id="30_yc75k"]
 [ext_resource type="Texture2D" uid="uid://slmblfuudqhu" path="res://Levels/Lvl1/Environement/Fx/fog.png" id="31_ppy38"]
 [ext_resource type="PackedScene" uid="uid://bc78tv2fil1hh" path="res://Effects/smoke_fx_survivor.tscn" id="32_gs1dx"]
@@ -779,6 +780,13 @@ position = Vector2(6595, -59)
 
 [node name="SmokeFXSurvivor6" parent="World/Difficulty/Smoke/Smoke" unique_id=538394802 instance=ExtResource("32_gs1dx")]
 position = Vector2(7670, -65)
+
+[node name="Items" type="Node2D" parent="World/Difficulty" unique_id=12914027]
+
+[node name="Pile" parent="World/Difficulty/Items" unique_id=477987675 instance=ExtResource("30_ppy38")]
+modulate = Color(0.40146014, 0.40146014, 0.40146014, 1)
+position = Vector2(296, 1099)
+scale = Vector2(0.6, 0.6)
 
 [node name="GroundFog" type="Node2D" parent="." unique_id=176729669]
 position = Vector2(-15, -75)
