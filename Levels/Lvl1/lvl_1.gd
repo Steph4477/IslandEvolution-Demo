@@ -5,6 +5,7 @@ var cam
 var player
 var gs
 var active_enemy_group = null
+var birds_timer
 
 @onready var world = $World
 @onready var parallax = $World/Parallax
@@ -18,6 +19,13 @@ var active_enemy_group = null
 @onready var smoke = $World/Difficulty/Smoke
 @onready var difficulty_items = $World/Difficulty/Items
 
+# --- Son et bruitages ---
+@onready var lvl1_explorer = $Sound/Lvl1_explorer
+@onready var lvl1_survivor = $Sound/Lvl1_survivor
+@onready var lvl1_king = $Sound/Lvl1_king
+@onready var lvl1_birds_survivor = $Sound/Lvl1_birds_survivor
+@onready var lvl1_drums_king = $Sound/Lvl1_drums_king
+
 const ENEMY_SCENE_PATHS = {
 	"explorer": "res://Levels/Lvl1/Difficulty/Enemies/enemy_explorer.tscn",
 	"survivor": "res://Levels/Lvl1/Difficulty/Enemies/enemy_survivor.tscn",
@@ -27,7 +35,7 @@ const ENEMY_SCENE_PATHS = {
 
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "king" #difficulté
+	gs.difficulty = "survivor" #difficulté
 
 	await get_tree().process_frame
 
@@ -48,14 +56,12 @@ func _ready():
 	if not gs.key_collected.is_connected(_on_key_collected):
 		gs.key_collected.connect(_on_key_collected)
 
-	$Sound/Lvl1.play()
-
 	# === CINÉMATIQUE D'INTRO ===
 	await start_intro_sequence()
 
 
 # ============================================================
-# DIFFICULTÉ
+# DIFFICULTÉ ET SONS
 # ============================================================
 func setup_environment_difficulty():
 	# Reset environnement
@@ -64,6 +70,13 @@ func setup_environment_difficulty():
 	sky_king.visible = false
 	difficulty_items.visible = false
 	difficulty_items.process_mode = Node.PROCESS_MODE_DISABLED
+
+	# Reset audio
+	lvl1_explorer.stop()
+	lvl1_survivor.stop()
+	lvl1_king.stop()
+	lvl1_birds_survivor.stop()
+	lvl1_drums_king.stop()
 
 	# Charge uniquement les ennemis de la difficulté actuelle
 	var enemy_scene_path: String = ENEMY_SCENE_PATHS.get(gs.difficulty, "")
@@ -96,6 +109,9 @@ func setup_environment_difficulty():
 			sky_explorer.visible = true
 			smoke.visible = false
 
+			# Audio
+			lvl1_explorer.play()
+
 		"survivor":
 			var survivor_color = Color("f2a11fff")
 
@@ -111,6 +127,10 @@ func setup_environment_difficulty():
 			sky_survivor.visible = true
 			smoke.visible = true
 
+			# Audio
+			lvl1_survivor.play()
+			start_survivor_birds()
+
 		"king":
 			setup_enemy_group(
 				active_enemy_group,
@@ -125,6 +145,10 @@ func setup_environment_difficulty():
 			smoke.visible = false
 			difficulty_items.visible = true
 			difficulty_items.process_mode = Node.PROCESS_MODE_INHERIT
+
+			# Audio
+			lvl1_king.play()
+			lvl1_drums_king.play()
 
 	# === SCORE ===
 	var total_enemies = gs.score_system.count_enemies_in_node(active_enemy_group)
@@ -366,3 +390,27 @@ func focus_camera_on_exit_and_fade():
 
 	player.enable_controls()
 	set_enemies_blocked(false)
+
+
+#####################################################################
+#                  SON DES OISEAUX EN SURVIVOR                      #
+#####################################################################
+func start_survivor_birds():
+	lvl1_birds_survivor.play()
+
+	birds_timer = Timer.new()
+	birds_timer.one_shot = true
+	add_child(birds_timer)
+
+	birds_timer.timeout.connect(play_survivor_birds)
+
+	birds_timer.start(randf_range(20.0, 35.0))
+
+
+func play_survivor_birds():
+	if gs.difficulty != "survivor":
+		return
+
+	lvl1_birds_survivor.play()
+
+	birds_timer.start(randf_range(20.0, 35.0))
