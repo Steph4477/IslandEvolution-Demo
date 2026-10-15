@@ -57,6 +57,13 @@ func play_dialogue(new_lines: Array[String]):
 	dialogue_running = true
 	lines = new_lines.duplicate()
 
+	var gs = get_node_or_null("/root/GameState")
+
+	if gs and gs.difficulty in ["survivor", "king"]:
+		text.add_theme_color_override("default_color", Color.WHITE)
+	else:
+		text.add_theme_color_override("default_color", Color.BLACK)
+
 	# ------------------------------------------------------------------------
 	# Arrivée du Toucan
 	# ------------------------------------------------------------------------
