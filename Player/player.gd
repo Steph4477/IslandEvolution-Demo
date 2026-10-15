@@ -309,6 +309,13 @@ func _physics_process(delta):
 		return
 
 	if animation_locked:
+		# Autorise uniquement le CLAC aérien malgré le verrouillage d'animation
+		if not is_on_floor() and combat_mod:
+			if Input.is_action_just_pressed(INPUT["clac"]):
+				combat_mod.clac()
+				move_and_slide()
+				return
+
 		velocity.x = 0
 
 		if climbing_anim == "":

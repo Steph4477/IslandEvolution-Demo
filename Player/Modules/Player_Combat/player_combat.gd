@@ -77,7 +77,8 @@ func coco():
 	else:
 		p.anim.play("jump_shoot")
 
-	await p.anim.animation_finished
+	# La coco part 0,3 seconde après le début de l'animation
+	await p.get_tree().create_timer(0.3).timeout
 
 	if p.is_hit_locked:
 		p.animation_locked = false
@@ -114,6 +115,10 @@ func coco():
 	p.game_state.can_fire_coco = p.can_fire_coco
 
 	p.hud_mod.update_coco_display()
+
+	# Laisse l'animation shoot/jump_shoot se terminer
+	if p.anim.is_playing():
+		await p.anim.animation_finished
 
 	p.animation_locked = false
 	p.enter_combat_stance()
@@ -168,16 +173,24 @@ func attack():
 		p.animation_locked = false
 	else:
 		p.is_jump_clacing = true
+		p.animation_locked = true
+
+		# Active immédiatement la zone de frappe
+		p.get_node("ClacArea").monitoring = true
+
 		p.anim.play("jump_clac")
 
 		await p.anim.animation_finished
 
+		p.get_node("ClacArea").monitoring = false
+
 		if p.is_hit_locked:
-			p.get_node("ClacArea").monitoring = false
+			p.animation_locked = false
 			p.is_jump_clacing = false
 			p.is_attacking = false
 			return
 
+		p.animation_locked = false
 		p.is_jump_clacing = false
 
 	p.get_node("ClacArea").monitoring = false
