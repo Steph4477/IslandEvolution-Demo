@@ -9,6 +9,10 @@ func setup(player):
 #                       DOMMAGES ET MORT
 # ============================================================================
 func on_hit(damage):
+	# Aucun dégât / onhit pendant l'animation de porte
+	if p.anim.current_animation == "door":
+		return
+
 	if not p.can_be_damaged or p.is_dead:
 		return
 
