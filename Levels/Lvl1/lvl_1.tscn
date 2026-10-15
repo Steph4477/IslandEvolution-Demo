@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://y7kycrenbif1" path="res://Levels/Lvl1/Environement/Paralaxe/parallax.gd" id="4_yc75k"]
 [ext_resource type="AudioStream" uid="uid://dkbgk5k14f3rb" path="res://sounds/lvl1_birds_survivor.wav" id="5_fyrvj"]
 [ext_resource type="PackedScene" uid="uid://c6rf7ltxp8nqg" path="res://ItemsDecors/Trees/Elevator_tree/tree.tscn" id="5_hpfpo"]
-[ext_resource type="AudioStream" uid="uid://dkt36f3cydbmh" path="res://sounds/lvl1_drump_king.wav" id="6_up2px"]
+[ext_resource type="AudioStream" uid="uid://dkt36f3cydbmh" path="res://sounds/lvl1_drum_king.wav" id="6_up2px"]
 [ext_resource type="PackedScene" uid="uid://c5a3jpxxsvrpy" path="res://ItemsDecors/Trees/Coconut_tree/coconut_tree.tscn" id="8_n1s4q"]
 [ext_resource type="PackedScene" uid="uid://dem6aecic7fr5" path="res://Levels/Lvl1/Environement/ElevatorLiana/elevator_liana.tscn" id="9_jr3jl"]
 [ext_resource type="Texture2D" uid="uid://fwsuclw4wp7b" path="res://Levels/Lvl1/Environement/TileMap/tileset_plant.png" id="9_qhqjp"]
@@ -309,7 +309,7 @@ autoplay = true
 
 [node name="Lvl1_drums_king" type="AudioStreamPlayer" parent="Sound" unique_id=682156791]
 stream = ExtResource("6_up2px")
-volume_db = 5.859
+volume_db = 15.0
 autoplay = true
 
 [node name="Trees" type="Node2D" parent="." unique_id=203279243]
