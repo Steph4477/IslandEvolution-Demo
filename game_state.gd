@@ -413,6 +413,7 @@ func unlock_next_difficulty():
 		print("ROI DE L'ILE VALIDE")
 		print("TOUTES LES DIFFICULTES SONT TERMINEES")
 
+	has_key = false
 	save_progress()
 
 	print("NOUVELLE DIFFICULTE : ", difficulty)
