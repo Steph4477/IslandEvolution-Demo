@@ -291,20 +291,22 @@ position = Vector2(14, -90)
 
 [node name="Lvl1_explorer" type="AudioStreamPlayer" parent="Sound" unique_id=626687880]
 stream = ExtResource("2_ppy38")
-volume_db = -6.0
+volume_db = 8.0
 autoplay = true
 
 [node name="Lvl1_survivor" type="AudioStreamPlayer" parent="Sound" unique_id=669486416]
 stream = ExtResource("3_jr3jl")
+volume_db = 6.0
 autoplay = true
 
 [node name="Lvl1_king" type="AudioStreamPlayer" parent="Sound" unique_id=1265313816]
 stream = ExtResource("4_to4tw")
+volume_db = 4.0
 autoplay = true
 
 [node name="Lvl1_birds_survivor" type="AudioStreamPlayer" parent="Sound" unique_id=2055777232]
 stream = ExtResource("5_fyrvj")
-volume_db = 14.857
+volume_db = 8.0
 autoplay = true
 
 [node name="Lvl1_drums_king" type="AudioStreamPlayer" parent="Sound" unique_id=682156791]

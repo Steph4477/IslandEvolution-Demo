@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://36bqf3gwhvkm" path="res://Menu/Buttons/eschap.png" id="14_aj0cd"]
 [ext_resource type="Texture2D" uid="uid://c7e6p1t7ww6qq" path="res://Menu/Buttons/Pressed/quit.png" id="14_usbvp"]
 [ext_resource type="Texture2D" uid="uid://dbsdppi3p8yxu" path="res://Levels/Lvl0/Assets/title.png" id="16_usbvp"]
-[ext_resource type="AudioStream" uid="uid://bposdef0cigjg" path="res://sounds/lvl1_explorer.wav" id="22_aiwf1"]
+[ext_resource type="AudioStream" uid="uid://bg3ocxsobvr6h" path="res://sounds/lvl0_explorer.mp3" id="22_aiwf1"]
 [ext_resource type="Script" uid="uid://bxayxmmqqv7jr" path="res://Levels/Lvl0/toucan_dialogue.gd" id="23_ambkl"]
 [ext_resource type="AudioStream" uid="uid://31nx4n67576j" path="res://sounds/lvl0_survivor.wav" id="23_epgrs"]
 [ext_resource type="Texture2D" uid="uid://ced3xcjvukij4" path="res://Enemies/Toucan/FrontFlight/1.png" id="23_q7kkj"]
@@ -752,23 +752,27 @@ texture_pressed = ExtResource("14_usbvp")
 
 [node name="Lvl0_explorer" type="AudioStreamPlayer" parent="sound" unique_id=1683550365]
 stream = ExtResource("22_aiwf1")
-volume_db = -13.9
+volume_db = 10.0
 autoplay = true
 
 [node name="Lvl0_survivor" type="AudioStreamPlayer" parent="sound" unique_id=1556643990]
 stream = ExtResource("23_epgrs")
+volume_db = 10.0
 autoplay = true
 
 [node name="lvl0_king" type="AudioStreamPlayer" parent="sound" unique_id=537613536]
 stream = ExtResource("24_ouodo")
+volume_db = 10.0
 autoplay = true
 
 [node name="lvl0_birds_survivor" type="AudioStreamPlayer" parent="sound" unique_id=863581401]
 stream = ExtResource("25_7sn1u")
+volume_db = 15.0
 autoplay = true
 
 [node name="lvl0_drums_king" type="AudioStreamPlayer" parent="sound" unique_id=1246770374]
 stream = ExtResource("26_kox7j")
+volume_db = 15.0
 autoplay = true
 
 [node name="Anim" type="AnimationPlayer" parent="." unique_id=175262954]
