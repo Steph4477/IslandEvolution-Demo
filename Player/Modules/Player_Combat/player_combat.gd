@@ -72,13 +72,16 @@ func coco():
 
 	p.animation_locked = true
 
+	var shoot_delay = 0.3
+
 	if p.is_on_floor():
 		p.anim.play("shoot")
+		shoot_delay = 0.5
 	else:
 		p.anim.play("jump_shoot")
+		shoot_delay = 0.3
 
-	# La coco part 0,3 seconde après le début de l'animation
-	await p.get_tree().create_timer(0.3).timeout
+	await p.get_tree().create_timer(shoot_delay).timeout
 
 	if p.is_hit_locked:
 		p.animation_locked = false
