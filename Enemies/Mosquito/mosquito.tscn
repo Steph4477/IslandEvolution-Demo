@@ -66,6 +66,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Rotator/Sprite:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_b0e3j"]
 resource_name = "attack"
@@ -126,19 +138,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Rotator/Sprite:modulate")
+tracks/1/path = NodePath("Rotator/Eye:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Rotator/Eye:visible")
+tracks/2/path = NodePath("Rotator/Eye2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -150,14 +162,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Rotator/Eye2:visible")
+tracks/3/path = NodePath("Rotator/Sprite:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0.6666667, 1.1666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.2509804, 0.2509804, 0.2509804, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_l6bps"]
@@ -274,12 +286,7 @@ scale = Vector2(0.8, 0.8)
 [node name="Sprite" type="Sprite2D" parent="Rotator" unique_id=823019334]
 position = Vector2(-2.775, -94.54999)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_27a47")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=170573413]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_kcxtp")
-autoplay = &"patrol"
+texture = ExtResource("3_2vk4j")
 
 [node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1705152986]
 visible = false
@@ -316,5 +323,10 @@ color = Color(1, 1, 0.14117648, 1)
 energy = 0.72
 texture = ExtResource("11_mwu6f")
 texture_scale = 0.08
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=170573413]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_kcxtp")
+autoplay = &"patrol"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://8xsolwbukrtt" path="res://Enemies/Snake/SnakeMelee/snake_melee.gd" id="1_f5mxk"]
 [ext_resource type="PackedScene" uid="uid://dapglwcq0g0b4" path="res://Enemies/health_bar.tscn" id="2_sggbl"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeMelee/Animations/attack.png" id="3_attack"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeMelee/Animations/die.png" id="3_die"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeMelee/Animations/idle.png" id="3_idle"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeMelee/Animations/onhit.png" id="3_onhit"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeMelee/Animations/patrol.png" id="3_patrol"]
-[ext_resource type="Texture2D" path="res://Enemies/Snake/SnakeMelee/Animations/walk.png" id="3_walk"]
+[ext_resource type="Texture2D" uid="uid://budx1agj5ptj7" path="res://Enemies/Snake/SnakeMelee/Animations/attack.png" id="3_attack"]
+[ext_resource type="Texture2D" uid="uid://b4qsuttkifgoj" path="res://Enemies/Snake/SnakeMelee/Animations/die.png" id="3_die"]
+[ext_resource type="Texture2D" uid="uid://b33x58rkx55aa" path="res://Enemies/Snake/SnakeMelee/Animations/idle.png" id="3_idle"]
+[ext_resource type="Texture2D" uid="uid://cbyagi15fie7d" path="res://Enemies/Snake/SnakeMelee/Animations/onhit.png" id="3_onhit"]
+[ext_resource type="Texture2D" uid="uid://da0q3o7bbcquc" path="res://Enemies/Snake/SnakeMelee/Animations/patrol.png" id="3_patrol"]
+[ext_resource type="Texture2D" uid="uid://b47vcs5bbtu4f" path="res://Enemies/Snake/SnakeMelee/Animations/walk.png" id="3_walk"]
 [ext_resource type="Texture2D" uid="uid://cl7vgk8ldl8w8" path="res://Effects/Fire/Coco_on_fire/fire.png" id="4_xtxso"]
 [ext_resource type="Texture2D" uid="uid://bkvq8vsdnluh2" path="res://Effects/Fire/fire_light.png" id="5_fy5vq"]
 
@@ -292,50 +292,50 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:modulate")
+tracks/3/path = NodePath("Eye:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(23.000004, 12.000004)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:position")
+tracks/4/path = NodePath("Eye:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(23.000004, 12.000004)]
+"update": 1,
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Eye:visible")
+tracks/5/path = NodePath("Eye:texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [ExtResource("4_xtxso")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Eye:texture")
+tracks/6/path = NodePath("AnimatedSprite2D:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_xtxso")]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_pioq7"]
@@ -432,38 +432,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:modulate")
+tracks/3/path = NodePath("Eye:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.6333334, 1.19),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Eye:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(48, 32)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Eye:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Eye:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.19999999),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.2509804, 0.2509804, 0.2509804, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_m2mdo"]
@@ -743,18 +743,6 @@ scale = Vector2(-0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_f4sag")
 animation = &"walk"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=881682204]
-libraries/ = SubResource("AnimationLibrary_feqrn")
-autoplay = &"walk"
-
-[node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=1636847424]
-position = Vector2(-136.66667, -111.66666)
-rotation = 0.78539795
-
-[node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
-position = Vector2(91.66667, 16.666666)
-rotation = 0.78539795
-
 [node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1076479896]
 visible = false
 z_index = 30
@@ -772,6 +760,18 @@ color = Color(1, 1, 0.14117648, 1)
 energy = 0.72
 texture = ExtResource("5_fy5vq")
 texture_scale = 0.08
+
+[node name="ProjectileSpawn" type="Marker2D" parent="Rotator" unique_id=1636847424]
+position = Vector2(-136.66667, -111.66666)
+rotation = 0.78539795
+
+[node name="SpawnPoint" type="Marker2D" parent="Rotator" unique_id=1069437686]
+position = Vector2(91.66667, 16.666666)
+rotation = 0.78539795
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotator" unique_id=881682204]
+libraries/ = SubResource("AnimationLibrary_feqrn")
+autoplay = &"walk"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
