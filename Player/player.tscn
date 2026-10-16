@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://b8i1r7nc6yu2c" path="res://sounds/clac_impact.wav" id="7_vtle1"]
 [ext_resource type="AudioStream" uid="uid://dw7ok13vufpnr" path="res://sounds/191579__timbahrij__wood-fire-1.wav" id="8_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://bo4830lfg02id" path="res://sounds/loot_skills.wav" id="9_apopc"]
+[ext_resource type="Texture2D" uid="uid://b4iq7vxfi15ru" path="res://Player/Sprite/Animations/heal.png" id="16_7x5p2"]
 [ext_resource type="Texture2D" uid="uid://bdl230oa1wrfv" path="res://Player/Sprite/Animations/clac.png" id="moko_anim_clac"]
 [ext_resource type="Texture2D" uid="uid://do745nwco3sm2" path="res://Player/Sprite/Animations/climb.png" id="moko_anim_climb"]
 [ext_resource type="Texture2D" uid="uid://b4e67t1ugegr1" path="res://Player/Sprite/Animations/climb_coco.png" id="moko_anim_climb_coco"]
@@ -23,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://c6n1hrmg851of" path="res://Player/Sprite/Animations/hang.png" id="moko_anim_hang"]
 [ext_resource type="Texture2D" uid="uid://blcke2ks48mdh" path="res://Player/Sprite/Animations/harpooned.png" id="moko_anim_harpooned"]
 [ext_resource type="Texture2D" uid="uid://bcm1abdx2jnuf" path="res://Player/Sprite/Animations/headbutt_swim.png" id="moko_anim_headbutt_swim"]
-[ext_resource type="Texture2D" uid="uid://b4iq7vxfi15ru" path="res://Player/Sprite/Animations/heal.png" id="moko_anim_heal"]
 [ext_resource type="Texture2D" uid="uid://ctfcmqfoktv5j" path="res://Player/Sprite/Animations/idle.png" id="moko_anim_idle"]
 [ext_resource type="Texture2D" uid="uid://uhit2ugi4pb6" path="res://Player/Sprite/Animations/interact.png" id="moko_anim_interact"]
 [ext_resource type="Texture2D" uid="uid://lo6w2gdqpujr" path="res://Player/Sprite/Animations/jump2_down.png" id="moko_anim_jump2_down"]
@@ -353,21 +353,21 @@ region = Rect2(1025, 0, 205, 205)
 atlas = ExtResource("moko_anim_headbutt_swim")
 region = Rect2(1230, 0, 205, 205)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_heal_0"]
-atlas = ExtResource("moko_anim_heal")
-region = Rect2(0, 0, 205, 205)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e3ym"]
+atlas = ExtResource("16_7x5p2")
+region = Rect2(615, 0, 205, 205)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_heal_1"]
-atlas = ExtResource("moko_anim_heal")
-region = Rect2(205, 0, 205, 205)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_heal_2"]
-atlas = ExtResource("moko_anim_heal")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxi5p"]
+atlas = ExtResource("16_7x5p2")
 region = Rect2(410, 0, 205, 205)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moko_heal_3"]
-atlas = ExtResource("moko_anim_heal")
-region = Rect2(615, 0, 205, 205)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxu6j"]
+atlas = ExtResource("16_7x5p2")
+region = Rect2(205, 0, 205, 205)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdkl3"]
+atlas = ExtResource("16_7x5p2")
+region = Rect2(0, 0, 205, 205)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_moko_idle_0"]
 atlas = ExtResource("moko_anim_idle")
@@ -1111,16 +1111,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_heal_0")
+"texture": SubResource("AtlasTexture_3e3ym")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_heal_1")
+"texture": SubResource("AtlasTexture_gxi5p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_heal_2")
+"texture": SubResource("AtlasTexture_yxu6j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moko_heal_3")
+"texture": SubResource("AtlasTexture_mdkl3")
 }],
 "loop": 0,
 "name": &"heal",
@@ -3566,7 +3566,7 @@ scale = Vector2(1.2, 1.2)
 [node name="Sprite" type="AnimatedSprite2D" parent="Node2D" unique_id=1683431941]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(120, 53.333332)
+position = Vector2(125.83331, 55.833332)
 scale = Vector2(0.95, 0.95)
 sprite_frames = SubResource("SpriteFrames_7fmte")
 animation = &"interact"
