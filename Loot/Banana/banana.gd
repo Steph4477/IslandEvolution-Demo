@@ -12,7 +12,7 @@ func _ready():
 	gs.heal_amount = heal_amount
 
 	if loot_id == "":
-		loot_id = name
+		loot_id = str(get_parent().get_path()) + "/" + name
 
 	call_deferred("check_collected")
 

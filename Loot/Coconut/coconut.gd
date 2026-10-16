@@ -11,7 +11,7 @@ func _ready():
 	gs = get_node("/root/GameState")
 
 	if loot_id == "":
-		loot_id = name
+		loot_id = str(get_parent().get_path()) + "/" + name
 
 	call_deferred("check_collected")
 
