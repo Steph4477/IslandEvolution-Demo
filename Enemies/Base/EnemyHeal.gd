@@ -22,10 +22,10 @@ var jump_velocity = -600.0
 var target = null
 var can_jump = true
 
-var heal_range = 400.0
+var heal_range = 1200.0
 var heal_amount = 40
-var safe_distance = 100
-var follow_distance = 500
+var safe_distance = 500
+var follow_distance = 600
 
 var target_mod = EnemyModTarget.new()
 var melee_mod = EnemyModMelee.new()

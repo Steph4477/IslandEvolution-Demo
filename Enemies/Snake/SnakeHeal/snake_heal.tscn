@@ -693,7 +693,6 @@ z_index = 25
 collision_layer = 8
 collision_mask = 1282
 script = ExtResource("1_65ebp")
-balance_id = "snake_heal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
 position = Vector2(3.333333, 26.666664)
