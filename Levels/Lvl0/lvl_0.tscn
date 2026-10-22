@@ -652,9 +652,10 @@ position = Vector2(403, 251)
 position = Vector2(910, 220.50002)
 scale = Vector2(3.7, 3.971246)
 sprite_frames = SubResource("SpriteFrames_fyrvj")
-animation = &"environment_king"
+animation = &"environment_explorer"
 
 [node name="FireFx" parent="Background" unique_id=345948567 instance=ExtResource("3_o1sw5")]
+visible = false
 position = Vector2(1040, 610)
 scale = Vector2(2, 2)
 
@@ -665,11 +666,16 @@ process_material = SubResource("ParticleProcessMaterial_utbx0")
 [node name="EmbersCenter" parent="Background/FireFx" index="1" unique_id=1250676070]
 position = Vector2(-34.5, -96.5)
 
+[node name="FireLight" parent="Background/FireFx" index="2" unique_id=497583012]
+visible = false
+
 [node name="Box" type="Sprite2D" parent="Background" unique_id=1098181049]
+visible = false
 position = Vector2(555, 289)
 texture = ExtResource("4_15gx2")
 
 [node name="Title" type="Sprite2D" parent="Background" unique_id=1297356091]
+visible = false
 position = Vector2(536, -54)
 texture = ExtResource("16_usbvp")
 
@@ -690,6 +696,7 @@ autoplay = &"idle"
 position = Vector2(-403, -251)
 
 [node name="Load" type="Node2D" parent="." unique_id=1048620640]
+visible = false
 z_index = 5
 position = Vector2(787, 471)
 
@@ -702,6 +709,7 @@ texture_normal = ExtResource("9_qmtbe")
 texture_pressed = ExtResource("9_plvp6")
 
 [node name="Save" type="Node2D" parent="." unique_id=1720657435]
+visible = false
 z_index = 5
 position = Vector2(735, 638)
 
@@ -714,6 +722,7 @@ texture_normal = ExtResource("10_qfdsm")
 texture_pressed = ExtResource("11_oci4l")
 
 [node name="Continue" type="Node2D" parent="." unique_id=1097869991]
+visible = false
 z_index = 5
 position = Vector2(767, 637)
 
@@ -724,6 +733,7 @@ texture_normal = ExtResource("9_7s5l6")
 texture_pressed = ExtResource("7_qfdsm")
 
 [node name="Restart" type="Node2D" parent="." unique_id=1989511834]
+visible = false
 position = Vector2(705, 773)
 
 [node name="Options" type="TextureButton" parent="Restart" unique_id=1277407320]
@@ -780,9 +790,11 @@ libraries/ = SubResource("AnimationLibrary_2rdvj")
 autoplay = &"appear"
 
 [node name="ToucanDialogue" type="Node2D" parent="." unique_id=1083925661]
+visible = false
 script = ExtResource("23_ambkl")
 
 [node name="Box" type="Panel" parent="ToucanDialogue" unique_id=344974864]
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -835,10 +847,12 @@ position = Vector2(-2202.8572, -45.714287)
 texture = ExtResource("47_417gj")
 
 [node name="Survivor" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=44727486]
+visible = false
 position = Vector2(-1065.7144, -37.142857)
 texture = ExtResource("48_o1sw5")
 
 [node name="King" type="Sprite2D" parent="DifficultyButtons/Unlocked" unique_id=1746228927]
+visible = false
 position = Vector2(77.14285, -34.285713)
 texture = ExtResource("49_qqyoo")
 

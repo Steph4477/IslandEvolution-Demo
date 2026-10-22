@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b1y3tl304t48s"]
 
 [ext_resource type="Script" uid="uid://d1edqci64va4v" path="res://Levels/Test/test_scene.gd" id="1_urigi"]
-[ext_resource type="PackedScene" uid="uid://dlaw2o7b3g4nv" path="res://Enemies/Snake/SnakeHeal/snake_heal.tscn" id="1_yoe4u"]
 [ext_resource type="PackedScene" uid="uid://qx5rwduvnvd7" path="res://Player/Skills/Fire/fire.tscn" id="2_g514y"]
+[ext_resource type="PackedScene" uid="uid://ccblghsr6ruqd" path="res://Enemies/BossPyg/boss_pyg.tscn" id="2_urigi"]
 [ext_resource type="PackedScene" uid="uid://5ifnsceh6ylv" path="res://Loot/Coconut/Pile/pile.tscn" id="3_qvx8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpsw"]
@@ -52,9 +52,8 @@ position = Vector2(34756.457, 12353.302)
 scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
-[node name="SnakeHeal" parent="." unique_id=88320707 instance=ExtResource("1_yoe4u")]
-position = Vector2(1834, 1421)
-max_hp = 200
+[node name="BossPyg" parent="." unique_id=88320707 instance=ExtResource("2_urigi")]
+position = Vector2(941, 1223)
 
 [node name="Fire" parent="." unique_id=24103310 instance=ExtResource("2_g514y")]
 position = Vector2(555, 1457)
