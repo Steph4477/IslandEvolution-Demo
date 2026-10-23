@@ -8,13 +8,15 @@ extends EnemyGroundBase
 @export var projectile_scene = null
 
 @export var projectile_spawn_delay = 0.8
-@export var melee_attack_duration = 0.8
+@export var melee_attack_duration = 0.5
 
 @export var jump_attack_interval = 15.0
 @export var jump_velocity = -900.0
 
 @export var quake_duration = 0.8
 @export var quake_damage = 50
+
+@export var block_duration = 1.0
 
 
 # ============================================================================
@@ -48,6 +50,9 @@ var is_quaking = false
 var has_left_floor = false
 
 var quake_pending = false
+
+var is_blocking = false
+var moko_attack_count = 0
 
 var boss_hit_lock_time = 0.5
 
@@ -93,7 +98,7 @@ func _ready():
 	melee_mod.setup(self)
 	throw_mod.setup(self)
 
-	attack_timer.wait_time = 0.5
+	attack_timer.wait_time = melee_attack_duration
 	attack_timer.stop()
 
 	projectile_timer.wait_time = fire_interval
@@ -114,6 +119,11 @@ func _physics_process(delta):
 		return
 
 	apply_gravity(delta)
+
+	if is_blocking:
+		velocity.x = 0
+		move_and_slide()
+		return
 
 	if is_quake_jumping:
 		update_quake_jump()
@@ -244,6 +254,9 @@ func lock_melee_animation():
 	if is_melee_attacking:
 		return
 
+	if is_blocking:
+		return
+
 	is_melee_attacking = true
 	velocity.x = 0
 
@@ -267,6 +280,9 @@ func start_throw():
 		return
 
 	if target == null:
+		return
+
+	if is_blocking:
 		return
 
 	if is_throwing:
@@ -313,6 +329,9 @@ func start_quake_jump():
 		return
 
 	if player == null:
+		return
+
+	if is_blocking:
 		return
 
 	if distance > attack_range:
@@ -436,6 +455,72 @@ func shake_camera_and_damage_player():
 
 
 # ============================================================================
+#                                  BLOCK
+# ============================================================================
+
+func start_block():
+	if is_dead:
+		return
+
+	if is_blocking:
+		return
+
+	is_blocking = true
+
+	velocity.x = 0
+
+	is_attacking = false
+	is_shooting = false
+	is_melee_attacking = false
+	in_melee = false
+
+	attack_timer.stop()
+	projectile_timer.stop()
+
+	anim.play("block")
+
+	await get_tree().create_timer(block_duration).timeout
+
+	if is_dead:
+		return
+
+	is_blocking = false
+
+	start_counter_attack()
+
+
+# ============================================================================
+#                                  RIPOSTE
+# ============================================================================
+
+func start_counter_attack():
+	if is_dead:
+		return
+
+	target_player()
+	target_mod.update()
+
+	if player == null:
+		return
+
+	flip()
+
+	if distance > melee_distance:
+		return
+
+	in_melee = true
+	is_attacking = false
+	can_melee_attack = true
+
+	attack()
+
+	attack_timer.start()
+
+	if is_attacking:
+		lock_melee_animation()
+
+
+# ============================================================================
 #                                  ON HIT
 # ============================================================================
 
@@ -443,12 +528,35 @@ func on_hit(amount):
 	if is_dead:
 		return
 
+	if is_blocking:
+		return
+
+	moko_attack_count += 1
+
+	if moko_attack_count >= 3:
+		moko_attack_count = 0
+		start_block()
+		return
+
+	hp -= amount
+	hp = max(hp, 0)
+
+	if hb:
+		hb.set_value(hp)
+
+	_show_damage_popup(amount)
+
+	if hp <= 0:
+		die()
+		return
+
 	if hit_locked:
 		return
 
-	super.on_hit(amount)
-
 	hit_locked = true
+
+	if anim and anim.has_animation("onhit"):
+		anim.play("onhit")
 
 	await get_tree().create_timer(boss_hit_lock_time).timeout
 
@@ -474,6 +582,8 @@ func die():
 	is_quaking = false
 	is_quake_jumping = false
 
+	is_blocking = false
+
 	has_left_floor = false
 	quake_pending = false
 
@@ -495,6 +605,9 @@ func die():
 
 func _on_attack_timer_timeout():
 	if is_dead:
+		return
+
+	if is_blocking:
 		return
 
 	if is_throwing:
