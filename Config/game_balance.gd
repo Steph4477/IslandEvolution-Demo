@@ -30,7 +30,6 @@ const PLAYER_DAMAGE = {
 	"clac_fire": 40,
 	"kick_fire": 60,
 	"coco_fire": 80
-
 }
 
 # ============================================================================
@@ -49,7 +48,6 @@ const PLAYER_FALL_SPEED_MAX = 1800
 const PLAYER_FALL_DAMAGE_MAX = 200
 const PLAYER_FALL_DAMAGE_MIN = 10
 
-
 # ============================================================================
 #                    PLAYER - TIRS / COMBAT
 # ============================================================================
@@ -57,7 +55,7 @@ const PLAYER_RATE_OF_FIRE = 0.4
 const PLAYER_HIT_LOCK_TIME = 0.2
 
 # ============================================================================
-#                    PLAYER - TIRS / COMBAT
+#                         PLAYER - FIRE BUFF
 # ============================================================================
 const PLAYER_FIRE_BUFF_DURATION = 5
 
@@ -69,7 +67,8 @@ const ENEMY_HP = {
 	"snake": 200,
 	"snake_melee": 300,
 	"snake_distance": 250,
-	"snake_heal": 200
+	"snake_heal": 200,
+	"boss_pyg": 1500
 }
 
 const ENEMY_DAMAGE = {
@@ -77,11 +76,13 @@ const ENEMY_DAMAGE = {
 	"snake": 12,
 	"snake_melee": 12,
 	"snake_distance": 12,
-	"snake_heal": 12
+	"snake_heal": 12,
+	"boss_pyg": 35
 }
 
 const ENEMY_PROJECTILE = {
-	"gaz": 10
+	"gaz": 10,
+	"spear_boss": 50
 }
 
 const ENEMY_SPEED = {
@@ -89,7 +90,8 @@ const ENEMY_SPEED = {
 	"snake": 450,
 	"snake_melee": 450,
 	"snake_distance": 450,
-	"snake_heal": 450
+	"snake_heal": 450,
+	"boss_pyg": 250
 }
 
 const ENEMY_RANGE = {
@@ -98,23 +100,27 @@ const ENEMY_RANGE = {
 	"snake_melee": 1000,
 	"snake_distance": 1000,
 	"snake_heal": 600,
+	"boss_pyg": 800
 }
 
 const ENEMY_MELEE_DISTANCE = {
 	"snake": 200,
 	"snake_melee": 200,
 	"snake_distance": 200,
-	"snake_heal": 200
+	"snake_heal": 200,
+	"boss_pyg": 200
 }
 
 const ENEMY_MIN_SHOOT_DISTANCE = {
 	"snake": 200,
-	"snake_distance": 200
+	"snake_distance": 200,
+	"boss_pyg": 300
 }
 
 const ENEMY_MAX_SHOOT_DISTANCE = {
 	"snake": 360,
-	"snake_distance": 300
+	"snake_distance": 300,
+	"boss_pyg": 800
 }
 
 const ENEMY_COOLDOWN = {
@@ -122,7 +128,8 @@ const ENEMY_COOLDOWN = {
 	"snake": 3.0,
 	"snake_melee": 0.5,
 	"snake_distance": 0.8,
-	"snake_heal": 3.0
+	"snake_heal": 3.0,
+	"boss_pyg": 1.0
 }
 
 const ENEMY_ANIMATION_ATTACK = {
@@ -148,7 +155,8 @@ const ENEMY_FIRE_INTERVAL = {
 
 const ENEMY_PROJECTILE_SCENE = {
 	"snake_distance": "res://Shoot/Enemies/Gaz/gaz.tscn",
-	"snake_heal": "res://Enemies/Snake/SnakeHeal/heal_projectile/heal_projectile.tscn"
+	"snake_heal": "res://Enemies/Snake/SnakeHeal/heal_projectile/heal_projectile.tscn",
+	"boss_pyg": "res://Shoot/Enemies/Spear/spear_boss.tscn"
 }
 
 const ENEMY_ANIMATION_SHOOT = {
