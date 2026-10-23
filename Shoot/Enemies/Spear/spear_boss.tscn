@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://m4i2yhyu5agv"]
+
+[ext_resource type="Script" uid="uid://cglwmrdgurxwf" path="res://Shoot/Enemies/Spear/spear.gd" id="1_tk2te"]
+[ext_resource type="Texture2D" uid="uid://dht7887eebm84" path="res://Shoot/Enemies/Spear/boss.png" id="2_tk2te"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyw12"]
+size = Vector2(8, 3)
+
+[node name="Spear" type="CharacterBody2D" unique_id=1989084004]
+z_index = 20
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_tk2te")
+
+[node name="SpearSprite" type="Sprite2D" parent="." unique_id=607642992]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tk2te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=612942380]
+position = Vector2(43, 1)
+shape = SubResource("RectangleShape2D_yyw12")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=809000290]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=936722029]
+position = Vector2(-16, 0)
+rotation = -3.1415927
+polygon = PackedVector2Array(-60, -11, -99, -1, -58, 8, -53, 1, -52, -8)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
