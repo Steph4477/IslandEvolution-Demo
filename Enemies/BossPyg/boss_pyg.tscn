@@ -583,7 +583,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_hqeri"]
 resource_name = "block"
-length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -615,10 +614,10 @@ tracks/2/path = NodePath("AnimatedSprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"values": [0, 1, 2, 3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1079,11 +1078,10 @@ autostart = true
 [node name="Rotator" type="Node2D" parent="." unique_id=896195456]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rotator" unique_id=1056252879]
-position = Vector2(35, 20)
+position = Vector2(-21, 16)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_f4sag")
-animation = &"attack"
-frame = 3
+animation = &"block"
 
 [node name="Eye" type="Sprite2D" parent="Rotator" unique_id=1076479896]
 visible = false
