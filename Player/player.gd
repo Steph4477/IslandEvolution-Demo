@@ -113,8 +113,7 @@ var double_jump_unlocked = false
 # --- collecte ---
 var coco_count = 0
 var banane_count = 0
-var seed_count = 0
-var lance_count = 0
+var seed_count = 0 
 
 var heal_potions = []
 var honey_potions = []
