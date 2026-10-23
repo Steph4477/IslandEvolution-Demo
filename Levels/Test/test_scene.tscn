@@ -53,7 +53,7 @@ scale = Vector2(283.80304, 14.7983)
 shape = SubResource("RectangleShape2D_pmo30")
 
 [node name="BossPyg" parent="." unique_id=88320707 instance=ExtResource("2_urigi")]
-position = Vector2(941, 1223)
+position = Vector2(1686, 1275)
 
 [node name="Fire" parent="." unique_id=24103310 instance=ExtResource("2_g514y")]
 position = Vector2(555, 1457)
