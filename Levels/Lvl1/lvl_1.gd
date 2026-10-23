@@ -63,29 +63,27 @@ func _ready():
 # ============================================================
 # DIFFICULTÉ ET SONS
 # ============================================================
+
 func setup_environment_difficulty():
-	# Reset environnement
 	sky_explorer.visible = false
 	sky_survivor.visible = false
 	sky_king.visible = false
 	difficulty_items.visible = false
 	difficulty_items.process_mode = Node.PROCESS_MODE_DISABLED
 
-	# Reset audio
 	lvl1_explorer.stop()
 	lvl1_survivor.stop()
 	lvl1_king.stop()
 	lvl1_birds_survivor.stop()
 	lvl1_drums_king.stop()
 
-	# Charge uniquement les ennemis de la difficulté actuelle
-	var enemy_scene_path: String = ENEMY_SCENE_PATHS.get(gs.difficulty, "")
+	var enemy_scene_path = ENEMY_SCENE_PATHS.get(gs.difficulty, "")
 
 	if enemy_scene_path.is_empty():
 		push_error("Difficulté inconnue : " + str(gs.difficulty))
 		return
 
-	var enemy_scene: PackedScene = load(enemy_scene_path)
+	var enemy_scene = load(enemy_scene_path)
 
 	if enemy_scene == null:
 		push_error("Impossible de charger : " + enemy_scene_path)
@@ -109,7 +107,6 @@ func setup_environment_difficulty():
 			sky_explorer.visible = true
 			smoke.visible = false
 
-			# Audio
 			lvl1_explorer.play()
 
 		"survivor":
@@ -127,7 +124,6 @@ func setup_environment_difficulty():
 			sky_survivor.visible = true
 			smoke.visible = true
 
-			# Audio
 			lvl1_survivor.play()
 			start_survivor_birds()
 
@@ -146,11 +142,9 @@ func setup_environment_difficulty():
 			difficulty_items.visible = true
 			difficulty_items.process_mode = Node.PROCESS_MODE_INHERIT
 
-			# Audio
 			lvl1_king.play()
 			lvl1_drums_king.play()
 
-	# === SCORE ===
 	var total_enemies = gs.score_system.count_enemies_in_node(active_enemy_group)
 	gs.score_system.set_enemies_total(total_enemies)
 
@@ -167,7 +161,6 @@ func setup_enemy_group(group, eyes_enabled, color):
 		var rotator = enemy.get_node_or_null("Rotator")
 
 		if rotator:
-			# === YEUX ===
 			for eye_name in ["Eye", "Eye2"]:
 				var eye = rotator.get_node_or_null(eye_name)
 
@@ -179,14 +172,12 @@ func setup_enemy_group(group, eyes_enabled, color):
 					if light:
 						light.enabled = eyes_enabled
 
-			# === SPRITES ===
 			for sprite_name in ["Sprite", "Sprite2D", "AnimatedSprite2D"]:
 				var sprite = rotator.get_node_or_null(sprite_name)
 
 				if sprite:
 					sprite.modulate = color
 
-		# === BARRE DE VIE ===
 		var health_bar = enemy.get_node_or_null("HealthBar")
 
 		if health_bar:
@@ -259,6 +250,7 @@ func start_intro_sequence():
 # ============================================================
 # BLOQUAGE / DÉBLOQUAGE ENNEMIS
 # ============================================================
+
 func set_enemies_blocked(blocked):
 	if active_enemy_group == null:
 		return
@@ -321,7 +313,7 @@ func return_camera_to_player():
 # ============================================================
 
 func _on_key_collected():
-	await focus_camera_on_exit_and_fade()
+	await focus_camera_on_exit_and_react()
 
 	if gs.hud:
 		await get_tree().create_timer(0.5).timeout
@@ -329,20 +321,26 @@ func _on_key_collected():
 
 
 # ============================================================
-# FOCUS SORTIE + FADE + RETOUR MOKO
+# FOCUS TOTEM + TEMPLE + RÉACTION + RETOUR MOKO
 # ============================================================
 
-func focus_camera_on_exit_and_fade():
+func focus_camera_on_exit_and_react():
 	player.disable_controls()
 	set_enemies_blocked(true)
 
 	cam.top_level = true
 	cam.global_position = player.global_position
 
-	# === FOCUS TOTEM ===
+	# ========================================================
+	# FOCUS TOTEM
+	# ========================================================
+
 	await focus_camera_on_node("World/Totem")
 
-	# === FOCUS EXIT ===
+	# ========================================================
+	# FOCUS TEMPLE
+	# ========================================================
+
 	var exit = get_node_or_null("World/Exit")
 
 	if not exit:
@@ -367,12 +365,25 @@ func focus_camera_on_exit_and_fade():
 
 	await tween.finished
 
+	# Petite pause avant la réaction du temple.
 	await get_tree().create_timer(1.0).timeout
 
-	if exit.has_method("play_fade"):
-		exit.play_fade()
+	# ========================================================
+	# RÉACTION DU TEMPLE
+	# ========================================================
 
-	await get_tree().create_timer(1.5).timeout
+	if exit.has_method("play_temple_reaction"):
+		await exit.play_temple_reaction()
+
+	# On laisse le joueur regarder le résultat.
+	await get_tree().create_timer(1.0).timeout
+
+	# ========================================================
+	# POUR LE MOMENT :
+	# retour Moko dans les 3 difficultés.
+	#
+	# Plus tard, KING sera coupé ici pour lancer boss_pyg.
+	# ========================================================
 
 	var back = create_tween()
 
@@ -393,8 +404,9 @@ func focus_camera_on_exit_and_fade():
 
 
 #####################################################################
-#                  SON DES OISEAUX EN SURVIVOR                      #
+#                  SON DES OISEAUX EN SURVIVOR
 #####################################################################
+
 func start_survivor_birds():
 	lvl1_birds_survivor.play()
 

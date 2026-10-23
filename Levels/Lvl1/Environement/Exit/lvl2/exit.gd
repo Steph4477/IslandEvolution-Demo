@@ -1,11 +1,11 @@
 extends Area2D
 
-const MAIN_MENU_PATH := "res://Levels/Lvl0/lvl_0.tscn"
-const LEVEL_PATH := "res://Levels/Lvl1/lvl_1.tscn"
+const MAIN_MENU_PATH = "res://Levels/Lvl0/lvl_0.tscn"
+const LEVEL_PATH = "res://Levels/Lvl1/lvl_1.tscn"
 
-var is_unlocked: bool = false
-var already_faded: bool = false
-var exit_in_progress: bool = false
+var is_unlocked = false
+var already_reacted = false
+var exit_in_progress = false
 
 
 # ============================================================================
@@ -17,6 +17,7 @@ func _ready():
 	$CloseSprite.modulate = Color.WHITE
 
 	$OpenSprite.visible = false
+	$OpenSprite.modulate = Color.WHITE
 
 	await get_tree().process_frame
 
@@ -26,25 +27,18 @@ func _ready():
 		push_error("EXIT : GameState introuvable")
 		return
 
-	if not gs.is_connected(
-		"key_collected",
-		Callable(self, "on_key_collected")
-	):
-		gs.connect(
-			"key_collected",
-			Callable(self, "on_key_collected")
-		)
+	# La clé n'ouvre plus automatiquement le temple.
+	# Seul le run King pourra ouvrir la porte pendant la cinématique.
+	is_unlocked = false
 
-	is_unlocked = gs.has_key
-
-	update_visual(is_unlocked)
+	update_visual(false)
 
 
 # ============================================================================
 #                              POPUP
 # ============================================================================
 
-func show_info_popup(txt: String):
+func show_info_popup(txt):
 	var popup_scene = preload(
 		"res://Interface/Popup/Info_popup/info_popup.tscn"
 	)
@@ -62,61 +56,120 @@ func show_info_popup(txt: String):
 #                              PORTE
 # ============================================================================
 
-func update_visual(unlocked: bool):
+func update_visual(unlocked):
 	$CloseSprite.visible = not unlocked
 	$OpenSprite.visible = unlocked
 
 
-func on_key_collected():
+func open_temple():
 	is_unlocked = true
+
+	$CloseSprite.visible = false
+	$OpenSprite.visible = true
+
+
+func close_temple():
+	is_unlocked = false
+
+	$CloseSprite.visible = true
+	$CloseSprite.modulate.a = 1.0
+
+	$OpenSprite.visible = false
+
+
+# ============================================================================
+#                     RÉACTION DU TEMPLE À LA CLÉ
+# ============================================================================
+
+func play_temple_reaction():
+	if already_reacted:
+		return
+
+	already_reacted = true
 
 	var gs = get_node_or_null("/root/GameState")
 
-	if (
-		gs
-		and gs.current_level
-		and gs.current_level.has_method("focus_camera_on_exit_and_fade")
-	):
-		await gs.current_level.focus_camera_on_exit_and_fade()
-
-	update_visual(true)
-
-
-# ============================================================================
-#                         ENTRÉE DU JOUEUR
-# ============================================================================
-
-func _on_body_entered(body):
-	if body.name != "Player":
+	if not gs:
+		push_error("EXIT : GameState introuvable")
 		return
 
-	# Empêche plusieurs déclenchements de la sortie.
-	if exit_in_progress:
-		return
+	print("======================================")
+	print("REACTION TEMPLE")
+	print("DIFFICULTE : ", gs.difficulty)
+	print("======================================")
 
-	if not is_unlocked:
-		show_info_popup(
-			"🔑 Il te faut la clé pour ouvrir la porte !"
-		)
+	match gs.difficulty:
 
-		$LockedSound.play()
+		# ------------------------------------------------------------
+		# EXPLORER
+		# Petit tremblement.
+		# La porte RESTE fermée.
+		# ------------------------------------------------------------
 
-		return
+		"explorer":
+			await shake_temple(0.4, 4.0)
 
-	exit_in_progress = true
+			close_temple()
 
-	var anim_player = body.get_node_or_null("Node2D/Anim")
 
-	if anim_player and anim_player.has_animation("door"):
-		body.animation_locked = true
+		# ------------------------------------------------------------
+		# SURVIVOR
+		# Tremblement plus important.
+		# La porte RESTE fermée.
+		# ------------------------------------------------------------
 
-		anim_player.play("door")
+		"survivor":
+			await shake_temple(0.7, 7.0)
 
-		await anim_player.animation_finished
+			close_temple()
 
-	body.set_physics_process(false)
 
-	await _finish_level()
+		# ------------------------------------------------------------
+		# KING
+		# Gros tremblement.
+		# La porte S'OUVRE.
+		# ------------------------------------------------------------
+
+		"king":
+			await shake_temple(1.0, 10.0)
+
+			await open_temple_with_fade()
+
+
+## ============================================================================
+##                         ENTRÉE DU JOUEUR
+## ============================================================================
+#
+#func _on_body_entered(body):
+	#if body.name != "Player":
+		#return
+#
+	#if exit_in_progress:
+		#return
+#
+	#if not is_unlocked:
+		#show_info_popup(
+			#"🔑 Le temple reste fermé..."
+		#)
+#
+		#$LockedSound.play()
+#
+		#return
+#
+	#exit_in_progress = true
+#
+	#var anim_player = body.get_node_or_null("Node2D/Anim")
+#
+	#if anim_player and anim_player.has_animation("door"):
+		#body.animation_locked = true
+#
+		#anim_player.play("door")
+#
+		#await anim_player.animation_finished
+#
+	#body.set_physics_process(false)
+#
+	#await _finish_level()
 
 
 # ============================================================================
@@ -130,7 +183,7 @@ func _finish_level():
 		push_error("EXIT : GameState introuvable")
 		return
 
-	var completed_difficulty: String = gs.difficulty
+	var completed_difficulty = gs.difficulty
 
 	print("======================================")
 	print("FIN DU NIVEAU")
@@ -147,7 +200,7 @@ func _finish_level():
 	await get_tree().create_timer(5.0).timeout
 
 	# ------------------------------------------------------------------------
-	# On mémorise le dialogue AVANT de modifier la difficulté.
+	# DIALOGUE
 	# ------------------------------------------------------------------------
 
 	gs.pending_end_dialogue = completed_difficulty
@@ -184,9 +237,6 @@ func _finish_level():
 
 	# ------------------------------------------------------------------------
 	# PROCHAIN NIVEAU
-	#
-	# Important :
-	# CinematicToucanFinal n'est plus un niveau de progression.
 	# ------------------------------------------------------------------------
 
 	gs.unlocked_level_path = LEVEL_PATH
@@ -206,41 +256,34 @@ func _finish_level():
 
 
 # ============================================================================
-#                         ANIMATION OUVERTURE
+#                         OUVERTURE DU TEMPLE
 # ============================================================================
 
-func play_fade():
-	if already_faded:
-		return
-
-	already_faded = true
-
+func open_temple_with_fade():
 	$OpenSprite.visible = true
 	$OpenSprite.modulate.a = 1.0
 
 	$CloseSprite.visible = true
 	$CloseSprite.modulate.a = 1.0
 
-	await shake_temple(0.4, 4.0)
 	await fade_close_sprite()
 
 	$CloseSprite.visible = false
+
+	is_unlocked = true
 
 
 # ============================================================================
 #                         SHAKE TEMPLE
 # ============================================================================
 
-func shake_temple(
-	duration: float = 0.3,
-	intensity: float = 3.0
-):
-	var original_pos := position
-	var time_elapsed := 0.0
-	var step := 0.02
+func shake_temple(duration = 0.3, intensity = 3.0):
+	var original_pos = position
+	var time_elapsed = 0.0
+	var step = 0.02
 
 	while time_elapsed < duration:
-		var offset := Vector2(
+		var offset = Vector2(
 			randf_range(-intensity, intensity),
 			randf_range(-intensity, intensity)
 		)
@@ -259,13 +302,40 @@ func shake_temple(
 # ============================================================================
 
 func fade_close_sprite():
-	var duration := 1.0
-	var steps := 20
-	var delay := duration / steps
+	var duration = 1.0
+	var steps = 20
+	var delay = duration / steps
 
 	for i in range(steps + 1):
-		var alpha := 1.0 - float(i) / steps
+		var alpha = 1.0 - float(i) / steps
 
 		$CloseSprite.modulate.a = alpha
 
 		await get_tree().create_timer(delay).timeout
+
+
+func _on_run_exit_body_entered(body):
+	if body.name != "Player":
+		return
+
+	if exit_in_progress:
+		return
+
+	var gs = get_node_or_null("/root/GameState")
+
+	if not gs:
+		return
+
+	if not gs.has_key:
+		return
+
+	match gs.difficulty:
+		"explorer", "survivor":
+			exit_in_progress = true
+
+			body.disable_controls()
+
+			await _finish_level()
+
+		"king":
+			return

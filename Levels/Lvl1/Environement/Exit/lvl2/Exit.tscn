@@ -68,6 +68,9 @@ _data = {
 &"fade": SubResource("Animation_vln5p")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n41v5"]
+size = Vector2(36.25, 346.24997)
+
 [node name="Exit" type="Area2D" unique_id=1869454412]
 scale = Vector2(0.8, 0.8)
 collision_layer = 256
@@ -97,4 +100,11 @@ libraries/ = SubResource("AnimationLibrary_stujc")
 [node name="LockedSound" type="AudioStreamPlayer2D" parent="." unique_id=1431059228]
 stream = ExtResource("4_jvi1g")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="RunExit" type="Area2D" parent="." unique_id=745250331]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunExit" unique_id=111546703]
+position = Vector2(8.124999, 163.12497)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_n41v5")
+
+[connection signal="body_entered" from="RunExit" to="." method="_on_run_exit_body_entered"]
