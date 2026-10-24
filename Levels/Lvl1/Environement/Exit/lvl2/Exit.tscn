@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://xaadllyopip2" path="res://sounds/closed_door.wav" id="4_jvi1g"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(22.500008, 242.50012)
+size = Vector2(30.000008, 335.00006)
 
 [sub_resource type="Animation" id="Animation_26mmp"]
 length = 0.001
@@ -141,8 +141,8 @@ frame = 5
 position = Vector2(2.5000002, -515)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724515417]
-position = Vector2(7.4999986, 212.49992)
-scale = Vector2(0.99999964, 0.99999964)
+position = Vector2(3.7499986, 166.24997)
+scale = Vector2(0.99999946, 0.99999946)
 shape = SubResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2022774592]
@@ -158,4 +158,5 @@ position = Vector2(8.124999, 163.12497)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_n41v5")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="RunExit" to="." method="_on_run_exit_body_entered"]

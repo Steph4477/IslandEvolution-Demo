@@ -108,16 +108,31 @@ func play_temple_reaction():
 
 
 # ============================================================================
-#                         ANCIENNE AREA EXIT
+#                         ENTRÉE TEMPLE
 # ============================================================================
 
 func _on_body_entered(body):
 	if body.name != "Player":
 		return
 
-	# Cette Area ne termine plus le niveau.
-	# RunExit gère désormais la fin du run.
+	var gs = get_node("/root/GameState")
 
+	if gs.difficulty != "king":
+		return
+
+	if not gs.has_key:
+		return
+
+	if not is_unlocked:
+		return
+
+	body.velocity = Vector2.ZERO
+
+	await body.play_anim("enter_temple")
+
+	body.disable_controls()
+
+	await _finish_level()
 
 # ============================================================================
 #                         FIN DU NIVEAU
@@ -266,30 +281,20 @@ func fade_close_sprite():
 # ============================================================================
 
 func update_rune_symbols():
-	var gs = get_node_or_null("/root/GameState")
+	var gs = get_node("/root/GameState")
 
-	if not gs:
-		push_error("EXIT : GameState introuvable")
-		return
-
-	# Explorer
+	# Rune Explorer
 	$RuneSymbols/ExplorerOff.visible = not gs.explorer_unlocked
 	$RuneSymbols/ExplorerOn.visible = gs.explorer_unlocked
 
-	# Survivor
+	# Rune Survivor
 	$RuneSymbols/SurvivorOff.visible = not gs.survivor_unlocked
 	$RuneSymbols/SurvivorOn.visible = gs.survivor_unlocked
 
-	# King
-	$RuneSymbols/KingOff.visible = not gs.king_unlocked
-	$RuneSymbols/KingOn.visible = gs.king_unlocked
+	# Rune King
+	$RuneSymbols/KingOff.visible = true
+	$RuneSymbols/KingOn.visible = false
 
-	print("======================================")
-	print("SYMBOLES TEMPLE")
-	print("EXPLORER : ", gs.explorer_unlocked)
-	print("SURVIVOR : ", gs.survivor_unlocked)
-	print("KING : ", gs.king_unlocked)
-	print("======================================")
 
 func activate_current_rune():
 	var gs = get_node_or_null("/root/GameState")
