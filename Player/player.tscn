@@ -2128,46 +2128,6 @@ tracks/2/keys = {
 "values": [&"die"]
 }
 
-[sub_resource type="Animation" id="Animation_ifp5e"]
-resource_name = "door"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.0003195),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(124.99998, 48.33332), Vector2(124.99998, -3.3333359)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"door"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.101339564, 0.3, 0.5, 0.7, 0.9, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
-
 [sub_resource type="Animation" id="Animation_qh0f6"]
 resource_name = "door_2"
 length = 2.5
@@ -2246,6 +2206,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ifp5e"]
+resource_name = "enter_temple"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0003195),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(124.99998, 48.33332), Vector2(124.99998, -3.3333359)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"door"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.101339564, 0.3, 0.5, 0.7, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="Animation" id="Animation_mdkl3"]
@@ -3391,9 +3391,9 @@ _data = {
 &"climb_liana": SubResource("Animation_pisgm"),
 &"combat_idle": SubResource("Animation_i4o1l"),
 &"die": SubResource("Animation_cwkp3"),
-&"door": SubResource("Animation_ifp5e"),
 &"door_2": SubResource("Animation_qh0f6"),
 &"empty": SubResource("Animation_e2pw6"),
+&"enter_temple": SubResource("Animation_ifp5e"),
 &"fire_buff": SubResource("Animation_mdkl3"),
 &"hang": SubResource("Animation_kse80"),
 &"harpooned": SubResource("Animation_6xaqw"),
@@ -3566,7 +3566,7 @@ scale = Vector2(1.2, 1.2)
 [node name="Sprite" type="AnimatedSprite2D" parent="Node2D" unique_id=1683431941]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(125.83331, 55.833332)
+position = Vector2(124.99998, 48.33332)
 scale = Vector2(0.95, 0.95)
 sprite_frames = SubResource("SpriteFrames_7fmte")
 animation = &"interact"
