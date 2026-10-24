@@ -46,6 +46,8 @@ func _ready():
 	cam = player.get_node("Camera2D")
 
 	setup_environment_difficulty()
+	
+	$World/Exit.rune_activated.connect(_on_rune_activated)
 
 	cam.limit_right = 9550
 	cam.limit_top = -300
@@ -53,6 +55,9 @@ func _ready():
 
 	if not gs.all_seeds_collected.is_connected(_on_all_seeds_collected):
 		gs.all_seeds_collected.connect(_on_all_seeds_collected)
+
+	if not gs.rune_collected.is_connected(_on_rune_collected):
+		gs.rune_collected.connect(_on_rune_collected)
 
 	if not gs.key_collected.is_connected(_on_key_collected):
 		gs.key_collected.connect(_on_key_collected)
@@ -215,13 +220,67 @@ func _on_all_seeds_collected():
 	player.disable_controls()
 	set_enemies_blocked(true)
 
+	parallax.pause_parallax()
+
 	await focus_camera_on_node("World/Totem")
 	await return_camera_to_player()
+
+	parallax.resume_parallax()
 
 	await get_tree().create_timer(1.0).timeout
 
 	player.enable_controls()
 	set_enemies_blocked(false)
+
+
+# ============================================================
+# RUNE RÉCUPÉRÉE
+# ============================================================
+
+func _on_rune_collected():
+	player.disable_controls()
+	set_enemies_blocked(true)
+
+	parallax.pause_parallax()
+
+	await focus_camera_on_node("World/Exit/RuneSymbols/CameraFocus")
+
+	await get_tree().create_timer(2.0).timeout
+
+	await return_camera_to_player()
+
+	parallax.resume_parallax()
+
+	player.enable_controls()
+	set_enemies_blocked(false)
+
+
+func _on_rune_activated():
+	set_enemies_blocked(true)
+	parallax.pause_parallax()
+
+	await focus_camera_on_node(
+		"World/Exit/RuneSymbols/CameraFocus"
+	)
+
+	var exit = $World/Exit
+
+	await exit.play_temple_reaction()
+
+	await get_tree().create_timer(1.0).timeout
+
+	await return_camera_to_player()
+
+	parallax.resume_parallax()
+	set_enemies_blocked(false)
+
+	match gs.difficulty:
+
+		"explorer", "survivor":
+			await exit._finish_level()
+
+		"king":
+			player.enable_controls()
 
 
 # ============================================================
@@ -232,8 +291,7 @@ func start_intro_sequence():
 	player.disable_controls()
 	set_enemies_blocked(true)
 
-	if parallax.has_method("pause_parallax"):
-		parallax.pause_parallax()
+	parallax.pause_parallax()
 
 	if gs.hud and gs.lvl1_quest_revealed == false:
 		gs.lvl1_quest_revealed = true
@@ -246,8 +304,7 @@ func start_intro_sequence():
 
 	await return_camera_to_player()
 
-	if parallax.has_method("resume_parallax"):
-		parallax.resume_parallax()
+	parallax.resume_parallax()
 
 	player.enable_controls()
 	set_enemies_blocked(false)
@@ -320,6 +377,7 @@ func focus_camera_on_node(node_name):
 
 	await get_tree().create_timer(0.6).timeout
 
+
 # ============================================================
 # RETOUR CAMÉRA VERS MOKO
 # ============================================================
@@ -338,6 +396,7 @@ func return_camera_to_player():
 
 	cam.position = Vector2.ZERO
 
+
 # ============================================================
 # CLÉ RÉCUPÉRÉE
 # ============================================================
@@ -351,67 +410,31 @@ func _on_key_collected():
 
 
 # ============================================================
-# FOCUS TOTEM + TEMPLE + RÉACTION + RETOUR MOKO
+# FOCUS TEMPLE + RÉACTION + BOSS
 # ============================================================
 
 func focus_camera_on_exit_and_react():
 	player.disable_controls()
 	set_enemies_blocked(true)
 
-	cam.top_level = true
-	cam.global_position = player.global_position
-
-	# ========================================================
-	# FOCUS TOTEM
-	# ========================================================
-
-	await focus_camera_on_node("World/Totem")
-
-	# ========================================================
-	# FOCUS TEMPLE
-	# ========================================================
+	parallax.pause_parallax()
 
 	var exit = get_node_or_null("World/Exit")
 
 	if not exit:
-		cam.top_level = false
-		cam.position = Vector2.ZERO
-
+		parallax.resume_parallax()
 		set_enemies_blocked(false)
 		player.enable_controls()
-
 		return
 
-	var original_position = player.global_position
-
-	# On garde la référence du boss jusqu'à la fin
-	# de toute la cinématique.
 	var boss = null
 
-	var tween = create_tween()
+	await focus_camera_on_node("World/Exit/RuneSymbols/CameraFocus")
 
-	tween.tween_property(
-		cam,
-		"global_position",
-		exit.global_position,
-		1.2
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	await tween.finished
-
-	# Petite pause avant la réaction du Temple.
 	await get_tree().create_timer(1.0).timeout
-
-	# ========================================================
-	# RÉACTION DU TEMPLE
-	# ========================================================
 
 	if exit.has_method("play_temple_reaction"):
 		await exit.play_temple_reaction()
-
-	# ========================================================
-	# KING : APPARITION DU BOSS
-	# ========================================================
 
 	if gs.difficulty == "king":
 		boss = get_boss_pyg()
@@ -419,39 +442,16 @@ func focus_camera_on_exit_and_react():
 		if boss:
 			print("LANCEMENT APPARITION BOSS")
 
-			# Tous les ennemis sont actuellement bloqués.
-			# On réactive uniquement BossPyg pour permettre
-			# à son AnimationPlayer de jouer "appear".
-			#
-			# boss_active reste FALSE pendant cette phase,
-			# donc son IA ne peut pas encore démarrer.
 			boss.process_mode = Node.PROCESS_MODE_INHERIT
-
-			# ------------------------------------------------
-			# POSITION DU BOSS
-			# ------------------------------------------------
-
 			boss.global_position = exit.global_position
 
-			print(
-				"TEMPLE GLOBAL POSITION : ",
-				exit.global_position
-			)
-
-			print(
-				"BOSS GLOBAL POSITION : ",
-				boss.global_position
-			)
+			print("TEMPLE GLOBAL POSITION : ", exit.global_position)
+			print("BOSS GLOBAL POSITION : ", boss.global_position)
 
 			await get_tree().create_timer(0.5).timeout
 
-			# ------------------------------------------------
-			# APPARITION
-			# ------------------------------------------------
-
 			if boss.has_method("start_boss_appear"):
 				print("APPEL start_boss_appear")
-
 				await boss.start_boss_appear()
 			else:
 				push_error(
@@ -459,10 +459,6 @@ func focus_camera_on_exit_and_react():
 				)
 
 			await get_tree().create_timer(0.3).timeout
-
-			# ------------------------------------------------
-			# FERMETURE DU TEMPLE
-			# ------------------------------------------------
 
 			if exit.has_method("close_temple"):
 				exit.close_temple()
@@ -472,55 +468,14 @@ func focus_camera_on_exit_and_react():
 				"LVL1 : BossPyg introuvable dans EnemyKing"
 			)
 
-	# ========================================================
-	# PAUSE POUR VOIR LE RÉSULTAT
-	# ========================================================
-
 	await get_tree().create_timer(1.0).timeout
 
-	# ========================================================
-	# RETOUR CAMÉRA VERS MOKO
-	# ========================================================
+	await return_camera_to_player()
 
-	var back = create_tween()
-
-	back.tween_property(
-		cam,
-		"global_position",
-		original_position,
-		1.2
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	await back.finished
-
-	cam.top_level = false
-	cam.position = Vector2.ZERO
-
-	# ========================================================
-	# DÉBLOQUAGE DES ENNEMIS
-	# ========================================================
+	parallax.resume_parallax()
 
 	set_enemies_blocked(false)
-
-	# ========================================================
-	# RETOUR DES CONTRÔLES À MOKO
-	# ========================================================
-
 	player.enable_controls()
-
-	# ========================================================
-	# KING : ACTIVATION RÉELLE DU BOSS
-	# ========================================================
-	#
-	# Le boss est activé SEULEMENT maintenant :
-	#
-	# - animation appear terminée
-	# - Temple refermé
-	# - caméra revenue sur Moko
-	# - cinématique terminée
-	#
-	# Son _physics_process() peut maintenant gérer son range.
-	# ========================================================
 
 	if gs.difficulty == "king" and boss:
 		if boss.has_method("activate_boss"):
