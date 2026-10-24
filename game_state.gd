@@ -18,6 +18,7 @@ var coco_count = 0
 var heal_amount = 0
 var can_fire_coco = false
 var has_key = false
+var has_rune = false
 var toucan_challenge_retry = false
 var focus_cam_frog = false
 
@@ -82,6 +83,7 @@ var is_paused = false
 # --- Signaux ---
 signal all_seeds_collected
 signal key_collected
+signal rune_collected
 signal player_updated(new_player)
 
 
@@ -414,6 +416,7 @@ func unlock_next_difficulty():
 		print("TOUTES LES DIFFICULTES SONT TERMINEES")
 
 	has_key = false
+	has_rune = false
 	save_progress()
 
 	print("NOUVELLE DIFFICULTE : ", difficulty)
@@ -700,6 +703,7 @@ func save_game():
 	data["loot_level_path"] = loot_level_path
 
 	data["has_key"] = has_key
+	data["has_rune"] = has_rune
 	
 	data["wood_collected"] = wood_collected
 
@@ -775,6 +779,7 @@ func apply_save_data(data):
 	loot_level_path = data.get("loot_level_path", "")
 
 	has_key = data.get("has_key", false)
+	has_rune = data.get("has_rune", false)
 
 	wood_collected = data.get("wood_collected", false)
 	
@@ -944,6 +949,9 @@ func reset_loot_tracking_from_scene():
 func signal_key_collected():
 	emit_signal("key_collected")
 
+func signal_rune_collected():
+	emit_signal("rune_collected")
+
 func _input(_event):
 	if Input.is_action_just_pressed("gc_menu") or Input.is_action_just_pressed("menu"):
 		if not is_menu_scene(current_level_path):
@@ -967,6 +975,7 @@ func reinitialise():
 	fire_buff_unlocked = false
 
 	has_key = false
+	has_rune = false
 
 	double_jump_unlocked = false
 

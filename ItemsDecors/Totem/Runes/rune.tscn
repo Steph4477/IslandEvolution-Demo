@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b8odibekycmss"]
+
+[ext_resource type="Script" uid="uid://c6fu68cl5jijn" path="res://ItemsDecors/Totem/Runes/rune.gd" id="1_ajn0j"]
+[ext_resource type="Texture2D" uid="uid://k6tom1r2sq6u" path="res://ItemsDecors/Totem/Runes/explorer.png" id="1_rt5ya"]
+[ext_resource type="Texture2D" uid="uid://bvv8aawm3ep1l" path="res://ItemsDecors/Totem/Runes/survivor.png" id="3_7td13"]
+[ext_resource type="Texture2D" uid="uid://bkvpe18jca5wp" path="res://ItemsDecors/Totem/Runes/king.png" id="4_qjuof"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7td13"]
+radius = 6.0827637
+
+[node name="Rune" type="Node2D" unique_id=1936221064]
+script = ExtResource("1_ajn0j")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1016196859]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1697888935]
+rotation = 1.51669
+shape = SubResource("CircleShape2D_7td13")
+
+[node name="Explorer" type="Sprite2D" parent="Area2D" unique_id=1948182790]
+texture = ExtResource("1_rt5ya")
+
+[node name="Survivor" type="Sprite2D" parent="Area2D" unique_id=1928785996]
+texture = ExtResource("3_7td13")
+
+[node name="King" type="Sprite2D" parent="Area2D" unique_id=2110198740]
+texture = ExtResource("4_qjuof")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
