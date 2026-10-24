@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dlaw2o7b3g4nv" path="res://Enemies/Snake/SnakeHeal/snake_heal.tscn" id="2_0mmpm"]
 [ext_resource type="PackedScene" uid="uid://cv5xxqe4sgycb" path="res://Enemies/Snake/SnakeMelee/snake_melee.tscn" id="3_w0hnh"]
 [ext_resource type="PackedScene" uid="uid://lye37abt7fae" path="res://Enemies/Snake/SnakeDistance/snake_distance.tscn" id="4_307ir"]
+[ext_resource type="PackedScene" uid="uid://ccblghsr6ruqd" path="res://Enemies/BossPyg/boss_pyg.tscn" id="5_0mmpm"]
 
 [node name="EnemyKing" type="Node2D" unique_id=1133535803]
 scale = Vector2(1.4, 1.4)
@@ -43,5 +44,8 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="SnakeDistance2" parent="." unique_id=770366889 instance=ExtResource("4_307ir")]
 position = Vector2(1062.8572, 772.1429)
 scale = Vector2(0.99999994, 0.99999994)
+
+[node name="BossPyg" parent="." unique_id=1061333566 instance=ExtResource("5_0mmpm")]
+position = Vector2(9129, 957)
 
 [editable path="SnakeHeal"]

@@ -27,8 +27,6 @@ func _ready():
 		push_error("EXIT : GameState introuvable")
 		return
 
-	# La clé n'ouvre plus automatiquement le temple.
-	# Seul le run King pourra ouvrir la porte pendant la cinématique.
 	is_unlocked = false
 
 	update_visual(false)
@@ -103,7 +101,7 @@ func play_temple_reaction():
 		# ------------------------------------------------------------
 		# EXPLORER
 		# Petit tremblement.
-		# La porte RESTE fermée.
+		# La porte reste fermée.
 		# ------------------------------------------------------------
 
 		"explorer":
@@ -115,7 +113,7 @@ func play_temple_reaction():
 		# ------------------------------------------------------------
 		# SURVIVOR
 		# Tremblement plus important.
-		# La porte RESTE fermée.
+		# La porte reste fermée.
 		# ------------------------------------------------------------
 
 		"survivor":
@@ -127,7 +125,7 @@ func play_temple_reaction():
 		# ------------------------------------------------------------
 		# KING
 		# Gros tremblement.
-		# La porte S'OUVRE.
+		# La porte s'ouvre.
 		# ------------------------------------------------------------
 
 		"king":
@@ -136,40 +134,16 @@ func play_temple_reaction():
 			await open_temple_with_fade()
 
 
-## ============================================================================
-##                         ENTRÉE DU JOUEUR
-## ============================================================================
-#
-#func _on_body_entered(body):
-	#if body.name != "Player":
-		#return
-#
-	#if exit_in_progress:
-		#return
-#
-	#if not is_unlocked:
-		#show_info_popup(
-			#"🔑 Le temple reste fermé..."
-		#)
-#
-		#$LockedSound.play()
-#
-		#return
-#
-	#exit_in_progress = true
-#
-	#var anim_player = body.get_node_or_null("Node2D/Anim")
-#
-	#if anim_player and anim_player.has_animation("door"):
-		#body.animation_locked = true
-#
-		#anim_player.play("door")
-#
-		#await anim_player.animation_finished
-#
-	#body.set_physics_process(false)
-#
-	#await _finish_level()
+# ============================================================================
+#                         ANCIENNE AREA EXIT
+# ============================================================================
+
+func _on_body_entered(body):
+	if body.name != "Player":
+		return
+
+	# Cette Area ne termine plus le niveau.
+	# RunExit gère désormais la fin du run.
 
 
 # ============================================================================
@@ -314,6 +288,10 @@ func fade_close_sprite():
 		await get_tree().create_timer(delay).timeout
 
 
+# ============================================================================
+#                         RUN EXIT
+# ============================================================================
+
 func _on_run_exit_body_entered(body):
 	if body.name != "Player":
 		return
@@ -326,10 +304,12 @@ func _on_run_exit_body_entered(body):
 	if not gs:
 		return
 
+	# Impossible de terminer le run avant d'avoir la clé.
 	if not gs.has_key:
 		return
 
 	match gs.difficulty:
+
 		"explorer", "survivor":
 			exit_in_progress = true
 
@@ -338,4 +318,6 @@ func _on_run_exit_body_entered(body):
 			await _finish_level()
 
 		"king":
+			# En King, RunExit ne fait encore rien.
+			# Il sera débloqué après la mort du boss.
 			return

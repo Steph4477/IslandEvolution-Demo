@@ -56,6 +56,9 @@ var moko_attack_count = 0
 
 var boss_hit_lock_time = 0.5
 
+# Le boss reste dormant jusqu'à la cinématique King.
+var boss_active = false
+
 
 # ============================================================================
 #                                  NODES
@@ -109,12 +112,67 @@ func _ready():
 	jump_timer.one_shot = true
 	jump_timer.stop()
 
+	# ========================================================
+	# ATTENTE DE LA CINÉMATIQUE KING
+	# ========================================================
 
+	boss_active = false
+	velocity = Vector2.ZERO
+
+	visible = true
+	$Rotator.visible = false
+
+
+# ============================================================================
+#                              APPARITION BOSS
+# ============================================================================
+
+func start_boss_appear():
+	if boss_active:
+		return
+
+	print("BOSS PYG : début apparition")
+
+	velocity = Vector2.ZERO
+
+	attack_timer.stop()
+	projectile_timer.stop()
+	jump_timer.stop()
+
+	visible = true
+	$Rotator.visible = true
+
+	if anim and anim.has_animation("appear"):
+		anim.play("appear")
+		await anim.animation_finished
+	else:
+		push_error("BOSS PYG : animation appear introuvable")
+
+	velocity = Vector2.ZERO
+
+	print("BOSS PYG : apparition terminée")
+
+func activate_boss():
+	if boss_active:
+		return
+
+	boss_active = true
+	velocity = Vector2.ZERO
+
+	attack_timer.stop()
+	projectile_timer.stop()
+	jump_timer.stop()
+
+	print("BOSS PYG : COMBAT ACTIVÉ")
 # ============================================================================
 #                                  PHYSICS
 # ============================================================================
 
 func _physics_process(delta):
+	if not boss_active:
+		velocity = Vector2.ZERO
+		return
+
 	if is_dead:
 		return
 

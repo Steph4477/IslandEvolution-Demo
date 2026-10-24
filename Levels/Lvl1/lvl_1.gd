@@ -35,7 +35,7 @@ const ENEMY_SCENE_PATHS = {
 
 func _ready():
 	gs = get_node("/root/GameState")
-	#gs.difficulty = "king" #difficulté
+	gs.difficulty = "king" # difficulté
 
 	await get_tree().process_frame
 
@@ -224,7 +224,7 @@ func _on_all_seeds_collected():
 
 
 # ============================================================
-# CINÉMATIQUE D’INTRO
+# CINÉMATIQUE D'INTRO
 # ============================================================
 
 func start_intro_sequence():
@@ -262,6 +262,31 @@ func set_enemies_blocked(blocked):
 
 		if blocked and enemy is CharacterBody2D:
 			enemy.velocity = Vector2.ZERO
+
+
+# ============================================================
+# RÉCUPÉRATION DU BOSS PYGMÉE
+# ============================================================
+
+func get_boss_pyg():
+	if gs.difficulty != "king":
+		return null
+
+	if active_enemy_group == null:
+		return null
+
+	for enemy in active_enemy_group.get_children():
+		if enemy.name == "BossPyg":
+			print("BOSS PYG TROUVÉ : ", enemy)
+			return enemy
+
+	print("ERREUR : BossPyg introuvable dans EnemyKing")
+	print("ENFANTS DE ENEMYKING :")
+
+	for enemy in active_enemy_group.get_children():
+		print(" - ", enemy.name)
+
+	return null
 
 
 # ============================================================
@@ -354,6 +379,10 @@ func focus_camera_on_exit_and_react():
 
 	var original_position = player.global_position
 
+	# On garde la référence du boss jusqu'à la fin
+	# de toute la cinématique.
+	var boss = null
+
 	var tween = create_tween()
 
 	tween.tween_property(
@@ -365,7 +394,7 @@ func focus_camera_on_exit_and_react():
 
 	await tween.finished
 
-	# Petite pause avant la réaction du temple.
+	# Petite pause avant la réaction du Temple.
 	await get_tree().create_timer(1.0).timeout
 
 	# ========================================================
@@ -375,14 +404,77 @@ func focus_camera_on_exit_and_react():
 	if exit.has_method("play_temple_reaction"):
 		await exit.play_temple_reaction()
 
-	# On laisse le joueur regarder le résultat.
+	# ========================================================
+	# KING : APPARITION DU BOSS
+	# ========================================================
+
+	if gs.difficulty == "king":
+		boss = get_boss_pyg()
+
+		if boss:
+			print("LANCEMENT APPARITION BOSS")
+
+			# Tous les ennemis sont actuellement bloqués.
+			# On réactive uniquement BossPyg pour permettre
+			# à son AnimationPlayer de jouer "appear".
+			#
+			# boss_active reste FALSE pendant cette phase,
+			# donc son IA ne peut pas encore démarrer.
+			boss.process_mode = Node.PROCESS_MODE_INHERIT
+
+			# ------------------------------------------------
+			# POSITION DU BOSS
+			# ------------------------------------------------
+
+			boss.global_position = exit.global_position
+
+			print(
+				"TEMPLE GLOBAL POSITION : ",
+				exit.global_position
+			)
+
+			print(
+				"BOSS GLOBAL POSITION : ",
+				boss.global_position
+			)
+
+			await get_tree().create_timer(0.5).timeout
+
+			# ------------------------------------------------
+			# APPARITION
+			# ------------------------------------------------
+
+			if boss.has_method("start_boss_appear"):
+				print("APPEL start_boss_appear")
+
+				await boss.start_boss_appear()
+			else:
+				push_error(
+					"LVL1 : start_boss_appear() introuvable"
+				)
+
+			await get_tree().create_timer(0.3).timeout
+
+			# ------------------------------------------------
+			# FERMETURE DU TEMPLE
+			# ------------------------------------------------
+
+			if exit.has_method("close_temple"):
+				exit.close_temple()
+
+		else:
+			push_error(
+				"LVL1 : BossPyg introuvable dans EnemyKing"
+			)
+
+	# ========================================================
+	# PAUSE POUR VOIR LE RÉSULTAT
+	# ========================================================
+
 	await get_tree().create_timer(1.0).timeout
 
 	# ========================================================
-	# POUR LE MOMENT :
-	# retour Moko dans les 3 difficultés.
-	#
-	# Plus tard, KING sera coupé ici pour lancer boss_pyg.
+	# RETOUR CAMÉRA VERS MOKO
 	# ========================================================
 
 	var back = create_tween()
@@ -399,8 +491,40 @@ func focus_camera_on_exit_and_react():
 	cam.top_level = false
 	cam.position = Vector2.ZERO
 
-	player.enable_controls()
+	# ========================================================
+	# DÉBLOQUAGE DES ENNEMIS
+	# ========================================================
+
 	set_enemies_blocked(false)
+
+	# ========================================================
+	# RETOUR DES CONTRÔLES À MOKO
+	# ========================================================
+
+	player.enable_controls()
+
+	# ========================================================
+	# KING : ACTIVATION RÉELLE DU BOSS
+	# ========================================================
+	#
+	# Le boss est activé SEULEMENT maintenant :
+	#
+	# - animation appear terminée
+	# - Temple refermé
+	# - caméra revenue sur Moko
+	# - cinématique terminée
+	#
+	# Son _physics_process() peut maintenant gérer son range.
+	# ========================================================
+
+	if gs.difficulty == "king" and boss:
+		if boss.has_method("activate_boss"):
+			print("ACTIVATION COMBAT BOSS")
+			boss.activate_boss()
+		else:
+			push_error(
+				"LVL1 : activate_boss() introuvable"
+			)
 
 
 #####################################################################
