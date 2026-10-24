@@ -30,6 +30,7 @@ func _ready():
 	is_unlocked = false
 
 	update_visual(false)
+	update_rune_symbols()
 
 
 # ============================================================================
@@ -287,6 +288,36 @@ func fade_close_sprite():
 
 		await get_tree().create_timer(delay).timeout
 
+
+# ============================================================================
+#                         SYMBOLES DES RUNES
+# ============================================================================
+
+func update_rune_symbols():
+	var gs = get_node_or_null("/root/GameState")
+
+	if not gs:
+		push_error("EXIT : GameState introuvable")
+		return
+
+	# Explorer
+	$RuneSymbols/ExplorerOff.visible = not gs.explorer_unlocked
+	$RuneSymbols/ExplorerOn.visible = gs.explorer_unlocked
+
+	# Survivor
+	$RuneSymbols/SurvivorOff.visible = not gs.survivor_unlocked
+	$RuneSymbols/SurvivorOn.visible = gs.survivor_unlocked
+
+	# King
+	$RuneSymbols/KingOff.visible = not gs.king_unlocked
+	$RuneSymbols/KingOn.visible = gs.king_unlocked
+
+	print("======================================")
+	print("SYMBOLES TEMPLE")
+	print("EXPLORER : ", gs.explorer_unlocked)
+	print("SURVIVOR : ", gs.survivor_unlocked)
+	print("KING : ", gs.king_unlocked)
+	print("======================================")
 
 # ============================================================================
 #                         RUN EXIT

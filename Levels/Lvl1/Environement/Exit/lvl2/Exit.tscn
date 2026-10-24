@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://r1g73vkfwclw"]
 
 [ext_resource type="Script" uid="uid://c76hgf55iv0d4" path="res://Levels/Lvl1/Environement/Exit/lvl2/exit.gd" id="1_26mmp"]
+[ext_resource type="Texture2D" uid="uid://vfma5mgpy1dg" path="res://Levels/Lvl1/Environement/Exit/Runes/spritesheet.png" id="3_jl5po"]
 [ext_resource type="Texture2D" uid="uid://bf152q4yv3etv" path="res://Levels/Lvl1/Environement/Exit/lvl2/sprite_sheet.png" id="4_3hem7"]
 [ext_resource type="AudioStream" uid="uid://xaadllyopip2" path="res://sounds/closed_door.wav" id="4_jvi1g"]
 
@@ -88,6 +89,56 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_3hem7")
 hframes = 2
 frame = 1
+
+[node name="RuneSymbols" type="Node2D" parent="." unique_id=469807733]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="ExplorerOff" type="Sprite2D" parent="RuneSymbols" unique_id=1116112757]
+position = Vector2(-235, -671.25006)
+texture = ExtResource("3_jl5po")
+hframes = 3
+vframes = 2
+
+[node name="ExplorerOn" type="Sprite2D" parent="RuneSymbols" unique_id=124732136]
+visible = false
+position = Vector2(-237.50003, -672.50006)
+texture = ExtResource("3_jl5po")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="SurvivorOff" type="Sprite2D" parent="RuneSymbols" unique_id=1733112060]
+position = Vector2(-10.000001, -860.00006)
+texture = ExtResource("3_jl5po")
+hframes = 3
+vframes = 2
+frame = 1
+
+[node name="SurvivorOn" type="Sprite2D" parent="RuneSymbols" unique_id=204909411]
+visible = false
+position = Vector2(-10.000001, -860.00006)
+texture = ExtResource("3_jl5po")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="KingOff" type="Sprite2D" parent="RuneSymbols" unique_id=1304487750]
+position = Vector2(290.00003, -682.50006)
+texture = ExtResource("3_jl5po")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="KingOn" type="Sprite2D" parent="RuneSymbols" unique_id=868592730]
+visible = false
+position = Vector2(290, -682.50006)
+texture = ExtResource("3_jl5po")
+hframes = 3
+vframes = 2
+frame = 5
+
+[node name="CameraFocus" type="Marker2D" parent="RuneSymbols" unique_id=1806286924]
+position = Vector2(2.5000002, -515)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1724515417]
 position = Vector2(7.4999986, 212.49992)
