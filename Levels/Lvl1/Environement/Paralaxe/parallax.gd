@@ -10,6 +10,7 @@ var gs
 var camera = null
 var last_camera_x = 0.0
 var ready_parallax = false
+var parallax_paused = false
 
 @onready var tree_layer = $TreeLayer
 @onready var tree_sprite = $TreeLayer/Sprite2D
@@ -71,14 +72,29 @@ func _process(_delta):
 	if ready_parallax == false:
 		return
 
+	if parallax_paused:
+		return
+
+	if not camera:
+		return
+
 	var camera_delta = camera.global_position.x - last_camera_x
 	last_camera_x = camera.global_position.x
 
 	tree_layer.position.x -= camera_delta * tree_speed
 
-	# Les 3 ciels bougent exactement à la même vitesse.
 	sky_layer.position.x -= camera_delta * sky_speed
 	sky_layer_survivor.position.x -= camera_delta * sky_speed
 	sky_layer_king.position.x -= camera_delta * sky_speed
 
 	plant_layer.position.x -= camera_delta * plant_speed
+
+func pause_parallax():
+	parallax_paused = true
+
+
+func resume_parallax():
+	if camera:
+		last_camera_x = camera.global_position.x
+
+	parallax_paused = false
