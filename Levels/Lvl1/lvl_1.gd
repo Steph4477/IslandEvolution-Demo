@@ -2,6 +2,7 @@ extends Node2D
 
 
 var cam
+
 var player
 var gs
 var active_enemy_group = null
@@ -35,7 +36,7 @@ const ENEMY_SCENE_PATHS = {
 
 func _ready():
 	gs = get_node("/root/GameState")
-	gs.difficulty = "king" # difficulté
+	#gs.difficulty = "king" # difficulté
 
 	await get_tree().process_frame
 
@@ -46,7 +47,7 @@ func _ready():
 
 	setup_environment_difficulty()
 
-	cam.limit_right = 9500
+	cam.limit_right = 9550
 	cam.limit_top = -300
 	cam.limit_bottom = 1500
 
@@ -229,19 +230,24 @@ func _on_all_seeds_collected():
 
 func start_intro_sequence():
 	player.disable_controls()
-
 	set_enemies_blocked(true)
 
-	cam.top_level = true
-	cam.global_position = player.global_position
+	if parallax.has_method("pause_parallax"):
+		parallax.pause_parallax()
 
 	if gs.hud and gs.lvl1_quest_revealed == false:
 		gs.lvl1_quest_revealed = true
 		await gs.hud.appear_lvl1_quest()
 
 	await focus_camera_on_node("World/Totem")
-	await focus_camera_on_node("World/Exit")
+	await focus_camera_on_node("World/Exit/RuneSymbols/CameraFocus")
+
+	await get_tree().create_timer(2.0).timeout
+
 	await return_camera_to_player()
+
+	if parallax.has_method("resume_parallax"):
+		parallax.resume_parallax()
 
 	player.enable_controls()
 	set_enemies_blocked(false)
@@ -299,19 +305,20 @@ func focus_camera_on_node(node_name):
 	if not target:
 		return
 
+	var target_position = target.global_position - player.global_position
+
 	var tween = create_tween()
 
 	tween.tween_property(
 		cam,
-		"global_position",
-		target.global_position,
+		"position",
+		target_position,
 		1.2
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	await tween.finished
 
 	await get_tree().create_timer(0.6).timeout
-
 
 # ============================================================
 # RETOUR CAMÉRA VERS MOKO
@@ -322,16 +329,14 @@ func return_camera_to_player():
 
 	tween.tween_property(
 		cam,
-		"global_position",
-		player.global_position,
+		"position",
+		Vector2.ZERO,
 		1.2
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	await tween.finished
 
-	cam.top_level = false
 	cam.position = Vector2.ZERO
-
 
 # ============================================================
 # CLÉ RÉCUPÉRÉE
