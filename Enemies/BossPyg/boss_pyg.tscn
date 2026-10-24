@@ -589,7 +589,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_hvu33"]
 resource_name = "appear"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1157,6 +1157,8 @@ z_index = 25
 collision_layer = 8
 collision_mask = 1282
 script = ExtResource("1_j76mj")
+drop_loot_enabled = true
+loot_scene_path = "uid://bag8lpjj6gl7q"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298740383]
 position = Vector2(-4, 21)
