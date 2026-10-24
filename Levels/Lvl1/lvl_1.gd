@@ -58,7 +58,7 @@ func _ready():
 
 	if not gs.rune_collected.is_connected(_on_rune_collected):
 		gs.rune_collected.connect(_on_rune_collected)
-
+	
 	if not gs.key_collected.is_connected(_on_key_collected):
 		gs.key_collected.connect(_on_key_collected)
 
@@ -267,12 +267,41 @@ func _on_rune_activated():
 
 	await exit.play_temple_reaction()
 
+	# ========================================================
+	# KING : APPARITION DU BOSS
+	# ========================================================
+
+	var boss = null
+
+	if gs.difficulty == "king":
+		boss = get_boss_pyg()
+
+		if boss:
+			boss.process_mode = Node.PROCESS_MODE_INHERIT
+			boss.global_position = exit.global_position
+
+			await get_tree().create_timer(0.5).timeout
+
+			await boss.start_boss_appear()
+
+			await get_tree().create_timer(0.3).timeout
+
+			exit.close_temple()
+
+	# ========================================================
+	# RETOUR CAMÉRA
+	# ========================================================
+
 	await get_tree().create_timer(1.0).timeout
 
 	await return_camera_to_player()
 
 	parallax.resume_parallax()
 	set_enemies_blocked(false)
+
+	# ========================================================
+	# SUITE SELON DIFFICULTÉ
+	# ========================================================
 
 	match gs.difficulty:
 
@@ -281,6 +310,22 @@ func _on_rune_activated():
 
 		"king":
 			player.enable_controls()
+
+			if boss:
+				boss.activate_boss()
+
+
+# ============================================================
+# CLE RECUPEREE
+# ============================================================
+
+func _on_key_collected():
+	if gs.difficulty != "king":
+		return
+
+	var exit = $World/Exit
+
+	await exit.open_temple_with_fade()
 
 
 # ============================================================
@@ -395,18 +440,6 @@ func return_camera_to_player():
 	await tween.finished
 
 	cam.position = Vector2.ZERO
-
-
-# ============================================================
-# CLÉ RÉCUPÉRÉE
-# ============================================================
-
-func _on_key_collected():
-	await focus_camera_on_exit_and_react()
-
-	if gs.hud:
-		await get_tree().create_timer(0.5).timeout
-		await gs.hud.disappear_lvl1_quest()
 
 
 # ============================================================
