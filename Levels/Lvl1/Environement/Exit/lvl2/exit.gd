@@ -7,6 +7,7 @@ var is_unlocked = false
 var already_reacted = false
 var exit_in_progress = false
 
+signal rune_activated
 
 # ============================================================================
 #                              INITIALISATION
@@ -77,7 +78,7 @@ func close_temple():
 
 
 # ============================================================================
-#                     RÉACTION DU TEMPLE À LA CLÉ
+#                      RÉACTION DU TEMPLE À LA RUNE
 # ============================================================================
 
 func play_temple_reaction():
@@ -92,46 +93,17 @@ func play_temple_reaction():
 		push_error("EXIT : GameState introuvable")
 		return
 
-	print("======================================")
-	print("REACTION TEMPLE")
-	print("DIFFICULTE : ", gs.difficulty)
-	print("======================================")
-
 	match gs.difficulty:
-
-		# ------------------------------------------------------------
-		# EXPLORER
-		# Petit tremblement.
-		# La porte reste fermée.
-		# ------------------------------------------------------------
-
 		"explorer":
 			await shake_temple(0.4, 4.0)
-
 			close_temple()
-
-
-		# ------------------------------------------------------------
-		# SURVIVOR
-		# Tremblement plus important.
-		# La porte reste fermée.
-		# ------------------------------------------------------------
 
 		"survivor":
 			await shake_temple(0.7, 7.0)
-
 			close_temple()
-
-
-		# ------------------------------------------------------------
-		# KING
-		# Gros tremblement.
-		# La porte s'ouvre.
-		# ------------------------------------------------------------
 
 		"king":
 			await shake_temple(1.0, 10.0)
-
 			await open_temple_with_fade()
 
 
@@ -319,6 +291,26 @@ func update_rune_symbols():
 	print("KING : ", gs.king_unlocked)
 	print("======================================")
 
+func activate_current_rune():
+	var gs = get_node_or_null("/root/GameState")
+
+	if not gs:
+		return
+
+	match gs.difficulty:
+		"explorer":
+			$RuneSymbols/ExplorerOff.visible = false
+			$RuneSymbols/ExplorerOn.visible = true
+
+		"survivor":
+			$RuneSymbols/SurvivorOff.visible = false
+			$RuneSymbols/SurvivorOn.visible = true
+
+		"king":
+			$RuneSymbols/KingOff.visible = false
+			$RuneSymbols/KingOn.visible = true
+
+
 # ============================================================================
 #                         RUN EXIT
 # ============================================================================
@@ -330,25 +322,17 @@ func _on_run_exit_body_entered(body):
 	if exit_in_progress:
 		return
 
-	var gs = get_node_or_null("/root/GameState")
+	var gs = get_node("/root/GameState")
 
-	if not gs:
+	if not gs.has_rune:
 		return
 
-	# Impossible de terminer le run avant d'avoir la clé.
-	if not gs.has_key:
-		return
+	exit_in_progress = true
 
-	match gs.difficulty:
+	body.disable_controls()
 
-		"explorer", "survivor":
-			exit_in_progress = true
+	gs.has_rune = false
 
-			body.disable_controls()
+	activate_current_rune()
 
-			await _finish_level()
-
-		"king":
-			# En King, RunExit ne fait encore rien.
-			# Il sera débloqué après la mort du boss.
-			return
+	rune_activated.emit()
